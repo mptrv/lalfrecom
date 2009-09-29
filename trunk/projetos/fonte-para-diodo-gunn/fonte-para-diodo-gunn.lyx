@@ -1,0 +1,286 @@
+#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 245
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{misc}
+\usepackage{unidades}
+\end_preamble
+\language brazil
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize 10
+\spacing single
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Fonte para Diodo Gunn
+\end_layout
+
+\begin_layout Section
+Características
+\end_layout
+
+\begin_layout Itemize
+Ajustável de 8 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+volt{}cc
+\end_layout
+
+\end_inset
+
+ a 12 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+volt{}cc
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+De forma alguma ultrapassar 12 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+volt{}cc
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Potência de saída: 25 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+watt
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Correntes de saída: 1 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+ampere
+\end_layout
+
+\end_inset
+
+ nominal; 2 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+ampere
+\end_layout
+
+\end_inset
+
+ pico.
+\end_layout
+
+\begin_layout Itemize
+Opção de modulação ON-OFF interno de 1 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+kilo
+\backslash
+hertz
+\end_layout
+
+\end_inset
+
+ quadrado, por meio de chave.
+\end_layout
+
+\begin_layout Itemize
+Opção de modulação ON-OFF por meio de fonte externa de sinal, com patamares
+ em 0 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+volt
+\end_layout
+
+\end_inset
+
+ e em 5 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+volt
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Alimentação de 127 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+volt{}ac
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Recursos Adicionais
+\end_layout
+
+\begin_layout Itemize
+Voltímetro (por ponteiro ou digital?).
+\end_layout
+
+\begin_layout Itemize
+Potenciômetro multivoltas para ajuste da tensão.
+\end_layout
+
+\begin_layout Itemize
+Potenciômetro multivoltas para ajuste da freqüência de modulação interna
+ (650 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+hertz
+\end_layout
+
+\end_inset
+
+ a 1200 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+hertz
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Chave liga/desliga.
+\end_layout
+
+\begin_layout Itemize
+LED indicador de ligado/desligado.
+\end_layout
+
+\begin_layout Itemize
+LED indicador de cabo-de-força conectado na rede elétrica.
+\end_layout
+
+\begin_layout Itemize
+Chave de três estados para: modulação desligada, modulação interna, modulação
+ externa.
+\end_layout
+
+\begin_layout Itemize
+Caixa preta fosca.
+\end_layout
+
+\begin_layout Itemize
+Rótulos na caixa.
+\end_layout
+
+\begin_layout Itemize
+Cabo de força removível.
+\end_layout
+
+\begin_layout Itemize
+Porta-fusível e fusível na traseira, da proteção da rede de alimentação.
+\end_layout
+
+\begin_layout Itemize
+Porta-fusível e fusível interno, da proteção do diodo Gunn (fusível de saída).
+\end_layout
+
+\end_body
+\end_document
