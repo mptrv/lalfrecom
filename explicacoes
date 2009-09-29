@@ -30,6 +30,8 @@ experiencias/	- Relação e elaboração de experiências didáticas.
 
 explicacoes		- Este documento.
 
+exportacoes/	- Documentos exportados para formato .tex e ou .pdf.
+
 latex/			- Pacotes e classes LaTeX utilizados para formatar
 				  alguns documentos.
 
