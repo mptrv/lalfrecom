@@ -1,0 +1,53 @@
+LALFRECOM
+Copyright 2009 - Marcelo Porto Trevizan
+
+EXPLICAÇÕES
+===========
+
+Este projeto trata-se de projetos, atividades e relatórios desenvolvidos no Laboratório de Altas Freqüências e Comunicações.
+
+É conveniente ressaltar que, para este projeto ('lalfrecom'), os códigos são
+disponibilizados segundo a GNU GPL v3, os arquivos de projeto segundo a CCPL 3.0
+BY-SA e os textos segundo a GNU FDL v1.1. Um cópia destas licensas pode ser
+encontrada nos arquivos GPLv3, CCPLv3.0-BY-SA e FDLv1.3, respectivamente. Estes
+materiais também podem ser encontrados em
+'http://www.gnu.org/licenses/gpl-3.0.html',
+'http://creativecommons.org/licenses/by-sa/3.0/' e
+'http://www.gnu.org/copyleft/fdl.html', respectivamente.
+
+A estrutura de diretórios e arquivos da raiz deste projeto é a seguinte, com
+os respectivos significados:
+
+atividades/		- Relação e gerenciamento das atividades a executar ou em
+				  execução. Elas podem ser de "estudos", "experiências",
+				  "pesquisas" ou "projetos". Tais atividades serão sempre
+				  relacionadas ao contexto do laboratório.
+
+estudos/		- Estudos realizados de recursos técnicos, ou compreensões de
+				  fenômenos físicos.
+
+experiencias/	- Relação e elaboração de experiências didáticas.
+
+explicacoes		- Este documento.
+
+latex/			- Pacotes e classes LaTeX utilizados para formatar
+				  alguns documentos.
+
+pesquisas/		- Pesquisas mais aprofundadas sobre certo assunto, buscando um
+				  parecer e ou uma conclusão.
+
+projetos/		- Projetos desenvolvidos (desenvolvimentos) para melhor equipar
+				  o laboratório ou como decorrência das demais atividades.
+
+registros/		- Registros diversos quanto aos materiais do laboratório, entre
+				  eles, o histórico, o inventário, a relação de manuais, de
+				  empréstimos e de programas instalados.
+
+GPLv3			- Arquivo com o conteúdo da "GNU General Public License version
+				  3".
+
+CCPLv3.0-BY-SA	- Arquivo com o conteúdo da "Creative Commons Public License
+				  version 3.0 Attributions Share Alike".
+
+FDLv1.3			- Arquivo com o conteúdo da "GNU Free Documentation License
+				  version 1.3".
