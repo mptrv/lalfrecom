@@ -1,0 +1,275 @@
+#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 245
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{SIunits}
+\end_preamble
+\language brazil
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize 10
+\spacing single
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Relação de Atividades para Trabalho de Desenvolvimento, Estudo e Pesquisa
+\end_layout
+
+\begin_layout Standard
+Relação de algumas atividades para trabalho de pesquisa, desenvolvimento
+ e estudo relacionadas ao 
+\begin_inset Quotes eld
+\end_inset
+
+Laboratório de Altas Freqüências e Comunicações
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Desenvolvimentos
+\end_layout
+
+\begin_layout Enumerate
+Adaptação de GPIB antiga/nova.
+\end_layout
+
+\begin_layout Enumerate
+GUI via VEE Pro para equipamentos antigos.
+\end_layout
+
+\begin_layout Enumerate
+Antena helicoidal.
+\end_layout
+
+\begin_layout Enumerate
+Reabilitação de protótipo de mastro para ensaio automatizado de antenas.
+\end_layout
+
+\begin_layout Enumerate
+Averiguação de equipamentos e aparatos antigos, com eventuais reparos.
+\end_layout
+
+\begin_layout Enumerate
+Calibração de equipamentos (com as devidas técnicas).
+\end_layout
+
+\begin_layout Enumerate
+Bobina de Helm-Holtz.
+\end_layout
+
+\begin_layout Enumerate
+Célula TEM.
+\end_layout
+
+\begin_layout Enumerate
+Protótipo para a Rádio Mauá, com alcance de 50 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+meter
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Experiências de apoio ao estudo de Eletromagnetismo.
+\end_layout
+
+\begin_layout Enumerate
+Experiências com linhas de transmissão.
+\end_layout
+
+\begin_layout Enumerate
+SSNA, de código aberto (continuação).
+\end_layout
+
+\begin_layout Enumerate
+Documentação do SSNA e outras correlacionadas.
+\end_layout
+
+\begin_layout Enumerate
+Laboratório e ambiente externo (adequado) para ensaio de antenas.
+\end_layout
+
+\begin_layout Enumerate
+Ensaio remoto/automático de CEM.
+\end_layout
+
+\begin_layout Enumerate
+Rádio Mauá: projeto, implementação e gestão.
+\end_layout
+
+\begin_layout Section
+Estudos
+\end_layout
+
+\begin_layout Enumerate
+Qualidade (perda de retorno) de cargas e cabos em função da freqüência.
+\end_layout
+
+\begin_layout Enumerate
+Estudo de elementos de guia de onda e de cabo coaxial: funções e perda de
+ retorno.
+\end_layout
+
+\begin_layout Enumerate
+Influência de sujeiras em guias.
+\end_layout
+
+\begin_layout Enumerate
+Recursos do analisador de espectros.
+\end_layout
+
+\begin_layout Enumerate
+Efeitos de ensaios de antenas em ambienes não 100% apropriados ou pouco
+ apropriados.
+\end_layout
+
+\begin_layout Enumerate
+Qualidade das antenas.
+\end_layout
+
+\begin_layout Enumerate
+Refrações em microondas.
+\end_layout
+
+\begin_layout Enumerate
+Uso e recursos do analisador de rede, inclusive o vetorial.
+\end_layout
+
+\begin_layout Enumerate
+Viabilização do uso e ensaios com cavidade com terminações absorvedoras,
+ simulando guia infinito.
+\end_layout
+
+\begin_layout Enumerate
+Uso do COMSOL.
+\end_layout
+
+\begin_layout Enumerate
+Blindagens em microondas e em outras faixas.
+\end_layout
+
+\begin_layout Enumerate
+Adequação do laboratório para ensaio de CEM (ou de outra sala?).
+\end_layout
+
+\begin_layout Section
+Pesquisas
+\end_layout
+
+\begin_layout Enumerate
+Captação de sinais de freqüência variável com analisador de espectros (sinal
+ de celular GSM, por exemplo).
+\end_layout
+
+\begin_layout Enumerate
+Simulações com COMSOL: redução de minério de ferro, (...).
+\end_layout
+
+\begin_layout Enumerate
+Validações práticas de simulações computacionais, via COMSOL e SSNA.
+\end_layout
+
+\begin_layout Enumerate
+Caracterização de dispositivos por meio de analisador de rede.
+\end_layout
+
+\begin_layout Enumerate
+Uso da interface GPIB via Linux.
+\end_layout
+
+\begin_layout Enumerate
+Detector em microondas de encanamentos e vazamentos? (Com segurança para
+ o usuário.)
+\end_layout
+
+\begin_layout Enumerate
+Pesquisas de otimização de processamento paralelizado.
+\end_layout
+
+\begin_layout Enumerate
+Interação célula TEM x Bobina de Helm-Holtz?
+\end_layout
+
+\begin_layout Section
+Acessórios, Ferramentas e Equipamentos para os Experimentos
+\end_layout
+
+\begin_layout Enumerate
+VEE Pro 9.0
+\end_layout
+
+\begin_layout Enumerate
+Fonte de alimentação para diodo Gunn.
+\end_layout
+
+\begin_layout Enumerate
+Curto móvel para Banda X.
+\end_layout
+
+\begin_layout Enumerate
+Fonte nova para válvula Klystron.
+\end_layout
+
+\begin_layout Enumerate
+Ponta de prova para campos magnéticos (desenvolvimento de uma?).
+\end_layout
+
+\begin_layout Section
+Acessórios para o Laboratório
+\end_layout
+
+\begin_layout Enumerate
+Cadeiras almofadadas, bancos mais baixos, armários 
+\begin_inset Quotes eld
+\end_inset
+
+lingüiça
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Registro e gerenciamento dos materiais do laboratório.
+\end_layout
+
+\begin_layout Enumerate
+Fechadura eletrônica com senha e administração remota via TCP/IP.
+\end_layout
+
+\end_body
+\end_document

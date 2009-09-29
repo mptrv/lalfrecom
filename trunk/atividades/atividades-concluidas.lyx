@@ -1,0 +1,86 @@
+#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 245
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{SIunits}
+\end_preamble
+\language brazil
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize 10
+\spacing single
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Relação de Atividades Concluídas de Trabalho de Desenvolvimento, Estudo
+ e Pesquisa
+\end_layout
+
+\begin_layout Standard
+Relação de atividades concluídas de trabalho de desenvolvimento, estudo
+ e pesquisa e outras correlacionadas ao 
+\begin_inset Quotes eld
+\end_inset
+
+Laboratório de Altas Freqüências e Comunicações
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Desenvolvimentos
+\end_layout
+
+\begin_layout Section
+Estudos
+\end_layout
+
+\begin_layout Section
+Pesquisas
+\end_layout
+
+\begin_layout Section
+Acessórios, Ferramentas e Equipamentos para os Experimentos
+\end_layout
+
+\begin_layout Section
+Acessórios para o Laboratório
+\end_layout
+
+\begin_layout Enumerate
+Armários 
+\begin_inset Quotes eld
+\end_inset
+
+lingüiça
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
