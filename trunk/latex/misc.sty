@@ -1,0 +1,49 @@
+% Miscelânias
+%
+% Pacote com miscelânias de configurações e formatações.
+%
+% arquivo           : misc.sty
+% autor             : Marcelo P. Trevizan
+% tipo de documento : livre, aberto
+% Última alteração	: 16-08-2008
+
+\ProvidesPackage{misc}
+
+% ------------------------------------------------------------------------------
+% Pacotes.
+
+% Ajuste do espaçamento entre linhas.
+\usepackage{setspace}
+
+% Formatação especial para referências.
+\usepackage{prettyref}
+
+% Espaços especiais para macros.
+\usepackage{xspace}
+
+% ------------------------------------------------------------------------------
+% "Apelidos" para alguns comandos.
+\newcommand{\pr}[1]{\prettyref{#1}}
+
+% ------------------------------------------------------------------------------
+% Formatações disponibilizadas.
+
+% Formatação para colocação de aspas.
+\newcommand{\aspas}[1]{``#1''}
+
+% Formatação para destaque (enfatização) de texto.
+\newcommand{\dest}[1]{\emph{#1}}
+
+% Legenda (capitulação) e referência.
+\newcommand{\legendaref}[2]{\caption{#1\label{#2}}}
+
+% Formatações das referências.
+\newrefformat{cha}{Cap\'itulo~\ref{#1}}
+\newrefformat{fig}{Figura~\ref{#1}}
+\newrefformat{sec}{seç\~ao~\ref{#1}}
+\newrefformat{equ}{(\ref{#1})}
+\newrefformat{tab}{tabela~\ref{#1}}
+\newrefformat{enu}{\ref{#1}}
+
+% Alteração da contagem da enumeração para a forma alfabética.
+\newcommand{\alfaenum}{\renewcommand{\theenumi}{\alph{enumi}}}
