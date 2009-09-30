@@ -1,0 +1,40 @@
+% Unidades
+%
+% Carrega o pacote 'SIunits.sty', realizando algumas alterações e adições
+% de unidades. A principal alteração feita (e, por hora, a única) é o uso
+% de 'xspace' na criação das unidades.
+%
+% arquivo           : unidades.sty
+% autor             : Marcelo P. Trevizan
+% tipo de documento : livre, aberto
+% Última alteração	: 01-04-2008
+
+\ProvidesPackage{unidades}
+
+% ------------------------------------------------------------------------------
+% Pacotes.
+
+% Espaços condicionais.
+\usepackage{xspace}
+
+% Unidades do SI.
+\usepackage{SIunits}
+
+% ------------------------------------------------------------------------------
+% Configurações adicionais de pacotes.
+\xspaceaddexceptions{]}
+
+% ------------------------------------------------------------------------------
+% Unidades adicionais.
+
+% Segundos, para conveniência no contexto.
+\newcommand{\seconds}{\second}
+
+% Bits e bytes.
+\newcommand{\bits}{bits}
+\newcommand{\bytes}{bytes}
+\newcommand{\Bytes}{Bytes}
+
+% Bits e bytes por segundo.
+\newcommand{\bps}{\bits\per\second}
+\newcommand{\Bps}{\bytes\per\second}
