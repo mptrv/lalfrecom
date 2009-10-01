@@ -1,0 +1,240 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+%\usepackage{misc}
+%\usepackage{unidades}
+\usepackage{SIunits}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Adaptação de Interface GPIB antiga/nova
+\end_layout
+
+\begin_layout Author
+Marcelo Porto Trevizan, Felipe Montagneri
+\end_layout
+
+\begin_layout Section
+Objetivo
+\end_layout
+
+\begin_layout Standard
+Encontrar uma solução para adaptar a interface GPIB antiga à nova, encontrada
+ em alguns equipamentos.
+\end_layout
+
+\begin_layout Section
+Pesquisas e Conclusões Parciais
+\end_layout
+
+\begin_layout Standard
+Até o momento, concluíu-se o que se segue.
+\end_layout
+
+\begin_layout Standard
+Primeiramente, o que era suposto ser 
+\begin_inset Quotes eld
+\end_inset
+
+interface GPIB antiga
+\begin_inset Quotes erd
+\end_inset
+
+, na realidade é uma interface aparentemente proprietária da HP (Agilent).
+\end_layout
+
+\begin_layout Standard
+Por causa disso, é comercializado um módulo proprietário para se ter disponível
+ a interface GPIB, entre outras possíveis, como a RS 232.
+ Mais informações a respeito podem ser encontradas na seção 1 de 
+\emph on
+3000 Series Oscilloscopes Programmer's Reference
+\emph default
+, disponível em 
+\emph on
+www.agilent.com
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+No 'lalfrecom', atualmente, três equipamentos foram identificados possuindo
+ uma tal interface proprietária, iguais em sua geometria: o 
+\emph on
+8620C Sweep Oscillator
+\emph default
+, o 
+\emph on
+DSO3062A Digital Storage Oscilloscope
+\emph default
+ e o 
+\emph on
+5242L Electronic Counter
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Esta interface possui 50 pinos.
+ Os sinais em CC foram comparados pino a pino entre os equipamentos 
+\emph on
+8620C
+\emph default
+ e 
+\emph on
+DSO3062A
+\emph default
+.
+ O pino mais à direita, da fileira de baixo foi adotado como referência.
+\end_layout
+
+\begin_layout Standard
+Como resultado, têm-se:
+\end_layout
+
+\begin_layout Itemize
+pinos com tensão nula coincidentes em ambos os equipamentos;
+\end_layout
+
+\begin_layout Itemize
+pinos com tensão em torno de 4,9 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+volt
+\end_layout
+
+\end_inset
+
+ e 3,2 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+volt
+\end_layout
+
+\end_inset
+
+ em DSO3062A
+\emph on
+ 
+\emph default
+não coincidentes com os pinos correspondentes em 
+\emph on
+8620C
+\emph default
+;
+\end_layout
+
+\begin_layout Itemize
+pinos com tensão em torno de 18
+ 
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+volt
+\end_layout
+
+\end_inset
+
+ e -41 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+volt
+\end_layout
+
+\end_inset
+
+ em 
+\emph on
+8620C
+\emph default
+, sendo que tais níveis de tensão não foram encontrados no 
+\emph on
+DSO3062A
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Por estes motivos, conclui-se que um módulo de interface GPIB que seja apropriad
+o para o 
+\emph on
+DSO3062A
+\emph default
+ poderá não ser apropriado para o 
+\emph on
+8620C
+\emph default
+ -- a não ser que, justamente, os pinos identificados com zero volts e os
+ com nível de tensão coincidente sejam os únicos utilizados pelo módulo.
+\end_layout
+
+\begin_layout Standard
+Para se solucionar a questão, acredita-se que a próxima alternativa seja
+ entrar em contato com um representante da Agilent, verificando o que eles
+ podem oferecer.
+\end_layout
+
+\end_body
+\end_document
