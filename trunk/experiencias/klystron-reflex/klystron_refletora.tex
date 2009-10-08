@@ -1,0 +1,153 @@
+% Klystron Refletora
+%
+% Roteiro com o descritivo de funcionamento da válvula Klystron refletora e
+% itens para experiência de laboratório.
+%
+% arquivo           : klystron_refletora.tex 
+% autor             : Marcelo P. Trevizan
+% tipo de documento : livre, aberto
+% Última alteração	: 26-06-2009
+
+% ------------------------------------------------------------------------------
+% Classe do documento.
+
+\documentclass[a4paper,12pt]{article}
+
+% ------------------------------------------------------------------------------
+% Pacotes.
+
+\usepackage{roteiro}
+
+\title{Estudo da Klystron Refletora}
+\author{Marcio Mathias, Marcelo P. Trevizan, Octavio Andrade}
+
+% ------------------------------------------------------------------------------
+% Corpo do documento.
+
+\begin{document}
+	\maketitle
+
+% ------------------------------------------------------------------------------
+
+    \section{Objetivo}
+    
+    Estudar o comportamento da válvula Klystron refletora (\estrang{Reflex Klystron}) e sua utilização em microondas.
+
+% ------------------------------------------------------------------------------
+
+    \section{Apresentação}
+
+    Há dois tipos de válvula Klystron: a Klystron amplificadora e a refletora. A primeira é utilizada em circuitos amplificadores e a segunda é em circuitos osciladores de alta freqüência.
+
+    %{\textsf
+    % TODO
+    %Algumas características das válvulas encontradas comercialmente\ldots
+    %}
+
+    Neste experimento, serão tratatas as válvulas Klystron refletoras, por meio dos seguintes tópicos:
+
+    \begin{itemize}
+        \item Caracterização dos modos de oscilação;
+        \item medida de freqüência e potência;
+        \item modulação por onda quadrada e senoidal
+        \item largura de banda e sintonia do modo de oscilação.
+    \end{itemize}
+
+% ------------------------------------------------------------------------------
+
+    \section{Klystron Refletora}
+
+    Uma fonte de sinal RF, operando na faixa das microondas, pode ser construída utilizando uma válvula do tipo Klystron reflex. A \pr{fig:klystron-refletora} mostra uma imagem desta válvula.
+
+    \figuraredimvar[10cm]{Klystron refletora. Perceber que há terminais para o fornecimento de todas as tensões necessárias para sua operação e um terminal maior, que é uma antena, do qual sairá o sinal de RF.}{fig:klystron-refletora}{fig-klystron-refletora}
+
+    \subsection{Descrição Simplificada do Oscilador}
+
+   Na \pr{fig:oscilador-klystron-refletora}, um esquema de um oscilador com a Klystron reflex é apresentado. 
+    
+    \figuraredimvar{Oscilador de RF com Klystron reflex. Ao centro, tem-se a cavidade ressonante, com um ponto de tomada do sinal de RF; à esquerda, o canhão de elétrons; e à direita, a placa refletora. $d$ é a espessura da cavidade na região em que os elétrons a atravessam; $s_x$ é a extensão da região de \estrang{drift}, compreendida entre a cavidade e a placa refletora. $v_x$ é a velocidade de deslocamento de um agrupamento de elétrons. $V_a$ é a tensão de feixe (\estrang{beam voltage}), contínua; $V_r$ é a tensão da placa refletora (\estrang{repeller voltage}), também contínua. Por fim, embora não desenhado, no canhão de elétrons há um filamento, \aspas{fonte dos elétrons}, alimentado por tensão alternada.}{fig:oscilador-klystron-refletora}{fig-oscilador-klystron-refletora}
+
+   Um feixe de elétrons é acelerado em direção à cavidade ressonante através da fonte de tensão contínua $V_a$. Assumindo uma condição de oscilação na cavidade, os elétrons passando por ela podem ser acelerados ou retardados, em função da fase instantânea do campo elétrico associado ao modo ressonante. Isto causa uma modulação na velocidade do feixe gerando um agrupamento dos elétrons (\aspas{empacotamento}) na região de \estrang{drift}, que é o espaço existente entre a cavidade e o refletor (\estrang{repeller}). O refletor, devido à polarização imposta por $V_r$, força os elétrons a retornarem para a cavidade, causando assim uma realimentação positiva (regeneração) no processo que sustentará a condição de oscilação na cavidade.
+
+    Para entender melhor o funcionamento do oscilador, observe a \pr{fig:trajetorias}. Passando pela cavidade em instantes distintos, três elétrons interagem com o campo elétrico do modo ressonante. O primeiro elétron, movendo-se na direção do refletor, atravessa a cavidade no instante $t = t_1$ e experimenta uma aceleração provocada pelo campo elétrico $E_x$, extraindo assim energia da cavidade. O segundo elétron, também movendo-se na direção do refletor, passa pela cavidade no instante $t = t_2$, em que o campo elétrico encontra-se em seu ponto de nulo, não sendo, portanto, nem acelerado, nem retardado. O terceiro elétron, por sua vez, que passa pela cavidade no instante $t = t_3$, na direção do refletor, é agora retardado pelo campo elétrico. As trajetórias dos três elétrons representam bem a situação descrita: o elétron acelerado consegue se aproximar mais do refletor (trajetória 1), graças à energia adicional obtida do campo $E_x$. O elétron retardado forneceu energia à cavidade e, por causa disso, percorrerá um caminho mais curto (trajetória 3). O elétron não acelerado, nem retardado, irá percorrer um caminho intermediário (trajetória 2). Apesar de terem deixado a cavidade em instantes distintos, os três elétrons retornarão juntos a ela, em $t = t_4$. Desta vez, todos serão desacelerados pelo campo elétrico, entregando energia à cavidade e completando o processo de regeneração do modo ressonante. Uma representação gráfica, conhecida como \estrang{Applegate}, pode ser vista na \pr{fig:applegate}.
+    
+    \figuraredimvar{Trajetórias de três elétrons na região de \estrang{drift}.}{fig:trajetorias}{fig-trajetorias}
+    
+    \figuraredimvar{Gráfico \estrang{Applegate}. Chama-se a atenção do sentido de orientação do eixo $x$: referenciando-se à \pr{fig:oscilador-klystron-refletora}, aponta da esquerda para a direita. }{fig:applegate}{fig-applegate}
+
+    Reajustando a tensão na placa refletora, observa-se uma alteração nos tempos de trânsito dos elétrons na região de \estrang{drift}. Isto permite que sejam obtidos outros modos de oscilação da válvula.
+    
+    Cada modo apresentará como característica um período de realimentação diferente, dado por:
+
+    \begin{equation} \label{equ:modos}
+        T = \frac{\left( n + \frac{3}{4} \right)}{f_0},
+    \end{equation}
+
+\noindent em que $n$ é um número natural correspondente a uma quantidade inteira de ciclos e $f_0$ é a freqüência de oscilação da cavidade. Na \pr{fig:modos-oscilacao}, exemplificam-se dois modos de oscilação.
+    
+    \figuraredimvar{\estrang{Applegate} para os modos de oscilação com $n = 1$ (modo $1\frac{3}{4}$) e $n = 2$ (modo $2\frac{3}{4}$).}{fig:modos-oscilacao}{fig-modos-oscilacao}
+
+    Quanto à potência, cada modo de oscilação da Klystron apresenta um pico distinto, que decresce quanto menos negativa for a tensão de refletor. Tal comportamento pode ser observado na \pr{fig:pot-delta-f}.
+
+    Ainda, conforme o modo de oscilação e de acordo com a tensão do refletor, tem-se uma ligeira alteração na freqüência de oscilação, como também pode ser observado na própria figura \pr{fig:pot-delta-f}.
+
+    \figuraredimdoisvar{10cm}{7.07cm}{Potência ($P$) e desvio de freqüência ($\Delta f$) em vários modos de oscilação da Klystron.}{fig:pot-delta-f}{fig-pot-delta-f}
+
+% ------------------------------------------------------------------------------
+
+    \pagebreak
+    \section{Parte Prática}
+
+    \dest{Antes de ligar qualquer instrumento ou equipamento, o aluno deve familiarizar-se com os dispositivos, com as instruções e procedimentos de segurança para o uso de cada item do laboratório.}\bigskip
+    
+    Para este experimento são utilizados os seguintes itens:
+
+    \begin{enumerate}
+        \item HP 715A Klystron Power Supply;
+        \item Klystron Reflex 2K25;
+        \item HP 435B Power Meter;
+        \item HP 8481B Power Sensor (Bolômetro);
+        \item HP X375A Variable Flap Atennuator;
+        \item HP X281A Coaxial/Waveguide Transition;
+        \item HP X532B Cavity Frequency Meter
+        \item Tektronics Digital Osciloscope
+        \item HP 11667A Power Splitter
+        \item HP 8472A Crystal Detector
+        \item X660 Circulator
+    \end{enumerate}
+
+    Preparação:
+
+    \begin{enumerate}
+        \alfaenum
+        \item Monte o experimento conforme a orientação do instrutor.
+        \item \textbf{Antes de ligar a fonte de alimentação da Klystron}, ajuste a tensão do refletor (\estrang{repeller voltage}) para $-200\volt$. \dest{Nota: A tensão de refletor nunca poderá estar abaixo de $-50\volt$. A não observância deste limite pode acarretar na queima da válvula!}
+        \item Ajuste a tensão de feixe (\estrang{beam voltage}) para 0\volt.
+        \item Selecione, na fonte de alimentação, o modo de operação “CW” (\estrang{Continuous Wave}).
+        \item Ligue a fonte de alimentação da válvula e ajuste a tensão de feixe (\estrang{beam voltage}) até obter a leitura de 25 mA de corrente de feixe (isto deve ocorrer em torno de 300\volt). \dest{Nota: não exceder a tensão de 330\volt para evitar danos na Klystron.}
+        \item Após o aquecimento da válvula, é possível verificar o seu funcionamento através das leituras do medidor de potência. Poderão ser necessários ajustes na tensão de refletor ($-200 < V_r < -85 \volt$) para localizar um modo de oscilação.
+    \end{enumerate}
+
+% ------------------------------------------------------------------------------
+
+        \subsection{Características dos modos de oscilação}
+
+        \begin{enumerate}
+            \alfaenum
+        \item \dest{Rastreamento dos modos de oscilação da válvula:} através da variação da tensão de refletor, observar as tensões resultantes no osciloscópio e as potências indicadas no medidor de potência, para localizar tais modos.
+        \item \dest{Identificação dos modos:} anotar os valores de tensão obtidos e associe adequadamente cada valor observado ao modo de oscilação correspondente.
+        \item \dest{Determinação da freqüência de oscilação da válvula:} repitir o procedimento anterior, medindo agora a freqüência de oscilação fazendo uso do freqüencimento de cavidade.
+        \item \dest{Determinação da excursão da potência e da freqüência em cada modo:} para visualizar o efeito da variação da tensão de refletor para os diversos modos de oscilação da válvula, em potência e freqüência, selecionar o modo de operação da fonte para 1000$\sim$\hertz e ajustar a amplitude de modulação para um valor apropriado a fim de observar os modos no oscilocópio como visto na \pr{fig:pot-delta-f}. A obtenção dos limites de excursão da freqüência se dará por uso do freqüencímetro de cavidade.
+        \end{enumerate}
+
+% ------------------------------------------------------------------------------
+	% Base de dados das bibliografias e formatação bibliográfica.
+
+    \begin{thebibliography}{9}
+        \bibitem{colling} COLLINS, R. \dest{Foundations for microwave engeneering}. 2nd edition. 2001.
+    \end{thebibliography}
+
+    %\bibliographystyle{plainnat}
+    %\bibliography{$HOME/Trabalhos/Bibliografias/...}
+
+\end{document}
