@@ -30,7 +30,13 @@ experiencias/	- Relação e elaboração de experiências didáticas.
 
 explicacoes		- Este documento.
 
-exportacoes/	- Documentos exportados para formato .tex e ou .pdf.
+exportacoes/	- Documentos exportados para outros formatos. (Atualmente,
+				  estuda-se a necessidade deste diretório.
+
+files-for-download/ - Materiais exportados, contendo a versão em seu nome, que
+					  serão disponibilizados na aba "Download" do projeto. O
+					  conteúdo deste diretório não foi e não deve ser
+					  acrescentado no controle de versão do 'svn'.
 
 latex/			- Cópia de pacotes e classes LaTeX utilizados para formatar
 				  alguns documentos. (Sugere-se que, havendo alterações nestes,
