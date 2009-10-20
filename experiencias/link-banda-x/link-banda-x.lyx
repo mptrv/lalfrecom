@@ -1,5 +1,5 @@
-#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
 \begin_document
 \begin_header
 \textclass article
@@ -7,15 +7,26 @@
 \usepackage{roteiro}
 \end_preamble
 \options a4paper
+\use_default_options false
 \language english
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -29,6 +40,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -66,11 +78,12 @@ link
 \end_inset
 
  em Banda X, utilizando guias-de-onda e antena corneta.
- Tomar conhecimento das principais caracterÌsticas e tipos de antenas cornetas.
- Verificar, qualitativamente, por meio de simulaÁ„o numÈrica, a diferenÁa
- nos padrıes de espalhamento da onda no guia terminado em aberto ou com
- antena corneta.
- Verificar, qualitativamente, a influÍncia da ·gua no 
+ Tomar conhecimento de tipos de antenas cornetas e fazer o levantamento
+ das principais caracter√≠sticas.
+ Verificar, qualitativamente, por meio de simula√ß√£o num√©rica, a diferen√ßa
+ nos padr√µes de espalhamento da onda no guia terminado em aberto ou com
+ antena corneta, assim como, quantativamente, a diretidade e ganho.
+ Verificar, qualitativamente, a influ√™ncia da √°gua no 
 \begin_inset Quotes eld
 \end_inset
 
@@ -82,24 +95,24 @@ link
 \end_layout
 
 \begin_layout Section
-ApresentaÁ„o
+Apresenta√ß√£o
 \end_layout
 
 \begin_layout Standard
 Dado um guia-de-onda, pelo qual se faz propagar uma onda, se ele tiver uma
- de suas extremidades abertas, provocar· o espalhamento da onda pelo ar.
+ de suas extremidades abertas, provocar√° o espalhamento da onda pelo ar.
 \end_layout
 
 \begin_layout Standard
-Em tal ocasi„o, tem-se uma primeira conseq¸Íncia que diz respeito ‡ 
+Em tal ocasi√£o, tem-se uma primeira conseq√º√™ncia que diz respeito √† 
 \emph on
-taxa de onda estacion·ria
+taxa de onda estacion√°ria
 \emph default
-, pois a imped‚ncia do guia È de 50 
+, pois a imped√¢ncia do guia √© de 50 
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -108,11 +121,11 @@ ohm
 
 \end_inset
 
-, normalmente, e a do ar È de 377 
+, normalmente, e a do ar √© de 377 
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -125,65 +138,210 @@ ohm
 \end_layout
 
 \begin_layout Standard
-Uma outra conseq¸Íncia, È a forma como ocorre o espalhamento pelo ar, ou,
+Uma outra conseq√º√™ncia, √© a forma como ocorre o espalhamento pelo ar, ou,
  em outras palavras, o 
 \emph on
-padr„o espacial da onda
+padr√£o espacial da onda
 \emph default
  ao sair do guia.
- Tal padr„o, pode n„o ser o desej·vel, principalmente quando deseja-se que
- a onda atinja um destino num ponto especifico, sem se 
+ Tal padr√£o pode n√£o ser o desej√°vel, principalmente quando se deseja que
+ a onda atinja um destino num ponto espec√≠fico, sem se 
 \begin_inset Quotes eld
 \end_inset
 
-disperdiÁar
+disperdi√ßar
 \begin_inset Quotes erd
 \end_inset
 
- energia em outras direÁıes sem necessidade.
+ energia em outras dire√ß√µes desnecessariamente.
+ Por isso, um elemento diretor de onda pode ser utilizado.
 \end_layout
 
 \begin_layout Standard
-Por isso, um elemento diretor da onda pode ser utilizado.
- Um, muito simples em sua filosofia, È a antena corneta.
-\end_layout
-
-\begin_layout Standard
-A idÈia È provocar uma mudanÁa gradativa entre o guia-de-onda e o ar, minimizand
-o a taxa de onda estacion·ria.
- AlÈm disto, a geometria da antena È tal que, quando a onda atinge o ar,
- ela apresenta-se, praticamente, como uma onda plana, com direÁ„o de propagaÁ„o
- bem definida.
- Isto evita, portanto, o espalhamento da onda para direÁıes fora de interesse.
+Um, muito simples em sua filosofia, √© a antena corneta.
+ A id√©ia √© provocar uma mudan√ßa gradativa entre o guia-de-onda e o ar, minimizan
+do a taxa de onda estacion√°ria.
+ Al√©m disto, a geometria da antena √© tal que, quando a onda atinge o ar,
+ ela apresenta-se, praticamente, como uma onda plana, com dire√ß√£o e sentido
+ de propaga√ß√£o bem definida.
+ Isto evita, portanto, o espalhamento da onda para dire√ß√µes fora de interesse.
 \end_layout
 
 \begin_layout Standard
 Os efeitos de se terminar um guia em aberto sem e com antena corneta podem
- ser melhor observados por meio de resultados de simulaÁ„o numÈrica.
+ ser melhor observados por meio de resultados de simula√ß√£o num√©rica.
+ Nas figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:guia-aberto"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:guia-com-corneta"
+
+\end_inset
+
+ observam-se os espalhamentos correspondentes.
 \end_layout
 
 \begin_layout Standard
-Algumas geometrias de antena corneta encontradas s„o as seguintes:
+Algumas geometrias de antena corneta encontradas s√£o as seguintes:
 \end_layout
 
 \begin_layout Itemize
-secÁ„o transversal retangular;
+se√ß√£o transversal retangular;
 \end_layout
 
 \begin_layout Itemize
-secÁ„o transversal elÌptica;
+se√ß√£o transversal el√≠ptica;
 \end_layout
 
 \begin_layout Itemize
-secÁ„o longitudinal trapezoidal-linear;
+perfil longitudinal trapezoidal;
 \end_layout
 
 \begin_layout Itemize
-secÁ„o longitudinal trapezoidal-exponencial;
+perfil longitudinal exponencial;
 \end_layout
 
 \begin_layout Itemize
-secÁ„o de saÌda corrugada.
+corpo interno corrugado.
+\end_layout
+
+\begin_layout Standard
+As se√ß√µes transversais e el√≠pticas visam, num primeiro momento, se adequar
+ ao tipo de guia aos quais se conectam.
+ Contudo, pode-se levantar o seguinte questionamento: h√° diferen√ßa significativa
+ na diretividade e no ganho entre tais tipos de se√ß√µes?
+\end_layout
+
+\begin_layout Standard
+J√° quanto ao perfil trapezoidal e ao exponencial, nota-se que no segundo
+ a transi√ß√£o percebida pela onda √© muito mais gradativa que no primeiro.
+ Assim, levantam-se dois questionamentos: isto influencia quanto na diretividade
+ e ganho e quanto na perda de retorno?
+\end_layout
+
+\begin_layout Standard
+As antenas com corpo interno corrugado tem o objetivo de evitarem, anularem,
+ os l√≥bulos secund√°rios.
+ Existem diversos formatos para as corruga√ß√µes, cada uma se adaptando melhor
+ para uma situa√ß√£o.
+\end_layout
+
+\begin_layout Standard
+Os √¢ngulos de meia pot√™ncia e o ganho de uma antena corneta com se√ß√£o transversa
+l retangular e perfil longitudinal trapezoidal podem ser calculadas, de
+ maneira aproximada, pelas equa√ß√µes 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:angtetah"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:angtetae"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ganho"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\theta_{H}=\frac{80\lambda_{0}}{a}\label{eq:angtetah}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\theta_{E}=\frac{53\lambda_{0}}{b}\label{eq:angtetae}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+G=\frac{2\pi ab}{\lambda_{0}^{2}}\label{eq:ganho}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+em que:
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\theta_{H}$
+\end_inset
+
+: √¢ngulo de meia pot√™ncia para o plano H
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\theta_{E}$
+\end_inset
+
+: √¢ngulo de meia pot√™ncia para o plano E
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $G$
+\end_inset
+
+: ganho
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $a$
+\end_inset
+
+: largura do guia
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $b$
+\end_inset
+
+: altura do guia
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+: comprimento de onda no espa√ßo livre
 \end_layout
 
 \begin_layout Standard
@@ -195,19 +353,19 @@ link
 \begin_inset Quotes erd
 \end_inset
 
- de microondas, no caso, em Banda X, pode sofrer diversas influÍncias de
+ de microondas, no caso, em Banda X, pode sofrer diversas influ√™ncias de
  elementos externos.
 \end_layout
 
 \begin_layout Standard
-Um deles, s„o os objetos que causam reflexıes de eventuais glÛbulos secund·rios
- que se faÁam presentes.
- Se tais reflexıes tambÈm atingirem o receptor, elas se somar„o ‡ onda principal
+Um deles, s√£o os objetos que causam reflex√µes de eventuais gl√≥bulos secund√°rios
+ que se fa√ßam presentes.
+ Se tais reflex√µes tamb√©m atingirem o receptor, elas se somar√£o √† onda principal
 , podendo contribuir de forma aditiva ou subtrativa, conforme a fase da
  parcela refletida.
- Assim, fica claro que tal situaÁ„o n„o È desejada e, uma das formas de
- se evitar isto, È por meio de antena corneta corrugada, a qual praticamente
- n„o apresenta lÛbulos secund·rios.
+ Assim, fica claro que tal situa√ß√£o n√£o √© desejada e, uma das formas de
+ se evitar isto, √© por meio de antena corneta corrugada, a qual praticamente
+ n√£o apresenta l√≥bulos secund√°rios.
  Outra forma seria remover os objetos refletores ou recobri-los com material
  absorvedor.
 \end_layout
@@ -221,13 +379,13 @@ link
 \begin_inset Quotes erd
 \end_inset
 
- È a ·gua.
- Ela È um material que apresenta perdas crescentes com a freq¸Íncia, atingindo
+ √© a √°gua.
+ Ela √© um material que apresenta perdas crescentes com a freq√º√™ncia, atingindo
  um pico em torno de 20 
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -242,31 +400,31 @@ hertz
 \end_layout
 
 \begin_layout Standard
-Elementos como a ·gua, alÈm de absorverem uma parte da energia irradiada,
- tambÈm provocam reflexıes.
- Conseq¸entemente, a energia que chega ao receptor È menor e, ainda, existe
+Elementos como a √°gua, al√©m de absorverem uma parte da energia irradiada,
+ tamb√©m provocam reflex√µes.
+ Conseq√ºentemente, a energia que chega ao receptor √© menor e, ainda, existe
  a possibilidade da parcela refletida retornar ao transmissor, aumentando
- a taxa de onda estacion·ria.
+ a taxa de onda estacion√°ria.
 \end_layout
 
 \begin_layout Standard
-Lembra-se, neste ponto, que È muito importante evitar que parcelas de onda
- refletida atinjam as fontes de RF, sujeitando-as ‡ oscilaÁ„o da potÍncia
+Lembra-se, neste ponto, que √© muito importante evitar que parcelas de onda
+ refletida atinjam as fontes de RF, sujeitando-as √† oscila√ß√£o da pot√™ncia
  ou mesmo a se danificarem.
- Elementos de guia utilizados para este fim s„o, por exemplo, isoladores
+ Elementos de guia utilizados para este fim s√£o, por exemplo, isoladores
  e circuladores.
 \end_layout
 
 \begin_layout Section
-Parte Pr·tica
+Parte Pr√°tica
 \end_layout
 
 \begin_layout Standard
 
 \emph on
 Antes de ligar qualquer instrumento ou equipamento, o aluno deve familiarizar-se
- com os dispositivos, com as instruÁıes e procedimentos de seguranÁa para
- o uso de cada item do laboratÛrio.
+ com os dispositivos, com as instru√ß√µes e procedimentos de seguran√ßa para
+ o uso de cada item do laborat√≥rio.
 \end_layout
 
 \begin_layout Subsection
@@ -274,7 +432,7 @@ Lista de Material
 \end_layout
 
 \begin_layout Standard
-Para este experimento s„o utilizados os seguintes itens:
+Para este experimento s√£o utilizados os seguintes itens:
 \end_layout
 
 \begin_layout Enumerate
@@ -290,7 +448,7 @@ HP 435B Power Meter;
 \end_layout
 
 \begin_layout Enumerate
-HP 8481B Power Sensor (BolÙmetro); 
+HP 8481B Power Sensor (Bol√¥metro); 
 \end_layout
 
 \begin_layout Enumerate
@@ -322,14 +480,17 @@ Arra ??? Exponential Corn Antenna with Rectangular Section
 \end_layout
 
 \begin_layout Subsection
-PreparaÁ„o:
+Prepara√ß√£o:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Siga, cuidadosamente, todos os Ìtens apresentados na experiÍncia relativa
- ‡ 
+Siga, cuidadosamente, todos os √≠tens apresentados na experi√™ncia relativa
+ √†
+\series default
+ 
+\series bold
 \emph on
 Klystron Refletora.
 \end_layout
