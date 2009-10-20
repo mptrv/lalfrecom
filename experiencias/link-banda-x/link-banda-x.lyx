@@ -41,6 +41,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -157,14 +158,58 @@ disperdiçar
  Por isso, um elemento diretor de onda pode ser utilizado.
 \end_layout
 
+\begin_layout Section
+A Antena Corneta
+\end_layout
+
 \begin_layout Standard
-Um, muito simples em sua filosofia, é a antena corneta.
+Um elemento diretor de onda, muito simples em sua filosofia, é a 
+\emph on
+antena corneta
+\emph default
+.
  A idéia é provocar uma mudança gradativa entre o guia-de-onda e o ar, minimizan
 do a taxa de onda estacionária.
  Além disto, a geometria da antena é tal que, quando a onda atinge o ar,
  ela apresenta-se, praticamente, como uma onda plana, com direção e sentido
  de propagação bem definida.
  Isto evita, portanto, o espalhamento da onda para direções fora de interesse.
+\end_layout
+
+\begin_layout Standard
+É conveniente citar que um guia de onda retangular simplesmente serrado
+ já é uma boa fonte de radiação, com perda de retorno de, aproximadamente,
+ 14 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+deci
+\backslash
+bel
+\end_layout
+
+\end_inset
+
+ e ganho em torno de 9 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+deci
+\backslash
+bel{}i
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -188,7 +233,41 @@ reference "fig:guia-com-corneta"
 \end_layout
 
 \begin_layout Standard
-Algumas geometrias de antena corneta encontradas são as seguintes:
+As cornetas encontram grande aplicação nas faixas de microondas e, ainda,
+ são boas referências para medidas em altas freqüências, tanto quanto os
+ são os dipolos de meia-onda para freqüências mais baixas.
+\end_layout
+
+\begin_layout Standard
+Das principais características das cornetas, citam-se:
+\end_layout
+
+\begin_layout Itemize
+Ganho relativamente alto e bem definido (é, contudo, função da freqüência);
+\end_layout
+
+\begin_layout Itemize
+baixo nível de polarização cruzada;
+\end_layout
+
+\begin_layout Itemize
+boa estabilidade e resistência mecânica;
+\end_layout
+
+\begin_layout Itemize
+diagramas com baixos níveis de lóbulos laterais
+\end_layout
+
+\begin_layout Standard
+Algumas geometrias de antena corneta encontradas são as seguintes, ilustradas
+ destas algumas na 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:antenas-corneta"
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Itemize
@@ -197,6 +276,14 @@ seção transversal retangular;
 
 \begin_layout Itemize
 seção transversal elíptica;
+\end_layout
+
+\begin_layout Itemize
+seção setorial no plano H;
+\end_layout
+
+\begin_layout Itemize
+seção setorial no plano E;
 \end_layout
 
 \begin_layout Itemize
@@ -220,9 +307,9 @@ As seções transversais e elípticas visam, num primeiro momento, se adequar
 
 \begin_layout Standard
 Já quanto ao perfil trapezoidal e ao exponencial, nota-se que no segundo
- a transição percebida pela onda é muito mais gradativa que no primeiro.
- Assim, levantam-se dois questionamentos: isto influencia quanto na diretividade
- e ganho e quanto na perda de retorno?
+ a transição percebida pela onda é mais gradativa que no primeiro.
+ Assim, levantam-se dois questionamentos: isto influencia o quanto na diretivida
+de e ganho e o quanto na perda de retorno?
 \end_layout
 
 \begin_layout Standard
@@ -345,7 +432,68 @@ em que:
 \end_layout
 
 \begin_layout Standard
-Um 
+Segundo outra referência, o ganho, em 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+deci
+\backslash
+bel{}i
+\end_layout
+
+\end_inset
+
+, pode ser encontrado por:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+G_{\deci\bel\{\}i}=10,084+10\log\left(\frac{ab}{\lambda^{2}}\right)+R_{E}+R_{H}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset Quotes eld
+\end_inset
+
+Link
+\begin_inset Quotes erd
+\end_inset
+
+ de Microondas
+\end_layout
+
+\begin_layout Standard
+Tendo um sistema de telecomunicação com uma antena corneta transmissora
+ e outra receptora, operando em faixa de microondas, caracteriza-se um 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+link de microondas
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+A portadora pode ser modulada por diversas das técnicas existentes para
+ que transporte a informação desejada.
+\end_layout
+
+\begin_layout Standard
+O 
 \begin_inset Quotes eld
 \end_inset
 
@@ -353,8 +501,7 @@ link
 \begin_inset Quotes erd
 \end_inset
 
- de microondas, no caso, em Banda X, pode sofrer diversas influências de
- elementos externos.
+ de microondas pode sofrer diversas influências de elementos externos.
 \end_layout
 
 \begin_layout Standard
