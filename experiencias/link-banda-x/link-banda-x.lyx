@@ -4,7 +4,8 @@
 \begin_header
 \textclass article
 \begin_preamble
-\usepackage{roteiro}
+%\usepackage{roteiro}
+\usepackage{SIunits}
 \end_preamble
 \options a4paper
 \use_default_options false
@@ -47,14 +48,7 @@
 \begin_body
 
 \begin_layout Title
-\begin_inset Quotes eld
-\end_inset
-
-Link
-\begin_inset Quotes erd
-\end_inset
-
- em Banda X
+Rádio-Enlace em Banda X
 \end_layout
 
 \begin_layout Title
@@ -70,29 +64,29 @@ Objetivos
 \end_layout
 
 \begin_layout Standard
-Implementar um 
-\begin_inset Quotes eld
+Implementar um rádio-enlace em Banda X (8-12 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+giga
+\backslash
+hertz
+\end_layout
+
 \end_inset
 
-link
-\begin_inset Quotes erd
-\end_inset
-
- em Banda X, utilizando guias-de-onda e antena corneta.
- Tomar conhecimento de tipos de antenas cornetas e fazer o levantamento
- das principais características.
+), utilizando guias-de-onda e antenas do tipo corneta.
+ Apresentação de alguns tipos de antenas-corneta e fazer o levantamento
+ dos principais parâmetros.
  Verificar, qualitativamente, por meio de simulação numérica, a diferença
  nos padrões de espalhamento da onda no guia terminado em aberto ou com
- antena corneta, assim como, quantativamente, a diretidade e ganho.
- Verificar, qualitativamente, a influência da água no 
-\begin_inset Quotes eld
-\end_inset
-
-link
-\begin_inset Quotes erd
-\end_inset
-
-, tanto do ponto de vista do receptor, quanto do gerador.
+ antena corneta, assim como, quantitavamente, a diretidade e ganho.
+ Verificar, qualitativamente, o desvanecimento causado por gotículas de
+ água no rádio-enlace.
 \end_layout
 
 \begin_layout Section
@@ -109,53 +103,19 @@ Em tal ocasião, tem-se uma primeira conseqüência que diz respeito à
 \emph on
 taxa de onda estacionária
 \emph default
-, pois a impedância do guia é de 50 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ohm
-\end_layout
-
-\end_inset
-
-, normalmente, e a do ar é de 377 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ohm
-\end_layout
-
-\end_inset
-
-, aproximadamente.
-\end_layout
-
-\begin_layout Standard
-Uma outra conseqüência, é a forma como ocorre o espalhamento pelo ar, ou,
- em outras palavras, o 
+, pois a impedância da onda guiada é normalmente diferente da impedância
+ do espaço livre.
+ Uma outra conseqüência, é a forma como ocorre o espalhamento, ou, em outras
+ palavras, o 
 \emph on
-padrão espacial da onda
+distribuição espacial do campo eletromagnético 
 \emph default
- ao sair do guia.
- Tal padrão pode não ser o desejável, principalmente quando se deseja que
- a onda atinja um destino num ponto específico, sem se 
-\begin_inset Quotes eld
-\end_inset
-
-disperdiçar
-\begin_inset Quotes erd
-\end_inset
-
- energia em outras direções desnecessariamente.
- Por isso, um elemento diretor de onda pode ser utilizado.
+da onda ao sair do guia.
+ Tal distribuição pode não ser a desejável, principalmente quando se objetiva
+ que a onda alcance um ponto específico distante.
+ Um espalhamento sem controle significará uma irradiação de energia em direções
+ indesejáveis.
+ Por isso, faz-se necessário o uso de antenas.
 \end_layout
 
 \begin_layout Section
@@ -163,58 +123,27 @@ A Antena Corneta
 \end_layout
 
 \begin_layout Standard
-Um elemento diretor de onda, muito simples em sua filosofia, é a 
+Uma antena, comumente utilizada em Banda-X, é a 
 \emph on
 antena corneta
 \emph default
 .
- A idéia é provocar uma mudança gradativa entre o guia-de-onda e o ar, minimizan
-do a taxa de onda estacionária.
- Além disto, a geometria da antena é tal que, quando a onda atinge o ar,
- ela apresenta-se, praticamente, como uma onda plana, com direção e sentido
- de propagação bem definida.
- Isto evita, portanto, o espalhamento da onda para direções fora de interesse.
+ A idéia é provocar uma mudança gradativa entre o guia-de-onda e o espaço
+ livre, minimizando o descasamento entre os dois meios.
+ Além disto, a geometria da antena é tal que, quando a onda atinge o espaço
+ livre, ela passa a se propagar como uma onda plana, com direção e sentido
+ de propagação bem definidos.
+ Isto evita, portanto, o espalhamento da energia em direções fora de interesse.
 \end_layout
 
 \begin_layout Standard
-É conveniente citar que um guia de onda retangular simplesmente serrado
- já é uma boa fonte de radiação, com perda de retorno de, aproximadamente,
- 14 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-deci
-\backslash
-bel
-\end_layout
-
-\end_inset
-
- e ganho em torno de 9 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-deci
-\backslash
-bel{}i
-\end_layout
-
-\end_inset
-
-.
+É conveniente citar que um guia de onda retangular simplesmente aberto já
+ é uma boa fonte de radiação.
 \end_layout
 
 \begin_layout Standard
-Os efeitos de se terminar um guia em aberto sem e com antena corneta podem
- ser melhor observados por meio de resultados de simulação numérica.
+A eficiência de irradiação entre um guia em aberto e um terminado com antena
+ corneta podem ser verificados por meio de resultados de simulação numérica.
  Nas figuras 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -234,12 +163,12 @@ reference "fig:guia-com-corneta"
 
 \begin_layout Standard
 As cornetas encontram grande aplicação nas faixas de microondas e, ainda,
- são boas referências para medidas em altas freqüências, tanto quanto os
- são os dipolos de meia-onda para freqüências mais baixas.
+ são boas referências para medidas em altas freqüências, tendo função similar
+ a dos dipolos de meia-onda nas freqüências mais baixas.
 \end_layout
 
 \begin_layout Standard
-Das principais características das cornetas, citam-se:
+Dos principais parâmetros das cornetas, citam-se:
 \end_layout
 
 \begin_layout Itemize
@@ -255,12 +184,12 @@ boa estabilidade e resistência mecânica;
 \end_layout
 
 \begin_layout Itemize
-diagramas com baixos níveis de lóbulos laterais
+diagramas de irradiação com baixos níveis de lóbulos laterais.
 \end_layout
 
 \begin_layout Standard
-Algumas geometrias de antena corneta encontradas são as seguintes, ilustradas
- destas algumas na 
+Alguns tipos de antena corneta são as apresentados abaixo e suas ilustrações
+ nas figuras 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:antenas-corneta"
@@ -287,7 +216,7 @@ seção setorial no plano E;
 \end_layout
 
 \begin_layout Itemize
-perfil longitudinal trapezoidal;
+perfil longitudinal piramidal;
 \end_layout
 
 \begin_layout Itemize
@@ -299,8 +228,8 @@ corpo interno corrugado.
 \end_layout
 
 \begin_layout Standard
-As seções transversais e elípticas visam, num primeiro momento, se adequar
- ao tipo de guia aos quais se conectam.
+O formato das seções transversais visam, num primeiro momento, se adequar
+ ao tipo de guia aos quais se conectam (retangular, circular, elíptico).
  Contudo, pode-se levantar o seguinte questionamento: há diferença significativa
  na diretividade e no ganho entre tais tipos de seções?
 \end_layout
@@ -321,8 +250,8 @@ As antenas com corpo interno corrugado tem o objetivo de evitarem, anularem,
 
 \begin_layout Standard
 Os ângulos de meia potência e o ganho de uma antena corneta com seção transversa
-l retangular e perfil longitudinal trapezoidal podem ser calculadas, de
- maneira aproximada, pelas equações 
+l retangular e perfil piramidal podem ser calculadas, de maneira aproximada,
+ pelas equações 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:angtetah"
@@ -460,14 +389,7 @@ G_{\deci\bel\{\}i}=10,084+10\log\left(\frac{ab}{\lambda^{2}}\right)+R_{E}+R_{H}\
 \end_layout
 
 \begin_layout Section
-\begin_inset Quotes eld
-\end_inset
-
-Link
-\begin_inset Quotes erd
-\end_inset
-
- de Microondas
+Rádio-Enlace de Microondas
 \end_layout
 
 \begin_layout Standard
