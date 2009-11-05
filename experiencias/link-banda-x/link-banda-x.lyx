@@ -492,7 +492,7 @@ Parte Prática
 
 \emph on
 Antes de ligar qualquer instrumento ou equipamento, o aluno deve familiarizar-se
- com os dispositivos, com as instruções e procedimentos de segurança para
+ com os dispositivos e com as instruções e procedimentos de segurança para
  o uso de cada item do laboratório.
 \end_layout
 
@@ -501,7 +501,7 @@ Lista de Material
 \end_layout
 
 \begin_layout Standard
-Para este experimento são utilizados os seguintes itens:
+Para este experimento são utilizados os seguintes ítens:
 \end_layout
 
 \begin_layout Enumerate
@@ -565,7 +565,104 @@ Klystron Refletora.
 \end_layout
 
 \begin_layout Subsection
-Ensaios
+Simulações e Ensaios
+\end_layout
+
+\begin_layout Enumerate
+Montar uma estrutura com guia-de-onda WR-90, alimentado pela Klystron Refletora,
+ sem modulação (isto é, opção CW -- 
+\begin_inset Quotes eld
+\end_inset
+
+Continuous Wave
+\begin_inset Quotes erd
+\end_inset
+
+), terminada com transição para cabo coaxial.
+ Com o auxílio de um medidor de potência, ajustar o atenuador para se ter
+ 0 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+deci
+\backslash
+bel{}m
+\end_layout
+
+\end_inset
+
+ na transição.
+ Com o auxílio de um freqüencímetro de cavidade ou contador por batimento,
+ determinar a freqüência de oscilação da onda.
+ 
+\emph on
+Lembrar de referenciar a carcaça do medidor de potência com a estrutura
+ do guia.
+\end_layout
+
+\begin_layout Enumerate
+Simular, no COMSOL, uma estrutura semelhante, com a mesma potência e freqüência.
+\end_layout
+
+\begin_layout Enumerate
+Na simulação, deixar o guia terminado em aberto, sem antena corneta, verificando
+ o padrão de espalhamento.
+ Determinar a diretividade e o ganho.
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:deixar-guia-aberto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Na simulação, acoplar uma antena corneta no final do guia.
+ Verificar o padrão de espalhamento e determinar a diretividade e o ganho.
+\end_layout
+
+\begin_layout Enumerate
+Na simulação, associar uma segunda antena corneta, receptora.
+ Definir uma distância adequada entre elas, de forma que possa ser repetida
+ na prática, posteriormente.
+ Anotar tal distância.
+ Garantir um perfeito alinhamento entre elas, de rotação, azimute e elevação,
+ para a polarização vertical.
+ Verificar a potência recebida e levantar o diagrama de irradiação para
+ o sistema proposto.
+\end_layout
+
+\begin_layout Enumerate
+Mudar a polarização para a cruzada.
+ Verificar a potência recebida e levantar o diagrama de irradiação.
+\end_layout
+
+\begin_layout Enumerate
+Mudar a polarização para a horizontal e repetir o item anterior.
+\end_layout
+
+\begin_layout Enumerate
+Repetir os ítens anteriores na prática, com excessão do 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:deixar-guia-aberto"
+
+\end_inset
+
+.
+ Notar a influência do alinhamento na potência recebida pela antena receptora.
+\end_layout
+
+\begin_layout Enumerate
+Para a polarização vertical, colocar uma estopa seca no meio do rádio-enlace
+ formado.
+ Verificar o que ocorre com a potência recebida e com a refletida e/ou com
+ a TOE (Taxa de Onda Estacionária).
 \end_layout
 
 \end_body
