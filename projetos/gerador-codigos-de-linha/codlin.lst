@@ -1,0 +1,794 @@
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f877a.inc>
+                      00001         LIST
+                      00002 ; P16F877A.INC  Standard Header File, Version 1.00    Microchip Technology, Inc.
+                      00400         LIST
+                      00002 
+                      00003 #define VOT1 .64536
+                      00004 
+                      00005         CBLOCK 0x20 
+  00000020            00006         DEZ 
+  00000021            00007         UNID 
+  00000022            00008         TIPO
+  00000023            00009         ATIVO_TXT
+  00000024            00010         ATIVO
+  00000025            00011         CP_PORTB
+  00000026            00012         CONT1
+  00000027            00013         CONT2
+  00000028            00014         W_TEMP
+  00000029            00015         STATUS_TEMP
+  0000002A            00016         DEFINE_CODIGO
+  0000002B            00017         AUX
+  0000002C            00018         AUXT
+  0000002D            00019         AUX1
+  0000002E            00020         CONTA_BIT
+  0000002F            00021         CHAVE
+                      00022         
+                      00023 
+                      00024         ENDC 
+                      00025 
+                      00026 ; ====================================
+                      00027         
+0000                  00028         ORG 0X0000
+                      00029 
+0000   2811           00030         GOTO inicio
+                      00031 
+                      00032 ; ====================================
+                      00033 
+0004                  00034         ORG 0X0004
+                      00035         
+0004   00A8           00036         MOVWF W_TEMP
+0005   0E03           00037         SWAPF STATUS,W
+0006   0183           00038         CLRF STATUS
+0007   00A9           00039         MOVWF STATUS_TEMP
+                      00040 
+0008   190B           00041         BTFSC INTCON,TMR0IF
+0009   206E           00042         CALL RTI_TMR0
+                      00043 
+000A   1810           00044         BTFSC T1CON,TMR1IF
+000B   208E           00045         CALL RTI_TMR1
+                      00046 
+000C   0E29           00047         SWAPF STATUS_TEMP,W
+000D   0083           00048         MOVWF STATUS
+000E   0EA8           00049         SWAPF W_TEMP,F
+000F   0E28           00050         SWAPF W_TEMP,W
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00051         
+0010   0009           00052         RETFIE
+                      00053 
+                      00054 ; ====================================
+                      00055 
+0011                  00056 inicio
+                      00057         ;seleciona o banco de memória...
+0011   1683           00058         BSF STATUS,RP0
+0012   1303           00059         BCF STATUS,RP1
+                      00060 
+                      00061         ;configura as portas..
+0013   3000           00062         MOVLW 0X00
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0014   0088           00063         MOVWF TRISD
+0015   300F           00064         MOVLW B'00001111'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0016   0086           00065         MOVWF TRISB
+0017   30C7           00066     MOVLW B'11000111'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0018   0087           00067         MOVWF TRISC
+                      00068 
+                      00069 
+                      00070         ; Configuracao do timer 0.
+0019   3083           00071         MOVLW 0x83 ;8MILISEGUNDOS
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001A   0081           00072         MOVWF OPTION_REG
+                      00073 
+                      00074         ; Habilita interrupçao por TIMER 1.
+                      00075         
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001B   140C           00076         BSF PIE1,TMR1IE 
+                      00077 
+                      00078 
+                      00079         ;SELECIONA O BANCO  ZERO ( 0 )
+001C   1283           00080         BCF STATUS,RP0
+                      00081 
+                      00082         ; Configuraçao do Timer 1.
+001D   300C           00083         MOVLW 0x0C
+001E   0090           00084         MOVWF T1CON
+                      00085 
+                      00086         ; Valor inicial do TIMER1
+                      00087         
+001F   30FC           00088         MOVLW HIGH(VOT1)
+0020   008F           00089         MOVWF TMR1H
+0021   3018           00090         MOVLW LOW(VOT1)
+0022   008E           00091         MOVWF TMR1L
+                      00092 
+0023   100C           00093         BCF PIR1,       TMR1IF
+0024   110B           00094         BCF INTCON, TMR0IF
+0025   168B           00095         BSF INTCON, TMR0IE
+0026   170B           00096         BSF     INTCON, PEIE
+0027   178B           00097         BSF INTCON, GIE
+                      00098 
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00099 ;Valores inicias das variáveis
+                      00100 
+0028   3001           00101         MOVLW .1
+0029   00A2           00102         MOVWF TIPO
+002A   01A4           00103         CLRF ATIVO      
+002B   01A0           00104         CLRF DEZ
+002C   01A1           00105         CLRF UNID
+002D   0186           00106         CLRF PORTB
+002E   01AE           00107         CLRF CONTA_BIT
+002F   1786           00108         BSF PORTB,7
+0030   01AF           00109         CLRF CHAVE      
+0031   3073           00110         MOVLW B'01110011'
+0032   00A3           00111         MOVWF ATIVO_TXT 
+                      00112         
+0033                  00113 Teste_Botao
+                      00114         
+0033   1C06           00115         BTFSS PORTB,0
+0034   203D           00116         CALL  Dezena
+0035   1C86           00117         BTFSS PORTB,1
+0036   2044           00118         CALL  Unidade
+0037   1D06           00119         BTFSS PORTB,2
+0038   204B           00120         CALL Start_Pause
+0039   1D86           00121         BTFSS PORTB,3
+003A   2052           00122         CALL  Codigo
+003B   0806           00123         MOVFW PORTB
+003C   2833           00124         GOTO Teste_Botao
+                      00125         
+003D                  00126 Dezena
+                      00127         
+003D   2065           00128         CALL ATRASO
+003E   1C24           00129         BTFSS ATIVO,0 ; SE A DEZENA FOR MODIFICADA DURANTE A TRANSMISSAO, ESSA NAO SERA ALTERADA
+003F   0AA0           00130         INCF DEZ,F
+0040   0820           00131         MOVFW DEZ
+0041   390F           00132         ANDLW 0x0F
+0042   00A0           00133         MOVWF DEZ
+0043   0008           00134         return
+                      00135         
+0044                  00136 Unidade
+                      00137         
+0044   2065           00138         CALL ATRASO
+0045   1C24           00139         BTFSS ATIVO,0 ; SE A UNIDADE FOR MODIFICADA DURANTE A TRANSMISSAO, ESSA NAO SERA ALTERADA       
+0046   0AA1           00140         INCF UNID,F
+0047   0821           00141         MOVFW UNID
+0048   390F           00142         ANDLW 0x0F
+0049   00A1           00143         MOVWF UNID
+004A   0008           00144         return
+                      00145         
+004B                  00146 Start_Pause
+                      00147         
+004B   2065           00148         CALL ATRASO
+004C   09A4           00149         COMF ATIVO, F
+004D   1824           00150         BTFSC ATIVO,0
+004E   205C           00151         CALL Ligado
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+004F   1C24           00152         BTFSS ATIVO,0
+0050   2061           00153         CALL Desligado
+0051   0008           00154         return
+                      00155         
+0052                  00156 Codigo
+0052   2065           00157         CALL ATRASO
+0053   1C24           00158         BTFSS ATIVO,0
+0054   0AA2           00159         INCF TIPO,F
+0055   3004           00160         MOVLW .4
+0056   0222           00161         SUBWF TIPO,W
+0057   1D03           00162         BTFSS STATUS,Z
+0058   0008           00163         RETURN
+0059   3001           00164         MOVLW .1
+005A   00A2           00165         MOVWF TIPO
+005B   0008           00166         RETURN
+                      00167         
+005C                  00168 Ligado
+005C   01AE           00169         CLRF CONTA_BIT
+005D   1410           00170         BSF T1CON,TMR1ON
+005E   3038           00171         MOVLW B'00111000'
+005F   00A3           00172         MOVWF ATIVO_TXT
+0060   0008           00173         return
+                      00174         
+0061                  00175 Desligado
+0061   1010           00176         BCF T1CON,TMR1ON
+0062   3073           00177         MOVLW B'01110011'
+0063   00A3           00178         MOVWF ATIVO_TXT 
+0064   0008           00179         return
+                      00180                 
+0065                  00181 ATRASO
+                      00182         
+0065   30FF           00183         MOVLW .255
+0066   00A6           00184         MOVWF CONT1
+0067                  00185 ATRASO2
+0067   30FF           00186         MOVLW .255
+0068   00A7           00187         MOVWF CONT2
+0069   0BA7           00188         DECFSZ CONT2,F
+006A   2869           00189         GOTO $-1
+006B   0BA6           00190         DECFSZ CONT1,F
+006C   2867           00191         GOTO ATRASO2 
+006D   0008           00192         return
+                      00193 
+                      00194 ; ====================================  
+                      00195 
+006E                  00196 RTI_TMR0
+                      00197 
+                      00198 
+006E   110B           00199         BCF INTCON, TMR0IF 
+                      00200         
+                      00201 
+                      00202         ;Apaga todos os displays
+                      00203         
+006F   0806           00204         MOVFW PORTB
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0070   00A5           00205         MOVWF CP_PORTB
+0071   3000           00206         MOVLW .0 
+0072   0086           00207         MOVWF PORTB
+                      00208          
+                      00209         ;Teste display selecionado
+                      00210         
+0073                  00211 RB4
+                      00212         
+0073   1E25           00213         BTFSS CP_PORTB,4
+0074   2878           00214         GOTO RB7
+0075   0820           00215         MOVFW DEZ
+0076   20C1           00216         CALL DECODIFICA
+0077   0088           00217         MOVWF PORTD
+                      00218         
+0078                  00219 RB7
+                      00220         
+0078   1FA5           00221         BTFSS CP_PORTB,7
+0079   287D           00222         GOTO RB6
+007A   0821           00223         MOVFW UNID
+007B   20C1           00224         CALL DECODIFICA
+007C   0088           00225         MOVWF PORTD
+                      00226         
+007D                  00227 RB6
+                      00228         
+007D   1F25           00229         BTFSS CP_PORTB,6
+007E   2881           00230         GOTO RB5
+007F   0823           00231         MOVFW ATIVO_TXT
+0080   0088           00232         MOVWF PORTD
+                      00233         
+0081                  00234 RB5
+                      00235         
+0081   1EA5           00236         BTFSS CP_PORTB,5
+0082   2886           00237         GOTO  FIM_TIMER0
+0083   0822           00238         MOVFW TIPO
+0084   20C1           00239         CALL DECODIFICA
+0085   0088           00240         MOVWF PORTD
+                      00241         
+0086                  00242 FIM_TIMER0
+                      00243         
+0086   1A25           00244         BTFSC CP_PORTB,4
+0087   1403           00245         BSF STATUS,C
+0088   1E25           00246         BTFSS CP_PORTB,4
+0089   1003           00247         BCF STATUS,C
+008A   0CA5           00248         RRF CP_PORTB, F ; ROTACIONAR
+008B   0825           00249         MOVFW CP_PORTB
+008C   0086           00250         MOVWF PORTB
+                      00251         
+008D   0008           00252         RETURN
+                      00253 
+                      00254 ; ====================================
+                      00255 
+                      00256         
+008E                  00257 RTI_TMR1
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00258 
+008E   100C           00259         BCF PIR1,TMR1IF
+                      00260 
+008F   30FC           00261         MOVLW HIGH(VOT1)
+0090   008F           00262         MOVWF TMR1H
+0091   3018           00263         MOVLW LOW(VOT1)
+0092   008E           00264         MOVWF TMR1L
+                      00265         
+0093   08AE           00266         MOVF CONTA_BIT,F
+                      00267 
+0094   1D03           00268         BTFSS STATUS,Z ; TESTA SE CONTA_BIT É 0
+0095   28AD           00269         GOTO DESLOCA
+                      00270 
+0096   0E20           00271         SWAPF DEZ,W
+0097   0421           00272         IORWF UNID,W
+0098   00AB           00273         MOVWF AUX
+0099   00AC           00274         MOVWF AUXT
+                      00275 
+                      00276         
+009A                  00277 TIPO1
+                      00278 
+009A   3001           00279         MOVLW   .1      
+009B   0222           00280         SUBWF   TIPO,W
+009C   1D03           00281         BTFSS   STATUS,Z ;QDO DA 0 O FLAG DE ZERO É 1
+009D   28A0           00282         GOTO    TIPO2
+009E   082B           00283         MOVFW   AUX
+009F   00AD           00284         MOVWF   AUX1
+                      00285 
+00A0                  00286 TIPO2
+                      00287         
+00A0   3002           00288         MOVLW   .2
+00A1   0222           00289         SUBWF   TIPO,W
+00A2   1903           00290         BTFSC   STATUS,Z
+00A3   01AD           00291         CLRF    AUX1
+                      00292 
+00A4                  00293 TIPO3
+                      00294 
+00A4   3003           00295         MOVLW   .3
+00A5   0222           00296         SUBWF   TIPO,W
+00A6   1D03           00297         BTFSS   STATUS,Z
+00A7   28AA           00298         GOTO    CARREGA_CONTA_BIT       
+00A8   092B           00299         COMF    AUX,W   ;INVERTE AUX E W RECEBE O VALOR
+00A9   00AD           00300         MOVWF   AUX1    
+                      00301         
+00AA                  00302 CARREGA_CONTA_BIT
+                      00303 
+00AA   3008           00304         MOVLW .8
+00AB   00AE           00305         MOVWF CONTA_BIT
+00AC   28B7           00306         GOTO PULA_DESLOCA
+                      00307 
+00AD                  00308 DESLOCA
+                      00309         
+00AD   1C2F           00310         BTFSS CHAVE,0
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00AE   28B3           00311         GOTO DESLOCA_PRIMEIRA_METADE
+                      00312 
+00AF                  00313 DESLOCA_SEGUNDA_METADE
+                      00314 
+00AF   082D           00315         MOVFW AUX1
+00B0   00AC           00316         MOVWF AUXT
+00B1   03AE           00317         DECF CONTA_BIT,F ; P/ SABER QTOS BITS FORAM TRANSMITIDOS.
+00B2   28B7           00318         GOTO PULA_DESLOCA
+                      00319 
+00B3                  00320 DESLOCA_PRIMEIRA_METADE
+                      00321 
+00B3   0DAB           00322         RLF AUX,F
+00B4   0DAD           00323         RLF AUX1,F ; ROTACIONA AUX1, SEGUNDO MEIO TEMPO DE BIT.
+00B5   082B           00324         MOVFW AUX
+00B6   00AC           00325         MOVWF AUXT
+                      00326 
+00B7                  00327 PULA_DESLOCA
+                      00328 
+00B7   1BAC           00329         BTFSC AUXT,7 ; TESTE SE O BIT ATUAL É 1 OU 0
+00B8   28BB           00330         GOTO TESTA_SETADO ; PARA CONSEGUIR GERAR TENSÃO POSITIVA E NEGATIVA
+00B9   1187           00331         BCF PORTC,3
+00BA   1607           00332         BSF PORTC,4 ;VALOR INVERSO DO PORTC,3 
+                      00333 
+00BB                  00334 TESTA_SETADO
+                      00335 
+00BB   1FAC           00336         BTFSS AUXT,7 ; TESTE SE O BIT ATUAL É 1 OU 0
+00BC   28BF           00337         GOTO COMPLEMENTO_CHAVE
+00BD   1587           00338         BSF PORTC,3 ; JOGA O BIT MAIS SIGNIFICATIVO PARA O PORTC
+00BE   1207           00339         BCF PORTC,4
+                      00340 
+00BF                  00341 COMPLEMENTO_CHAVE
+                      00342 
+00BF   09AF           00343         COMF CHAVE,F ; SE FOR 0 VIRA 1 E VICE-VERSA.
+                      00344 
+                      00345         
+00C0   0008           00346         RETURN
+                      00347 
+                      00348 ; ====================================
+                      00349 
+00C1                  00350 DECODIFICA
+00C1   390F           00351         ANDLW B'00001111'
+00C2   0782           00352         ADDWF PCL,F
+00C3   343F           00353         RETLW B'00111111' ;0
+00C4   3406           00354         RETLW B'00000110' ;1
+00C5   345B           00355         RETLW B'01011011' ;2
+00C6   344F           00356         RETLW B'01001111' ;3
+00C7   3466           00357         RETLW B'01100110' ;4
+00C8   346D           00358         RETLW B'01101101' ;5
+00C9   347D           00359         RETLW B'01111101' ;6
+00CA   3407           00360         RETLW B'00000111' ;7
+00CB   347F           00361         RETLW B'01111111' ;8
+00CC   3467           00362         RETLW B'01100111' ;9
+00CD   3477           00363         RETLW B'01110111'; A
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00CE   347C           00364         RETLW B'01111100' ;B
+00CF   3439           00365         RETLW B'00111001' ;C
+00D0   345E           00366         RETLW B'01011110' ;D
+00D1   3479           00367         RETLW B'01111001' ;E
+00D2   3471           00368         RETLW B'01110001' ;F
+                      00369 
+                      00370 ; ====================================
+                      00371 
+                      00372         END
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADCS2                             00000006
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+ATIVO                             00000024
+ATIVO_TXT                         00000023
+ATRASO                            00000065
+ATRASO2                           00000067
+AUX                               0000002B
+AUX1                              0000002D
+AUXT                              0000002C
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRGH                              00000002
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CARREGA_CONTA_BIT                 000000AA
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2H                            0000001C
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CCPR2L                            0000001B
+CHAVE                             0000002F
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CIS                               00000003
+CKE                               00000006
+CKP                               00000004
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000009C
+CMIE                              00000006
+CMIF                              00000006
+COMPLEMENTO_CHAVE                 000000BF
+CONT1                             00000026
+CONT2                             00000027
+CONTA_BIT                         0000002E
+CP_PORTB                          00000025
+CREN                              00000004
+CSRC                              00000007
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            0000009D
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+Codigo                            00000052
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DECODIFICA                        000000C1
+DEFINE_CODIGO                     0000002A
+DESLOCA                           000000AD
+DESLOCA_PRIMEIRA_METADE           000000B3
+DESLOCA_SEGUNDA_METADE            000000AF
+DEZ                               00000020
+D_A                               00000005
+Desligado                         00000061
+Dezena                            0000003D
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+F                                 00000001
+FERR                              00000002
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+FIM_TIMER0                        00000086
+FSR                               00000004
+GCEN                              00000007
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+Ligado                            0000005C
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+OPTION_REG                        00000081
+P                                 00000004
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+PULA_DESLOCA                      000000B7
+R                                 00000002
+RB4                               00000073
+RB5                               00000081
+RB6                               0000007D
+RB7                               00000078
+RBIE                              00000003
+RBIF                              00000000
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+READ_WRITE                        00000002
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RTI_TMR0                          0000006E
+RTI_TMR1                          0000008E
+RX9                               00000006
+RX9D                              00000000
+R_W                               00000002
+S                                 00000003
+SEN                               00000000
+SMP                               00000007
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPOV                             00000006
+SSPSTAT                           00000094
+STATUS                            00000003
+STATUS_TEMP                       00000029
+SYNC                              00000004
+Start_Pause                       0000004B
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TESTA_SETADO                      000000BB
+TIPO                              00000022
+TIPO1                             0000009A
+TIPO2                             000000A0
+TIPO3                             000000A4
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISB                             00000086
+TRISC                             00000087
+TRISD                             00000088
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+Teste_Botao                       00000033
+UA                                00000001
+UNID                              00000021
+Unidade                           00000044
+VOT1                              .64536
+W                                 00000000
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+W_TEMP                            00000028
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_ALL                           00001FFF
+_CP_OFF                           00003FFF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+__DEBUG                           1
+inicio                            00000011
+MPASM  5.20                     codlin.ASM   11-14-2009  13:26:46         PAGE 15
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+
+0000 : X---XXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXX------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   208
+Program Memory Words Free:  7984
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     5 reported,     0 suppressed
+
+
