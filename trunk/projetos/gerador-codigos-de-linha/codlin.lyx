@@ -1,5 +1,5 @@
-#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
 \begin_document
 \begin_header
 \textclass article
@@ -7,15 +7,26 @@
 \usepackage{misc}
 \usepackage{unidades}
 \end_preamble
-\language brazil
+\use_default_options false
+\language brazilian
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
 \graphics default
 \paperfontsize 10
 \spacing single
+\use_hyperref false
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -29,16 +40,17 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Gerador de CÛdigos de Linha
+Gerador de C√≥digos de Linha
 \end_layout
 
 \begin_layout Author
-MÙnica H.
+M√¥nica H.
  M.
  Correa, Marcelo A.
  da Rocha, Marcelo P.
@@ -48,7 +60,7 @@ MÙnica H.
 \begin_layout Standard
 
 \emph on
-{PrÈ-textos...}
+{Pr√©-textos...}
 \end_layout
 
 \begin_layout Section
@@ -56,85 +68,93 @@ Objetivo
 \end_layout
 
 \begin_layout Standard
-Implementar um gerador de cÛdigos de linha com o tipo de cÛdigo e o dado
- informados pelo usu·rio.
+Implementar um gerador de c√≥digos de linha com o tipo de c√≥digo e o dado
+ informados pelo usu√°rio.
 \end_layout
 
 \begin_layout Section
-DescriÁ„o Geral do Projeto
+Descri√ß√£o Geral do Projeto
 \end_layout
 
 \begin_layout Standard
-Nesta primeira vers„o do projeto, ser· possÌvel escolher trÍs tipos de codificaÁ
-„o: 
+Nesta primeira vers√£o do projeto, ser√° poss√≠vel escolher tr√™s tipos de codifica√ß
+√£o: 
 \emph on
 ON-OFF/NRZ
 \emph default
-,
+, 
 \emph on
- ON-OFF/RZ
+ON-OFF/RZ
 \emph default
  e 
 \emph on
 MANCHESTER
 \emph default
 .
- O cÛdigo escolhido ser· mostrado em um 
+ O c√≥digo escolhido ser√° mostrado em um 
 \emph on
 mostrador
 \emph default
- em formato numÈrico, de 1 a 3, na ordem em que foram citados a pouco.
- A escolha È feita por um bot„o.
+ em formato num√©rico, de 1 a 3, na ordem em que foram citados.
+ A escolha √© feita por um bot√£o.
 \end_layout
 
 \begin_layout Standard
-O dado a ser transmitido tambÈm poder· ser ajustado pelo usu·rio, de 0x00
+O dado a ser transmitido tamb√©m poder√° ser ajustado pelo usu√°rio, de 0x00
  a 0xFF.
- Dois botıes ser„o empregados para este fim.
+ Dois bot√µes ser√£o empregados para este fim.
 \end_layout
 
 \begin_layout Standard
-A transmiss„o ser· iniciada ou pausada por meio de um outro bot„o.
- Enquando uma transmiss„o estiver ativa, o dado e o tipo de codificaÁ„o
- n„o poder„o ser alterados.
+A transmiss√£o ser√° iniciada ou pausada por meio de um outro bot√£o.
+ Enquando uma transmiss√£o estiver ativa, o dado e o tipo de codifica√ß√£o
+ n√£o poder√£o ser alterados.
 \end_layout
 
 \begin_layout Standard
-A implementaÁ„o se dar· por meio de programaÁ„o em microcontrolador da famÌlia
+A implementa√ß√£o se dar√° por meio de programa√ß√£o em microcontrolador da fam√≠lia
  PIC.
 \end_layout
 
 \begin_layout Section
-ImplementaÁ„o
+Implementa√ß√£o
 \end_layout
 
 \begin_layout Standard
-A implementaÁ„o n„o se deu em vers„o final do projeto.
- Ao contr·rio, foi utilizada uma placa de desenvolvimento para testar sua
+A implementa√ß√£o n√£o se deu em vers√£o final do projeto.
+ Ao contr√°rio, foi utilizada uma placa de desenvolvimento para testar sua
  funcionalidade.
 \end_layout
 
 \begin_layout Standard
-Tal placa È a 
+Tal placa √© a 
 \begin_inset Quotes eld
 \end_inset
 
-MÛdulo II
+M√≥dulo II
 \begin_inset Quotes erd
 \end_inset
 
  da Mosaico Engenharia, com o PIC16F877A.
 \end_layout
 
+\begin_layout Standard
+Nas se√ß√µes seguintes, encontram-se detalhes do esquema el√©trico e do programa
+ do microcontrolador.
+\end_layout
+
 \begin_layout Subsection
-Esquema ElÈtrico
+Esquema El√©trico
 \end_layout
 
 \begin_layout Standard
-Os recursos da placa utilizados foram os 4 botıes disponÌveis, os 4 mostradores
- e o conector de expans„o, do qual, por dois pinos, se extraem os cÛdigos.
- O esquema elÈtrico correspondente apresenta-se na 
-\begin_inset LatexCommand \prettyref{fig:esquema-eletrico}
+Os recursos da placa de desenvolvimento utilizados foram os 4 bot√µes dispon√≠veis
+, os 4 mostradores e o conector de expans√£o, do qual, por dois pinos, se
+ extraem os c√≥digos.
+ O esquema el√©trico correspondente apresenta-se na 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "fig:esquema-eletrico"
 
 \end_inset
 
@@ -147,12 +167,22 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{fig:esquema-eletrico}
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:esquema-eletrico"
 
 \end_inset
 
-Esquema elÈtrico do gerador de cÛdigos de linha.
+Esquema el√©trico do gerador de c√≥digos de linha.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -161,10 +191,10 @@ Esquema elÈtrico do gerador de cÛdigos de linha.
 \end_layout
 
 \begin_layout Standard
-… conveniente chamar a atenÁ„o de que quando um bot„o È pressionado, no
- pino do PIC tem-se nÌvel lÛgico 0 e, quando solto, 1.
- J· quanto aos mostradores, os seguimentos ir„o acender ao se enviar nÌvel
- lÛgico 1 para os pinos correspondentes do PIC.
+√â conveniente chamar a aten√ß√£o de que quando um bot√£o √© pressionado, no
+ pino do PIC tem-se n√≠vel l√≥gico 0 e, quando solto, 1.
+ J√° quanto aos mostradores, os seguimentos ir√£o acender ao se enviar n√≠vel
+ l√≥gico 1 para os pinos correspondentes do PIC.
 \end_layout
 
 \begin_layout Standard
@@ -172,14 +202,16 @@ No esquema,
 \family typewriter
 B0, B1, B2, B3
 \family default
- referecem-se aos botıes da esquerda para a direita na placa.
+ referecem-se aos bot√µes da esquerda para a direita na placa.
  Semelhantemente, 
 \family typewriter
-D0, D1, D2, D3 
+Dp0, Dp1, Dp2, Dp3
 \family default
-reference-se aos mostradores da esquerda para a direitra na placa.
- As funÁıes de cada um s„o mostradas na 
-\begin_inset LatexCommand \prettyref{tab:funcoes-botoes-mostradores}
+ referencem-se aos mostradores da esquerda para a direitra na placa.
+ As fun√ß√µes de cada um s√£o mostradas na 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "tab:funcoes-botoes-mostradores"
 
 \end_inset
 
@@ -192,45 +224,55 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{tab:funcoes-botoes-mostradores}
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:funcoes-botoes-mostradores"
 
 \end_inset
 
-FunÁıes dos botıes e mostradores.
+Fun√ß√µes dos bot√µes e mostradores.
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Elemento
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-FunÁ„o
+\begin_layout Plain Layout
+Fun√ß√£o
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 B0
@@ -241,18 +283,18 @@ B0
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 incrementa parte alta do dado
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 B1
@@ -263,18 +305,18 @@ B1
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 incrementa parte baixa do dado
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 B2
@@ -285,18 +327,18 @@ B2
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 liga/pausa
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 B3
@@ -307,21 +349,21 @@ B3
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-seleciona o tipo de codificaÁ„o
+\begin_layout Plain Layout
+seleciona o tipo de codifica√ß√£o
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
-D0
+Dp0
 \end_layout
 
 \end_inset
@@ -329,21 +371,21 @@ D0
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 exibe a parte alta do dado
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
-D1
+Dp1
 \end_layout
 
 \end_inset
@@ -351,21 +393,21 @@ D1
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 exibe a parte baixa do dado
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
-D2
+Dp2
 \end_layout
 
 \end_inset
@@ -373,30 +415,30 @@ D2
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-exibe se est· ligado ou pausado
+\begin_layout Plain Layout
+exibe se est√° ligado ou pausado
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
-D3
+Dp3
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-exibe o n˙mero do tipo de codificaÁ„o
+\begin_layout Plain Layout
+exibe o n√∫mero do tipo de codifica√ß√£o
 \end_layout
 
 \end_inset
@@ -415,10 +457,12 @@ exibe o n˙mero do tipo de codificaÁ„o
 \end_layout
 
 \begin_layout Standard
-Os pinos de saÌda s„o obtidos no conector de expans„o.
- A numeraÁ„o dos correspondentes pinos do PIC e do conector de expans„o
- utilizados, assim como o sinal presente segue na 
-\begin_inset LatexCommand \prettyref{tab:Pinos-de-saida}
+Os pinos de sa√≠da s√£o obtidos no conector de expans√£o.
+ A numera√ß√£o dos correspondentes pinos do PIC e do conector de expans√£o
+ utilizados, assim como o sinal presente, segue na 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "tab:Pinos-de-saida"
 
 \end_inset
 
@@ -431,36 +475,56 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{tab:Pinos-de-saida}
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Pinos-de-saida"
 
 \end_inset
 
-Pinos de saÌda, correspondÍncia com o conector de expans„o e significados.
+Pinos de sa√≠da, correspond√™ncia com o conector de expans√£o e significados.
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
+<lyxtabular version="3" rows="4" columns="4">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-sinal
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pino do PIC
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -468,19 +532,59 @@ pino do PIC
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sa√≠da
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nome
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+n√∫mero
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 pino do conector
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-SINAL
+\begin_layout Plain Layout
+
+\family typewriter
+Normal
 \end_layout
 
 \end_inset
@@ -488,8 +592,17 @@ SINAL
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
+RC3
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18
 \end_layout
 
 \end_inset
@@ -497,40 +610,46 @@ SINAL
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
+10
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-\begin_inset Formula $\overline{\mathtt{SINAL}}$
-\end_inset
-
-
+\begin_layout Plain Layout
+Invertida
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
+RC4
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
+23
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
 \end_layout
 
 \end_inset
@@ -548,13 +667,19 @@ SINAL
 
 \end_layout
 
+\begin_layout Standard
+A sa√≠da complementar em RC4 √© importante quando se quiser sinais com tens√£o
+ positiva e negativa na sa√≠da, como no caso da codifica√ß√£o MANCHESTER.
+ Certamente, um circuito adicional se faz necess√°rio para obter este efeito.
+\end_layout
+
 \begin_layout Subsection
 Programa
 \end_layout
 
 \begin_layout Standard
-O programa, em seu laÁo principal, sempre faz uma varredura do estado dos
- botıes, a fim de verificar se algum foi pressionado.
+O programa, em seu la√ßo principal, sempre faz uma varredura do estado dos
+ bot√µes, a fim de verificar se algum foi pressionado.
  Se este for o caso, chama-se uma 
 \begin_inset Quotes eld
 \end_inset
@@ -563,24 +688,24 @@ rotina de atraso
 \begin_inset Quotes erd
 \end_inset
 
- para esperar o ruÌdo de chaveamento do bot„o cessar, assim evitando reincidÍnci
-a indesej·vel de comando.
+, para esperar o ru√≠do de chaveamento do bot√£o cessar, assim evitando reincid√™nc
+ia indesej√°vel de comando.
 \end_layout
 
 \begin_layout Standard
 Pressionado 
 \family typewriter
-B0 
+B0
 \family default
-enquanto a transmiss„o estiver pausada, ir· incrementar a parte alta da
- dezena.
- Este valor È armazenado na vari·vel 
+ enquanto a transmiss√£o estiver pausada, ir√° incrementar a parte alta do
+ dado.
+ Este valor √© armazenado na vari√°vel 
 \family typewriter
 DEZ
 \family default
 .
- Tomou-se um cuidado de garantir que esta vari·vel assuma valores apenas
- na faixa de 0x00 a 0x0F.
+ Tomou-se um cuidado de garantir que esta vari√°vel assuma valores apenas
+ na faixa de 0x00 a 0x0F, ciclicamente.
 \end_layout
 
 \begin_layout Standard
@@ -588,15 +713,15 @@ Para
 \family typewriter
 B1
 \family default
-, o comportamento È semelhante ao de 
+, o comportamento √© semelhante ao de 
 \family typewriter
 B0
 \family default
-, contudo a vari·vel È 
+, contudo a vari√°vel utilizada √© 
 \family typewriter
 UNID
 \family default
-.
+ e seu valor corresponde √† parte baixa do dado.
 \end_layout
 
 \begin_layout Standard
@@ -604,14 +729,15 @@ Se pressionado
 \family typewriter
 B3
 \family default
- enquanto a transmiss„o estiver pausada, muda-se o tipo de codificaÁ„o de
+ enquanto a transmiss√£o estiver pausada, muda-se o tipo de codifica√ß√£o de
  linha.
- Tal tipo È armazenado, em forma numÈrica, na vari·vel 
+ Tal tipo √© armazenado, em forma num√©rica, na vari√°vel 
 \family typewriter
 TIPO
 \family default
 .
- Seu valor poder· assumir valores de 1 a 3 ciclicamente.
+ Seu valor poder√° ir de 1 a 3, ciclicamente, correspondendo aos c√≥digos
+ ON-OFF/NRZ, ON-OFF/RZ e MANCHESTER, respectivamente.
 \end_layout
 
 \begin_layout Standard
@@ -619,12 +745,12 @@ Ao se pressionar
 \family typewriter
 B2
 \family default
-, comuta-se entre os estados de transmiss„o ligada e pausada.
- A indicaÁ„o no mostrador correspondente, 
+, comuta-se entre os estados de transmiss√£o ligada e pausada.
+ A indica√ß√£o no mostrador correspondente, 
 \family typewriter
-D3
+Dp3
 \family default
-, ser· 
+, ser√° 
 \begin_inset Quotes eld
 \end_inset
 
@@ -641,27 +767,39 @@ P
 \end_inset
 
 , respectivamente.
- O estado da transmiss„o È indicado pela vari·vel 
+ O estado da transmiss√£o √© indicado para o programa por meio da vari√°vel
+ 
 \family typewriter
 ATIVO
 \family default
-, a qual È comutada entre 0x00 e 0xFF, sendo apenas o bit menos significativo
- testado quando necess·rio.
+, a qual √© comutada entre 0x00 e 0xFF, sendo apenas o bit menos significativo
+ testado quando necess√°rio.
 \end_layout
 
 \begin_layout Standard
-A atualizaÁ„o dos mostradores È feita na Rotina de Tratamento de InterrupÁ„o
+Salienta-se que para o PIC reconhecer adequadamente o pressionamento dos
+ bot√µes, os resistores internos de 
+\emph on
+pull-up
+\emph default
+ foram desabilitados.
+ Isto se faz necess√°rio devido ao circuito implementado na placa de desenvolvime
+nto.
+\end_layout
+
+\begin_layout Standard
+A atualiza√ß√£o dos mostradores √© feita na Rotina de Tratamento de Interrup√ß√£o
  (RTI) do 
 \emph on
 Timer0
 \emph default
 .
- A configuraÁ„o foi feita de maneira a se gerar uma interrupÁ„o a cada 8
+ A configura√ß√£o foi feita de maneira a se gerar uma interrup√ß√£o a cada 4
  
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -672,21 +810,30 @@ second
 
 \end_inset
 
-, suficiente para n„o gerar efeito de cintilaÁ„o durante a atualizaÁ„o dos
- quatro mostradores.
+, aproximadamente, que √© suficiente para n√£o gerar efeito de cintila√ß√£o
+ durante a varredura dos quatro mostradores.
+ Para tanto, inicializa-se o 
+\emph on
+Timer0
+\emph default
+ com 0 e ajusta-se seu 
+\emph on
+prescaler
+\emph default
+ para 1:16.
 \end_layout
 
 \begin_layout Standard
-J· quanto ‡ transmiss„o dos dados, ela È feita na RTI do 
+J√° quanto √† transmiss√£o dos dados, ela √© feita na RTI do 
 \emph on
 Timer1
 \emph default
 .
- A configuraÁ„o realizada garante uma taxa de transmiss„o de 1 
+ A configura√ß√£o realizada garante uma taxa de transmiss√£o de 1 
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -702,11 +849,11 @@ second
 \end_inset
 
 .
- Para tanto, fez-se gerar uma interrupÁ„o a cada 0,5 
+ Por isto, fez-se gerar uma interrup√ß√£o a cada 0,5 
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -718,26 +865,28 @@ second
 \end_inset
 
 .
- Na primeira interrupÁ„o, carrega-se a parte alta e a parte baixa do dado
- na vari·vel 
+ Na primeira interrup√ß√£o, carrega-se a parte alta e a parte baixa do dado
+ na vari√°vel 
 \family typewriter
 AUX
 \family default
 .
- Cada bit desta vari·vel corresponde ao nÌvel lÛgico de meio tempo de bit
+ Cada bit desta vari√°vel corresponde ao n√≠vel l√≥gico de meio tempo de bit
  do sinal a ser transmitido.
- O outro meio tempo de bit È armazenado em 
+ O outro meio tempo de bit √© armazenado em 
 \family typewriter
 AUX1
 \family default
 .
- Conforme o tipo de codificaÁ„o escolhido, ajusta-se o adequado valor para
+ Conforme o tipo de codifica√ß√£o escolhido, ajusta-se o adequado valor para
  
 \family typewriter
 AUX1
 \family default
-, conforme a 
-\begin_inset LatexCommand \prettyref{tab:Valores-para-AUX1}
+, esclarecido na 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "tab:Valores-para-AUX1"
 
 \end_inset
 
@@ -750,38 +899,48 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{tab:Valores-para-AUX1}
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Valores-para-AUX1"
 
 \end_inset
 
 Valores para 
 \family typewriter
-AUX1 
+AUX1
 \family default
-conforme a codificaÁ„o escolhida.
+ conforme a codifica√ß√£o escolhida.
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-CodificaÁ„o
+\begin_layout Plain Layout
+Codifica√ß√£o
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 AUX1
@@ -790,11 +949,11 @@ AUX1
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ON-OFF/NRZ
 \end_layout
 
@@ -803,7 +962,7 @@ ON-OFF/NRZ
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 AUX
@@ -812,11 +971,11 @@ AUX
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ON-OFF/RZ
 \end_layout
 
@@ -825,27 +984,27 @@ ON-OFF/RZ
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 0x00
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 MANCHESTER
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula $\overline{\mathtt{AUX}}$
 \end_inset
 
@@ -868,11 +1027,11 @@ MANCHESTER
 \end_layout
 
 \begin_layout Standard
-Ajusta-se a vari·vel 
+Ajusta-se, em seguida, a vari√°vel 
 \family typewriter
 CONTA_BIT
 \family default
- para 8, significando que ser„o transmitidos 8 bits, e copia-se o bit mais
+ para 8, significando que ser√£o transmitidos 8 bits, e copia-se o bit mais
  significativo de 
 \family typewriter
 AUX
@@ -881,29 +1040,40 @@ AUX
 \family typewriter
 AUXT
 \family default
-, o qual ser·, por sua vez, copiado para o pino de saÌda, efetivando assim
- a transmiss„o.
+, o qual ser√°, por sua vez, copiado para o pino de sa√≠da, efetivando assim
+ a transmiss√£o.
+ Tal pino √© o RC3 do PIC.
+ Ainda, uma c√≥pia invertida do n√≠vel l√≥gico √© colocada no pino RC4.
 \end_layout
 
 \begin_layout Standard
-Nas prÛximas interrupÁıes, o bit mais significativo de 
+Nas pr√≥ximas interrup√ß√µes, o bit mais significativo de 
 \family typewriter
 AUXT
 \family default
- recebe alternadamente o bit mais significativo de 
-\family typewriter
-AUX
-\family default
- e 
+ recebe, alternadamente, o bit mais significativo de 
 \family typewriter
 AUX1
 \family default
-, sendo estes deslocados a cada vez de um bit ‡ esquerda.
+ e 
+\family typewriter
+AUX
+\family default
+, sendo estes deslocados a cada vez de um bit √† esquerda.
+ Quem informa qual deles transmitir √© a vari√°vel 
+\family typewriter
+CHAVE
+\family default
+.
  
 \family typewriter
-CONTA_BIT
+CONTA
 \family default
- È decrementado a cada bit de dado completamente transmitido, isto È, um
+_
+\family typewriter
+BIT
+\family default
+ √© decrementado a cada bit de dado completamente transmitido, isto √©, um
  bit de 
 \family typewriter
 AUX
@@ -912,17 +1082,25 @@ AUX
 \family typewriter
 AUX1
 \family default
- (lembrando que cada bit destas vari·veis corresponde a um meio tempo de
- bit).
+ (lembrando que cada bit destas vari√°veis corresponde a meio tempo de bit
+ do dado).
 \end_layout
 
 \begin_layout Standard
-ApÛs os 8 bits do dado terem sido transmitidos, todo este processo È repetido
- novamente, a partir da prÛxima interrupÁ„o.
+Ap√≥s os 8 bits do dado terem sido transmitidos, todo este processo √© repetido
+ novamente, a partir da pr√≥xima interrup√ß√£o, em que 
+\family typewriter
+AUX
+\family default
+ √© recarregado.
 \end_layout
 
 \begin_layout Subsubsection
-RelaÁ„o de Vari·veis
+Rela√ß√£o de Vari√°veis
+\end_layout
+
+\begin_layout Section
+Manual de Opera√ß√£o
 \end_layout
 
 \end_body
