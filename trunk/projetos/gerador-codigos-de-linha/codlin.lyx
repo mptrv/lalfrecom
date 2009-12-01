@@ -1,0 +1,929 @@
+#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 245
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{misc}
+\usepackage{unidades}
+\end_preamble
+\language brazil
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize 10
+\spacing single
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Gerador de Códigos de Linha
+\end_layout
+
+\begin_layout Author
+Mônica H.
+ M.
+ Correa, Marcelo A.
+ da Rocha, Marcelo P.
+ Trevizan
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+{Pré-textos...}
+\end_layout
+
+\begin_layout Section
+Objetivo
+\end_layout
+
+\begin_layout Standard
+Implementar um gerador de códigos de linha com o tipo de código e o dado
+ informados pelo usuário.
+\end_layout
+
+\begin_layout Section
+Descrição Geral do Projeto
+\end_layout
+
+\begin_layout Standard
+Nesta primeira versão do projeto, será possível escolher três tipos de codificaç
+ão: 
+\emph on
+ON-OFF/NRZ
+\emph default
+,
+\emph on
+ ON-OFF/RZ
+\emph default
+ e 
+\emph on
+MANCHESTER
+\emph default
+.
+ O código escolhido será mostrado em um 
+\emph on
+mostrador
+\emph default
+ em formato numérico, de 1 a 3, na ordem em que foram citados a pouco.
+ A escolha é feita por um botão.
+\end_layout
+
+\begin_layout Standard
+O dado a ser transmitido também poderá ser ajustado pelo usuário, de 0x00
+ a 0xFF.
+ Dois botões serão empregados para este fim.
+\end_layout
+
+\begin_layout Standard
+A transmissão será iniciada ou pausada por meio de um outro botão.
+ Enquando uma transmissão estiver ativa, o dado e o tipo de codificação
+ não poderão ser alterados.
+\end_layout
+
+\begin_layout Standard
+A implementação se dará por meio de programação em microcontrolador da família
+ PIC.
+\end_layout
+
+\begin_layout Section
+Implementação
+\end_layout
+
+\begin_layout Standard
+A implementação não se deu em versão final do projeto.
+ Ao contrário, foi utilizada uma placa de desenvolvimento para testar sua
+ funcionalidade.
+\end_layout
+
+\begin_layout Standard
+Tal placa é a 
+\begin_inset Quotes eld
+\end_inset
+
+Módulo II
+\begin_inset Quotes erd
+\end_inset
+
+ da Mosaico Engenharia, com o PIC16F877A.
+\end_layout
+
+\begin_layout Subsection
+Esquema Elétrico
+\end_layout
+
+\begin_layout Standard
+Os recursos da placa utilizados foram os 4 botões disponíveis, os 4 mostradores
+ e o conector de expansão, do qual, por dois pinos, se extraem os códigos.
+ O esquema elétrico correspondente apresenta-se na 
+\begin_inset LatexCommand \prettyref{fig:esquema-eletrico}
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Caption
+\begin_inset LatexCommand \label{fig:esquema-eletrico}
+
+\end_inset
+
+Esquema elétrico do gerador de códigos de linha.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+É conveniente chamar a atenção de que quando um botão é pressionado, no
+ pino do PIC tem-se nível lógico 0 e, quando solto, 1.
+ Já quanto aos mostradores, os seguimentos irão acender ao se enviar nível
+ lógico 1 para os pinos correspondentes do PIC.
+\end_layout
+
+\begin_layout Standard
+No esquema, 
+\family typewriter
+B0, B1, B2, B3
+\family default
+ referecem-se aos botões da esquerda para a direita na placa.
+ Semelhantemente, 
+\family typewriter
+D0, D1, D2, D3 
+\family default
+reference-se aos mostradores da esquerda para a direitra na placa.
+ As funções de cada um são mostradas na 
+\begin_inset LatexCommand \prettyref{tab:funcoes-botoes-mostradores}
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Caption
+\begin_inset LatexCommand \label{tab:funcoes-botoes-mostradores}
+
+\end_inset
+
+Funções dos botões e mostradores.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Elemento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Função
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+B0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+incrementa parte alta do dado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+B1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+incrementa parte baixa do dado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+B2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+liga/pausa
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+B3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+seleciona o tipo de codificação
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+D0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+exibe a parte alta do dado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+D1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+exibe a parte baixa do dado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+D2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+exibe se está ligado ou pausado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+D3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+exibe o número do tipo de codificação
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Os pinos de saída são obtidos no conector de expansão.
+ A numeração dos correspondentes pinos do PIC e do conector de expansão
+ utilizados, assim como o sinal presente segue na 
+\begin_inset LatexCommand \prettyref{tab:Pinos-de-saida}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Caption
+\begin_inset LatexCommand \label{tab:Pinos-de-saida}
+
+\end_inset
+
+Pinos de saída, correspondência com o conector de expansão e significados.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+sinal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pino do PIC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pino do conector
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+SINAL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\overline{\mathtt{SINAL}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Programa
+\end_layout
+
+\begin_layout Standard
+O programa, em seu laço principal, sempre faz uma varredura do estado dos
+ botões, a fim de verificar se algum foi pressionado.
+ Se este for o caso, chama-se uma 
+\begin_inset Quotes eld
+\end_inset
+
+rotina de atraso
+\begin_inset Quotes erd
+\end_inset
+
+ para esperar o ruído de chaveamento do botão cessar, assim evitando reincidênci
+a indesejável de comando.
+\end_layout
+
+\begin_layout Standard
+Pressionado 
+\family typewriter
+B0 
+\family default
+enquanto a transmissão estiver pausada, irá incrementar a parte alta da
+ dezena.
+ Este valor é armazenado na variável 
+\family typewriter
+DEZ
+\family default
+.
+ Tomou-se um cuidado de garantir que esta variável assuma valores apenas
+ na faixa de 0x00 a 0x0F.
+\end_layout
+
+\begin_layout Standard
+Para 
+\family typewriter
+B1
+\family default
+, o comportamento é semelhante ao de 
+\family typewriter
+B0
+\family default
+, contudo a variável é 
+\family typewriter
+UNID
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Se pressionado 
+\family typewriter
+B3
+\family default
+ enquanto a transmissão estiver pausada, muda-se o tipo de codificação de
+ linha.
+ Tal tipo é armazenado, em forma numérica, na variável 
+\family typewriter
+TIPO
+\family default
+.
+ Seu valor poderá assumir valores de 1 a 3 ciclicamente.
+\end_layout
+
+\begin_layout Standard
+Ao se pressionar 
+\family typewriter
+B2
+\family default
+, comuta-se entre os estados de transmissão ligada e pausada.
+ A indicação no mostrador correspondente, 
+\family typewriter
+D3
+\family default
+, será 
+\begin_inset Quotes eld
+\end_inset
+
+L
+\begin_inset Quotes erd
+\end_inset
+
+ ou 
+\begin_inset Quotes eld
+\end_inset
+
+P
+\begin_inset Quotes erd
+\end_inset
+
+, respectivamente.
+ O estado da transmissão é indicado pela variável 
+\family typewriter
+ATIVO
+\family default
+, a qual é comutada entre 0x00 e 0xFF, sendo apenas o bit menos significativo
+ testado quando necessário.
+\end_layout
+
+\begin_layout Standard
+A atualização dos mostradores é feita na Rotina de Tratamento de Interrupção
+ (RTI) do 
+\emph on
+Timer0
+\emph default
+.
+ A configuração foi feita de maneira a se gerar uma interrupção a cada 8
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+milli
+\backslash
+second
+\end_layout
+
+\end_inset
+
+, suficiente para não gerar efeito de cintilação durante a atualização dos
+ quatro mostradores.
+\end_layout
+
+\begin_layout Standard
+Já quanto à transmissão dos dados, ela é feita na RTI do 
+\emph on
+Timer1
+\emph default
+.
+ A configuração realizada garante uma taxa de transmissão de 1 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+kilo
+\backslash
+bit
+\backslash
+per
+\backslash
+second
+\end_layout
+
+\end_inset
+
+.
+ Para tanto, fez-se gerar uma interrupção a cada 0,5 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+milli
+\backslash
+second
+\end_layout
+
+\end_inset
+
+.
+ Na primeira interrupção, carrega-se a parte alta e a parte baixa do dado
+ na variável 
+\family typewriter
+AUX
+\family default
+.
+ Cada bit desta variável corresponde ao nível lógico de meio tempo de bit
+ do sinal a ser transmitido.
+ O outro meio tempo de bit é armazenado em 
+\family typewriter
+AUX1
+\family default
+.
+ Conforme o tipo de codificação escolhido, ajusta-se o adequado valor para
+ 
+\family typewriter
+AUX1
+\family default
+, conforme a 
+\begin_inset LatexCommand \prettyref{tab:Valores-para-AUX1}
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Caption
+\begin_inset LatexCommand \label{tab:Valores-para-AUX1}
+
+\end_inset
+
+Valores para 
+\family typewriter
+AUX1 
+\family default
+conforme a codificação escolhida.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Codificação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+AUX1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ON-OFF/NRZ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+AUX
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ON-OFF/RZ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0x00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+MANCHESTER
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\overline{\mathtt{AUX}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ajusta-se a variável 
+\family typewriter
+CONTA_BIT
+\family default
+ para 8, significando que serão transmitidos 8 bits, e copia-se o bit mais
+ significativo de 
+\family typewriter
+AUX
+\family default
+ para o bit mais significativo de 
+\family typewriter
+AUXT
+\family default
+, o qual será, por sua vez, copiado para o pino de saída, efetivando assim
+ a transmissão.
+\end_layout
+
+\begin_layout Standard
+Nas próximas interrupções, o bit mais significativo de 
+\family typewriter
+AUXT
+\family default
+ recebe alternadamente o bit mais significativo de 
+\family typewriter
+AUX
+\family default
+ e 
+\family typewriter
+AUX1
+\family default
+, sendo estes deslocados a cada vez de um bit à esquerda.
+ 
+\family typewriter
+CONTA_BIT
+\family default
+ é decrementado a cada bit de dado completamente transmitido, isto é, um
+ bit de 
+\family typewriter
+AUX
+\family default
+ e um de 
+\family typewriter
+AUX1
+\family default
+ (lembrando que cada bit destas variáveis corresponde a um meio tempo de
+ bit).
+\end_layout
+
+\begin_layout Standard
+Após os 8 bits do dado terem sido transmitidos, todo este processo é repetido
+ novamente, a partir da próxima interrupção.
+\end_layout
+
+\begin_layout Subsubsection
+Relação de Variáveis
+\end_layout
+
+\end_body
+\end_document
