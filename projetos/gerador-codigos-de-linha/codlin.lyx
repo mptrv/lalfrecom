@@ -237,6 +237,22 @@ SÃO CAETANO DO SUL
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Objetivo
 \end_layout
@@ -2176,8 +2192,9 @@ Numa implementação final deste projeto, poder-se-ia ter uma placa própria
 
 \end_layout
 
-\begin_layout Section*
-Anexo -- Fluxograma
+\begin_layout Section
+\start_of_appendix
+Anexo: Fluxograma
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Anexo-II-fluxograma"
