@@ -1,6 +1,6 @@
 #include<p16f877a.inc>
 
-#define VOT1 .64536
+#define VOT1 .65036
 
 	CBLOCK 0x20 
 	DEZ 

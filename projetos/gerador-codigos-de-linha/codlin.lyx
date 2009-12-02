@@ -41,6 +41,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -158,36 +159,14 @@ reference "fig:esquema-eletrico"
 
 \end_inset
 
+ em 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sec:Anexo-I-esquema-eletrico"
+
+\end_inset
+
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:esquema-eletrico"
-
-\end_inset
-
-Esquema elétrico do gerador de códigos de linha.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -774,6 +753,12 @@ ATIVO
 \family default
 , a qual é comutada entre 0x00 e 0xFF, sendo apenas o bit menos significativo
  testado quando necessário.
+ A ativação ou desativação da transmissão ocorre por meio da liberação ou
+ não da contagem do 
+\emph on
+Timer1
+\emph default
+ (ajustada pelo bit T1CON<TMR1ON>).
 \end_layout
 
 \begin_layout Standard
@@ -865,8 +850,24 @@ second
 \end_inset
 
 .
- Na primeira interrupção, carrega-se a parte alta e a parte baixa do dado
- na variável 
+ Tal efeito fôra obtido carregando-se o 
+\emph on
+Timer1 
+\emph default
+com valor inicial de 65036, recarregando-o em sua RTI, e ajustando-se seu
+ 
+\emph on
+prescaler
+\emph default
+ para 1:1.
+\end_layout
+
+\begin_layout Standard
+Na primeira interrupção provocada pelo 
+\emph on
+Timer1
+\emph default
+, carrega-se a parte alta e a parte baixa do dado na variável 
 \family typewriter
 AUX
 \family default
@@ -1095,12 +1096,256 @@ AUX
  é recarregado.
 \end_layout
 
+\begin_layout Standard
+A lógica do programa encontra-se no fluxograma em 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sec:Anexo-II-fluxograma"
+
+\end_inset
+
+.
+ A listagem do programa acompanha este documento em formato digital.
+\end_layout
+
+\begin_layout Standard
+Na sub-seção seguinte, relacionam-se todas as variáveis para melhor entendimento
+ do código durante sua interpretação.
+\end_layout
+
 \begin_layout Subsubsection
 Relação de Variáveis
 \end_layout
 
+\begin_layout Description
+
+\family typewriter
+V0T1
+\family default
+ valor inicial do 
+\emph on
+Timer1
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+DEZ
+\family default
+ parte alta do dado (os 4 bits mais significativos) -- seu valor é mostrado
+ em 
+\family typewriter
+Dp0
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+UNID
+\family default
+ parte baixa do dado (os 4 bits menos significativos) -- seu valor é mostrado
+ em 
+\family typewriter
+Dp1
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+TIPO
+\family default
+ indicação do código de linha escolhido -- seu valor é mostrado em 
+\family typewriter
+Dp3
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+ATIVO_TXT
+\family default
+ conterá o valor binário correspondente à letra 
+\begin_inset Quotes eld
+\end_inset
+
+P
+\begin_inset Quotes erd
+\end_inset
+
+ ou 
+\begin_inset Quotes eld
+\end_inset
+
+L
+\begin_inset Quotes erd
+\end_inset
+
+, mostrada em 
+\family typewriter
+Dp2
+\family default
+, indicando se o sinal está sendo ou não transmitido
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+ATIVO
+\family default
+ indicação de transmissão ativa ou não
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+CP_PORTB
+\family default
+ variável auxiliar para manipulação de bits no 
+\family typewriter
+PORTB
+\family default
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+CONT1
+\family default
+ contador da função 
+\family typewriter
+ATRASO
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+CONT2
+\family default
+ outro contador da função 
+\family typewriter
+ATRASO
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+W_TEMP
+\family default
+ conteúdo salvo do registrador 
+\emph on
+Work
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+STATUS_TEMP
+\family default
+ conteúdo salvo do registrador 
+\emph on
+Status
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+AUX
+\family default
+ auxílio para armazenar, temporariamente, o nível lógico do primeiro meio
+ tempo de bit de cada bit do dado a ser transmistido
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+AUX1
+\family default
+ idem a 
+\family typewriter
+AUX
+\family default
+, porém para o segundo meio tempo de bit
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+AUXT
+\family default
+ cópia de 
+\family typewriter
+AUX
+\family default
+ ou 
+\family typewriter
+AUX1
+\family default
+, conforme o próximo meio tempo de bit a ser transmitido -- é o bit mais
+ significativo desta variável que será transmitido
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+CONTA_BIT
+\family default
+ contador da quantidade de bits a transmitir
+\end_layout
+
 \begin_layout Section
 Manual de Operação
+\end_layout
+
+\begin_layout Section*
+Anexo I -- Esquema Elétrico
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Anexo-I-esquema-eletrico"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Anexo II -- Fluxograma
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Anexo-II-fluxograma"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:esquema-eletrico"
+
+\end_inset
+
+Esquema elétrico do gerador de códigos de linha.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
