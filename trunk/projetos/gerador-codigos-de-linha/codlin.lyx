@@ -5,6 +5,7 @@
 \textclass article
 \begin_preamble
 \usepackage{unidades}
+\usepackage{misc}
 \end_preamble
 \use_default_options false
 \language brazilian
@@ -19,16 +20,20 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize 10
-\spacing single
+\paperfontsize 12
+\spacing onehalf
 \use_hyperref false
 \papersize a4paper
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -45,22 +50,191 @@
 
 \begin_body
 
-\begin_layout Title
-Gerador de Códigos de Linha
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
 \end_layout
 
-\begin_layout Author
-Mônica H.
- M.
- Correa, Marcelo A.
- da Rocha, Marcelo P.
- Trevizan
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\align center
 
-\emph on
-{Pré-textos...}
+\size large
+MARCELO A.
+ DA ROCHA
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+MARCELO P.
+ TREVIZAN
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+MÔNICA H.
+ M.
+ CORREA
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size huge
+Gerador de Códigos de Linha
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+SÃO CAETANO DO SUL
+\end_layout
+
+\begin_layout Standard
+\align center
+2009
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+MARCELO A.
+ DA ROCHA
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+MARCELO P.
+ TREVIZAN
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+MÔNICA H.
+ M.
+ CORREA
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size huge
+Gerador de Códigos de Linha
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+width "60col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+Trabalho de desenvolvimento realizado a partir de propostas das disciplinas
+ Comunicações Digitais e Laboratório Integrado III do curso de Telecomunicações
+ da Escola de Engenharia Mauá.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+SÃO CAETANO DO SUL
+\end_layout
+
+\begin_layout Standard
+\align center
+2009
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -139,33 +313,30 @@ Módulo II
 \end_layout
 
 \begin_layout Standard
-Nas seções seguintes, encontram-se detalhes do esquema elétrico e do programa
- do microcontrolador.
+Nas seções seguintes, encontram-se detalhes relativos à implementação na
+ placa de desenvolvimento e ao programa do microcontrolador.
 \end_layout
 
 \begin_layout Subsection
-Esquema Elétrico
+Placa de Desenvolvimento
 \end_layout
 
 \begin_layout Standard
 Os recursos da placa de desenvolvimento utilizados foram os 4 botões disponíveis
 , os 4 mostradores e o conector de expansão, do qual, por dois pinos, se
  extraem os códigos.
- O esquema elétrico correspondente apresenta-se na 
-\begin_inset CommandInset ref
-LatexCommand prettyref
-reference "fig:esquema-eletrico"
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%O esquema elétrico correspondente apresenta-se na  em .
+\end_layout
 
 \end_inset
 
- em 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Anexo-I-esquema-eletrico"
 
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -176,7 +347,7 @@ reference "sec:Anexo-I-esquema-eletrico"
 \end_layout
 
 \begin_layout Standard
-No esquema, 
+Neste documento, 
 \family typewriter
 B0, B1, B2, B3
 \family default
@@ -221,6 +392,7 @@ Funções dos botões e mostradores.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
 <features>
@@ -451,7 +623,7 @@ reference "tab:Pinos-de-saida"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -472,6 +644,7 @@ Pinos de saída, correspondência com o conector de expansão e significados.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features>
@@ -918,6 +1091,7 @@ AUX1
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
 <features>
@@ -1092,9 +1266,9 @@ AUX
 \end_layout
 
 \begin_layout Standard
-A lógica do programa encontra-se no fluxograma em 
+A lógica do programa encontra-se no fluxograma do Anexo 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand vpageref
 reference "sec:Anexo-II-fluxograma"
 
 \end_inset
@@ -1423,6 +1597,7 @@ reference "tab:mo-Pinos-de-saida"
 
 \begin_layout Standard
 \begin_inset Float table
+placement th
 wide false
 sideways false
 status open
@@ -1446,6 +1621,7 @@ Funções dos botões.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
 <features>
@@ -1538,7 +1714,7 @@ liga/pausa
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1549,7 +1725,7 @@ B3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1573,13 +1749,10 @@ seleciona o tipo de codificação
 
 \begin_layout Standard
 \begin_inset Float table
+placement th
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -1600,6 +1773,7 @@ Descrição dos mostradores.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
 <features>
@@ -1727,6 +1901,7 @@ exibe o número do tipo de codificação
 
 \begin_layout Standard
 \begin_inset Float table
+placement th
 wide false
 sideways false
 status open
@@ -1750,6 +1925,7 @@ Números associados ao tipo de codificação de linha.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
 <features>
@@ -1850,6 +2026,7 @@ MANCHESTER
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1873,6 +2050,7 @@ Pinos de saída do conector de expansão.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features>
@@ -1952,48 +2130,54 @@ Invertida
 
 \end_layout
 
-\begin_layout Section*
-Anexo I -- Esquema Elétrico
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Anexo-I-esquema-eletrico"
-
-\end_inset
-
-
+\begin_layout Section
+Comentários e Conclusão
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
+Com este projeto tornou-se possível transmitir mensagens codificadas segundo
+ os tipos ON-OFF/NRZ, ON-OFF/RZ e MANCHESTER.
+ O tempo de bit obtido foi de 1 
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
 
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:esquema-eletrico"
 
-\end_inset
-
-Esquema elétrico do gerador de códigos de linha.
+\backslash
+milli
+\backslash
+second
 \end_layout
 
 \end_inset
 
-
+, conforme esperado.
+ Os testes foram realizados com o auxílio de um osciloscópio e assim comprovou-s
+e a funcionalidade correta de todas as características anteriormente descritas.
 \end_layout
 
+\begin_layout Standard
+Escreveu-se o programa de forma modular, o que facilita sua manutenção,
+ principalmente no caso de se desejar acrescentar outros tipos de codificação.
+\end_layout
+
+\begin_layout Standard
+Numa implementação final deste projeto, poder-se-ia ter uma placa própria
+ para o circuito elétrico.
+ Ainda, o uso de um PIC menor do que aquele aqui empregado também é possível,
+ simplificando o projeto e diminuindo um pouco seu custo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section*
-Anexo II -- Fluxograma
+Anexo -- Fluxograma
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Anexo-II-fluxograma"
