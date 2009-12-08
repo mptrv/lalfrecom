@@ -1,20 +1,31 @@
-#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
 \usepackage{SIunits}
 \end_preamble
-\language brazil
+\use_default_options false
+\language brazilian
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
 \graphics default
 \paperfontsize 10
 \spacing single
+\use_hyperref false
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,21 +39,22 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Relação de Atividades para Trabalho de Desenvolvimento, Estudo e Pesquisa
+RelaÃ§Ã£o de Atividades para Trabalho de Desenvolvimento, Estudo e Pesquisa
 \end_layout
 
 \begin_layout Standard
-Relação de algumas atividades para trabalho de pesquisa, desenvolvimento
+RelaÃ§Ã£o de algumas atividades para trabalho de pesquisa, desenvolvimento
  e estudo relacionadas ao 
 \begin_inset Quotes eld
 \end_inset
 
-Laboratório de Altas Freqüências e Comunicações
+LaboratÃ³rio de Altas FreqÃ¼Ãªncias e ComunicaÃ§Ãµes
 \begin_inset Quotes erd
 \end_inset
 
@@ -54,7 +66,7 @@ Desenvolvimentos
 \end_layout
 
 \begin_layout Enumerate
-Adaptação de GPIB antiga/nova.
+AdaptaÃ§Ã£o de GPIB antiga/nova.
 \end_layout
 
 \begin_layout Enumerate
@@ -66,15 +78,15 @@ Antena helicoidal.
 \end_layout
 
 \begin_layout Enumerate
-Reabilitação de protótipo de mastro para ensaio automatizado de antenas.
+ReabilitaÃ§Ã£o de protÃ³tipo de mastro para ensaio automatizado de antenas.
 \end_layout
 
 \begin_layout Enumerate
-Averiguação de equipamentos e aparatos antigos, com eventuais reparos.
+AveriguaÃ§Ã£o de equipamentos e aparatos antigos, com eventuais reparos.
 \end_layout
 
 \begin_layout Enumerate
-Calibração de equipamentos (com as devidas técnicas).
+CalibraÃ§Ã£o de equipamentos (com as devidas tÃ©cnicas).
 \end_layout
 
 \begin_layout Enumerate
@@ -82,15 +94,15 @@ Bobina de Helm-Holtz.
 \end_layout
 
 \begin_layout Enumerate
-Célula TEM.
+CÃ©lula TEM.
 \end_layout
 
 \begin_layout Enumerate
-Protótipo para a Rádio Mauá, com alcance de 50 
+ProtÃ³tipo para a RÃ¡dio MauÃ¡, com alcance de 50 
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -103,31 +115,31 @@ meter
 \end_layout
 
 \begin_layout Enumerate
-Experiências de apoio ao estudo de Eletromagnetismo.
+ExperiÃªncias de apoio ao estudo de Eletromagnetismo.
 \end_layout
 
 \begin_layout Enumerate
-Experiências com linhas de transmissão.
+ExperiÃªncias com linhas de transmissÃ£o.
 \end_layout
 
 \begin_layout Enumerate
-SSNA, de código aberto (continuação).
+SSNA, de cÃ³digo aberto (continuaÃ§Ã£o).
 \end_layout
 
 \begin_layout Enumerate
-Documentação do SSNA e outras correlacionadas.
+DocumentaÃ§Ã£o do SSNA e outras correlacionadas.
 \end_layout
 
 \begin_layout Enumerate
-Laboratório e ambiente externo (adequado) para ensaio de antenas.
+LaboratÃ³rio e ambiente externo (adequado) para ensaio de antenas.
 \end_layout
 
 \begin_layout Enumerate
-Ensaio remoto/automático de CEM.
+Ensaio remoto/automÃ¡tico de CEM.
 \end_layout
 
 \begin_layout Enumerate
-Rádio Mauá: projeto, implementação e gestão.
+RÃ¡dio MauÃ¡: projeto, implementaÃ§Ã£o e gestÃ£o.
 \end_layout
 
 \begin_layout Section
@@ -135,16 +147,16 @@ Estudos
 \end_layout
 
 \begin_layout Enumerate
-Qualidade (perda de retorno) de cargas e cabos em função da freqüência.
+Qualidade (perda de retorno) de cargas e cabos em funÃ§Ã£o da freqÃ¼Ãªncia.
 \end_layout
 
 \begin_layout Enumerate
-Estudo de elementos de guia de onda e de cabo coaxial: funções e perda de
+Estudo de elementos de guia de onda e de cabo coaxial: funÃ§Ãµes e perda de
  retorno.
 \end_layout
 
 \begin_layout Enumerate
-Influência de sujeiras em guias.
+InfluÃªncia de sujeiras em guias.
 \end_layout
 
 \begin_layout Enumerate
@@ -152,7 +164,7 @@ Recursos do analisador de espectros.
 \end_layout
 
 \begin_layout Enumerate
-Efeitos de ensaios de antenas em ambienes não 100% apropriados ou pouco
+Efeitos de ensaios de antenas em ambienes nÃ£o 100% apropriados ou pouco
  apropriados.
 \end_layout
 
@@ -161,7 +173,7 @@ Qualidade das antenas.
 \end_layout
 
 \begin_layout Enumerate
-Refrações em microondas.
+RefraÃ§Ãµes em microondas.
 \end_layout
 
 \begin_layout Enumerate
@@ -169,7 +181,7 @@ Uso e recursos do analisador de rede, inclusive o vetorial.
 \end_layout
 
 \begin_layout Enumerate
-Viabilização do uso e ensaios com cavidade com terminações absorvedoras,
+ViabilizaÃ§Ã£o do uso e ensaios com cavidade com terminaÃ§Ãµes absorvedoras,
  simulando guia infinito.
 \end_layout
 
@@ -182,7 +194,7 @@ Blindagens em microondas e em outras faixas.
 \end_layout
 
 \begin_layout Enumerate
-Adequação do laboratório para ensaio de CEM (ou de outra sala?).
+AdequaÃ§Ã£o do laboratÃ³rio para ensaio de CEM (ou de outra sala?).
 \end_layout
 
 \begin_layout Section
@@ -190,20 +202,20 @@ Pesquisas
 \end_layout
 
 \begin_layout Enumerate
-Captação de sinais de freqüência variável com analisador de espectros (sinal
+CaptaÃ§Ã£o de sinais de freqÃ¼Ãªncia variÃ¡vel com analisador de espectros (sinal
  de celular GSM, por exemplo).
 \end_layout
 
 \begin_layout Enumerate
-Simulações com COMSOL: redução de minério de ferro, (...).
+SimulaÃ§Ãµes com COMSOL: reduÃ§Ã£o de minÃ©rio de ferro, (...).
 \end_layout
 
 \begin_layout Enumerate
-Validações práticas de simulações computacionais, via COMSOL e SSNA.
+ValidaÃ§Ãµes prÃ¡ticas de simulaÃ§Ãµes computacionais, via COMSOL e SSNA.
 \end_layout
 
 \begin_layout Enumerate
-Caracterização de dispositivos por meio de analisador de rede.
+CaracterizaÃ§Ã£o de dispositivos por meio de analisador de rede.
 \end_layout
 
 \begin_layout Enumerate
@@ -211,20 +223,20 @@ Uso da interface GPIB via Linux.
 \end_layout
 
 \begin_layout Enumerate
-Detector em microondas de encanamentos e vazamentos? (Com segurança para
- o usuário.)
+Detector em microondas de encanamentos e vazamentos? (Com seguranÃ§a para
+ o usuÃ¡rio.)
 \end_layout
 
 \begin_layout Enumerate
-Pesquisas de otimização de processamento paralelizado.
+Pesquisas de otimizaÃ§Ã£o de processamento paralelizado.
 \end_layout
 
 \begin_layout Enumerate
-Interação célula TEM x Bobina de Helm-Holtz?
+InteraÃ§Ã£o cÃ©lula TEM x Bobina de Helm-Holtz?
 \end_layout
 
 \begin_layout Section
-Acessórios, Ferramentas e Equipamentos para os Experimentos
+AcessÃ³rios, Ferramentas e Equipamentos para os Experimentos
 \end_layout
 
 \begin_layout Enumerate
@@ -232,43 +244,35 @@ VEE Pro 9.0
 \end_layout
 
 \begin_layout Enumerate
-Fonte de alimentação para diodo Gunn.
+Fonte de alimentaÃ§Ã£o para diodo Gunn.
 \end_layout
 
 \begin_layout Enumerate
-Curto móvel para Banda X.
+Curto mÃ³vel para Banda X.
 \end_layout
 
 \begin_layout Enumerate
-Fonte nova para válvula Klystron.
+Fonte nova para vÃ¡lvula Klystron.
 \end_layout
 
 \begin_layout Enumerate
-Ponta de prova para campos magnéticos (desenvolvimento de uma?).
+Ponta de prova para campos magnÃ©ticos (desenvolvimento de uma?).
 \end_layout
 
 \begin_layout Section
-Acessórios para o Laboratório
+AcessÃ³rios para o LaboratÃ³rio
 \end_layout
 
 \begin_layout Enumerate
-Cadeiras almofadadas, bancos mais baixos, armários 
-\begin_inset Quotes eld
-\end_inset
-
-lingüiça
-\begin_inset Quotes erd
-\end_inset
-
-.
+Cadeiras almofadadas, bancos mais baixos.
 \end_layout
 
 \begin_layout Enumerate
-Registro e gerenciamento dos materiais do laboratório.
+Registro e gerenciamento dos materiais do laboratÃ³rio.
 \end_layout
 
 \begin_layout Enumerate
-Fechadura eletrônica com senha e administração remota via TCP/IP.
+Fechadura eletrÃ´nica com senha e administraÃ§Ã£o remota via TCP/IP.
 \end_layout
 
 \end_body
