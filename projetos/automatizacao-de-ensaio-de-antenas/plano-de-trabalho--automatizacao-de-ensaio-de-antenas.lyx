@@ -306,19 +306,216 @@ Assim, um sistema de ensaios automatizado de antena mostra-se muito eficaz
 \end_layout
 
 \begin_layout Section
-Objetivos
+Objetivo
+\end_layout
+
+\begin_layout Standard
+Reabilitiar o protótipo de sistema automatizado para ensaios de antenas,
+ utilizando flexíveis interfaces com o usuário via microcomputador.
 \end_layout
 
 \begin_layout Section
 Revisão Bibliográfica
 \end_layout
 
+\begin_layout Standard
+Manual do PIC 16F628A.
+\end_layout
+
+\begin_layout Standard
+Manual do Gerador de RF Agilent 8648C.
+\end_layout
+
+\begin_layout Standard
+Manual do Analisador de Espectro Agilent E4402B.
+\end_layout
+
+\begin_layout Standard
+Manual do VEE Pro.
+\end_layout
+
+\begin_layout Standard
+TG Automatização de Ensaio de Antena, 2002.
+\end_layout
+
+\begin_layout Standard
+TG Automatização de Ensaio de Antena, 2003.
+\end_layout
+
 \begin_layout Section
 Materiais e Métodos
 \end_layout
 
+\begin_layout Standard
+Os materiais a serem utilizados para o desenvolvimento seguem abaixo:
+\end_layout
+
+\begin_layout Itemize
+Gerador de RF Agilent 8648C
+\end_layout
+
+\begin_layout Itemize
+Analisador de Espectro Agilent E4402B
+\end_layout
+
+\begin_layout Itemize
+Antenas Dipolo de Meia-Onda
+\end_layout
+
+\begin_layout Itemize
+Base mecânica com haste e motores, para elevação e rotação da haste.
+\end_layout
+
+\begin_layout Itemize
+Microcontrolador da Microchip PIC
+\end_layout
+
+\begin_layout Itemize
+Microcomputador
+\end_layout
+
+\begin_layout Itemize
+Programa VEE Pro
+\end_layout
+
+\begin_layout Itemize
+Programa MPLAB IDE
+\end_layout
+
+\begin_layout Itemize
+Programa MultiSim
+\end_layout
+
+\begin_layout Itemize
+Programa UltiBoard
+\end_layout
+
+\begin_layout Itemize
+Acessórios Diversos
+\end_layout
+
+\begin_layout Standard
+A metodologia de desenvolvimento consistirá, num primeiro momento, no reconhecim
+ento e estudo do que já se encontra implementado atualmente.
+ Em seguida, revisões e reparos serão feitos conforme a necessidade.
+ Assim, os projetos poderão ter início, com implementações parciais e os
+ correspondentes testes.
+ A cada nova etapa, novos estudos poderão ser feitos.
+ Após a funcionalidade de todo o sistema, a interface do usuário será implementa
+da.
+ Por fim, os testes finais serão realizados e o manual do usuário, escrito.
+\end_layout
+
 \begin_layout Section
 Plano de Trabalho
+\end_layout
+
+\begin_layout Standard
+O Plano de Trabalho constitui-se pelas seguintes etapas:
+\end_layout
+
+\begin_layout Enumerate
+Revisão da estrutura mecânica do protótipo existente e eventuais reparos.
+\end_layout
+
+\begin_layout Enumerate
+Estudo dos módulos de controle e interface de potência já existentes.
+\end_layout
+
+\begin_layout Enumerate
+Implmentação de novo módulo de controle com o uso do microcontrolador PIC.
+\end_layout
+
+\begin_layout Enumerate
+Estudo do VEE Pro.
+\end_layout
+
+\begin_layout Enumerate
+Pesquisa de como realizar a comunicação serial via VEE Pro.
+\end_layout
+
+\begin_layout Enumerate
+Estudo e revisões do protocolo de comunicação implementado no sistema atual
+ entre microcomputador e microcontrolador.
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:protocolo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Implementação da comunicação serial, segundo o protocolo do item 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:protocolo"
+
+\end_inset
+
+, por meio do VEE Pro.
+\end_layout
+
+\begin_layout Enumerate
+Implementar controle, por meio do VEE Pro, via GPIB, do analisador de espectro
+ e gerador de RF juntamente com o controle serial.
+\end_layout
+
+\begin_layout Enumerate
+Desenvolver interface de usuário para a a realização do ensaio automatizado
+ de antenas.
+\end_layout
+
+\begin_layout Enumerate
+Implementar recursos para análise de dados e geração de relatórios simples
+ com os resultados dos ensaios.
+\end_layout
+
+\begin_layout Enumerate
+Testes finais e análise da coerência dos resultados.
+\end_layout
+
+\begin_layout Enumerate
+Ensaios de exemplificação de uso do sistema.
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:exemplificacoes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Elaboração do 
+\emph on
+Manual do Usuário 
+\emph default
+e 
+\emph on
+Manual de Operação 
+\emph default
+do sistema, incluindo os exemplos do item 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:exemplificacoes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Adicionalmente, são previstos como parte do plano de trabalho:
+\end_layout
+
+\begin_layout Enumerate
+Relatório de Semestre
+\end_layout
+
+\begin_layout Enumerate
+Relatório Final
 \end_layout
 
 \begin_layout Section

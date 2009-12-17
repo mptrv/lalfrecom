@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<project name="Automatiza&#xE7;&#xE3;o de Ensaios de Antena" company="Escola de Engenharia Mau&#xE1;" manager="Marcelo Porto Trevizan" phase="" project-start="20100201T000000Z" mrproject-version="2" calendar="1">
+  <properties/>
+  <phases/>
+  <calendars>
+    <day-types>
+      <day-type id="0" name="&#xDA;til" description="Um dia &#xFA;til padr&#xE3;o"/>
+      <day-type id="1" name="N&#xE3;o &#xFA;til" description="Um dia n&#xE3;o &#xFA;til padr&#xE3;o"/>
+      <day-type id="2" name="Utiliza base" description="Utiliza o dia a partir de um calend&#xE1;rio base"/>
+    </day-types>
+    <calendar id="1" name="Padr&#xE3;o">
+      <default-week mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" sun="1"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="0800" end="1200"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days/>
+    </calendar>
+  </calendars>
+  <tasks>
+    <task id="1" name="Revis&#xF5;es e Reparos" note="" work="28800" start="20100201T000000Z" end="20100202T120000Z" work-start="20100201T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="2" name="Interface de Pot&#xEA;ncia" note="" work="43200" start="20100202T120000Z" end="20100205T120000Z" work-start="20100203T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="1" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="3" name="M&#xF3;dulo de Controle" note="" work="216000" start="20100205T120000Z" end="20100226T120000Z" work-start="20100208T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="2" type="FS"/>
+      </predecessors>
+      <task id="4" name="Estudo do programa atual" note="" work="72000" start="20100205T120000Z" end="20100212T120000Z" work-start="20100208T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="5" name="Estudo do PIC" note="" work="72000" start="20100212T120000Z" end="20100219T120000Z" work-start="20100215T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="4" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="6" name="Tradu&#xE7;&#xE3;o do prog. atual p/ PIC" note="" work="72000" start="20100219T120000Z" end="20100226T120000Z" work-start="20100222T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="5" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+    <task id="7" name="Estudar o VEE Pro" note="" work="144000" start="20100226T120000Z" end="20100312T120000Z" work-start="20100301T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="3" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="8" name="Com. Serial via VEE Pro" note="" work="144000" start="20100312T120000Z" end="20100326T120000Z" work-start="20100315T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="7" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="9" name="Estudo de Protocolo Existente" note="" work="28800" start="20100326T120000Z" end="20100330T120000Z" work-start="20100329T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="8" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="10" name="Implementa&#xE7;&#xE3;o de Protocolo no VEE Pro" note="" work="144000" start="20100330T120000Z" end="20100413T120000Z" work-start="20100331T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="9" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="11" name="Controles GPIB e Serial via VEE Pro" note="" work="57600" start="20100413T120000Z" end="20100419T120000Z" work-start="20100414T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="10" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="12" name="Automatiza&#xE7;&#xE3;o" note="" work="144000" start="20100419T120000Z" end="20100503T120000Z" work-start="20100420T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="11" type="FS"/>
+      </predecessors>
+      <task id="13" name="L&#xF3;gica dos ensaios" note="" work="43200" start="20100419T120000Z" end="20100422T120000Z" work-start="20100420T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="14" name="Interface do usu&#xE1;rio" note="" work="100800" start="20100422T120000Z" end="20100503T120000Z" work-start="20100423T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="13" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+    <task id="15" name="Obten&#xE7;&#xE3;o dos Resultados" note="" work="288000" start="20100503T120000Z" end="20100531T120000Z" work-start="20100504T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="12" type="FS"/>
+      </predecessors>
+      <task id="16" name="Recursos para an&#xE1;lise dos dados" note="" work="144000" start="20100503T120000Z" end="20100517T120000Z" work-start="20100504T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="17" name="Gera&#xE7;&#xE3;o de relat&#xF3;io simples" note="" work="144000" start="20100517T120000Z" end="20100531T120000Z" work-start="20100518T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="16" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+    <task id="18" name="Testes Finais" note="" work="144000" start="20100531T120000Z" end="20100614T120000Z" work-start="20100601T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="15" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="19" name="Ensaios de Exemplo" note="" work="72000" start="20100614T120000Z" end="20100621T120000Z" work-start="20100615T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="18" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="20" name="Manuais" note="" work="216000" start="20100621T120000Z" end="20100712T120000Z" work-start="20100622T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="19" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="21" name="Relat&#xF3;rio Semestral" note="" work="72000" start="20100712T120000Z" end="20100719T120000Z" work-start="20100713T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="20" type="FS"/>
+      </predecessors>
+    </task>
+  </tasks>
+  <resource-groups/>
+  <resources/>
+  <allocations/>
+</project>
