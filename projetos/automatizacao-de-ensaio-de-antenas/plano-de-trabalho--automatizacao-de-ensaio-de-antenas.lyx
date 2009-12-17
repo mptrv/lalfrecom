@@ -1,0 +1,337 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{unidades}
+\usepackage{misc}
+\end_preamble
+\use_default_options false
+\language brazilian
+\inputencoding utf8
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+FELIPE ANTONIO MONTAGNERI LUCCHINI
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size huge
+Automatização de Ensaios de Antena
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size huge
+-- Apresentação do Projeto --
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+SÃO CAETANO DO SUL
+\end_layout
+
+\begin_layout Standard
+\align center
+2010
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+FELIPE ANTONIO MONTAGNERI LUCCHINI
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size huge
+Automatização de Ensaios de Antena
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+width "60col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+Apresentação do projeto de Iniciação Científica a ser encaminhado à Comissão
+ de Iniciação Científica do Centro Universitário Mauá.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Área de concentração: Sistemas de Controle
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Orientador: Prof.
+ Me.
+ Marcelo Porto Trevizan
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+SÃO CAETANO DO SUL
+\end_layout
+
+\begin_layout Standard
+\align center
+2010
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resumo do Projeto
+\end_layout
+
+\begin_layout Standard
+O trabalho consiste em analisar um protótipo já exitente de um sistema que
+ implementa a automatização dos ensaios de antena e reabilitá-lo, tornando-o
+ funcional e mais flexível ao usuário.
+ Para tal proposta, será reimplementada uma unidade de controle com o uso
+ de microcontrolador PIC, a qual irá comandar os movimentos da planta.
+ Em seguida, se fará o uso do programa VEE Pro, dedicado ao controle e obtenção
+ de dados de equipamentos diversos.
+ A etapa final consistirá, então, da implementação de um algoritmo e de
+ uma interface com o usuário para realizar automaticamente os ensaios e
+ gerar um relatório simples com os dados resultantes.
+ Tal sistema será a base do sistema a se empregar na planta externa de ensaios
+ de antena.
+\end_layout
+
+\begin_layout Section
+Introdução
+\end_layout
+
+\begin_layout Standard
+Uma das características mais importantes que descreve o comportamento de
+ uma antena é seu diagrama de irradiação.
+ Por meio dele, sabe-se quanta energia é transmitida numa direção em relação
+ às outras direções, para uma antena transmissora.
+ De forma análoga, para uma antena receptora, sabe-se qual sua 
+\begin_inset Quotes eld
+\end_inset
+
+sensibilidade
+\begin_inset Quotes erd
+\end_inset
+
+ de recepção de energia em cada direção.
+\end_layout
+
+\begin_layout Standard
+Para o levantamento do diagrama de irradiação necessita-se de, no mínimo,
+ um gerador de RF (Rádio Freqüência), uma antena transmissora, a antena
+ receptora, que, no caso, pode ser a antena em teste e um analisador de
+ espectro ou outro que permita identificar a potência recebida pela antena.
+ A dinâmica do ensaio consiste em se definir uma freqüência e, para cada
+ orientação da antena em teste, registrar a potência por ela recebida.
+\end_layout
+
+\begin_layout Standard
+Dentre outros ensaios que poderiam ser feitos, cita-se o levantamento da
+ resposta em freqüência da antena.
+\end_layout
+
+\begin_layout Standard
+Tais ensaios seriam bastante otimizados se fossem realizados automaticamente,
+ evitando a repetitividade das operações do usuário, sujeitas a erros, e
+ com duração muito mais prolongada.
+\end_layout
+
+\begin_layout Standard
+Assim, um sistema de ensaios automatizado de antena mostra-se muito eficaz
+ e eficiente.
+\end_layout
+
+\begin_layout Section
+Objetivos
+\end_layout
+
+\begin_layout Section
+Revisão Bibliográfica
+\end_layout
+
+\begin_layout Section
+Materiais e Métodos
+\end_layout
+
+\begin_layout Section
+Plano de Trabalho
+\end_layout
+
+\begin_layout Section
+Cronograma
+\end_layout
+
+\begin_layout Section
+Discussões Preliminares
+\end_layout
+
+\begin_layout Section
+Referências Bibliográficas
+\end_layout
+
+\end_body
+\end_document
