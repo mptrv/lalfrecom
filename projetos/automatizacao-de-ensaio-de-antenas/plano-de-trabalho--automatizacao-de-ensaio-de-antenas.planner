@@ -103,9 +103,24 @@
         <predecessor id="1" predecessor-id="19" type="FS"/>
       </predecessors>
     </task>
-    <task id="21" name="Relat&#xF3;rio Semestral" note="" work="72000" start="20100712T120000Z" end="20100719T120000Z" work-start="20100713T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="21" name="Proj. Mec&#xE2;nico para Pol. da Antena" note="" work="43200" start="20100621T120000Z" end="20100624T120000Z" work-start="20100622T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="19" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="22" name="Relat&#xF3;rio Semestral" note="" work="72000" start="20100712T120000Z" end="20100719T120000Z" work-start="20100713T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="20" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="23" name="Implementa&#xE7;&#xE3;o para Altera&#xE7;&#xE3;o da Pol. da Ant." note="" work="144000" start="20100719T120000Z" end="20100802T120000Z" work-start="20100720T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="22" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="24" name="Controlar EMR-300 via VEE Pro" note="" work="216000" start="20100802T120000Z" end="20100823T120000Z" work-start="20100803T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="23" type="FS"/>
       </predecessors>
     </task>
   </tasks>
