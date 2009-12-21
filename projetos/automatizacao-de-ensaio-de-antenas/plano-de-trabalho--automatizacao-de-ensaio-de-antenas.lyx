@@ -258,10 +258,31 @@ O trabalho consiste em analisar um protótipo já exitente de um sistema que
  gerar um relatório simples com os dados resultantes.
  Tal sistema será a base do sistema a se empregar na planta externa de ensaios
  de antena.
+ Após esta etapa, como extensão do trabalho, será criado um algoritmo e
+ uma interface de usuário no VEE Pro para o controle remoto do medidor de
+ campo elétrico EMR-300 e para a aquisição de dados e cálculo de energia,
+ provindos de ensaios de surtos elétricos.
 \end_layout
 
 \begin_layout Section
 Introdução
+\end_layout
+
+\begin_layout Standard
+Primeiramente, ressalta-se que todos os desenvolvimentos propostos neste
+ documento aplicam-se ao 
+\emph on
+Laboratório de Altas Freqüências e Comunicações
+\emph default
+ da 
+\emph on
+Escola de Engenharia Mauá
+\emph default
+, no 
+\emph on
+Setor de Engenharia Elétrica
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -305,13 +326,74 @@ Assim, um sistema de ensaios automatizado de antena mostra-se muito eficaz
  e eficiente.
 \end_layout
 
+\begin_layout Standard
+A medição de campo elétrico por meio de um equipamento dedicado é também
+ muito comum nas áreas que envolvem campos eletromagnéticos, como em ensaios
+ de compatibilidade eletromagnética, por exemplo.
+ Ainda, muitas vezes, o usuário não pode ficar próximo ao equipamento para
+ registrar a leitura indicada, seja pela intensidade do campo elétrico presente,
+ seja por limitações de espaço físico.
+ Além destes fatores, quando são necessárias longas séries de medidas, o
+ processo de registro 
+\begin_inset Quotes eld
+\end_inset
+
+manual
+\begin_inset Quotes erd
+\end_inset
+
+ torna-se pouco eficiente.
+ Por tais motivos, mais uma vez, o controle e acesso remoto do equipamento
+ apresenta-se muito conveniente.
+\end_layout
+
+\begin_layout Standard
+Outra ocasião em que o controle e acesso remoto podem ser empregados é na
+ aquisição de dados para cálculos de outras grandezas, como o caso de se
+ determinar a energia desviada nos ensaios de surtos elétricos em equipamentos
+ e sistemas de proteção.
+\end_layout
+
+\begin_layout Standard
+O trabalho a ser desenvolvido, terá, então, três etapas principais:
+\end_layout
+
+\begin_layout Enumerate
+A de automatização de ensaios de antena;
+\end_layout
+
+\begin_layout Enumerate
+a de automatização de medidas de campos elétricos; e
+\end_layout
+
+\begin_layout Enumerate
+a de automatização de cálculo de energia dos ensaios de surtos elétricos.
+\end_layout
+
+\begin_layout Standard
+O primeiro item é o tema central do trabalho, enquanto que o segundo e terceiro
+ são extensões, como 
+\begin_inset Quotes eld
+\end_inset
+
+subproduto
+\begin_inset Quotes erd
+\end_inset
+
+ dos estudos e desenvolvimentos anteriores.
+\end_layout
+
 \begin_layout Section
-Objetivo
+Objetivos
 \end_layout
 
 \begin_layout Standard
 Reabilitiar o protótipo de sistema automatizado para ensaios de antenas,
  utilizando flexíveis interfaces com o usuário via microcomputador.
+ Criar uma interface em microcomputador para medições automáticas de campo
+ elétrico.
+ Criar um algoritmo e interface em microcomputador para cálculo automatizado
+ de energia desviada em ensaios de surto elétrico.
 \end_layout
 
 \begin_layout Section
@@ -332,6 +414,18 @@ Manual do Analisador de Espectro Agilent E4402B.
 
 \begin_layout Standard
 Manual do VEE Pro.
+\end_layout
+
+\begin_layout Standard
+Manual do Medidor de Campo Elétrico EMR-300.
+\end_layout
+
+\begin_layout Standard
+Manual do Osciloscópio Agilent DSO3062A.
+\end_layout
+
+\begin_layout Standard
+Manual do Osciloscópio Tektronix TDS210.
 \end_layout
 
 \begin_layout Standard
@@ -359,6 +453,14 @@ Analisador de Espectro Agilent E4402B
 \end_layout
 
 \begin_layout Itemize
+Osciloscópio Agilent DSO3062A
+\end_layout
+
+\begin_layout Itemize
+Osciloscópio Tektronix TDS210
+\end_layout
+
+\begin_layout Itemize
 Antenas Dipolo de Meia-Onda
 \end_layout
 
@@ -375,35 +477,45 @@ Microcomputador
 \end_layout
 
 \begin_layout Itemize
-Programa VEE Pro
-\end_layout
-
-\begin_layout Itemize
-Programa MPLAB IDE
-\end_layout
-
-\begin_layout Itemize
-Programa MultiSim
-\end_layout
-
-\begin_layout Itemize
-Programa UltiBoard
-\end_layout
-
-\begin_layout Itemize
 Acessórios Diversos
 \end_layout
 
 \begin_layout Standard
-A metodologia de desenvolvimento consistirá, num primeiro momento, no reconhecim
-ento e estudo do que já se encontra implementado atualmente.
+Além dos materiais, os seguintes programas serão utilizados:
+\end_layout
+
+\begin_layout Itemize
+Agilent VEE Pro
+\end_layout
+
+\begin_layout Itemize
+Microchip MPLAB IDE
+\end_layout
+
+\begin_layout Itemize
+National Instruments MultiSim
+\end_layout
+
+\begin_layout Itemize
+National Instruments UltiBoard
+\end_layout
+
+\begin_layout Standard
+A metodologia de desenvolvimento para a automatização dos ensaios de antenas
+ consistirá, num primeiro momento, no reconhecimento e estudo do que já
+ se encontra implementado atualmente.
  Em seguida, revisões e reparos serão feitos conforme a necessidade.
  Assim, os projetos poderão ter início, com implementações parciais e os
  correspondentes testes.
  A cada nova etapa, novos estudos poderão ser feitos.
  Após a funcionalidade de todo o sistema, a interface do usuário será implementa
 da.
- Por fim, os testes finais serão realizados e o manual do usuário, escrito.
+ Neste momento, os testes finais serão realizados e o manual do usuário,
+ escrito.
+ As etapas seguintes dos trabalhos de extensão, sobre o controle remoto
+ do medidor EMR-300 e do cálculo automatizado de energia, terão início após
+ a confecção do manual citado e serão desenvolvidas segundo metodologia
+ semelhante.
 \end_layout
 
 \begin_layout Section
@@ -463,7 +575,7 @@ Implementar controle, por meio do VEE Pro, via GPIB, do analisador de espectro
 \end_layout
 
 \begin_layout Enumerate
-Desenvolver interface de usuário para a a realização do ensaio automatizado
+Desenvolver interface de usuário para a realização do ensaio automatizado
  de antenas.
 \end_layout
 
@@ -488,6 +600,14 @@ name "enu:exemplificacoes"
 \end_layout
 
 \begin_layout Enumerate
+Projeto mecânico para alteração da polarização da antena.
+\end_layout
+
+\begin_layout Enumerate
+Implementações para a alteração da polarização da antena.
+\end_layout
+
+\begin_layout Enumerate
 Elaboração do 
 \emph on
 Manual do Usuário 
@@ -496,7 +616,7 @@ e
 \emph on
 Manual de Operação 
 \emph default
-do sistema, incluindo os exemplos do item 
+do sistema automatizado de antenas, incluindo os exemplos do item 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "enu:exemplificacoes"
@@ -504,6 +624,39 @@ reference "enu:exemplificacoes"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Enumerate
+Estudo do manual do EMR-300.
+\end_layout
+
+\begin_layout Enumerate
+Implementação do controle e da interface de usuário via VEE Pro do EMR-300.
+\end_layout
+
+\begin_layout Enumerate
+Estudo do manual dos osciloscópios digitais.
+\end_layout
+
+\begin_layout Enumerate
+Aquisição de dados via VEE Pro dos osciloscópios digitais.
+\end_layout
+
+\begin_layout Enumerate
+Elaboração de algoritmo e interface de usuário, no VEE Pro, para cálculo
+ automatizado de energia com base nos dados obtidos por osciloscópio.
+\end_layout
+
+\begin_layout Enumerate
+Elaboração do 
+\emph on
+Manual do Usuário 
+\emph default
+e 
+\emph on
+Manual de Operação
+\emph default
+ do controle remoto do EMR-300 e do cálculo automatizado de energia.
 \end_layout
 
 \begin_layout Standard
@@ -522,8 +675,125 @@ Relatório Final
 Cronograma
 \end_layout
 
+\begin_layout Standard
+A seguir, na 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Cronograma-para-2010"
+
+\end_inset
+
+, o cronograma.
+ As datas referem-se ao ano de 2010.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Cronograma para 2010.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Cronograma-para-2010"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename cronograma.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Discussões Preliminares
+\end_layout
+
+\begin_layout Standard
+Nas primeiras implementações do protótipo do sistema automatizado de ensaios
+ de antena, foi utilizada uma placa no padrão ISA para disponibilizar a
+ interface GPIB no microcomputador.
+ Contudo, esta placa está obsoleta e não é mais conveniente seu uso.
+ Na implementação a se realizar neste trabalho, se fará o uso de um adaptador
+ USB/GPIB, o que é compatível com os microcomputadores atualmente encontrados
+ no mercado.
+\end_layout
+
+\begin_layout Standard
+A parte mecânica encontra-se, aparentemente, em bom estado.
+ Contudo, revisões deverão de fato ser feitas.
+\end_layout
+
+\begin_layout Standard
+O módulo de controle implementado utiliza o microcontrolador AVR.
+ Este módulo deverá ser reprojetado, fazendo-se o uso do microcontrolador
+ PIC.
+ Para tanto, o programa do AVR será traduzido para a linguagem do PIC.
+ A escolha por este outro microcontrolador deve-se por sua maior disponibilidade
+ e empregabilidade no Setor de Engenharia Elétrica da Escola de Engenharia
+ Mauá.
+\end_layout
+
+\begin_layout Standard
+Os módulos de interface de potência, de sensores e outros atuadores, aparentemen
+te, poderão ser reaproveitados.
+\end_layout
+
+\begin_layout Standard
+O controle do medidor de campo elétrico EMR-300, atualmente, já é realizado
+ por um programa disponibilizado pelo fabricante.
+ Contudo, até onde se tem conhecimento, o VEE Pro não deve reconhecê-lo.
+ Testes nestes sentidos serão feitos, assim como pesquisas na 
+\begin_inset Quotes eld
+\end_inset
+
+internet
+\begin_inset Quotes erd
+\end_inset
+
+, e, caso nenhum 
+\begin_inset Quotes eld
+\end_inset
+
+driver
+\begin_inset Quotes erd
+\end_inset
+
+ seja encontrado para tal propósito, será então desenvolvida a interface
+ de comunicação do VEE Pro com o medidor.
+ Para tanto, se fará uso de mensagens seriais conforme as especificações
+ do manual do medidor.
+\end_layout
+
+\begin_layout Standard
+Quanto aos cálculos automatizados da energia envolvida nos ensaios de surtos
+ elétricos, até o momento estimado para tal desenvolvimento, espera-se já
+ se ter um equipamento de bancada que gere o surto desejado, com os devidos
+ sensores para a aquisição dos dados.
+ Atualmente, este equipamento está em desenvolvimento, em fases de conclusão.
 \end_layout
 
 \begin_layout Section
