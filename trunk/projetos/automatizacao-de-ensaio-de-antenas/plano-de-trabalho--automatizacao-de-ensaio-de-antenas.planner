@@ -113,14 +113,56 @@
         <predecessor id="1" predecessor-id="20" type="FS"/>
       </predecessors>
     </task>
-    <task id="23" name="Implementa&#xE7;&#xE3;o para Altera&#xE7;&#xE3;o da Pol. da Ant." note="" work="144000" start="20100719T120000Z" end="20100802T120000Z" work-start="20100720T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="23" name="Implementa&#xE7;&#xE3;o para Altera&#xE7;&#xE3;o da Pol. da Ant." note="" work="216000" start="20100719T120000Z" end="20100809T120000Z" work-start="20100720T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="22" type="FS"/>
       </predecessors>
     </task>
-    <task id="24" name="Controlar EMR-300 via VEE Pro" note="" work="216000" start="20100802T120000Z" end="20100823T120000Z" work-start="20100803T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="24" name="Controlar EMR-300 via VEE Pro" note="" work="216000" start="20100809T120000Z" end="20100830T120000Z" work-start="20100810T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="23" type="FS"/>
+      </predecessors>
+      <task id="25" name="Estudo do manual e do equipamento" note="" work="72000" start="20100809T120000Z" end="20100816T120000Z" work-start="20100810T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="26" name="Implementa&#xE7;&#xF5;es do controle" note="" work="100800" start="20100816T120000Z" end="20100825T120000Z" work-start="20100817T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="25" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="27" name="Implementa&#xE7;&#xE3;o da interface do usu&#xE1;rio" note="" work="43200" start="20100825T120000Z" end="20100830T120000Z" work-start="20100826T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="26" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+    <task id="28" name="C&#xE1;lculo Automatizado de Energia" note="" work="201600" start="20100830T120000Z" end="20100917T120000Z" work-start="20100831T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="24" type="FS"/>
+      </predecessors>
+      <task id="29" name="Estudo do manual dos oscilosc&#xF3;pios" note="" work="43200" start="20100830T120000Z" end="20100902T120000Z" work-start="20100831T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="30" name="Aquisi&#xE7;&#xE3;o dos dados de oscilosc&#xF3;pio via VEE Pro" note="" work="43200" start="20100902T120000Z" end="20100907T120000Z" work-start="20100903T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="29" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="31" name="Elabora&#xE7;&#xE3;o do algoritmo de c&#xE1;lculo" note="" work="72000" start="20100907T120000Z" end="20100914T120000Z" work-start="20100908T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="30" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="32" name="Elabora&#xE7;&#xE3;o da interface do usu&#xE1;rio" note="" work="43200" start="20100914T120000Z" end="20100917T120000Z" work-start="20100915T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="31" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+    <task id="33" name="Margem para Complementa&#xE7;&#xF5;es dos Projetos" note="" work="648000" start="20100917T120000Z" end="20101119T120000Z" work-start="20100920T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="28" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="34" name="Relat&#xF3;rio Final" note="" work="432000" start="20101119T120000Z" end="20101231T120000Z" work-start="20101122T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="33" type="FS"/>
       </predecessors>
     </task>
   </tasks>
