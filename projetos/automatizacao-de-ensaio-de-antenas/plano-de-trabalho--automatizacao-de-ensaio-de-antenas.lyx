@@ -401,39 +401,33 @@ Revisão Bibliográfica
 \end_layout
 
 \begin_layout Standard
-Manual do PIC 16F628A.
+Os manuais a serem consultados no decorrer do trabalho fazem o detalhamento
+ funcional dos equipamentos, especificando características físicas, funcionais
+ e cuidados relevantes a serem tomados.
+ Tais fontes incluem informações acerca da comunicação GPIB do equipamento
+ com o microcomputador, detalhando os comandos aplicados para cada um dos
+ equipamentos e suas características de programação, o que determina o modo
+ que cada equipamento opera na obtenção de dados e controle das grandezas
+ físicas a serem consideradas.
+ Neles encontram-se descritos os recursos disponíveis e a maneira de utilizá-los
+ para a correta leitura de dados e manipulação das grandezas em questão.
 \end_layout
 
 \begin_layout Standard
-Manual do Gerador de RF Agilent 8648C.
+O manual do microcontrolador PIC 16F628A detalha as características físicas
+ construtivas do microcontrolador (levando-se em conta sua estrutura interna
+ e parâmetros elétricos) e suas características funcionais (propriamente
+ considerando seu funcionamento, além das informações de sua programação,
+ de memória, velocidade de processamento, entre outras).
 \end_layout
 
 \begin_layout Standard
-Manual do Analisador de Espectro Agilent E4402B.
-\end_layout
-
-\begin_layout Standard
-Manual do VEE Pro.
-\end_layout
-
-\begin_layout Standard
-Manual do Medidor de Campo Elétrico EMR-300.
-\end_layout
-
-\begin_layout Standard
-Manual do Osciloscópio Agilent DSO3062A.
-\end_layout
-
-\begin_layout Standard
-Manual do Osciloscópio Tektronix TDS210.
-\end_layout
-
-\begin_layout Standard
-TG Automatização de Ensaio de Antena, 2002.
-\end_layout
-
-\begin_layout Standard
-TG Automatização de Ensaio de Antena, 2003.
+O manual do VEE Pro detalha a forma de programação deste programa de interface
+ de controle e análise dos dados experimentais, considerando, dentre outros
+ fatores, seus comandos, fluxos, que podem ser implementados pelo usuário,
+ estruturas de programas, além de reunir informações sobre as diversas formas
+ de comunicação suportadas pelo VEE Pro, como GPIB, LAN, Serial.
+ 
 \end_layout
 
 \begin_layout Section
@@ -796,8 +790,38 @@ Quanto aos cálculos automatizados da energia envolvida nos ensaios de surtos
  Atualmente, este equipamento está em desenvolvimento, em fases de conclusão.
 \end_layout
 
-\begin_layout Section
-Referências Bibliográficas
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/home/mpt/Trabalhos/Projetos/lalfrecom/bibliografias/lalfrecom"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Manual do Medidor de Campo Elétrico EMR-300.
+\end_layout
+
+\begin_layout Standard
+Manual do Osciloscópio Tektronix TDS210.
+\end_layout
+
+\begin_layout Standard
+TG Automatização de Ensaio de Antena, 2002.
+\end_layout
+
+\begin_layout Standard
+TG Automatização de Ensaio de Antena, 2003.
 \end_layout
 
 \end_body
