@@ -58,7 +58,7 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+pagestyle{empty}
 \end_layout
 
 \end_inset
@@ -131,7 +131,7 @@ status open
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 thispagestyle{empty}
 \end_layout
@@ -240,6 +240,29 @@ SÃO CAETANO DO SUL
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{plain}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -250,6 +273,29 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{myheadings}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
 \end_inset
 
 
@@ -415,9 +461,29 @@ Revisão Bibliográfica
 \end_layout
 
 \begin_layout Standard
-Os manuais a serem consultados no decorrer do trabalho fazem o detalhamento
- das características dos equipamentos, especificando seus dados físicos,
- funcionais e cuidados relevantes a serem tomados.
+Nos trabalhos de graduação descristos em 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "tg-ensantenas-2002,tg-ensantena-2003"
+
+\end_inset
+
+ encontram-se informações referentes ao protótipo do sistema de ensaio automatiz
+ado de antenas já existente, com detalhes da interface de controle, da comunicaç
+ão serial, da estrutura mecânica do mastro e da utilização do sistema e
+ dos recursos disponíveis ao usuário.
+\end_layout
+
+\begin_layout Standard
+Os manuais a serem consultados, em 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "anespectro-core,anespectro-onebutton,osc-dso3062a,gensinal-hp8648c,osc-tds210-user,osc-tds210-programmer,med-emr300"
+
+\end_inset
+
+, fazem o detalhamento das características dos equipamentos, especificando
+ seus dados físicos, funcionais e cuidados relevantes a serem tomados.
  Tais fontes incluem informações acerca da comunicação GPIB do equipamento
  com o microcomputador, apresentando os comandos aplicados para cada um
  dos equipamentos e os correspondentes aspectos para sua programação, o
@@ -426,19 +492,32 @@ Os manuais a serem consultados no decorrer do trabalho fazem o detalhamento
 \end_layout
 
 \begin_layout Standard
-O manual do microcontrolador PIC 16F628A detalha as características físicas
- construtivas do microcontrolador, levando-se em conta sua estrutura interna
- e parâmetros elétricos, e suas características funcionais, propriamente
- considerando seu funcionamento, além das informações de sua programação,
- de memória, velocidade de processamento, entre outras.
+O manual do microcontrolador PIC 16F628A, em 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pic16f628a"
+
+\end_inset
+
+, detalha as características físicas construtivas do microcontrolador, levando-s
+e em conta sua estrutura interna e parâmetros elétricos, e suas características
+ funcionais, propriamente considerando seu funcionamento, além das informações
+ de sua programação, de memória, velocidade de processamento, entre outras.
 \end_layout
 
 \begin_layout Standard
-O manual do VEE Pro detalha a forma de programação deste programa de interface
- de controle e análise dos dados experimentais, considerando, dentre outros
- fatores, seus comandos, fluxos, que podem ser implementados pelo usuário,
- e estruturas de programas, além de reunir informações sobre as diversas
- formas de comunicação suportadas pelo VEE Pro, como GPIB, LAN, Serial.
+O manual do VEE Pro, em 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "veepro"
+
+\end_inset
+
+, detalha a forma de programação deste programa de interface de controle
+ e análise dos dados experimentais, considerando, dentre outros fatores,
+ seus comandos, fluxos, que podem ser implementados pelo usuário, e estruturas
+ de programas, além de reunir informações sobre as diversas formas de comunicaçã
+o suportadas pelo VEE Pro, como GPIB, LAN, Serial.
  
 \end_layout
 
@@ -3234,8 +3313,15 @@ Discussões Preliminares
 
 \begin_layout Standard
 Nas primeiras implementações do protótipo do sistema automatizado de ensaios
- de antena, foi utilizada uma placa no padrão ISA para disponibilizar a
- interface GPIB no microcomputador.
+ de antena, conforme descrito em 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "tg-ensantenas-2002,tg-ensantena-2003"
+
+\end_inset
+
+ foi utilizada uma placa no padrão ISA para disponibilizar a interface GPIB
+ no microcomputador.
  Contudo, esta placa está obsoleta e não é mais conveniente seu uso.
  Na implementação a se realizar neste trabalho, se fará o uso de um adaptador
  USB/GPIB, o que é compatível com os microcomputadores atualmente encontrados
@@ -3306,7 +3392,6 @@ Quanto aos cálculos automatizados da energia envolvida nos ensaios de surtos
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-btprint "btPrintAll"
 bibfiles "/home/mpt/Trabalhos/Projetos/lalfrecom/bibliografias/lalfrecom"
 options "bibtotoc,plain"
 
