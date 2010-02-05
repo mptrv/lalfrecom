@@ -1,0 +1,222 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{misc}
+\usepackage{unidades}
+\end_preamble
+\use_default_options true
+\language brazilian
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Formulário de Eletromagnetismo I
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Definições usadas nas fórmulas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aind}[1]{\mathrm{\vec{a}}_{#1}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ax}{\aind x}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ay}{\aind y}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\az}{\aind z}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ar}{\aind r}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\arh}{\aind{\rho}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aph}{\aind{\phi}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ath}{\aind{\theta}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aR}{\aind R}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aN}{\aind N}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aud}{\aind{12}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Eletrostática
+\end_layout
+
+\begin_layout Subsection
+Lei de Coulomb
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vec{F}_{12}=\frac{Q_{1}Q_{2}}{4\pi\epsilon R_{12}^{2}}\aud\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Campo Elétrico
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{align}
+\vec{E}_{1} & =\frac{\vec{F}_{12}}{Q_{2}}\\
+\vec{E} & =\frac{Q}{4\pi\epsilon R^{2}}\aR\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Magnetostática
+\end_layout
+
+\begin_layout Section
+Campos Dinâmicos
+\end_layout
+
+\begin_layout Section
+Ondas Planas
+\end_layout
+
+\begin_layout Section
+Linhas de Transmissão
+\end_layout
+
+\begin_layout Section
+Definições Gerais
+\end_layout
+
+\begin_layout Standard
+Vetores em coordenadas cartesianas, cilíndricas e esféricas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vec{A}_{cart} & = & A_{x}\ax+A_{y}\ay+A_{z}\az\\
+\vec{A}_{cil} & = & A_{\rho}\arh+A_{\theta}\ath+A_{z}\az\\
+\vec{A}_{esf} & = & A_{r}\ar+A_{\theta}\ath+A_{\phi}\aph\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
