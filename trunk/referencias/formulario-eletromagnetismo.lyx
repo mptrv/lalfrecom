@@ -23,7 +23,7 @@
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize default
+\papersize a5paper
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
@@ -66,7 +66,31 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\aind}[1]{\mathrm{\vec{a}}_{#1}}
+\newcommand{\vt}[1]{\vec{#1}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\vti}[2][]{\vt{#2}_{#1}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aind}[1]{\vti[#1]{\mathrm{a}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\pe}[2]{#1\cdot#2}
 \end_inset
 
 
@@ -152,6 +176,46 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dL}{d\vt{\mathrm{L}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dS}{d\vt{\mathrm{S}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dv}{dv}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dQ}{dQ}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\rhv}{\rho_{v}}
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Eletrostática
 \end_layout
@@ -183,6 +247,200 @@ Campo Elétrico
 
 \end_layout
 
+\begin_layout Itemize
+De distribuição contínua de cargas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt E=\int\frac{dQ}{4\pi\epsilon R^{2}}\aR\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+De uma carga pontual na origem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt E=\frac{Q}{4\pi\epsilon r^{2}}\ar\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+De uma linha infinita em 
+\begin_inset Formula $z$
+\end_inset
+
+ carregada com 
+\begin_inset Formula $\rho_{L}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt E=\frac{\rho_{L}}{2\pi\epsilon\rho}\arh\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+De uma lâmina infinita carregada com 
+\begin_inset Formula $\rho_{S}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt E=\frac{\rho_{S}}{2\epsilon}\aN\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Densidade de Fluxo Elétrico
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt D=\epsilon_{r}\epsilon_{0}\vt E\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fluxo Elétrico
+\end_layout
+
+\begin_layout Itemize
+Que atravessa uma superfície:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Psi=\int\pe{\vt D}{\dS}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Que atravessa uma superfície fechada:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Psi=\oint\pe{\vt D}{\dS}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Teorema da Divergência
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\oint\pe{\vt D}{\dS}=\int\pe{\nabla}{\vt D\dv}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lei de Gauss
+\end_layout
+
+\begin_layout Itemize
+Forma integral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\oint\pe{\vt D}{\dS} & = & Q_{env}=\Psi_{resultante}\\
+\oint\pe{\vt D}{\dS} & = & \int\rhv\dv\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Forma pontual:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\pe{\nabla}{\vt D}=\rhv\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pontencial Elétrico
+\end_layout
+
+\begin_layout Itemize
+Diferença de pontencial elétrico:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+V_{ba}=-\int_{a}^{b}\pe{\vt E}{\dL}=V_{b}-V_{a}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pontencial com referência no infinito:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+V=\int\frac{\dQ}{4\pi\epsilon r}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Campo elétrico a partir de função potencial:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt E=-\nabla V\end{equation}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Magnetostática
 \end_layout
@@ -203,7 +461,7 @@ Linhas de Transmissão
 Definições Gerais
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Vetores em coordenadas cartesianas, cilíndricas e esféricas:
 \end_layout
 
@@ -218,5 +476,54 @@ Vetores em coordenadas cartesianas, cilíndricas e esféricas:
 
 \end_layout
 
+\begin_layout Itemize
+Produto Escalar (em coordenadas cartesianas):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt A\centerdot\vt B=\left|\vt A\right|\left|\vt B\right|\cos\theta_{AB}=A_{x}B_{x}+A_{y}B_{y}+A_{z}B_{z}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Divergência:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Coordenadas Cartesianas
+\end_layout
+
+\begin_layout Itemize
+Coordenadas Cilíndricas
+\end_layout
+
+\begin_layout Itemize
+Coordenadas Esféricas
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gradiente:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Coordenadas Cartesianas
+\end_layout
+
+\begin_layout Itemize
+Coordenadas Cilíndricas
+\end_layout
+
+\begin_layout Itemize
+Coordenadas Esféricas
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
