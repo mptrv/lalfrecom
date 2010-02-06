@@ -7,7 +7,11 @@
 \usepackage{misc}
 \usepackage{unidades}
 \end_preamble
-\use_default_options true
+\options titlepage
+\use_default_options false
+\begin_modules
+theorems-ams
+\end_modules
 \language brazilian
 \inputencoding auto
 \font_roman default
@@ -20,7 +24,7 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 10
 \spacing single
 \use_hyperref false
 \papersize a5paper
@@ -36,7 +40,7 @@
 \defskip medskip
 \quotes_language english
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -48,6 +52,46 @@
 
 \begin_layout Title
 Formulário de Eletromagnetismo I
+\end_layout
+
+\begin_layout Author
+ETE 212
+\end_layout
+
+\begin_layout Date
+2010
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{myheadings}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -203,6 +247,22 @@ status open
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\dQ}{dQ}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dV}{dV}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\rhs}{\rho_{\mathrm{s}}}
 \end_inset
 
 
@@ -441,6 +501,177 @@ Campo elétrico a partir de função potencial:
 
 \end_layout
 
+\begin_layout Subsection
+Densidade de Corrente
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt J=\sigma\vt E\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Corrente
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+I=\int\pe{\vt J}{\dS}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Resistência
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+R=\frac{-\int\pe{\vt E}{\dL}}{\int\sigma\pe{\vt E}{\dS}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lei de Joule
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+P=\int\pe{\vt E}{\vt J}\dv\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Condições de Contorno
+\end_layout
+
+\begin_layout Itemize
+Entre par de dielétricos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vti[T1]E & = & \vti[T2]E\\
+\pe{\aind{21}}{(\vti[1]D-\vti[2]D)} & = & \rhs\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Entre par de dielétricos, se 
+\begin_inset Formula $\rhs=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vti[T1]E & = & \vti[T2]E\\
+\vti[N1]D & = & \vti[N2]D\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Entre condutor e dielétrico:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vti[T]E & = & 0\\
+\vti[N]D & = & \rhs\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equação de Poisson
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\nabla^{2}V=-\frac{\rhv}{\epsilon}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equação de Laplace
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\nabla^{2}V=0\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Capacitância
+\end_layout
+
+\begin_layout Itemize
+Definição genérica:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+C=\frac{\dQ}{\dV}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Para capacitor de placas paralelas, desprezando-se efeitos de borda:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+C=\frac{\epsilon S}{d}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Energia Potencial Eletrostática
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+W_{E}=\frac{1}{2}\int\pe{\vt D}{\vt E}\dv=\frac{1}{2}\int\epsilon E^{2}\dv=\frac{1}{2}CV^{2}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Magnetostática
 \end_layout
@@ -490,6 +721,10 @@ Produto Escalar (em coordenadas cartesianas):
 \end_layout
 
 \begin_layout Itemize
+Operador Nabla:
+\end_layout
+
+\begin_layout Itemize
 Divergência:
 \end_layout
 
@@ -509,6 +744,42 @@ Coordenadas Esféricas
 \end_deeper
 \begin_layout Itemize
 Gradiente:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Coordenadas Cartesianas
+\end_layout
+
+\begin_layout Itemize
+Coordenadas Cilíndricas
+\end_layout
+
+\begin_layout Itemize
+Coordenadas Esféricas
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rotacional:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Coordenadas Cartesianas
+\end_layout
+
+\begin_layout Itemize
+Coordenadas Cilíndricas
+\end_layout
+
+\begin_layout Itemize
+Coordenadas Esféricas
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Laplaciano:
 \end_layout
 
 \begin_deeper
