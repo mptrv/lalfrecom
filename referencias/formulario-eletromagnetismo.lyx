@@ -182,6 +182,22 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
+\newcommand{\re}[1]{\mathrm{Re}[#1]}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\im}[1]{\mathrm{Im}[#1]}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
 \newcommand{\ax}{\aind x}
 \end_inset
 
@@ -324,6 +340,14 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Vfem}{V_{\mathrm{fem}}}
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Eletrostática
 \end_layout
@@ -425,7 +449,7 @@ Densidade de Fluxo Elétrico
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\vt D=\epsilon_{r}\epsilon_{0}\vt E\end{equation}
+\vt D=\epsilon\vt E\end{equation}
 
 \end_inset
 
@@ -1819,6 +1843,262 @@ Lei de Ohm para circ.
 Campos Dinâmicos
 \end_layout
 
+\begin_layout Subsection
+Equação da Continuidade da Corrente
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\dvg J=-\frac{\partial\rhv}{\partial t}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Variação da Densidade de Carga com o Tempo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\rhv & = & \rho_{0}e^{-t/\tau}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tempo de Relaxação
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula \begin{equation}
+\tau=\frac{\epsilon}{\sigma}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lei de Faraday
+\end_layout
+
+\begin_layout Itemize
+Forma geral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Vfem=-\frac{\partial\lambda}{\partial t}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Para circuito de uma única espira:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Vfem=\oint\pe{\vt E}{\dL}=-\frac{\partial\Phi}{\partial t}=-\frac{\partial}{\partial t}\int\pe{\vt B}{\dS}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Forma diferencial:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\rot{\vt E}=-\frac{\partial\vt B}{\partial t}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Para circuito com movimento e campo magnético constante:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Vfem=\oint\pe{(\pvv uB)}{\dL}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Densidade de Corrente de Dispersão (Deslocamento)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vti[d]J=\frac{\partial\vt D}{\partial t}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equações de Maxwell Gerais
+\end_layout
+
+\begin_layout Itemize
+Forma integral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\oint\pe{\vt D}{\dS} & = & Q_{env}\\
+\oint\pe{\vt B}{\dS} & = & 0\\
+\oint\pe{\vt E}{\dL} & = & -\frac{\partial}{\partial t}\int\pe{\vt B}{\dS}\\
+\oint\pe{\vt H}{\dL} & = & \int\pe{\vt J}{\dS}+\frac{\partial}{\partial t}\int\pe{\vt D}{\dS}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Forma diferencial:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\dvg{\vt D} & = & \rhv\\
+\dvg{\vt B} & = & 0\\
+\rot{\vt E} & = & -\frac{\partial\vt B}{\partial t}\\
+\rot{\vt H} & = & \vti[\mathrm{c}]J+\frac{\partial\vt D}{\partial t}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Representações de Campo Harmônico
+\end_layout
+
+\begin_layout Itemize
+No domínio do tempo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vt E(x,y,z,t) & = & \vt E(x,y,z)\cos(\omega t+\phi)\\
+\vt H(x,y,z,t) & = & \vt H(x,y,z)\cos(\omega t+\phi)\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+No domínio da freqüência:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vti[s]E & = & \vt E(x,y,z)e^{j\phi}\\
+\vti[s]H & = & \vt H(x,y,z)e^{j\phi}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conversão do domínio da freqüência para o domínio do tempo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt E(x,y,z,t)=\re{\vti[s]Ee^{j\omega t}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equações de Maxwell na Forma Fasorial Diferencial
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\dvg{\vti[s]D} & = & \rho_{vs}\\
+\dvg{\vti[s]B} & = & 0\\
+\rot{\vti[s]E} & = & -j\omega\vti[s]B\\
+\rot{\vti[s]H} & = & \vti[s]J+j\omega\vti[s]D\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equações Fundamentais do Eletromagnetismo
+\end_layout
+
+\begin_layout Standard
+São dadas por:
+\end_layout
+
+\begin_layout Itemize
+Equações de Maxwell
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lei de Gauss
+\end_layout
+
+\begin_layout Itemize
+Lei de Gauss para Campos Magnéticos
+\end_layout
+
+\begin_layout Itemize
+Lei de Faraday
+\end_layout
+
+\begin_layout Itemize
+Lei Circuital de Ampère
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Equação da Força de Lorentz
+\end_layout
+
+\begin_layout Itemize
+Equação da Continuidade da Corrente
+\end_layout
+
+\begin_layout Itemize
+Relações Constitutivas
+\end_layout
+
 \begin_layout Section
 Ondas Planas
 \end_layout
@@ -1976,6 +2256,7 @@ name "tab:Constantes-físicas"
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features>
@@ -2088,7 +2369,7 @@ Unidade
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2100,7 +2381,7 @@ Unidade
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2112,7 +2393,7 @@ Unidade
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
