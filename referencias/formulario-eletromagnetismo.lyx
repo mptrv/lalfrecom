@@ -100,7 +100,7 @@ status open
 
 \begin_layout Plain Layout
 
-% Definições usadas nas fórmulas.
+% DEFINIÇÕES USADAS NAS FÓRMULAS.
 \end_layout
 
 \end_inset
@@ -142,7 +142,23 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
+\newcommand{\pev}[2]{\vt{#1}\cdot\vt{#2}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
 \newcommand{\pv}[2]{#1\times#2}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\pvv}[2]{\vt{#1}\times\vt{#2}}
 \end_inset
 
 
@@ -255,6 +271,14 @@ status open
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\dS}{d\vt{\mathrm{S}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dSe}{dS}
 \end_inset
 
 
@@ -470,7 +494,7 @@ Forma integral:
 \end_layout
 
 \begin_layout Itemize
-Forma pontual:
+Forma diferencial:
 \end_layout
 
 \begin_layout Standard
@@ -578,7 +602,7 @@ P=\int\pe{\vt E}{\vt J}\dv\end{equation}
 \end_layout
 
 \begin_layout Subsection
-Condições de Contorno
+Condições de Fronteira
 \end_layout
 
 \begin_layout Itemize
@@ -658,7 +682,7 @@ Capacitância
 \end_layout
 
 \begin_layout Itemize
-Definição genérica:
+Definição geral:
 \end_layout
 
 \begin_layout Standard
@@ -787,7 +811,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt H(\ampere\per\metre)$
+\begin_inset Formula $\vt H(\amperepermetre)$
 \end_inset
 
 
@@ -1047,6 +1071,747 @@ Lei de Biot-Savart
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula \begin{equation}
+d\vti[2]H=\frac{\pv{I\dL_{1}}{\aud}}{4\pi R_{12}^{2}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Campo Magnético Resultante
+\end_layout
+
+\begin_layout Itemize
+Em termos de elementos diferenciais:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt H=\int\frac{\pv{I\dL}{\aR}}{4\pi R^{2}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Em termos de densidades de corrente superficial:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt H=\int\frac{\pv{\vt K\dSe}{\aR}}{4\pi R^{2}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Em termos de densidades de corrente volumétrica:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt H=\int\frac{\pv{\vt J\dv}{\aR}}{4\pi R^{2}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Devido a linha infinita de corrente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt H=\frac{I\aph}{2\pi\rho}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Devido a um solenóide:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt H=\frac{NI}{h}\az\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Devido a uma lâmina infinita de corrente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt H=\frac{1}{2}\pv{\vt K}{\aN}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lei Circuital de Ampère
+\end_layout
+
+\begin_layout Itemize
+Forma integral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\oint\pe{\vt H}{\dL}=I_{env}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Forma diferencial:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\rot{\vt H}=\vt J\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Teorema de Stokes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\oint\pe{\vt H}{\dL}=\int\pe{(\rot{\vt H})}{\dS}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Densidade de Fluxo Mangnético
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt B=\mu\vt H\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fluxo Magnético
+\end_layout
+
+\begin_layout Itemize
+Que atravessa uma superfície:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Phi=\int\pe{\vt B}{\dS}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Que atravessa uma superfície fechada:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\oint\pe{\vt B}{\dS}=0\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equações de Maxwell para Campos Estáticos
+\end_layout
+
+\begin_layout Itemize
+\align block
+Forma integral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\oint\pe{\vt D}{\dS} & = & Q_{env}\\
+\oint\pe{\vt B}{\dS} & = & 0\\
+\oint\pe{\vt E}{\dL} & = & 0\\
+\oint\pe{\vt H}{\dL} & = & I_{env}\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Forma diferencial:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\dvg{\vt D} & = & \rhv\\
+\dvg{\vt B} & = & 0\\
+\rot{\vt E} & = & 0\\
+\rot{\vt H} & = & \vt J\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Força
+\end_layout
+
+\begin_layout Itemize
+Força de Lorentz:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt F=q(\vt E+\pvv uB)\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Força de Campo Magnético sobre Linha de Corrente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vti[12]F=\int\pv{I_{2}\dL_{2}}{\vti[1]B}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Momento de Dipólo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt m=NIS\aN\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Torque
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt{\tau}=\pvv mB\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Condições de Fronteira
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vti[N_{1}]B & = & \vti[N_{2}]B\\
+\pv{\aind{21}}{(\vti[1]H-\vti[2]H)} & = & \vt K\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Indutância
+\end_layout
+
+\begin_layout Itemize
+Definição geral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+L=\frac{\lambda}{I}=N\frac{\Phi_{tot}}{I}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Para uma bobina com núcleo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+L=\frac{\mu N^{2}\pi a^{2}}{h}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Para um cabo coaxial:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\frac{L}{h}=\frac{\mu}{2\pi}\ln\frac{b}{a}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Indutância Mútua
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+M_{12}=\frac{\lambda_{12}}{I_{1}}=\frac{N_{2}}{I_{1}}\int\pe{\vti[1]B}{\dS_{2}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Energia Magnetostática
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+W_{M}=\frac{1}{2}LI^{2}=\frac{1}{2}\int\pev BH\dv\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Circuitos Magnéticos
+\end_layout
+
+\begin_layout Itemize
+Analogia entre circuitos elétricos e magnéticos: vide 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "tab:Analogia-entre-circuitos-eletricos-magneticos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement bh
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Analogia entre circuitos elétricos e magnéticos.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Analogia-entre-circuitos-eletricos-magneticos"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Circuitos elétricos
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Circuitos magnéticos
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Força eletromotriz (
+\begin_inset Formula $\volt$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $V_{m}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Força magnetomotriz (
+\begin_inset Formula $\ampereesp$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Corrente (
+\begin_inset Formula $\ampere$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $I$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\Phi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Fluxo magnético (
+\begin_inset Formula $\weber$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Resistência (
+\begin_inset Formula $\ohm$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $R$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\Re$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Relutância (
+\begin_inset Formula $\ampereesp\per\weber$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Condutividade (
+\begin_inset Formula $\siemens\per\metre$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Permeabilidade (
+\begin_inset Formula $\henrypermetre$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Lei de Ohm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $V=RI$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $V_{m}=\Re\Phi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Lei de Ohm para circ.
+ mag.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1170,5 +1935,207 @@ Coordenadas Esféricas
 \end_layout
 
 \end_deeper
+\begin_layout Section
+Constantes
+\end_layout
+
+\begin_layout Standard
+Na 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "tab:Constantes-físicas"
+
+\end_inset
+
+ as constantes físicas de interesse em eletromagnetismo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Constantes físicas.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Constantes-físicas"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Constante
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Valor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unidade
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\epsilon_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8,854\cdot10^{-12}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\farad\per\metre$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\epsilon_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\approx\frac{10^{-9}}{36\pi}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\farad\per\metre$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4\pi\cdot10^{-7}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\henry\per\metre$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
