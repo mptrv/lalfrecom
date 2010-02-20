@@ -302,7 +302,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dv}{dv}
+\renewcommand{\dv}{dv}
 \end_inset
 
 
@@ -310,7 +310,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dQ}{dQ}
+\renewcommand{\dQ}{dQ}
 \end_inset
 
 
@@ -318,7 +318,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dV}{dV}
+\renewcommand{\dV}{dV}
 \end_inset
 
 
@@ -326,7 +326,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\rhs}{\rho_{\mathrm{s}}}
+\renewcommand{\rhs}{\rho_{\mathrm{s}}}
 \end_inset
 
 
@@ -334,7 +334,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\rhv}{\rho_{v}}
+\renewcommand{\rhv}{\rho_{v}}
 \end_inset
 
 
@@ -342,7 +342,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\Vfem}{V_{\mathrm{fem}}}
+\renewcommand{\Vfem}{V_{\mathrm{fem}}}
 \end_inset
 
 
@@ -2412,6 +2412,20 @@ Unidade
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Licensa
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
 
 \end_inset
 
