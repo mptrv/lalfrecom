@@ -109,6 +109,45 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+sin}{
+\backslash
+ensuremath{
+\backslash
+mathrm{sen
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+tan}{
+\backslash
+ensuremath{
+\backslash
+mathrm{tg
+\backslash
+,}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\vt}[1]{\vec{#1}}
 \end_inset
@@ -302,7 +341,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\dv}{dv}
+\newcommand{\dv}{dv}
 \end_inset
 
 
@@ -310,7 +349,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\dQ}{dQ}
+\newcommand{\dQ}{dQ}
 \end_inset
 
 
@@ -318,7 +357,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\dV}{dV}
+\newcommand{\dV}{dV}
 \end_inset
 
 
@@ -326,7 +365,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\rhs}{\rho_{\mathrm{s}}}
+\newcommand{\rhs}{\rho_{\mathrm{s}}}
 \end_inset
 
 
@@ -334,7 +373,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\rhv}{\rho_{v}}
+\newcommand{\rhv}{\rho_{v}}
 \end_inset
 
 
@@ -342,7 +381,7 @@ status open
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\renewcommand{\Vfem}{V_{\mathrm{fem}}}
+\newcommand{\Vfem}{V_{\mathrm{fem}}}
 \end_inset
 
 
@@ -835,7 +874,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt H(\amperepermetre)$
+\begin_inset Formula $\vt H(\ampere\per\metre)$
 \end_inset
 
 
@@ -1765,7 +1804,7 @@ Condutividade (
 
 \size small
 Permeabilidade (
-\begin_inset Formula $\henrypermetre$
+\begin_inset Formula $\henry\per\metre$
 \end_inset
 
 )
@@ -2103,6 +2142,424 @@ Relações Constitutivas
 Ondas Planas
 \end_layout
 
+\begin_layout Subsection
+Equações de Onda de Helmholtz
+\end_layout
+
+\begin_layout Itemize
+No domínio do tempo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\nabla^{2}\vt E & = & \mu\sigma\frac{\partial\vt E}{\partial t}+\mu\epsilon\frac{\partial^{2}\vt E}{\partial t^{2}}\\
+\nabla^{2}\vt H & = & \mu\sigma\frac{\partial\vt H}{\partial t}+\mu\epsilon\frac{\partial^{2}\vt H}{\partial t^{2}}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+No domínio da freqüência (campos harmônicos):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\nabla^{2}\vti[s]E-\gamma^{2}\vti[s]E & = & 0\\
+\nabla^{2}\vti[s]H-\gamma^{2}\vti[s]H & = & 0\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solução das equações de onda de Helmholtz, para caso geral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vt E(z,t) & = & E_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)\ax\\
+a & a & +E_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ax\\
+\vt H(z,t) & = & H_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)\ay\\
+a & a & +H_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ay\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Relação entre Ondas Propagantes, em Fasores
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\vti[s]H & = & \pv{\frac{1}{\eta}\arh}{\vti[s]E}\\
+\vti[s]E & = & \pv{-\eta\arh}{\vti[s]H}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Constantes e Impedância Intrínseca
+\end_layout
+
+\begin_layout Subsubsection
+Caso geral
+\end_layout
+
+\begin_layout Itemize
+Constante de propagação:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\gamma=\sqrt{j\omega\mu(\sigma+j\omega\epsilon)}=\alpha+j\beta\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Constante de atenuação:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\alpha=\omega\sqrt{\frac{\mu\epsilon}{2}\left(\sqrt{1+\left(\frac{\sigma}{\omega\epsilon}\right){}^{2}}-1\right)}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Constante de fase:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\beta=\omega\sqrt{\frac{\mu\epsilon}{2}\left(\sqrt{1+\left(\frac{\sigma}{\omega\epsilon}\right)^{2}}+1\right)}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Impedância intrínseca:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\eta=\sqrt{\frac{j\omega\mu}{\sigma+j\omega\epsilon}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Dielétricos com baixas perdas (
+\begin_inset Formula $\frac{\sigma}{\omega\epsilon}\ll1$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\alpha & \approx & \frac{\sigma}{2}\sqrt{\frac{\mu}{\epsilon}}\\
+\beta & \approx & \omega\sqrt{\mu\epsilon}\\
+\eta & \approx & \sqrt{\frac{\mu}{\epsilon}}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Bons condutores (
+\begin_inset Formula $\frac{\sigma}{\omega\epsilon}\gg1$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\alpha & \approx & \sqrt{\pi f\mu\sigma}\\
+\beta & \approx & \sqrt{\pi f\mu\sigma}\\
+\eta & \approx & \sqrt{\frac{\omega\mu}{\sigma}}e^{j45\degree}\approx\sqrt{2}\frac{\alpha}{\sigma}e^{j45\degree}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Velocidade de Propagação
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+u_{p}=\frac{\omega}{\beta}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tangente de Perdas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\tan\delta=\frac{\sigma+\omega\epsilon''}{\omega\epsilon'}=\frac{\sigma_{ef}}{\omega\epsilon'}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Nota: não confundir o símbolo 
+\begin_inset Formula $\delta$
+\end_inset
+
+ da tangente de perdas com o da profundidade pelicular, pois referem-se
+ a grandezas distintas.
+\end_layout
+
+\begin_layout Subsection
+Efeito Pelicular (em bons condutores)
+\end_layout
+
+\begin_layout Itemize
+Profundidade pelicular:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\delta=\frac{1}{\alpha}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Resistência pelicular:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+R_{pelicular}=\frac{1}{\sigma\delta\left(1-e^{-t/\delta}\right)}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Teorema de Poynting
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\oint\pe{\pvv EH}{\dS}=-\int\pev JE\dv-\frac{\partial}{\partial t}\int\frac{1}{2}\epsilon E^{2}\dv-\frac{\partial}{\partial t}\int\frac{1}{2}\mu H^{2}\dv\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Vetor de Poynting
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vt P=\pvv EH\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Potência
+\end_layout
+
+\begin_layout Itemize
+Potência média temporal:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vti[ave]P=\frac{1}{2}\re{\pvv EH_{s}^{*}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Quantidade de potência que atravessa uma superfície:
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula \begin{equation}
+P=\int\pe{\vti[ave]P}{\dS}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Incidência de Um Meio para Outro
+\end_layout
+
+\begin_layout Subsubsection
+Características da Incidência Normal
+\end_layout
+
+\begin_layout Itemize
+Coeficiente de reflexão:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Gamma=\frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}-\eta_{1}}{\eta_{2}+\eta_{1}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Coeficiente de transmissão:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\tau=\frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}}{\eta_{2}+\eta_{1}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Relação entre os coeficientes de reflexão e transmissão:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\tau=1+\Gamma\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taxa de onda estacionária (ROE, COE, TOE, VSWR):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+ROE=\frac{E_{max}}{E_{min}}=\frac{V_{max}}{V_{min}}=\frac{1+\left|\Gamma\right|}{1-\left|\Gamma\right|}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Características da Incidência Oblíqua
+\end_layout
+
+\begin_layout Itemize
+Coeficiente de reflexão:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\Gamma_{TE} & = & \frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}\cos\theta_{i}-\eta_{1}\cos\theta_{t}}{\eta_{2}\cos\theta_{i}+\eta_{1}\cos\theta_{t}}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Gamma_{TM}=\frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}\cos\theta_{t}-\eta_{1}\cos\theta_{i}}{\eta_{2}\cos\theta_{t}+\eta_{1}\cos\theta_{i}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Coefiente de transmissão:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\tau_{TE} & = & \frac{E_{0}^{r}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{i}}{\eta_{2}\cos\theta_{i}+\eta_{1}\cos\theta_{t}}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\tau_{TM}=\frac{E_{0}^{r}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{i}}{\eta_{2}\cos\theta_{t}+\eta_{1}\cos\theta_{i}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Leis de Snell da reflexão e da refração:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\theta_{i} & = & \theta_{r}\\
+\frac{\beta_{1}}{\beta_{2}} & = & \frac{\sin\theta_{t}}{\sin\theta_{i}}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ângulo de Brewster para polarização TM:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\sin\theta_{BA}=\sqrt{\frac{\beta_{2}^{2}(\eta_{2}^{2}-\eta_{1}^{2})}{\eta_{2}^{2}\beta_{1}^{2}-\eta_{1}^{2}\beta_{2}^{2}}}\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
 \begin_layout Section
 Linhas de Transmissão
 \end_layout
@@ -2309,7 +2766,7 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8,854\cdot10^{-12}$
+\begin_inset Formula $8,854\cdot10^{-12}\approx\frac{10^{-9}}{36\pi}$
 \end_inset
 
 
@@ -2332,44 +2789,6 @@ Unidade
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\epsilon_{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\approx\frac{10^{-9}}{36\pi}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\farad\per\metre$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2381,11 +2800,49 @@ Unidade
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4\pi\times\num{e-7}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\henry\per\metre$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4\pi\cdot10^{-7}$
+\begin_inset Formula $\eta_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\pi\approx377$
 \end_inset
 
 
@@ -2397,7 +2854,260 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\henry\per\metre$
+\begin_inset Formula $\ohm$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Propriedades de Alguns Materiais
+\end_layout
+
+\begin_layout Standard
+Na 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "tab:Propriedades-de-alguns-materiais"
+
+\end_inset
+
+, listam-se as propriedades de alguns materiais.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Propriedades de alguns materiais.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Propriedades-de-alguns-materiais"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Material
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma(\siemens\per\metre)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\epsilon_{r}'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\epsilon_{r}''$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cobre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\num{5,8e7}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Água do mar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $72$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vidro
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\num{e-12}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,010$
 \end_inset
 
 
