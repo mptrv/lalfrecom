@@ -142,6 +142,21 @@ mathrm{tg
 ,}}}
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+tanh}{
+\backslash
+ensuremath{
+\backslash
+mathrm{tgh
+\backslash
+,}}}
+\end_layout
+
 \end_inset
 
 
@@ -230,6 +245,46 @@ mathrm{tg
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\im}[1]{\mathrm{Im}[#1]}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\delx}{\partial x}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dely}{\partial y}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\delz}{\partial z}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\delt}{\partial t}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
 \end_inset
 
 
@@ -389,6 +444,10 @@ mathrm{tg
 
 \begin_layout Section
 Eletrostática
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
@@ -2316,6 +2375,32 @@ u_{p}=\frac{\omega}{\beta}\end{equation}
 \end_layout
 
 \begin_layout Subsection
+Permissividade Complexa
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\epsilon_{c}=\epsilon'-j\epsilon''\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Condutividade Efetiva
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\sigma_{ef}=\sigma+\omega\epsilon''\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Tangente de Perdas
 \end_layout
 
@@ -2564,6 +2649,296 @@ Leis de Snell da reflexão e da refração:
 Linhas de Transmissão
 \end_layout
 
+\begin_layout Subsection
+Parâmetros Distribuídos
+\end_layout
+
+\begin_layout Itemize
+Para cabos coaxiais:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+R' & = & \frac{1}{2\pi}\left(\frac{1}{a}+\frac{1}{b}\right)\sqrt{\frac{\pi f\mu}{\sigma_{c}}}\\
+L' & = & \frac{\mu}{2\pi}\ln\left(\frac{b}{a}\right)\\
+G' & = & \frac{2\pi\sigma_{d}}{\ln(b/a)}\\
+C' & = & \frac{2\pi\epsilon}{\ln(b/a)}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Para cabos de condutores gêmeos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+R' & = & \frac{1}{a}\sqrt{\frac{f\mu}{\sigma_{c}}}\\
+L' & = & \frac{\mu}{\pi}\cosh^{-1}\left(\frac{d}{2a}\right)\\
+G' & = & \frac{\pi\sigma_{d}}{\cosh^{-1}(d/2a)}\\
+C' & = & \frac{\pi\epsilon}{\cosh^{-1}(d/2a)}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equações Gerais de Linha de Transmissão (Equações Telegráficas)
+\end_layout
+
+\begin_layout Itemize
+No domínio do tempo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+-\frac{\partial v(z,t)}{\partial z} & = & i(z,t)R'+L'\frac{\partial i(z,t)}{\delt}\\
+-\frac{\partial i(z,t)}{\delz} & = & v(z,t)G'+C'\frac{\partial v(z,t)}{\delt}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+No domínio da freqüência (para ondas harmônicas):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\frac{\d V_{s}(z)}{\d z} & = & -(R'+j\omega L')I_{x}(z)\\
+\frac{\d I_{s}(z)}{\d z} & = & -(G'+j\omega C')V_{s}(z)\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equações de Onda Harmônicas no Tempo
+\end_layout
+
+\begin_layout Itemize
+No domínio do tempo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+v(z,t) & = & V_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+V_{0}^{-}e^{+\alpha z}\cos(\omega t+\beta z)\\
+i(z,t) & = & I_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+I_{0}^{-}e^{+\alpha z}\cos(\omega t+\beta z)\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+No domínio da freqüência:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+V_{s}(z) & = & V_{0}^{+}e^{-\gamma z}+V_{0}^{-}e^{+\gamma z}\\
+I_{s}(z) & = & I_{0}^{+}e^{-\gamma z}+I_{0}^{-}e^{+\gamma z}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ou
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula \begin{eqnarray}
+V_{s}(z) & = & V_{0}^{+}e^{-\alpha z}e^{-j\beta z}+V_{0}^{-}e^{+\alpha z}e^{+j\beta z}\\
+I_{s}(z) & = & I_{0}^{+}e^{-\alpha z}e^{-j\beta z}+I_{0}^{-}e^{+\alpha z}e^{+j\beta z}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Constantes de Propagação, Atenuação e de Fase
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\gamma=\sqrt{(R'+j\omega L')(G'+j\omega C')}=\alpha+j\beta\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Impedância Característica
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+Z_{0}=\frac{V_{0}^{+}}{I_{0}^{+}}=\frac{-V_{0}^{-}}{I_{0}^{-}}=\sqrt{\frac{R'+j\omega L'}{G'+j\omega C'}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Potência
+\end_layout
+
+\begin_layout Itemize
+Potência média em linha sem perdas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+P_{ave}^{+}(z)=\frac{(V_{0}^{+})^{2}}{2Z_{0}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ganho de potência:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+G_{(\deci\bel)}=10\log\left(\frac{P_{out}}{P_{in}}\right)\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Relação entre decibéis e neper:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+1\neper=8,686\deci\bel\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Coeficiente de Reflexão
+\end_layout
+
+\begin_layout Itemize
+Na carga:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Gamma_{L}=\frac{V_{0}^{-}}{V_{0}^{+}}=\frac{Z_{L}-Z_{0}}{Z_{L}+Z_{0}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Em qualquer ponto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Gamma=\frac{V_{0}^{-}e^{+\gamma z}}{V_{0}^{+}e^{-\gamma z}}=\Gamma_{L}e^{+2\gamma z}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Exemplo 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ em 
+\begin_inset Formula $z=-\ell$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Gamma=\Gamma_{L}e^{-2\gamma\ell}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Taxa de Onda Estacionária de Tensão
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+ROTE=\frac{1+\left|\Gamma_{L}\right|}{1-\left|\Gamma_{L}\right|}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Impedância de Entrada
+\end_layout
+
+\begin_layout Itemize
+Para o caso geral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+Z_{in}=Z_{0}\frac{Z_{L}+Z_{0}\tanh(\gamma\ell)}{Z_{0}+Z_{L}\tanh(\gamma\ell)}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Para linha sem perdas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+Z_{in}=Z_{0}\frac{Z_{L}+jZ_{0}\tan(\beta\ell)}{Z_{0}+jZ_{L}\tan(\beta\ell)}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Definições Gerais
 \end_layout
@@ -2766,7 +3141,7 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8,854\cdot10^{-12}\approx\frac{10^{-9}}{36\pi}$
+\begin_inset Formula $\num{8,854e-12}\approx\frac{10^{-9}}{36\pi}$
 \end_inset
 
 
@@ -2869,6 +3244,19 @@ Unidade
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Relações entre Grandezas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+1\neper=8,686\deci\bel\]
 
 \end_inset
 
