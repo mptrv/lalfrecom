@@ -26,12 +26,21 @@ theorems-ams
 \graphics default
 \paperfontsize 10
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize a5paper
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
-\cite_engine basic
+\cite_engine natbib_authoryear
 \use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
@@ -56,6 +65,7 @@ Formulário de Eletromagnetismo I
 status open
 
 \begin_layout Plain Layout
+
 
 \backslash
 
@@ -1388,7 +1398,7 @@ Teorema de Stokes
 \end_layout
 
 \begin_layout Subsection
-Densidade de Fluxo Mangnético
+Densidade de Fluxo Magnético
 \end_layout
 
 \begin_layout Standard
@@ -3001,6 +3011,7 @@ Z_{in}=Z_{0}\frac{Z_{L}+jZ_{0}\tan(\beta\ell)}{Z_{0}+jZ_{L}\tan(\beta\ell)}\end{
 \end_layout
 
 \begin_layout Section
+\start_of_appendix
 Definições Gerais
 \end_layout
 
@@ -3940,14 +3951,288 @@ Vidro
 Produção
 \end_layout
 
+\begin_layout Description
+Autor: Marcelo Porto Trevizan
+\end_layout
+
+\begin_layout Description
+Editor: Marcelo Porto Trevizan
+\end_layout
+
+\begin_layout Description
+Revisores: Marcelo Porto Trevizan, Arnaldo Megrich
+\end_layout
+
+\begin_layout Description
+Livro
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+Referência: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "wentworth2007ele"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Licensa
 \end_layout
 
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-1"
+\begin_layout Standard
+Este documento é disponibilizado sob a licensa abaixo descrita.
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+Creative Commons -- Atribuição-Compartilhamento pela mesma Licença 3.0 Unported
+\end_layout
+
+\begin_layout Standard
+Esta licensa é aceita para trabalhos culturais livres.
+ Com ela, pode-se:
+\end_layout
+
+\begin_layout Description
+Compartilhar: copiar, distribuir, exibir e executar a obra
+\end_layout
+
+\begin_layout Description
+Reeditar: criar obras derivadas
+\end_layout
+
+\begin_layout Standard
+Sob as seguintes condições:
+\end_layout
+
+\begin_layout Description
+Atribuição: Deve-se dar crédito ao autor original, da forma especificada
+ pelo autor ou licenciante.
+\end_layout
+
+\begin_layout Description
+Compartilhamento
+\begin_inset space ~
+\end_inset
+
+pela
+\begin_inset space ~
+\end_inset
+
+mesma
+\begin_inset space ~
+\end_inset
+
+Licença: se alterar, transformar, ou contruir um novo trabalho a partir
+ deste, pode-se distribuir o trabalho final somente sob a mesma licensa,
+ ou licensa similiar ou compatível.
+\end_layout
+
+\begin_layout Subsection*
+Mais Informações sobre a Licensa
+\end_layout
+
+\begin_layout Standard
+O resumo da licensa pode ser obtido em:
+\end_layout
+
+\begin_layout Description
+Português: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://creativecommons.org/licenses/by-sa/3.0/deed.pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Inglês: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://creativecommons.org/licenses/by-sa/3.0/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A licensa completa pode ser obtida em:
+\end_layout
+
+\begin_layout Description
+Inglês: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://creativecommons.org/licenses/by-sa/3.0/legalcode"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Onde Adquirir este Material
+\end_layout
+
+\begin_layout Standard
+A versão PDF deste material poderá ser baixada de:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+
+\size footnotesize
+
+\begin_inset CommandInset href
+LatexCommand href
+name "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.0.0.pdf"
+target "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.0.0.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+O código-fonte 
+\begin_inset CommandInset href
+LatexCommand href
+name "formulario-eletromagnetismo.lyx"
+target "http://code.google.com/p/lalfrecom/source/browse/trunk/referencias/formulario-eletromagnetismo.lyx"
+
+\end_inset
+
+, escrito em LyX, para gerar este material, pode ser obtido da aba 
+\emph on
+Source, 
+\emph default
+item 
+\emph on
+Browse
+\emph default
+, pasta 
+\emph on
+svn/trunk/referencias/ 
+\emph default
+de:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://lalfrecom.googlecode.com"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Notas
+\end_layout
+
+\begin_layout Standard
+Para compilar o material a partir do código-fonte, deve-se instalar o LyX
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/Download"
+
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+os estilos LaTeX 
+\emph on
+unidades.sty 
+\emph default
+e 
+\emph on
+misc.sty
+\emph default
+ do projeto `efmt'
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://code.google.com/p/efmt/source/browse/#svn/trunk/latex"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+e o estilo LaTeX 
+\emph on
+siunitx.sty
+\begin_inset Newline newline
+\end_inset
+
+
+\emph default
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://mirror.ctan.org/macros/latex/contrib/siunitx.zip"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/home/mpt/Trabalhos/Projetos/lalfrecom/bibliografias/lalfrecom"
+options "plainnat"
 
 \end_inset
 
