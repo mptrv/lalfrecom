@@ -517,6 +517,19 @@ mathrm{tgh
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Eletrostática
 \end_layout
@@ -1200,7 +1213,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt F(N)=Q\vt E$
+\begin_inset Formula $\vt F=Q\vt E(\newton)$
 \end_inset
 
 
@@ -1212,7 +1225,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt F(N)=Q\pv{\vt u}{\vt B}$
+\begin_inset Formula $\vt F=Q\pv{\vt u}{\vt B}(\newton)$
 \end_inset
 
 
@@ -1226,7 +1239,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $W_{E}(J)=\frac{1}{2}=\int\pe{\vt D}{\vt E}\dv$
+\begin_inset Formula $W_{E}=\frac{1}{2}\int\pe{\vt D}{\vt E}\dv(\joule)$
 \end_inset
 
 
@@ -1238,7 +1251,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $W_{M}(J)=\frac{1}{2}=\int\pe{\vt B}{\vt H}\dv$
+\begin_inset Formula $W_{M}=\frac{1}{2}\int\pe{\vt B}{\vt H}\dv(\joule)$
 \end_inset
 
 
@@ -1549,6 +1562,13 @@ Condições de Fronteira
 
 \begin_layout Subsection
 Indutância
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Indutancia"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1609,7 +1629,7 @@ Energia Magnetostática
 
 \begin_layout Standard
 \begin_inset Formula \[
-W_{M}=\frac{1}{2}LI^{2}=\frac{1}{2}\int\pev BH\dv\]
+W_{M}=\frac{1}{2}\int\pev BH\dv=\frac{1}{2}LI^{2}\]
 
 \end_inset
 
@@ -2202,8 +2222,9 @@ Conversão do domínio da freqüência para o domínio do tempo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt E(x,y,z,t)=\re{\vti[s]Ee^{j\omega t}}\end{equation}
+\begin_inset Formula \begin{eqnarray}
+\vt E(x,y,z,t) & = & \re{\vti[s]Ee^{j\omega t}}\\
+\vt H(x,y,z,t) & = & \re{\vti[s]He^{j\omega t}}\end{eqnarray}
 
 \end_inset
 
@@ -2220,6 +2241,21 @@ Equações de Maxwell na Forma Fasorial Diferencial
 \dvg{\vti[s]B} & = & 0\\
 \rot{\vti[s]E} & = & -j\omega\vti[s]B\\
 \rot{\vti[s]H} & = & \vti[s]J+j\omega\vti[s]D\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Relações Constitutivas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\vt D & = & \epsilon\vt E\\
+\vt B & = & \mu\vt H\\
+\vt J & = & \sigma\vt E\end{eqnarray*}
 
 \end_inset
 
@@ -2311,9 +2347,9 @@ Solução das equações de onda de Helmholtz, para caso geral:
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
 \vt E(z,t) & = & E_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)\ax\\
-a & a & +E_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ax\\
+ &  & +E_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ax\\
 \vt H(z,t) & = & H_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)\ay\\
-a & a & +H_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ay\end{eqnarray}
+ &  & +H_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ay\end{eqnarray}
 
 \end_inset
 
@@ -2443,6 +2479,36 @@ u_{p}=\frac{\omega}{\beta}\end{equation}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Comprimento de Onda
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\lambda=\frac{u_{p}}{f}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Nota: não confundir o símbolo 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ do comprimento de onda com o do fluxo concatenado na subseção 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "sub:Indutancia"
+
+\end_inset
+
+, pois referem-se a grandezas distintas.
 \end_layout
 
 \begin_layout Subsection
@@ -5341,7 +5407,7 @@ target "http://creativecommons.org/licenses/by-sa/3.0/legalcode"
 \end_layout
 
 \begin_layout Section
-Onde Adquirir este Material
+Onde Adquirir Este Material
 \end_layout
 
 \begin_layout Standard
