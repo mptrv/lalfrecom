@@ -2627,7 +2627,7 @@ Potência média temporal:
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\vti[ave]P=\frac{1}{2}\re{\pvv EH_{s}^{*}}\end{equation}
+\vti[ave]P=\frac{1}{2}\re{\pvv{E_{s}}{H_{s}}^{*}}\end{equation}
 
 \end_inset
 
@@ -2739,7 +2739,7 @@ Coefiente de transmissão:
 
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
-\tau_{TE} & = & \frac{E_{0}^{r}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{i}}{\eta_{2}\cos\theta_{i}+\eta_{1}\cos\theta_{t}}\end{eqnarray}
+\tau_{TE} & = & \frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{i}}{\eta_{2}\cos\theta_{i}+\eta_{1}\cos\theta_{t}}\end{eqnarray}
 
 \end_inset
 
@@ -2748,7 +2748,7 @@ Coefiente de transmissão:
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\tau_{TM}=\frac{E_{0}^{r}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{i}}{\eta_{2}\cos\theta_{t}+\eta_{1}\cos\theta_{i}}\end{equation}
+\tau_{TM}=\frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{t}}{\eta_{2}\cos\theta_{t}+\eta_{1}\cos\theta_{i}}\end{equation}
 
 \end_inset
 
@@ -2846,7 +2846,7 @@ No domínio da freqüência (para ondas harmônicas):
 
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
-\frac{\d V_{s}(z)}{\d z} & = & -(R'+j\omega L')I_{x}(z)\\
+\frac{\d V_{s}(z)}{\d z} & = & -(R'+j\omega L')I_{s}(z)\\
 \frac{\d I_{s}(z)}{\d z} & = & -(G'+j\omega C')V_{s}(z)\end{eqnarray}
 
 \end_inset
@@ -2928,7 +2928,7 @@ Impedância Característica
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-Z_{0}=\frac{V_{0}^{+}}{I_{0}^{+}}=\frac{-V_{0}^{-}}{I_{0}^{-}}=\sqrt{\frac{R'+j\omega L'}{G'+j\omega C'}}\end{equation}
+Z_{0}=\frac{V_{0}^{+}}{I_{0}^{+}}=-\frac{V_{0}^{-}}{I_{0}^{-}}=\sqrt{\frac{R'+j\omega L'}{G'+j\omega C'}}\end{equation}
 
 \end_inset
 
@@ -3115,7 +3115,7 @@ Operador Nabla:
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\frac{\partial}{\delx}\ax+\frac{\partial}{\dely}\ay+\frac{\partial}{\delz}\az\end{equation}
+\nabla=\frac{\partial}{\delx}\ax+\frac{\partial}{\dely}\ay+\frac{\partial}{\delz}\az\end{equation}
 
 \end_inset
 
@@ -3319,7 +3319,7 @@ Constantes
 Na 
 \begin_inset CommandInset ref
 LatexCommand prettyref
-reference "tab:Constantes-físicas"
+reference "tab:Constantes-fisicas"
 
 \end_inset
 
@@ -3340,7 +3340,7 @@ status open
 Constantes físicas.
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Constantes-físicas"
+name "tab:Constantes-fisicas"
 
 \end_inset
 
@@ -4035,7 +4035,7 @@ Nicrômio
 \begin_inset Text
 
 \begin_layout Plain Layout
-Míquel
+Níquel
 \end_layout
 
 \end_inset
@@ -4824,7 +4824,7 @@ status open
 \begin_layout Plain Layout
 Permeabilidade relativa para alguns materiais ferromagnéticos.
  Note-se que a permeabilidade dependerá fortemente da pureza dos materiais.
- Ainda, lembre-se que, a curva 
+ Ainda, lembra-se que a curva 
 \begin_inset Formula $B\times H$
 \end_inset
 
@@ -5311,7 +5311,10 @@ Este documento é disponibilizado sob a licensa abaixo descrita.
 \begin_layout Subsection*
 
 \series bold
-Creative Commons -- Atribuição-Compartilhamento pela mesma Licença 3.0 Unported
+Creative Commons -- Atribuição-Compartilhamento pela mesma Licença 3.0 
+\series default
+\emph on
+Unported
 \end_layout
 
 \begin_layout Standard
@@ -5557,7 +5560,7 @@ target "http://mirror.ctan.org/macros/latex/contrib/siunitx.zip"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "/home/mpt/Trabalhos/Projetos/lalfrecom/bibliografias/lalfrecom"
-options "plainnat"
+options "bibtotoc,plainnat"
 
 \end_inset
 
