@@ -1,0 +1,314 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language brazilian
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Elementos de Guia-de-Onda
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Fontes de RF
+\end_layout
+
+\begin_layout Subsection
+Klystron Reflex
+\end_layout
+
+\begin_layout Standard
+Gera RF por meio de modulação de um feixe de elétrons que atarvessa uma
+ cavidade 
+\end_layout
+
+\begin_layout Subsection
+Diodo Gunn
+\end_layout
+
+\begin_layout Standard
+Gera RF por meio de um elemento com comportamento semelhante ao do diodo
+ e quando há uma cavidade que o faça ressoar
+\end_layout
+
+\begin_layout Subsection
+Magnetron
+\end_layout
+
+\begin_layout Section
+Elementos Passivos para Medição
+\end_layout
+
+\begin_layout Subsection
+Detetor a Cristal
+\end_layout
+
+\begin_layout Standard
+Dispositivo construído com cristal, com propriedades semelhantes a um diodo
+ e detecta a envoltória da onda transmitida
+\end_layout
+
+\begin_layout Subsection
+Frequencimetro de Cavidade
+\end_layout
+
+\begin_layout Standard
+Variando a cavidade conseguimos ajustar a frequencia de ressonância e medi-la
+ por meio de uma escala
+\end_layout
+
+\begin_layout Subsection
+Termistor
+\end_layout
+
+\begin_layout Standard
+Contém um resistor variável com a temperatura e um elemento que absrove
+ a energia da onda e aumenta a temperaratura em torno do termistor.
+ Devido à variação de temperatura podemos verificar a resistência do resistor
+ por meio do conector coaxial disponibilizado.
+\end_layout
+
+\begin_layout Subsection
+Guia de Onda Fendido
+\end_layout
+
+\begin_layout Standard
+Consegue-se coletar uma amostra do campo em diferentes posições do guia
+\end_layout
+
+\begin_layout Subsection
+
+\emph on
+Line Tuners
+\end_layout
+
+\begin_layout Standard
+Faz ajustes entre a carga e a guia a fim de minimizar o descasamento existente
+ entre eles.
+\end_layout
+
+\begin_layout Section
+Elementos Passivos Gerais
+\end_layout
+
+\begin_layout Subsection
+Guia de Onda Elementar
+\end_layout
+
+\begin_layout Standard
+Local no qual a onda se propaga sem nenhum efeito adicional
+\end_layout
+
+\begin_layout Subsection
+Circulador
+\end_layout
+
+\begin_layout Standard
+No circulador a onda direta segue o fluxo porncipal e a onda refletida é
+ desviada para uma porta secundária.
+\end_layout
+
+\begin_layout Subsection
+Atenuador Variável Aletado
+\end_layout
+
+\begin_layout Standard
+Com a variação da aleta conseguimos alterar a cavidade 
+\end_layout
+
+\begin_layout Subsection
+Terminador Casado
+\end_layout
+
+\begin_layout Standard
+É um terminador ideal, o seja, a onda que é incidente não é refletida
+\end_layout
+
+\begin_layout Subsection
+Terminador em Curto Ajustável
+\end_layout
+
+\begin_layout Standard
+Quando necessitamos de uma cavidade com dimensões ajustáveis
+\end_layout
+
+\begin_layout Subsection
+Plano de Curto
+\end_layout
+
+\begin_layout Standard
+É o terminador cuja reflexão é total
+\end_layout
+
+\begin_layout Subsection
+Transição (Guia de Onda p/ Cabo coaxial)
+\end_layout
+
+\begin_layout Standard
+É um conversor de guia de onda para cabo coaxial, seno que na saída do cabo
+ caxial conseguiremos ligar o medidor de Potência
+\end_layout
+
+\begin_layout Subsection
+T-Mágico
+\end_layout
+
+\begin_layout Standard
+Possui duas saídas, sendo que uma sai o campo magnético e outra saí o campo
+ elétrico
+\end_layout
+
+\begin_layout Subsection
+T do Plano H
+\end_layout
+
+\begin_layout Standard
+Separa o campo magnético da onda
+\end_layout
+
+\begin_layout Subsection
+T do Plano E
+\end_layout
+
+\begin_layout Standard
+Separa o campo elétrico da onda
+\end_layout
+
+\begin_layout Subsubsection
+Atenuador Fixo
+\end_layout
+
+\begin_layout Standard
+Atenua a potência da onda por absorção
+\end_layout
+
+\begin_layout Subsection
+Antena Corneta
+\end_layout
+
+\begin_layout Standard
+Emissão da onda no ar, podendo até ser utilizada para transmissão de informação
+\end_layout
+
+\begin_layout Subsection
+Guia de Onda Curvo
+\end_layout
+
+\begin_layout Standard
+Geometria para adeuqação mecanica da instalação
+\end_layout
+
+\begin_layout Subsection
+Adaptador de Campo Vertical para Horizontal
+\end_layout
+
+\begin_layout Standard
+Servem para rotacionar o sentido do campo da Vertical para horizontal e
+ vice versa
+\end_layout
+
+\begin_layout Subsection
+Acopladores Direcionais
+\end_layout
+
+\begin_layout Standard
+Quando a onda passa pela porta principal 1, maior parte da onda passa pela
+ porta principal 2 e um pequena parte passa pela porta acoplado
+\end_layout
+
+\begin_layout Standard
+Quando a onda passa pela porta principal 2, nenhuma onda passa pela porta
+ acoplada e uma parte da onda é atenuada quando pela porta islada.
+ 
+\end_layout
+
+\begin_layout Subsection
+Plano Refletor
+\end_layout
+
+\begin_layout Standard
+Plano para reflexão de onda
+\end_layout
+
+\begin_layout Subsection
+Adaptador para Klystron
+\end_layout
+
+\begin_layout Standard
+Suporte para conexão da Kystron ao guia de onda
+\end_layout
+
+\begin_layout Section
+Acessórios
+\end_layout
+
+\begin_layout Subsection
+Suporte
+\end_layout
+
+\begin_layout Standard
+Base onde é fixado a haste de suporte
+\end_layout
+
+\begin_layout Subsection
+Haste do Suporte
+\end_layout
+
+\begin_layout Standard
+Aumentar a altura do guia de onda
+\end_layout
+
+\begin_layout Subsection
+Presilha
+\end_layout
+
+\begin_layout Standard
+Serve para unir elementos
+\end_layout
+
+\end_body
+\end_document
