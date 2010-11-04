@@ -57,9 +57,14 @@
  *	ampr3	: atuador do motor-de-passo de rotação - fase 3
  *	ampr4	: atuador do motor-de-passo de rotação - fase 4
  *
+ *	Notas:
+ *
+ *		.Os sensores quando ativos fornecem nível lógico 0.
+ *		.Os atuadores serão ativados em nível lógico 1.
  */
 
 #include <pic/pic16f877a.h>
+
 
 // Palavra de configuração.
 
@@ -68,14 +73,64 @@
 #endif
 unsigned int __at 0x2007  __CONFIG = CONFIG;
 
+
+//Definições dos sensores.
+#define	_Sza	(PORTB.0)
+#define _Sfcs	(PORTB.1)
+#define _Sfci	(PORTB.2)
+#define _Sgme	(PORTB.3)
+
+
 // Protótipos
 
+void Rotacionar(signed char passos);
+bool RotacaoZero(void);
 
+
+// Variáveis Globais
+
+static unsigned char passoMpr[4] = {0x08, 0x04, 0x02, 0x01};
+static unsigned char passoAtual = 0;
 
 
 /*******************************
  * FUNÇÕES
  ******************************/
+
+/**
+ * Gera um atraso específico para a rotação.
+ */
+void AtrasoRotacao(void) {
+}
+
+/**
+ * Rotaciona o mastro a quantidade de passos especificada. Se for um
+ * valor positivo, rotaciona no sentido anti-horário.
+ */
+void Rotacionar(signed char passos) {
+	
+	signed char sinal;
+
+	sinal = passos > 0 ? 1 : -1;
+
+	while (passos) {
+		passoAtual = (passoAtual + sinal) & 0x03;
+		passos -= sinal;
+		AtrasoRotacao();
+	}
+
+}
+
+/**
+ * Rotaciona o mastro até atingir o sensor de zero-absoluto.
+ * Nota: atualmente, considera-se que o sensor esteja funcionando
+ * adequadamente.
+ */
+void RotacaoZero(void) {
+	while (_Sza) {
+		Rotacionar(1);
+	}
+}
 
 
 /*******************************
