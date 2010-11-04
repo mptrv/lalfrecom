@@ -36,6 +36,29 @@
  *
  */
 
+/**
+ * Descrição das Variáveis
+ *
+ *	mpr		: motor-de-passo para rotação
+ *	mpi		: motor-de-passo para inclinação (ainda não existente na planta)
+ *	mpol	: motor CC para polarização (ainda não existente na planta)
+ *	me		: motor CA para elevação
+ *
+ *	Sza		: sensor de zero graus absoluto para a rotação
+ *	Sfcs	: sensor de fim-de-curso superior
+ *	Sfci	: sensor de fim-de-curso inferior
+ *	Sgme	: sensor de giro do motor de elevação
+ *
+ *	ab		: atuador da botoeira
+ *	afcs	: atuador do fim-de-curso superior
+ *	afci	: atuador do fim-de-curso inferior
+ *	ampr1	: atuador do motor-de-passo de rotação - fase 1
+ *	ampr2	: atuador do motor-de-passo de rotação - fase 2
+ *	ampr3	: atuador do motor-de-passo de rotação - fase 3
+ *	ampr4	: atuador do motor-de-passo de rotação - fase 4
+ *
+ */
+
 #include <pic/pic16f877a.h>
 
 // Palavra de configuração.
@@ -46,6 +69,8 @@
 unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 // Protótipos
+
+
 
 
 /*******************************
