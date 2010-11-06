@@ -75,16 +75,17 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 
 //Definições dos sensores.
-#define	_Sza	(PORTB.0)
-#define _Sfcs	(PORTB.1)
-#define _Sfci	(PORTB.2)
-#define _Sgme	(PORTB.3)
+#define	_Sza	(RB0)
+#define _Sfcs	(RB1)
+#define _Sfci	(RB2)
+#define _Sgme	(RB3)
 
 
 // Protótipos
 
 void Rotacionar(signed char passos);
-bool RotacaoZero(void);
+void RotacaoZero(void);
+void AtrasoRotacao(void);
 
 
 // Variáveis Globais
@@ -138,5 +139,9 @@ void RotacaoZero(void) {
  ******************************/
 
 void main(void) {
+
+	Rotacionar(10);
+	Rotacionar(-10);
+	RotacaoZero();
 
 }
