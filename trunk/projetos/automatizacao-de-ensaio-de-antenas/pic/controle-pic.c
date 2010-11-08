@@ -75,22 +75,36 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 
 //Definições dos sensores.
-#define	_Sza	(RB0)
-#define _Sfcs	(RB1)
-#define _Sfci	(RB2)
-#define _Sgme	(RB3)
+
+#define	_Sza	(RA0)
+#define _Sfcs	(RA1)
+#define _Sfci	(RA2)
+#define _Sgme	(RA3)
+
+//Definições dos atuadores.
+
+#define _ab		(RB0)
+#define _afcs	(RB1)
+#define _afci	(RB2)
+#define _ampr1	(RB4)
+#define _ampr2	(RB5)
+#define _ampr3	(RB6)
+#define _ampr4	(RB7)
+
+#define _mpr	(PORTB)
 
 
 // Protótipos
 
+void AtrasoRotacao(void);
+void AcionarMpr(void);
 void Rotacionar(signed char passos);
 void RotacaoZero(void);
-void AtrasoRotacao(void);
 
 
 // Variáveis Globais
 
-static unsigned char passoMpr[4] = {0x08, 0x04, 0x02, 0x01};
+static unsigned char passoMpr[4] = {0x80, 0x40, 0x20, 0x10};
 static unsigned char passoAtual = 0;
 
 
@@ -102,6 +116,13 @@ static unsigned char passoAtual = 0;
  * Gera um atraso específico para a rotação.
  */
 void AtrasoRotacao(void) {
+}
+
+/**
+ * Atualiza as saídas ligadas ao Mpr.
+ */
+void AcionarMpr(void) {
+	_mpr = ((_mpr & 0x0F) | (passoMpr[passoAtual]));
 }
 
 /**
@@ -118,6 +139,7 @@ void Rotacionar(signed char passos) {
 		passoAtual = (passoAtual + sinal) & 0x03;
 		passos -= sinal;
 		AtrasoRotacao();
+		AcionarMpr();
 	}
 
 }
@@ -140,8 +162,20 @@ void RotacaoZero(void) {
 
 void main(void) {
 
-	Rotacionar(10);
-	Rotacionar(-10);
-	RotacaoZero();
+	//Configurações de entrada e saída.
+	
+	ADCON1 = 0x07;
+	TRISA = 0xFF;
+	TRISB = 0x00;
+
+	// Laço principal.
+	
+	while (1) {
+
+		Rotacionar(10);
+		Rotacionar(-10);
+		RotacaoZero();
+
+	}
 
 }
