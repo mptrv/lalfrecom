@@ -1,7 +1,7 @@
 # Compilação de "Controle-PIC".
 
 CC=sdcc
-CFLAGS=-V -mpic14 -p16f877a --debug-xtra
+CFLAGS=-V -mpic14 -p16f877a
 
 includedir=/usr/local/share/sdcc/non-free/include
 libdir=/usr/local/share/sdcc/non-free/lib/pic

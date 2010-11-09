@@ -113,9 +113,25 @@ static unsigned char passoAtual = 0;
  ******************************/
 
 /**
+ * Gera um atraso múltiplo de 10ms @ fosc = 4 MHz.
+ *	TODO: Conferir se o atraso confere.
+ */
+void Atraso_10ms(unsigned char fator) {
+
+	unsigned char temp00;
+	unsigned char temp01;
+
+	while (fator--)
+		for (temp01 = 10; temp01; temp01--)
+			for (temp00 = 250; temp00; temp00--) ;
+
+}
+
+/**
  * Gera um atraso específico para a rotação.
  */
 void AtrasoRotacao(void) {
+	Atraso_10ms(10);
 }
 
 /**
