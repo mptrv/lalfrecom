@@ -29,15 +29,13 @@
  *
  * Comando atual para compilação:
  *
- *	$ sdcc -V -mpic14 -p16f877a -I /usr/local/share/sdcc/non-free/include \
- *		-L /usr/local/share/sdcc/non-free/lib/pic $* \
- *      && echo -e "\nSUCESSO: Compilação concluída!\n" \
- *		|| echo -e "\n* ERRO: Compilação não concluída! *\n"
+ *		$ make
  *
  */
 
 /**
  * Descrição das Variáveis
+ * --------- --- ---------
  *
  *	mpr		: motor-de-passo para rotação
  *	mpi		: motor-de-passo para inclinação (ainda não existente na planta)
@@ -61,6 +59,15 @@
  *
  *		.Os sensores quando ativos fornecem nível lógico 0.
  *		.Os atuadores serão ativados em nível lógico 1.
+ *
+ *
+ * Estados de Comando do Motor de Elevação
+ * ------- -- ------- -- ----- -- --------
+ *
+ *		S0 : subir
+ *		S1 : pára subida
+ *		S2 : descer
+ *		S4 : pára descida
  */
 
 #include <pic/pic16f877a.h>
@@ -104,7 +111,7 @@ void RotacaoZero(void);
 
 // Variáveis Globais
 
-static unsigned char passoMpr[4] = {0x80, 0x40, 0x20, 0x10};
+static unsigned char passoMpr[4] = {0x70, 0xB0, 0xD0, 0xE0};
 static unsigned char passoAtual = 0;
 
 
@@ -131,7 +138,7 @@ void Atraso_10ms(unsigned char fator) {
  * Gera um atraso específico para a rotação.
  */
 void AtrasoRotacao(void) {
-	Atraso_10ms(10);
+	Atraso_10ms(5);
 }
 
 /**
@@ -171,6 +178,21 @@ void RotacaoZero(void) {
 	}
 }
 
+/**
+ * Recolhe o mastro, isto é, fá-lo descer até o 'fci'. Ao término,
+ * o estado de comando do 'me' será S2 (descida parada).
+ */
+void Recolher(void) {
+	{
+		Rotacionar(1);
+	}
+if (_Sfci) {
+		_afcs = 1;
+		_afci = 0;
+		// ...
+	}
+}
+
 
 /*******************************
  * PROGRAMA PRINCIPAL
@@ -188,8 +210,10 @@ void main(void) {
 	
 	while (1) {
 
-		Rotacionar(10);
-		Rotacionar(-10);
+		//Rotacionar(150);
+		//Rotacionar(150);
+		//Rotacionar(-150);
+		///Rotacionar(-150);
 		RotacaoZero();
 
 	}
