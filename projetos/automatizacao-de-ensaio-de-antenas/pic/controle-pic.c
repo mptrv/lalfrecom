@@ -113,6 +113,34 @@ void RotacaoZero(void);
 
 static unsigned char passoMpr[4] = {0x70, 0xB0, 0xD0, 0xE0};
 static unsigned char passoAtual = 0;
+static bool Sobe = true;
+static volatile bool EstouroTempo = false;
+static volatile unsigned char ContIntTmr1 = 125;
+
+
+/*******************************
+ * INTERRUPÇÕES
+ ******************************/
+
+void TrataInterrupcoes(void) __interrupt (0) {
+
+
+	/*
+	 * Após 125 estouros de TMR1, a variável 'EstouroTempo' será setada e
+	 * a interrupção de TMR1 será desabilitada. A interrupção poderá ser
+	 * novamente habilitada ao se chamar 'IniciaBaseTempo()'.
+	 */
+	if (TMR1IF) {
+		TMR1IF = 0;
+		if (!(--ContIntTmr1)) {
+			EstouroTempo = true;
+			ContIntTmr1 = 125;
+			TMR1IE = 0;
+		}
+
+	}
+
+}
 
 
 /*******************************
@@ -179,19 +207,71 @@ void RotacaoZero(void) {
 }
 
 /**
+ * Executa um pulso na botoeira.
+ */
+void PulsarBotoeira() {
+	_ab = 1;
+	Atraso_10ms(10);
+	_ab = 0;
+}
+
+/**
  * Recolhe o mastro, isto é, fá-lo descer até o 'fci'. Ao término,
  * o estado de comando do 'me' será S2 (descida parada).
  */
 void Recolher(void) {
-	{
-		Rotacionar(1);
-	}
-if (_Sfci) {
+	
+	if (_Sfci) {
+		
 		_afcs = 1;
 		_afci = 0;
-		// ...
+
+		do {
+			PulsarBotoeira();
+			IniciaBaseTempo(2000);
+			while (_Sgme && (!EstouroTempo)) ;
+		while (_Sgme);
+		while (_Sfci) ;
+
+		Sobe = false;
+
 	}
+
 }
+
+/**
+ * Eleva ou abaixa o mastro de acordo com a quantidade de pulsos desejada ou
+ * até atingir o 'fcs'. Se a quantidade de passos for negativa, o mastro será
+ * abaixado.
+ */
+void Elevar(signed char passos) {
+
+	if (passos > 0) {
+		if (_Sfcs) {
+			if (!Sobe) {
+				PulsarBotoeira();
+				PulsarBotoeira();
+				Sobe = true;
+			}
+			_afcs = 0;
+			_afci = 0;
+			while (passos-- && _Sfcs) ;
+		}
+	} else {
+		if (_Sfci) {
+			if (Sobe) {
+				PulsarBotoeira();
+				PulsarBotoeira();
+				Sobe = false;
+			}
+			_afcs = 0;
+			_afci = 0;
+			while (passos++ && _Sfci) ;
+		}
+	}
+
+}
+
 
 
 /*******************************
@@ -200,11 +280,14 @@ if (_Sfci) {
 
 void main(void) {
 
-	//Configurações de entrada e saída.
+	// Configurações de entrada e saída.
 	
 	ADCON1 = 0x07;
 	TRISA = 0xFF;
 	TRISB = 0x00;
+
+	// Configurações do TMR1.
+	// ...
 
 	// Laço principal.
 	
