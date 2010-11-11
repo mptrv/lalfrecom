@@ -70,7 +70,11 @@
  *		S4 : pára descida
  */
 
+
 #include <pic/pic16f877a.h>
+
+
+// DEFINIÇÕES
 
 
 // Palavra de configuração.
@@ -81,14 +85,14 @@
 unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 
-//Definições dos sensores.
+// Sensores.
 
 #define	_Sza	(RA0)
 #define _Sfcs	(RA1)
 #define _Sfci	(RA2)
 #define _Sgme	(RA3)
 
-//Definições dos atuadores.
+// Atuadores.
 
 #define _ab		(RB0)
 #define _afcs	(RB1)
@@ -100,6 +104,11 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 #define _mpr	(PORTB)
 
+// Falso e verdadeiro.
+
+#define false	0
+#define true	!false
+
 
 // Protótipos
 
@@ -107,15 +116,27 @@ void AtrasoRotacao(void);
 void AcionarMpr(void);
 void Rotacionar(signed char passos);
 void RotacaoZero(void);
-
+void TrataInterrupcoes(void) __interrupt (0);
+void IniciaBaseTempo(unsigned int ms);
+void PulsarBotoeira(void);
+void Recolher(void);
+void Elevar(signed char passos);
 
 // Variáveis Globais
 
 static unsigned char passoMpr[4] = {0x70, 0xB0, 0xD0, 0xE0};
 static unsigned char passoAtual = 0;
-static bool Sobe = true;
-static volatile bool EstouroTempo = false;
+static unsigned char Sobe = true;
+static volatile unsigned char EstouroTempo = false;
 static volatile unsigned char ContIntTmr1 = 125;
+
+union {
+	static volatile unsigned int Vi_Tmr1 = 0;
+	struct {
+		static volatile unsigned char Vi_Tmr1_H = 0;
+		static volatile unsigned int Vi_Tmr1_L = 0;
+	}
+};
 
 
 /*******************************
@@ -124,20 +145,20 @@ static volatile unsigned char ContIntTmr1 = 125;
 
 void TrataInterrupcoes(void) __interrupt (0) {
 
-
 	/*
 	 * Após 125 estouros de TMR1, a variável 'EstouroTempo' será setada e
-	 * a interrupção de TMR1 será desabilitada. A interrupção poderá ser
-	 * novamente habilitada ao se chamar 'IniciaBaseTempo()'.
+	 * a contagem de TMR1 será paralizada. Esta poderá ser reabilitada
+	 * ao se chamar 'IniciaBaseTempo()'.
 	 */
 	if (TMR1IF) {
 		TMR1IF = 0;
 		if (!(--ContIntTmr1)) {
 			EstouroTempo = true;
 			ContIntTmr1 = 125;
-			TMR1IE = 0;
+			TMR1ON = 0;
+		} else {
+			TMR1 = Vi_Tmr1;
 		}
-
 	}
 
 }
@@ -160,6 +181,16 @@ void Atraso_10ms(unsigned char fator) {
 		for (temp01 = 10; temp01; temp01--)
 			for (temp00 = 250; temp00; temp00--) ;
 
+}
+
+/**
+ * Inicia a base de tempo definida pelo TMR1. Após a quantidade de milisegundos
+ * fornecida, a variável global 'EstouroTempo' será setada.
+ */
+void IniciaBaseTempo(unsigned int ms) {
+	TMR1 = (Vi_Tmr1 = 0xFFFF - ms + 1);
+	EstouroTempo = false;
+	TMR1ON = 1;
 }
 
 /**
@@ -209,7 +240,7 @@ void RotacaoZero(void) {
 /**
  * Executa um pulso na botoeira.
  */
-void PulsarBotoeira() {
+void PulsarBotoeira(void) {
 	_ab = 1;
 	Atraso_10ms(10);
 	_ab = 0;
@@ -287,7 +318,12 @@ void main(void) {
 	TRISB = 0x00;
 
 	// Configurações do TMR1.
-	// ...
+	T1CON = 0x30;
+
+	// Habilitação das interrupções.
+	TMR1IE = 1;
+	PEIE = 1;
+	GEIE = 1;	
 
 	// Laço principal.
 	
