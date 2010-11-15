@@ -132,8 +132,8 @@ static volatile unsigned char ContIntTmr1 = 125;
 
 typedef union {
 	struct {
-		unsigned char H;
 		unsigned char L;
+		unsigned char H;
 	};
 	unsigned int HL;
 } __UintHL_t;
