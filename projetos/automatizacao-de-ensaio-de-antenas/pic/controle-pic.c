@@ -130,13 +130,35 @@ static unsigned char Sobe = true;
 static volatile unsigned char EstouroTempo = false;
 static volatile unsigned char ContIntTmr1 = 125;
 
-union {
-	static volatile unsigned int Vi_Tmr1 = 0;
+typedef union {
 	struct {
-		static volatile unsigned char Vi_Tmr1_H = 0;
-		static volatile unsigned int Vi_Tmr1_L = 0;
-	}
-};
+		unsigned char H;
+		unsigned char L;
+	};
+	unsigned int HL;
+} __UintHL_t;
+
+static volatile __UintHL_t Vi_Tmr1;
+
+//static volatile unsigned int __sfr __at(TMR1L_ADDR) TMR1;
+
+/*
+ * typedef union {
+  struct {
+    unsigned char CCP1M0:1;
+    unsigned char CCP1M1:1;
+    unsigned char CCP1M2:1;
+    unsigned char CCP1M3:1;
+    unsigned char CCP1Y:1;
+    unsigned char CCP1X:1;
+    unsigned char :1;
+    unsigned char :1;
+  };
+} __CCP1CON_bits_t;
+extern volatile __CCP1CON_bits_t __at(CCP1CON_ADDR) CCP1CON_bits;
+*/
+
+
 
 
 /*******************************
@@ -157,7 +179,8 @@ void TrataInterrupcoes(void) __interrupt (0) {
 			ContIntTmr1 = 125;
 			TMR1ON = 0;
 		} else {
-			TMR1 = Vi_Tmr1;
+			TMR1H = Vi_Tmr1.H;
+			TMR1L = Vi_Tmr1.L;
 		}
 	}
 
@@ -188,7 +211,9 @@ void Atraso_10ms(unsigned char fator) {
  * fornecida, a variável global 'EstouroTempo' será setada.
  */
 void IniciaBaseTempo(unsigned int ms) {
-	TMR1 = (Vi_Tmr1 = 0xFFFF - ms + 1);
+	Vi_Tmr1.HL = 0xFFFF - ms + 1;
+	TMR1H = Vi_Tmr1.H;
+	TMR1L = Vi_Tmr1.L;
 	EstouroTempo = false;
 	TMR1ON = 1;
 }
@@ -261,7 +286,8 @@ void Recolher(void) {
 			PulsarBotoeira();
 			IniciaBaseTempo(2000);
 			while (_Sgme && (!EstouroTempo)) ;
-		while (_Sgme);
+		} while (_Sgme);
+
 		while (_Sfci) ;
 
 		Sobe = false;
@@ -286,7 +312,10 @@ void Elevar(signed char passos) {
 			}
 			_afcs = 0;
 			_afci = 0;
-			while (passos-- && _Sfcs) ;
+			while (passos--) {
+				while (_Sgme && _Sfcs) ;
+				while (!_Sgme && _Sfcs) ;
+			}
 		}
 	} else {
 		if (_Sfci) {
@@ -297,7 +326,10 @@ void Elevar(signed char passos) {
 			}
 			_afcs = 0;
 			_afci = 0;
-			while (passos++ && _Sfci) ;
+			while (passos++) {
+				while (_Sgme && _Sfci) ;
+				while (!_Sgme && _Sfci) ;
+			}
 		}
 	}
 
@@ -323,7 +355,7 @@ void main(void) {
 	// Habilitação das interrupções.
 	TMR1IE = 1;
 	PEIE = 1;
-	GEIE = 1;	
+	GIE = 1;	
 
 	// Laço principal.
 	
@@ -333,7 +365,8 @@ void main(void) {
 		//Rotacionar(150);
 		//Rotacionar(-150);
 		///Rotacionar(-150);
-		RotacaoZero();
+		//RotacaoZero();
+		Recolher();
 
 	}
 
