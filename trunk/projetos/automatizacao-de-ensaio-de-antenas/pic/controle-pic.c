@@ -197,10 +197,13 @@ void TrataInterrupcoes(void) __interrupt (0) {
  */
 void Atraso_10ms(unsigned char fator) {
 
-	unsigned char temp00;
-	unsigned char temp01;
+	static unsigned char temp00;
+	static unsigned char temp01;
+	static unsigned char temp02;
+	
+	temp02 = fator;
 
-	while (fator--)
+	while (temp02--)
 		for (temp01 = 10; temp01; temp01--)
 			for (temp00 = 250; temp00; temp00--) ;
 
@@ -303,7 +306,11 @@ void Recolher(void) {
  */
 void Elevar(signed char passos) {
 
-	if (passos > 0) {
+	static signed char l_passos;
+	
+	l_passos = passos;
+
+	if (l_passos > -1) {
 		if (_Sfcs) {
 			if (!Sobe) {
 				PulsarBotoeira();
@@ -312,10 +319,11 @@ void Elevar(signed char passos) {
 			}
 			_afcs = 0;
 			_afci = 0;
-			while (passos--) {
+			while (l_passos--) {
 				while (_Sgme && _Sfcs) ;
 				while (!_Sgme && _Sfcs) ;
 			}
+			_afcs = 1;
 		}
 	} else {
 		if (_Sfci) {
@@ -326,10 +334,11 @@ void Elevar(signed char passos) {
 			}
 			_afcs = 0;
 			_afci = 0;
-			while (passos++) {
+			while (l_passos++) {
 				while (_Sgme && _Sfci) ;
 				while (!_Sgme && _Sfci) ;
 			}
+			_afci = 1;
 		}
 	}
 
@@ -361,12 +370,14 @@ void main(void) {
 	
 	while (1) {
 
-		//Rotacionar(150);
-		//Rotacionar(150);
-		//Rotacionar(-150);
-		///Rotacionar(-150);
+		//Rotacionar(100);
+		//Rotacionar(100);
+		//Rotacionar(-100);
+		///Rotacionar(-100);
 		//RotacaoZero();
 		Recolher();
+		Elevar(75);
+		Elevar(-75);
 
 	}
 
