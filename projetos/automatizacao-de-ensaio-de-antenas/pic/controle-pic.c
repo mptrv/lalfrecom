@@ -270,8 +270,11 @@ void RotacaoZero(void) {
  */
 void PulsarBotoeira(void) {
 	_ab = 1;
-	Atraso_10ms(10);
+	Atraso_10ms(50);
+	Atraso_10ms(50);
 	_ab = 0;
+	Atraso_10ms(50);
+	Atraso_10ms(50);
 }
 
 /**
@@ -301,7 +304,9 @@ void Recolher(void) {
 
 /**
  * Eleva ou abaixa o mastro de acordo com a quantidade de pulsos desejada ou
- * até atingir o 'fcs'. Se a quantidade de passos for negativa, o mastro será
+ * até a
+	}
+tingir o 'fcs'. Se a quantidade de passos for negativa, o mastro será
  * abaixado.
  */
 void Elevar(signed char passos) {
@@ -366,18 +371,28 @@ void main(void) {
 	PEIE = 1;
 	GIE = 1;	
 
+	// Testes.
+	
+	//Recolher();
+
+
 	// Laço principal.
 	
 	while (1) {
+		//_ab = 1;
+		//Atraso_10ms(50);
+		//Atraso_10ms(50);
+		//_ab = 0;
+		//Atraso_10ms(50);
+		//Atraso_10ms(50);
 
 		//Rotacionar(100);
 		//Rotacionar(100);
 		//Rotacionar(-100);
 		///Rotacionar(-100);
-		//RotacaoZero();
-		Recolher();
-		Elevar(75);
-		Elevar(-75);
+		RotacaoZero();
+		//Elevar(1);
+		//Elevar(-75);
 
 	}
 
