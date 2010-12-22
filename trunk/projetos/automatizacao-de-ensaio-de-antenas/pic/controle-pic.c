@@ -1,7 +1,7 @@
 /**
  * Controle PIC - Interface de controle de mastro de antena por meio do PIC.
  *
- * Copyright (C) 2010  Marcelo Porto Trevizan, Felipe Montagneri
+ * Copyright (C) 2010  Marcelo Porto Trevizan
  *                 
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,12 +24,48 @@
  * Este arquivo poderá ser compilado com o SDCC (sdcc.sourceforge.net) e o
  * GPUtils (gputils.sourceforge.net). Se for compilado utilizando outro
  * compilador, algumas alterações poderão ser necessárias. A simulação poderá
- * ser realizada com o GPSim (gpsim.sourceforge.net), tando do código-fonte em C
- * quanto do correspondente \Assembly\ gerado.
+ * ser realizada com o GPSim (gpsim.sourceforge.net), tanto do código-fonte
+ * em C quanto do correspondente /Assembly/ gerado. Um bom ambiente para
+ * desenvolvimento e gravação, inclusive com suporte ao ICD2 via USB, é o
+ * PikLab (piklab.sourceforge.net).
  *
  * Comando atual para compilação:
  *
  *		$ make
+ *
+ * Comando atual para a programação, no modo interativo:
+ *
+ *		$ piklab-prog -i -p icd2 -d 16f877a -t usb \
+ *			--firmware-dir /usr/local/share/ICD2/ --target-self-powered
+ *
+ *		> connect
+ *		> program controle-pic.hex
+ *
+ */
+
+/**
+ * Referências:
+ *
+ * [1] Configuração para gravação com ICD2 no Linux:
+ *		<http://acassis.wordpress.com/2007/09/28/usando-o-programador-de-pic-icd2-no-linux>
+ *		Acessado em 22-12-2010.
+ *
+ * [2] Uso do compilador SDCC e do simulador GpSim:
+ *		<http://www.micahcarrick.com/pic-c-programming-linux.html>
+ *		Acessado em 22-12-2010.
+ *
+ */
+
+/**
+ * Observações:
+ *
+ * Uso do ICD2:
+ *
+ *		O usuário deve ter direito de escrita nos dispositivos USB. Para isto,
+ *		pode-se acrescentar o usuário ao grupo 'usb', definir '/dev/bus/usb' e
+ *		seus arquivos e subdiretórios como pertencentes a 'root:usb' e aplicar o
+ *		modo '775' a eles. Depois, fazer 'logout' e 'login', para entrar em vigor
+ *		as alterações de grupo do usuário.
  *
  */
 
@@ -42,23 +78,22 @@
  *	mpol	: motor CC para polarização (ainda não existente na planta)
  *	me		: motor CA para elevação
  *
- *	Sza		: sensor de zero graus absoluto para a rotação
- *	Sfcs	: sensor de fim-de-curso superior
- *	Sfci	: sensor de fim-de-curso inferior
- *	Sgme	: sensor de giro do motor de elevação
+ *	Sza		: sensor de zero graus absoluto para a rotação (0)
+ *	Sfcs	: sensor de fim-de-curso superior (0)
+ *	Sfci	: sensor de fim-de-curso inferior (0)
+ *	Sgme	: sensor de giro do motor de elevação (1)
  *
- *	ab		: atuador da botoeira
- *	afcs	: atuador do fim-de-curso superior
- *	afci	: atuador do fim-de-curso inferior
- *	ampr1	: atuador do motor-de-passo de rotação - fase 1
- *	ampr2	: atuador do motor-de-passo de rotação - fase 2
- *	ampr3	: atuador do motor-de-passo de rotação - fase 3
- *	ampr4	: atuador do motor-de-passo de rotação - fase 4
+ *	ab		: atuador da botoeira (1)
+ *	afcs	: atuador do fim-de-curso superior (1)
+ *	afci	: atuador do fim-de-curso inferior (1)
+ *	ampr1	: atuador do motor-de-passo de rotação - fase 1 (0)
+ *	ampr2	: atuador do motor-de-passo de rotação - fase 2 (0)
+ *	ampr3	: atuador do motor-de-passo de rotação - fase 3 (0)
+ *	ampr4	: atuador do motor-de-passo de rotação - fase 4 (0)
  *
  *	Notas:
  *
- *		.Os sensores quando ativos fornecem nível lógico 0.
- *		.Os atuadores serão ativados em nível lógico 1.
+ *		.Entre parêntesis, o nível lógico de "ativado".
  *
  *
  * Estados de Comando do Motor de Elevação
@@ -90,7 +125,7 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 #define	_Sza	(RA0)
 #define _Sfcs	(RA1)
 #define _Sfci	(RA2)
-#define _Sgme	(RA3)
+#define _Sgme	(!RA3)
 
 // Atuadores.
 
@@ -271,9 +306,7 @@ void RotacaoZero(void) {
 void PulsarBotoeira(void) {
 	_ab = 1;
 	Atraso_10ms(50);
-	Atraso_10ms(50);
 	_ab = 0;
-	Atraso_10ms(50);
 	Atraso_10ms(50);
 }
 
@@ -360,20 +393,40 @@ void main(void) {
 	// Configurações de entrada e saída.
 	
 	ADCON1 = 0x07;
-	TRISA = 0xFF;
-	TRISB = 0x00;
+	TRISA = 0x0F;
+	TRISB = 0x00;	
+	TRISC = 0x00;	
+	TRISD = 0x00;	
+	TRISE = 0x00;	
 
 	// Configurações do TMR1.
 	T1CON = 0x30;
 
+	// Inicializações.
+	_ab = 0;
+	_afcs = 0;
+	_afci = 0;
+	_ampr1 = 1;
+	_ampr2 = 1;
+	_ampr3 = 1;
+	_ampr4 = 1;
+
 	// Habilitação das interrupções.
 	TMR1IE = 1;
 	PEIE = 1;
-	GIE = 1;	
+	GIE = 0;	
 
-	// Testes.
+	// Atraso de inicialização.
+	Atraso_10ms(100);
 	
-	//Recolher();
+	PulsarBotoeira();
+	Atraso_10ms(100);
+	Atraso_10ms(100);
+	PulsarBotoeira();
+	PulsarBotoeira();
+	Atraso_10ms(100);
+	Atraso_10ms(100);
+	PulsarBotoeira();
 
 
 	// Laço principal.
@@ -393,6 +446,7 @@ void main(void) {
 		RotacaoZero();
 		//Elevar(1);
 		//Elevar(-75);
+		Recolher();
 
 	}
 
