@@ -414,7 +414,7 @@ void main(void) {
 	// Habilitação das interrupções.
 	TMR1IE = 1;
 	PEIE = 1;
-	GIE = 0;	
+	GIE = 1;	
 
 	// Atraso de inicialização.
 	Atraso_10ms(100);
