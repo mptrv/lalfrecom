@@ -79,8 +79,6 @@
  *	me		: motor CA para elevação
  *
  *	Sza		: sensor de zero graus absoluto para a rotação (0)
- *	Sfcs	: sensor de fim-de-curso superior (0)
- *	Sfci	: sensor de fim-de-curso inferior (0)
  *	Sgme	: sensor de giro do motor de elevação (1)
  *
  *	ab		: atuador da botoeira (1)
@@ -123,9 +121,7 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 // Sensores.
 
 #define	_Sza	(RA0)
-#define _Sfcs	(RA1)
-#define _Sfci	(RA2)
-#define _Sgme	(!RA3)
+#define _Sgme	(!RA1)
 
 // Atuadores.
 
@@ -315,23 +311,34 @@ void PulsarBotoeira(void) {
  * o estado de comando do 'me' será S2 (descida parada).
  */
 void Recolher(void) {
-	
-	if (_Sfci) {
+
+		unsigned char i;
 		
+		// Somente aceita a condição de descida.
 		_afcs = 1;
 		_afci = 0;
 
-		do {
+		// Põe o mastro em movimento de descida.
+		for (i = 0; i < 4; i++ ) {
 			PulsarBotoeira();
 			IniciaBaseTempo(2000);
 			while (_Sgme && (!EstouroTempo)) ;
-		} while (_Sgme);
+			while (!_Sgme && (!EstouroTempo)) ;
+			if (!EstouroTempo) break;
+		}
 
-		while (_Sfci) ;
+		// Espera o mastro parar de se movimentar para baixo.
+		do {
+			IniciaBaseTempo(2000);
+			while (_Sgme && (!EstouroTempo)) ;
+			while (!_Sgme && (!EstouroTempo)) ;
+		} while (!EstouroTempo);
 
+		// Indica que o mastro desceu.
 		Sobe = false;
 
-	}
+		// Desativa atuadores de emulação de fim-de-curso.
+		_afcs = 0;
 
 }
 
@@ -343,7 +350,7 @@ tingir o 'fcs'. Se a quantidade de passos for negativa, o mastro será
  * abaixado.
  */
 void Elevar(signed char passos) {
-
+	/*
 	static signed char l_passos;
 	
 	l_passos = passos;
@@ -379,6 +386,7 @@ void Elevar(signed char passos) {
 			_afci = 1;
 		}
 	}
+	*/
 
 }
 
@@ -393,7 +401,7 @@ void main(void) {
 	// Configurações de entrada e saída.
 	
 	ADCON1 = 0x07;
-	TRISA = 0x0F;
+	TRISA = 0x03;
 	TRISB = 0x00;	
 	TRISC = 0x00;	
 	TRISD = 0x00;	
@@ -428,6 +436,11 @@ void main(void) {
 	Atraso_10ms(100);
 	PulsarBotoeira();
 
+	Recolher();
+
+	IniciaBaseTempo(15000);
+	while (!EstouroTempo) ;
+
 
 	// Laço principal.
 	
@@ -446,7 +459,7 @@ void main(void) {
 		RotacaoZero();
 		//Elevar(1);
 		//Elevar(-75);
-		Recolher();
+		//Recolher();
 
 	}
 
