@@ -210,6 +210,7 @@ void TrataInterrupcoes(void) __interrupt (0) {
 			ContIntTmr1 = 125;
 			TMR1ON = 0;
 		} else {
+			TMR1L = 0;
 			TMR1H = Vi_Tmr1.H;
 			TMR1L = Vi_Tmr1.L;
 		}
@@ -231,12 +232,12 @@ void Atraso_10ms(unsigned char fator) {
 	static unsigned char temp00;
 	static unsigned char temp01;
 	static unsigned char temp02;
-	
-	temp02 = fator;
 
+	temp02 = fator;
+	
 	while (temp02--)
-		for (temp01 = 10; temp01; temp01--)
-			for (temp00 = 250; temp00; temp00--) ;
+		for (temp01 = 10; temp01--; )
+			for (temp00 = 60; temp00--; ) ;
 
 }
 
@@ -244,11 +245,15 @@ void Atraso_10ms(unsigned char fator) {
  * Inicia a base de tempo definida pelo TMR1. Após a quantidade de milisegundos
  * fornecida, a variável global 'EstouroTempo' será setada.
  */
-void IniciaBaseTempo(unsigned int ms) {
+void IniciaBaseTempo(unsigned int ms) {	
+	GIE = 0;
+	TMR1ON = 0;
 	Vi_Tmr1.HL = 0xFFFF - ms + 1;
 	TMR1H = Vi_Tmr1.H;
 	TMR1L = Vi_Tmr1.L;
 	EstouroTempo = false;
+	TMR1IF = 0;
+	GIE = 1;
 	TMR1ON = 1;
 }
 
@@ -312,7 +317,7 @@ void PulsarBotoeira(void) {
  */
 void Recolher(void) {
 
-		unsigned char i;
+		static unsigned char i;
 		
 		// Somente aceita a condição de descida.
 		_afcs = 1;
@@ -323,7 +328,7 @@ void Recolher(void) {
 			PulsarBotoeira();
 			IniciaBaseTempo(2000);
 			while (_Sgme && (!EstouroTempo)) ;
-			while (!_Sgme && (!EstouroTempo)) ;
+			while ((!_Sgme) && (!EstouroTempo)) ;
 			if (!EstouroTempo) break;
 		}
 
@@ -331,7 +336,7 @@ void Recolher(void) {
 		do {
 			IniciaBaseTempo(2000);
 			while (_Sgme && (!EstouroTempo)) ;
-			while (!_Sgme && (!EstouroTempo)) ;
+			while ((!_Sgme) && (!EstouroTempo)) ;
 		} while (!EstouroTempo);
 
 		// Indica que o mastro desceu.
@@ -427,20 +432,7 @@ void main(void) {
 	// Atraso de inicialização.
 	Atraso_10ms(100);
 	
-	PulsarBotoeira();
-	Atraso_10ms(100);
-	Atraso_10ms(100);
-	PulsarBotoeira();
-	PulsarBotoeira();
-	Atraso_10ms(100);
-	Atraso_10ms(100);
-	PulsarBotoeira();
-
 	Recolher();
-
-	IniciaBaseTempo(15000);
-	while (!EstouroTempo) ;
-
 
 	// Laço principal.
 	
