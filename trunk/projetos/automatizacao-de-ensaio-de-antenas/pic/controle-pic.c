@@ -100,7 +100,7 @@
  *		S0 : subir
  *		S1 : pára subida
  *		S2 : descer
- *		S4 : pára descida
+ *		S3 : pára descida
  */
 
 
@@ -140,6 +140,10 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 #define false	0
 #define true	!false
 
+// Constantes
+
+#define viContIntTmr1	125
+
 
 // Protótipos
 
@@ -159,7 +163,7 @@ static unsigned char passoMpr[4] = {0x70, 0xB0, 0xD0, 0xE0};
 static unsigned char passoAtual = 0;
 static unsigned char Sobe = true;
 static volatile unsigned char EstouroTempo = false;
-static volatile unsigned char ContIntTmr1 = 125;
+static volatile unsigned char ContIntTmr1 = viContIntTmr1;
 
 typedef union {
 	struct {
@@ -207,7 +211,7 @@ void TrataInterrupcoes(void) __interrupt (0) {
 		TMR1IF = 0;
 		if (!(--ContIntTmr1)) {
 			EstouroTempo = true;
-			ContIntTmr1 = 125;
+			ContIntTmr1 = viContIntTmr1;
 			TMR1ON = 0;
 		} else {
 			TMR1L = 0;
@@ -251,6 +255,7 @@ void IniciaBaseTempo(unsigned int ms) {
 	Vi_Tmr1.HL = 0xFFFF - ms + 1;
 	TMR1H = Vi_Tmr1.H;
 	TMR1L = Vi_Tmr1.L;
+	ContIntTmr1 = viContIntTmr1;
 	EstouroTempo = false;
 	TMR1IF = 0;
 	GIE = 1;
@@ -313,7 +318,7 @@ void PulsarBotoeira(void) {
 
 /**
  * Recolhe o mastro, isto é, fá-lo descer até o 'fci'. Ao término,
- * o estado de comando do 'me' será S2 (descida parada).
+ * o estado de comando do 'me' será S2 (descer).
  */
 void Recolher(void) {
 
@@ -332,7 +337,33 @@ void Recolher(void) {
 			if (!EstouroTempo) break;
 		}
 
-		// Espera o mastro parar de se movimentar para baixo.
+		// Espera o mastro parar de se movimentar para baixo -- isto é,
+		// supõe-se que ele atingiu o 'fci'.
+		do {
+			IniciaBaseTempo(2000);
+			while (_Sgme && (!EstouroTempo)) ;
+			while ((!_Sgme) && (!EstouroTempo)) ;
+		} while (!EstouroTempo);
+
+		// Desativa atuador de emulação de fim-de-curso superior.
+		_afcs = 0;
+
+		// Faz com que o mastro suba um pouco.
+		for (i = 0; i < 4; i++ ) {
+			PulsarBotoeira();
+			IniciaBaseTempo(2000);
+			while (_Sgme && (!EstouroTempo)) ;
+			while ((!_Sgme) && (!EstouroTempo)) ;
+			if (!EstouroTempo) break;
+		}
+
+		// Faz o mastro parar e mover-se para baixo.
+		PulsarBotoeira();
+		PulsarBotoeira();
+
+		// Novamente, espera o mastro parar de se movimentar para
+		// baixo -- agora, será garantido que a central de controle
+		// do 'me' encontra-se no estado S2.
 		do {
 			IniciaBaseTempo(2000);
 			while (_Sgme && (!EstouroTempo)) ;
@@ -341,9 +372,6 @@ void Recolher(void) {
 
 		// Indica que o mastro desceu.
 		Sobe = false;
-
-		// Desativa atuadores de emulação de fim-de-curso.
-		_afcs = 0;
 
 }
 
