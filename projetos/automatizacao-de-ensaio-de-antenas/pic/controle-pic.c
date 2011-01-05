@@ -263,11 +263,17 @@ void IniciaBaseTempo(unsigned int ms) {
 }
 
 /**
+ * Pára a base de tempo definida pelo TMR1.
+ */
+#define ParaBaseTempo()		TMR1ON=0
+
+/**
  * Gera um atraso específico para a rotação.
  */
-void AtrasoRotacao(void) {
-	Atraso_10ms(5);
-}
+//void AtrasoRotacao(void) {
+//	Atraso_10ms(5);
+//}
+#define AtrasoRotacao()		Atraso_10ms(5)
 
 /**
  * Atualiza as saídas ligadas ao Mpr.
@@ -283,12 +289,14 @@ void AcionarMpr(void) {
 void Rotacionar(signed char passos) {
 	
 	static signed char sinal;
+	static signed char l_passos;
 
 	sinal = passos > 0 ? 1 : -1;
+	l_passos = passos;
 
-	while (passos) {
+	while (l_passos) {
 		passoAtual = (passoAtual + sinal) & 0x03;
-		passos -= sinal;
+		l_passos -= sinal;
 		AtrasoRotacao();
 		AcionarMpr();
 	}
@@ -322,56 +330,59 @@ void PulsarBotoeira(void) {
  */
 void Recolher(void) {
 
-		static unsigned char i;
+	static unsigned char i;
 		
-		// Somente aceita a condição de descida.
-		_afcs = 1;
-		_afci = 0;
+	// Somente aceita a condição de descida.
+	_afcs = 1;
+	_afci = 0;
 
-		// Põe o mastro em movimento de descida.
-		for (i = 0; i < 4; i++ ) {
-			PulsarBotoeira();
-			IniciaBaseTempo(2000);
-			while (_Sgme && (!EstouroTempo)) ;
-			while ((!_Sgme) && (!EstouroTempo)) ;
-			if (!EstouroTempo) break;
-		}
-
-		// Espera o mastro parar de se movimentar para baixo -- isto é,
-		// supõe-se que ele atingiu o 'fci'.
-		do {
-			IniciaBaseTempo(2000);
-			while (_Sgme && (!EstouroTempo)) ;
-			while ((!_Sgme) && (!EstouroTempo)) ;
-		} while (!EstouroTempo);
-
-		// Desativa atuador de emulação de fim-de-curso superior.
-		_afcs = 0;
-
-		// Faz com que o mastro suba um pouco.
-		for (i = 0; i < 4; i++ ) {
-			PulsarBotoeira();
-			IniciaBaseTempo(2000);
-			while (_Sgme && (!EstouroTempo)) ;
-			while ((!_Sgme) && (!EstouroTempo)) ;
-			if (!EstouroTempo) break;
-		}
-
-		// Faz o mastro parar e mover-se para baixo.
+	// Põe o mastro em movimento de descida.
+	for (i = 0; i < 4; i++ ) {
 		PulsarBotoeira();
+		IniciaBaseTempo(2000);
+		while (_Sgme && (!EstouroTempo)) ;
+		while ((!_Sgme) && (!EstouroTempo)) ;
+		if (!EstouroTempo) break;
+	}
+
+	// Espera o mastro parar de se movimentar para baixo -- isto é,
+	// supõe-se que ele atingiu o 'fci'.
+	do {
+		IniciaBaseTempo(2000);
+		while (_Sgme && (!EstouroTempo)) ;
+		while ((!_Sgme) && (!EstouroTempo)) ;
+	} while (!EstouroTempo);
+
+	// Desativa atuador de emulação de fim-de-curso superior.
+	_afcs = 0;
+
+	// Faz com que o mastro suba um pouco.
+	for (i = 0; i < 4; i++ ) {
 		PulsarBotoeira();
+		IniciaBaseTempo(2000);
+		while (_Sgme && (!EstouroTempo)) ;
+		while ((!_Sgme) && (!EstouroTempo)) ;
+		if (!EstouroTempo) break;
+	}
 
-		// Novamente, espera o mastro parar de se movimentar para
-		// baixo -- agora, será garantido que a central de controle
-		// do 'me' encontra-se no estado S2.
-		do {
-			IniciaBaseTempo(2000);
-			while (_Sgme && (!EstouroTempo)) ;
-			while ((!_Sgme) && (!EstouroTempo)) ;
-		} while (!EstouroTempo);
+	// Faz o mastro parar e mover-se para baixo.
+	PulsarBotoeira();
+	PulsarBotoeira();
 
-		// Indica que o mastro desceu.
-		Sobe = false;
+	// Novamente, espera o mastro parar de se movimentar para
+	// baixo -- agora, será garantido que a central de controle
+	// do 'me' encontra-se no estado S2.
+	do {
+		IniciaBaseTempo(2000);
+		while (_Sgme && (!EstouroTempo)) ;
+		while ((!_Sgme) && (!EstouroTempo)) ;
+	} while (!EstouroTempo);
+
+	// Para a base de tempo.
+	ParaBaseTempo();
+
+	// Indica que o mastro desceu.
+	Sobe = false;
 
 }
 
@@ -384,23 +395,39 @@ void Elevar(signed char passos) {
 	
 	static signed char l_passos;
 	static signed char sinal;
+	static unsigned char i;
 
 	sinal = passos > -1 ? 1 : -1;
-	l_passos = passos;
+	l_passos = passos + sinal;
 
 	if (((sinal > 0) && !Sobe) || (sinal < 0) && Sobe) {
 		PulsarBotoeira();
 		PulsarBotoeira();
 		Sobe = !Sobe;
 	}
+
 	_afcs = 0;
 	_afci = 0;
+
+	// Espera a elevação ou abaixamento do mastro pela quantidade de pulsos
+	// especificada.
 	EstouroTempo = false;
-	while ((l_passos-=sinal) && !EstouroTempo) {
-		IniciaBaseTempo(2000);
-		while (_Sgme && !EstouroTempo) ;
-		while (!_Sgme && !EstouroTempo) ;
+	for (i = 2; i--; ) {
+		while ((l_passos-=sinal) && !EstouroTempo) {
+			IniciaBaseTempo(2000);
+			while (_Sgme && !EstouroTempo) ;
+			while (!_Sgme && !EstouroTempo) ;
+		}
+		if (EstouroTempo) {
+			PulsarBotoeira();
+			EstouroTempo = false;
+		} else {
+			break;
+		}
 	}
+
+	ParaBaseTempo();
+	
 	_afcs = Sobe;
 	_afci = !Sobe;
 
@@ -413,6 +440,9 @@ void Elevar(signed char passos) {
  ******************************/
 
 void main(void) {
+	
+	static unsigned char i;
+	static unsigned char j;
 
 	// Configurações de entrada e saída.
 	
@@ -443,27 +473,37 @@ void main(void) {
 	// Atraso de inicialização.
 	Atraso_10ms(100);
 	
+	// Posicionamento do mastro em suas referências.
 	Recolher();
+	RotacaoZero();
 
-	// Laço principal.
+	// Uma volta completa.
+	for (i = 0; i < 8; i++) {
+		Atraso_10ms(100);
+		Rotacionar(125);
+	}
+
+	// Uma volta completa no sentido contrário.
+	for (i = 0; i < 8; i++) {
+		Atraso_10ms(100);
+		Rotacionar(-125);
+	}
+
+	// Dois pulsos na altura.
+	Atraso_10ms(100);
+	Elevar(2);
+
+	// Termina de subir até o 'fcs'.
+	Atraso_10ms(100);
+	Elevar(17);
+
+	// Desce até a metade.
+	Atraso_10ms(100);
+	Elevar(-9);
 	
+	// Laço principal.	
+
 	while (1) {
-		//_ab = 1;
-		//Atraso_10ms(50);
-		//Atraso_10ms(50);
-		//_ab = 0;
-		//Atraso_10ms(50);
-		//Atraso_10ms(50);
-
-		//Rotacionar(100);
-		//Rotacionar(100);
-		//Rotacionar(-100);
-		///Rotacionar(-100);
-		RotacaoZero();
-		//Elevar(1);
-		//Elevar(-75);
-		//Recolher();
-
 	}
 
 }
