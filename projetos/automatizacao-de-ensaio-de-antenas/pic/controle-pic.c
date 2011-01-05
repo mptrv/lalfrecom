@@ -282,7 +282,7 @@ void AcionarMpr(void) {
  */
 void Rotacionar(signed char passos) {
 	
-	signed char sinal;
+	static signed char sinal;
 
 	sinal = passos > 0 ? 1 : -1;
 
@@ -377,49 +377,32 @@ void Recolher(void) {
 
 /**
  * Eleva ou abaixa o mastro de acordo com a quantidade de pulsos desejada ou
- * até a
-	}
-tingir o 'fcs'. Se a quantidade de passos for negativa, o mastro será
- * abaixado.
+ * até atingir o 'fcs'. Se a quantidade de passos for negativa, o mastro será
+ * abaixado, limitando-se ao 'fci'.
  */
 void Elevar(signed char passos) {
-	/*
-	static signed char l_passos;
 	
+	static signed char l_passos;
+	static signed char sinal;
+
+	sinal = passos > -1 ? 1 : -1;
 	l_passos = passos;
 
-	if (l_passos > -1) {
-		if (_Sfcs) {
-			if (!Sobe) {
-				PulsarBotoeira();
-				PulsarBotoeira();
-				Sobe = true;
-			}
-			_afcs = 0;
-			_afci = 0;
-			while (l_passos--) {
-				while (_Sgme && _Sfcs) ;
-				while (!_Sgme && _Sfcs) ;
-			}
-			_afcs = 1;
-		}
-	} else {
-		if (_Sfci) {
-			if (Sobe) {
-				PulsarBotoeira();
-				PulsarBotoeira();
-				Sobe = false;
-			}
-			_afcs = 0;
-			_afci = 0;
-			while (l_passos++) {
-				while (_Sgme && _Sfci) ;
-				while (!_Sgme && _Sfci) ;
-			}
-			_afci = 1;
-		}
+	if (((sinal > 0) && !Sobe) || (sinal < 0) && Sobe) {
+		PulsarBotoeira();
+		PulsarBotoeira();
+		Sobe = !Sobe;
 	}
-	*/
+	_afcs = 0;
+	_afci = 0;
+	EstouroTempo = false;
+	while ((l_passos-=sinal) && !EstouroTempo) {
+		IniciaBaseTempo(2000);
+		while (_Sgme && !EstouroTempo) ;
+		while (!_Sgme && !EstouroTempo) ;
+	}
+	_afcs = Sobe;
+	_afci = !Sobe;
 
 }
 
