@@ -109,6 +109,10 @@
 
 // DEFINIÇÕES
 
+// Diretivas de compilação.
+
+#define DEMO
+
 
 // Palavra de configuração.
 
@@ -458,6 +462,7 @@ void main(void) {
 	
 	static unsigned char i;
 	static unsigned char j;
+	static signed char passos;
 
 	// Configurações de entrada e saída.
 	
@@ -491,35 +496,75 @@ void main(void) {
 	// Posicionamento do mastro em suas referências.
 	Recolher();
 	RotacaoZero();
-/*	
-	// Uma volta completa.
+
+	/* --- Código de demonstração. ------------------------ */
+
+#ifdef DEMO
+
+	// Uma volta completa no sentido anti-horário.
 	for (i = 0; i < 8; i++) {
 		Atraso_10ms(100);
 		Rotacionar(125);
 	}
 
-	// Uma volta completa no sentido contrário.
+	// Uma volta completa no sentido horário.
 	for (i = 0; i < 8; i++) {
 		Atraso_10ms(100);
 		Rotacionar(-125);
 	}
-*/	
+
 	// Sobe até o 'fcs'.
 	Atraso_10ms(100);
 	Elevar(21);
 		
+	// Desce até o 'fci'.
 	Atraso_10ms(100);
 	Elevar(-21);
 
+	// Sobe até a metade da excursão.
+	Atraso_10ms(100);
+	Elevar(10);
+
+	// Rotaciona um pouco no sentido horário.
+	Rotacionar(-100);
+
 	// Sobe pulso-a-pulso até os 'fcs'.
+	//		Este código em execução com a planta apresenta perda de pulsos,
+	//		conforme relatado pela revisão r82 do projeto 'lalfrecom'.
+	/*
 	for (i = 21; i--; ) {
 		Atraso_10ms(100);
 		Elevar(1);
 	}
+	*/
 
-	// Laço principal.	
+	// Laço infinito.
 
 	while (1) {
+
+		passos = -14;
+
+		Atraso_10ms(100);
+
+		Recolher();
+		RotacaoZero();
+
+		Atraso_10ms(100);
+		Rotacionar(7*14);
+
+		for (j = 3; j--; ) {
+			Elevar(5);
+			for (i = 14; i--; ) {
+				Atraso_10ms(100);
+				Rotacionar(passos);
+			}
+			passos = -passos;
+		}
+
 	}
+
+#endif // DEMO
+
+	/* --- Fim do código de demonstração. ----------------- */
 
 }
