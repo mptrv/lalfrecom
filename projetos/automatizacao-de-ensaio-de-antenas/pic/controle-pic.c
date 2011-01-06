@@ -326,7 +326,7 @@ void PulsarBotoeira(void) {
 
 /**
  * Recolhe o mastro, isto é, fá-lo descer até o 'fci'. Ao término,
- * o estado de comando do 'me' será S2 (descer).
+ * o estado de comando do 'me' será S3 (descida parada).
  */
 void Recolher(void) {
 
@@ -378,18 +378,27 @@ void Recolher(void) {
 		while ((!_Sgme) && (!EstouroTempo)) ;
 	} while (!EstouroTempo);
 
-	// Para a base de tempo.
+	// Pára a base de tempo.
 	ParaBaseTempo();
 
-	// Indica que o mastro desceu.
-	Sobe = false;
+	// Deixa os emuladores de fim-de-curso ativados.
+	_afcs = 1;
+	_afci = 1;
+
+	// Aciona o estado S3.
+	PulsarBotoeira();
+
+	// Indica que o mastro desceu e está pronto para subir.
+	Sobe = true;
 
 }
 
 /**
  * Eleva ou abaixa o mastro de acordo com a quantidade de pulsos desejada ou
  * até atingir o 'fcs'. Se a quantidade de passos for negativa, o mastro será
- * abaixado, limitando-se ao 'fci'.
+ * abaixado, limitando-se ao 'fci'. Ao término, o estado da central do 'me'
+ * será um dos dois estados de parada e tal que, com mais um pulso na botoeira,
+ * ele se movimentaria no mesmo sentido.
  */
 void Elevar(signed char passos) {
 	
@@ -397,42 +406,48 @@ void Elevar(signed char passos) {
 	static signed char sinal;
 	static unsigned char i;
 
+	// Verifica se irá subir ou descer e ajusta a quantidade de passos.
 	sinal = passos > -1 ? 1 : -1;
 	l_passos = passos + sinal;
 
+	// Altera o estado da central de controle para um de movimento.
+	//		NOTA: o mastro ainda não se movimentará, pois é esperado
+	//		que ambos os sensores de fim-de-curso estejam acionados.
+	PulsarBotoeira();
+
+	// Inverte o sentido de movimentação, se necessário.
 	if (((sinal > 0) && !Sobe) || (sinal < 0) && Sobe) {
 		PulsarBotoeira();
 		PulsarBotoeira();
 		Sobe = !Sobe;
 	}
 
-	_afcs = 0;
-	_afci = 0;
-
+	// Permite o movimento apenas para o sentido desejado.
+	_afcs = !Sobe;
+	_afci = Sobe;
+	
 	// Espera a elevação ou abaixamento do mastro pela quantidade de pulsos
 	// especificada.
 	EstouroTempo = false;
-	for (i = 2; i--; ) {
-		while ((l_passos-=sinal) && !EstouroTempo) {
-			IniciaBaseTempo(2000);
-			while (_Sgme && !EstouroTempo) ;
-			while (!_Sgme && !EstouroTempo) ;
-		}
-		if (EstouroTempo) {
-			PulsarBotoeira();
-			EstouroTempo = false;
-		} else {
-			break;
-		}
+	while ((l_passos-=sinal) && !EstouroTempo) {
+		IniciaBaseTempo(2000);
+		while (_Sgme && !EstouroTempo) ;
+		while (!_Sgme && !EstouroTempo) ;
 	}
 
+	// Pára a base de tempo.
 	ParaBaseTempo();
-	
-	_afcs = Sobe;
-	_afci = !Sobe;
+
+	// Pára a movimentação do mastro.	
+	_afcs = 1;
+	_afci = 1;
+
+	// Ajusta o estado da central de controle do 'me'.
+	PulsarBotoeira();
+	PulsarBotoeira();
+	PulsarBotoeira();
 
 }
-
 
 
 /*******************************
@@ -458,8 +473,8 @@ void main(void) {
 
 	// Inicializações.
 	_ab = 0;
-	_afcs = 0;
-	_afci = 0;
+	_afcs = 1;
+	_afci = 1;
 	_ampr1 = 1;
 	_ampr2 = 1;
 	_ampr3 = 1;
@@ -476,7 +491,7 @@ void main(void) {
 	// Posicionamento do mastro em suas referências.
 	Recolher();
 	RotacaoZero();
-
+/*	
 	// Uma volta completa.
 	for (i = 0; i < 8; i++) {
 		Atraso_10ms(100);
@@ -488,19 +503,20 @@ void main(void) {
 		Atraso_10ms(100);
 		Rotacionar(-125);
 	}
-
-	// Dois pulsos na altura.
+*/	
+	// Sobe até o 'fcs'.
 	Atraso_10ms(100);
-	Elevar(2);
-
-	// Termina de subir até o 'fcs'.
+	Elevar(21);
+		
 	Atraso_10ms(100);
-	Elevar(17);
+	Elevar(-21);
 
-	// Desce até a metade.
-	Atraso_10ms(100);
-	Elevar(-9);
-	
+	// Sobe pulso-a-pulso até os 'fcs'.
+	for (i = 21; i--; ) {
+		Atraso_10ms(100);
+		Elevar(1);
+	}
+
 	// Laço principal.	
 
 	while (1) {
