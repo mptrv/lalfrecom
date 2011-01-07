@@ -10,6 +10,7 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 
 void TrataInterrupcoes(void) __interrupt (0);
+void Atraso_10ms(unsigned char fator);
 
 
 
@@ -42,17 +43,36 @@ void TrataInterrupcoes(void) __interrupt (0)
 
 	if (TXIF)
 	 {
-
+		RB3 = !RB3;
+		while (!TRMT) ;
+		TXREG = 0;
+		TXEN = 0;
 	 }
-
-
  
 }
 
+/**
+ * Gera um atraso múltiplo de 10ms @ fosc = 4 MHz.
+ */
+void Atraso_10ms(unsigned char fator) {
+
+	static unsigned char temp00;
+	static unsigned char temp01;
+	static unsigned char temp02;
+
+	temp02 = fator;
+	
+	while (temp02--)
+		for (temp01 = 10; temp01--; )
+			for (temp00 = 60; temp00--; ) ;
+
+}
 
 void main(void)
 
 {
+
+	static unsigned char caracter;
 	
 	ADCON1 = 0x07;
 	TRISA = 0x00;
@@ -75,16 +95,25 @@ void main(void)
 	CREN = 1;
 	
 	PEIE = 1;
-	GIE = 0;
+	GIE = 1;
+	
+	PORTA = 0x00;
+	PORTB = 0x00;
+	PORTC = 0x00;
+	PORTD = 0x00;
+	PORTE = 0x00;
+		
+	Atraso_10ms(100);
 
 	PORTB = 0xAA;
-
 	PORTD = 0xFF;
-	RB7 = 1;
-
 	
+	caracter = 'a';
 	while(1) // laço infinito
     {
+		TXEN = 1;
+		TXREG = caracter++;
+		Atraso_10ms(100);
     }
 }
   
