@@ -6,33 +6,21 @@
 	#define CONFIG	_CP_OFF & _DEBUG_OFF & _WRT_OFF & _CPD_OFF & _LVP_OFF & _BODEN_OFF & _PWRTE_ON & _WDT_OFF & _XT_OSC
 #endif
 unsigned int __at 0x2007  __CONFIG = CONFIG;
- 
 
 
 void TrataInterrupcoes(void) __interrupt (0);
 void Atraso_10ms(unsigned char fator);
-
+void putchar (unsigned char c);
+void putstring (unsigned char *s);
+unsigned char getchar();
 
 
 void TrataInterrupcoes(void) __interrupt (0)
 {
 
-	static unsigned char leRCSTA;
-	static unsigned char leRCREG;
-	static unsigned char erro_rx;
-	static unsigned char erro_tx;
-
 	if (RCIF)
 	 {
-		 leRCSTA = RCSTA;
-		 erro_rx = leRCSTA | 0x06;
-		 leRCREG = RCREG;
-		 if (erro_rx)
-		 {
-			 CREN = 0;
-			 CREN = 1;
-		 }
-		 switch (leRCREG)
+		switch (getchar())
 		 {
 			 case 'a': RB0 = 1; break;
 			 case 'b': RB0 = 0; break;
@@ -43,13 +31,13 @@ void TrataInterrupcoes(void) __interrupt (0)
 
 	if (TXIF)
 	 {
-		RB3 = !RB3;
 		while (!TRMT) ;
 		TXREG = 0;
 		TXEN = 0;
 	 }
  
 }
+
 
 /**
  * Gera um atraso múltiplo de 10ms @ fosc = 4 MHz.
@@ -67,6 +55,45 @@ void Atraso_10ms(unsigned char fator) {
 			for (temp00 = 60; temp00--; ) ;
 
 }
+
+void putchar (unsigned char c) {
+
+	TXEN = 1;
+	TXREG = c;
+
+}
+
+unsigned char getchar() {
+
+	static unsigned char leRCSTA;
+	static unsigned char leRCREG;
+	static unsigned char erro_rx;
+
+	leRCSTA = RCSTA;
+	erro_rx = leRCSTA | 0x06;
+	leRCREG = RCREG;
+	if (erro_rx)
+	{
+		CREN = 0;
+		CREN = 1;
+	}
+
+	return (leRCREG);
+
+}
+
+void putstring (unsigned char *s) {
+
+	static unsigned char *l_s;
+
+	l_s = s;
+
+	while (*l_s) {
+		putchar(*l_s++);
+	}
+
+}
+
 
 void main(void)
 
@@ -111,9 +138,14 @@ void main(void)
 	caracter = 'a';
 	while(1) // laço infinito
     {
-		TXEN = 1;
-		TXREG = caracter++;
+		putstring(">>O caracter e': - ");
+		putchar(caracter++);
+		putstring("||");
+		putstring(" --- ");
+		putchar(10);
+		putchar(13);
 		Atraso_10ms(100);
     }
+
 }
   
