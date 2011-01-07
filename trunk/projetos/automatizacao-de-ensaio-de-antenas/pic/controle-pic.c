@@ -233,7 +233,6 @@ void TrataInterrupcoes(void) __interrupt (0) {
 
 /**
  * Gera um atraso múltiplo de 10ms @ fosc = 4 MHz.
- *	TODO: Conferir se o atraso confere.
  */
 void Atraso_10ms(unsigned char fator) {
 
@@ -274,9 +273,6 @@ void IniciaBaseTempo(unsigned int ms) {
 /**
  * Gera um atraso específico para a rotação.
  */
-//void AtrasoRotacao(void) {
-//	Atraso_10ms(5);
-//}
 #define AtrasoRotacao()		Atraso_10ms(5)
 
 /**
