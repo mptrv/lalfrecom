@@ -109,7 +109,6 @@
  *		S3 : pára descida
  */
 
-
 #include <pic/pic16f877a.h>
 
 
@@ -118,6 +117,7 @@
 // Diretivas de compilação.
 
 #define DEMO
+#undef DEMO
 
 // Tipos definidos pelo usuário.
 
@@ -161,10 +161,7 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 // Protótipos
 
-void Ola(void);
-bool Inicializar(void);
-bool Finalizar(void);
-void Executar(void (*Comando)(signed char arg));
+void Executar(void *Comando, signed char arg);
 
 void Atraso_10ms(unsigned char fator);
 void IniciaBaseTempo(unsigned int ms);
@@ -172,10 +169,19 @@ void IniciaBaseTempo(unsigned int ms);
 void AcionarMpr(void);
 void PulsarBotoeira(void);
 
+bool Inicializar(signed char sem_uso);
+bool Finalizar(signed char sem_uso);
 bool Rotacionar(signed char passos);
-bool RotacaoZero(void);
-bool Recolher(void);
+bool RotacaoZero(signed char sem_uso);
+bool Recolher(signed char sem_uso);
 bool Elevar(signed char passos);
+
+void Ola(void);
+void Entendido(void);
+void Feito(void);
+void ErroComando(void);
+void ErroExecucao(void);
+void Abortado(void);
 
 void putchar (unsigned char c);
 void putstring (unsigned char *s);
@@ -244,22 +250,22 @@ void TrataInterrupcoes(void) __interrupt (0) {
 				 Ola();
 				 break;
 			 case 'I':
-				 Executar(&Inicializar());
+				 Executar((char *) &Inicializar, arg);
 				 break;
 			 case 'Z':
-				 Executar(&RotacaoZero());
+				 Executar((char *) &RotacaoZero, arg);
 				 break;
 			 case 'L':
-				 Executar(&Recolher());
+				 Executar((char *) &Recolher, arg);
 				 break;
 			 case 'R':
-				 Executar(&Rotacionar(arg));
+				 Executar((char *) &Rotacionar, arg);
 				 break;
 			 case 'E':
-				 Executar(&Elevar(arg));
+				 Executar((char *) &Elevar, arg);
 				 break;
 			 case 'F':
-				 Executar(&Fizalizar());
+				 Executar((char *) &Finalizar, arg);
 				 break;
 			 case 'A':
 				 Entendido();
@@ -389,14 +395,59 @@ void putstring (unsigned char *s) {
  * Invoca o comando e envia as respostas "Entendido", "Feito" ou
  * "Erro de execução" via RS232.
  */
-void Executar(void (*Comando)(signed char arg)) {
+void Executar(void *Comando, signed char arg) {
+	void (*l_Comando)(signed char);
+	l_Comando = Comando;
+	l_Comando(arg);
+}
+
+/**
+ * Resposta "Ola".
+ */
+void Ola(void) {
+	putstring("Ola");
+}
+
+/**
+ * Resposta "Entendido".
+ */
+void Entendido(void) {
+	putstring("Entendido");
+}
+
+/**
+ * Resposta "Feito".
+ */
+void Feito(void) {
+	putstring("Feito");
+}
+
+/**
+ * Resposta "Erro: comando".
+ */
+void ErroComando(void) {
+	putstring("Erro: comando");
+}
+
+/**
+ * Resposta "Erro: execucao".
+ */
+void ErroExecucao(void) {
+	putstring("Erro: execucao");
+}
+
+/**
+ * Resposta "Abortado".
+ */
+void Arbortado(void) {
+	putstring("Abortado");
 }
 
 /**
  * Rotaciona o mastro a quantidade de passos especificada. Se for um
  * valor positivo, rotaciona no sentido anti-horário.
  */
-void Rotacionar(signed char passos) {
+bool Rotacionar(signed char passos) {
 	
 	static signed char sinal;
 	static signed char l_passos;
@@ -411,6 +462,31 @@ void Rotacionar(signed char passos) {
 		AcionarMpr();
 	}
 
+	return true;
+
+}
+
+/**
+ * Inicialização padrão do sistema: posicionamento da parte mecânica nas
+ * referências.
+ */
+bool Inicializar(signed char sem_uso) {
+	sem_uso = 0;
+	RotacaoZero(0);
+	Recolher(0);
+	return true;
+}
+
+/**
+ * Finalização padrão do sistem: posicionamento da parte mecânica de
+ * forma a não fatigar sensores mecânicos.
+ */
+bool Finalizar(signed char sem_uso) {
+	sem_uso = 0;
+	Recolher(0);
+	RotacaoZero(0);
+	Rotacionar(20);
+	return true;
 }
 
 /**
@@ -418,10 +494,12 @@ void Rotacionar(signed char passos) {
  * Nota: atualmente, considera-se que o sensor esteja funcionando
  * adequadamente.
  */
-void RotacaoZero(void) {
+bool RotacaoZero(signed char sem_uso) {
+	sem_uso = 0;
 	while (_Sza) {
 		Rotacionar(1);
 	}
+	return true;
 }
 
 /**
@@ -438,9 +516,11 @@ void PulsarBotoeira(void) {
  * Recolhe o mastro, isto é, fá-lo descer até o 'fci'. Ao término,
  * o estado de comando do 'me' será S3 (descida parada).
  */
-void Recolher(void) {
+bool Recolher(signed char sem_uso) {
 
 	static unsigned char i;
+	
+	sem_uso = 0;
 		
 	// Somente aceita a condição de descida.
 	_afcs = 1;
@@ -501,6 +581,8 @@ void Recolher(void) {
 	// Indica que o mastro desceu e está pronto para subir.
 	Sobe = true;
 
+	return true;
+
 }
 
 /**
@@ -510,7 +592,7 @@ void Recolher(void) {
  * será um dos dois estados de parada e tal que, com mais um pulso na botoeira,
  * ele se movimentaria no mesmo sentido.
  */
-void Elevar(signed char passos) {
+bool Elevar(signed char passos) {
 	
 	static signed char l_passos;
 	static signed char sinal;
@@ -556,6 +638,8 @@ void Elevar(signed char passos) {
 	PulsarBotoeira();
 	PulsarBotoeira();
 	PulsarBotoeira();
+
+	return true;
 
 }
 
@@ -631,8 +715,8 @@ void main(void) {
 #ifdef DEMO
 
 	// Posicionamento do mastro em suas referências.
-	Recolher();
-	RotacaoZero();
+	Recolher(0);
+	RotacaoZero(0);
 
 	// Uma volta completa no sentido anti-horário.
 	for (i = 0; i < 8; i++) {
@@ -679,8 +763,8 @@ void main(void) {
 
 		Atraso_10ms(100);
 
-		Recolher();
-		RotacaoZero();
+		Recolher(0);
+		RotacaoZero(0);
 
 		Atraso_10ms(100);
 		Rotacionar(7*14);
