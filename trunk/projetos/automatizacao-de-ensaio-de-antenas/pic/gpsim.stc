@@ -1,4 +1,3 @@
 load s controle-pic.cod
 frequency 4e6
 load c controle-pic.stc
-break e _Elevar

@@ -30,12 +30,15 @@ p16f877a.tmr1_freq = 32768
 p16f877a.xpos = 72
 p16f877a.ypos = 72
 
-
+# USART
+module load usart USART
+USART.txbaud = 9600
 
 # Connections:
-node Sza
-attach Sza porta0
-
+node nrx
+node ntx
+attach nrx portc7 pin(USART.TXPIN)
+attach ntx portc6 pin(USART.RXPIN)
 
 
 # End.
