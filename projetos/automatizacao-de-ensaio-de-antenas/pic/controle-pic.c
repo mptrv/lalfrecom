@@ -242,6 +242,8 @@ void TrataInterrupcoes(void) __interrupt (0) {
 	 */
 	if (RCIF) {
 
+		Abortar = false;
+
 		com = getchar();
 		arg = getchar();
 
@@ -280,11 +282,13 @@ void TrataInterrupcoes(void) __interrupt (0) {
 	/*
 	 * Aguarda o término da transmissão anterior.
 	 */
+/*
 	if (TXIF) {
 		while (!TRMT) ;
 		TXREG = 0;
 		TXEN = 0;
 	 }
+*/
 
 }
 
@@ -349,8 +353,9 @@ void AcionarMpr(void) {
  */
 void putchar (unsigned char c) {
 
-	TXEN = 1;
+	while (!TRMT) ;
 	TXREG = c;
+	//TXEN = 1;
 
 }
 
@@ -362,6 +367,9 @@ unsigned char getchar() {
 	static unsigned char leRCSTA;
 	static unsigned char leRCREG;
 	static unsigned char erro_rx;
+
+	//Verif. nec. desta linha:
+	while (!RCIF) ; // Espera...
 
 	leRCSTA = RCSTA;
 	erro_rx = leRCSTA | 0x06;
@@ -399,48 +407,6 @@ void Executar(void *Comando, signed char arg) {
 	void (*l_Comando)(signed char);
 	l_Comando = Comando;
 	l_Comando(arg);
-}
-
-/**
- * Resposta "Ola".
- */
-void Ola(void) {
-	putstring("Ola");
-}
-
-/**
- * Resposta "Entendido".
- */
-void Entendido(void) {
-	putstring("Entendido");
-}
-
-/**
- * Resposta "Feito".
- */
-void Feito(void) {
-	putstring("Feito");
-}
-
-/**
- * Resposta "Erro: comando".
- */
-void ErroComando(void) {
-	putstring("Erro: comando");
-}
-
-/**
- * Resposta "Erro: execucao".
- */
-void ErroExecucao(void) {
-	putstring("Erro: execucao");
-}
-
-/**
- * Resposta "Abortado".
- */
-void Arbortado(void) {
-	putstring("Abortado");
 }
 
 /**
@@ -643,6 +609,48 @@ bool Elevar(signed char passos) {
 
 }
 
+/**
+ * Resposta "Ola".
+ */
+void Ola(void) {
+	putstring("Ola\n\r");
+}
+
+/**
+ * Resposta "Entendido".
+ */
+void Entendido(void) {
+	putstring("Entendido\n\r");
+}
+
+/**
+ * Resposta "Feito".
+ */
+void Feito(void) {
+	putstring("Feito\n\r");
+}
+
+/**
+ * Resposta "Erro: comando".
+ */
+void ErroComando(void) {
+	putstring("Erro: comando\n\r");
+}
+
+/**
+ * Resposta "Erro: execucao".
+ */
+void ErroExecucao(void) {
+	putstring("Erro: execucao\n\r");
+}
+
+/**
+ * Resposta "Abortado".
+ */
+void Arbortado(void) {
+	putstring("Abortado\n\r");
+}
+
 
 /*******************************
  * PROGRAMA PRINCIPAL
@@ -669,7 +677,7 @@ void main(void) {
 	SYNC = 0;
 	SPEN = 1;
 	RCIE = 1;
-	TXIE = 1;
+	TXIE = 0;
 	RX9 = 0;
 	TX9 = 0;
 	ADDEN = 0;
@@ -706,8 +714,12 @@ void main(void) {
 	Atraso_10ms(100);
 
 #ifndef DEMO
+
+	Ola();
+	//Executar((char *) &Inicializar, 0);
 	// Aguarda comandos via RS232.
 	while (1) ;
+
 #endif // DEMO
 	
 	/* --- Código de demonstração. ------------------------ */

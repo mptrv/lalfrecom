@@ -31,14 +31,14 @@ p16f877a.xpos = 72
 p16f877a.ypos = 72
 
 # USART
-module load usart USART
-USART.txbaud = 9600
+#module load usart USART
+#USART.txbaud = 9600
 
 # Connections:
-node nrx
-node ntx
-attach nrx portc7 pin(USART.TXPIN)
-attach ntx portc6 pin(USART.RXPIN)
+#node nrx
+#node ntx
+#attach nrx portc7 pin(USART.TXPIN)
+#attach ntx portc6 pin(USART.RXPIN)
 
 
 # End.
