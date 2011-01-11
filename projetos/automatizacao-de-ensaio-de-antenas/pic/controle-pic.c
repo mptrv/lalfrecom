@@ -38,6 +38,12 @@
  *		$ piklab-prog -i -p icd2 -d 16f877a -t usb \
  *			--firmware-dir /usr/local/share/ICD2/ --target-self-powered
  *
+ * ou pelo /shell script/:
+ *
+ *		$ prog-controle-pic.sh
+ *
+ * e, em seguida:
+ *
  *		> connect
  *		> program controle-pic.hex
  *
@@ -113,6 +119,10 @@
 
 #define DEMO
 
+// Tipos definidos pelo usuário.
+
+typedef unsigned char bool;
+
 
 // Palavra de configuração.
 
@@ -151,15 +161,28 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 // Protótipos
 
-void AtrasoRotacao(void);
-void AcionarMpr(void);
-void Rotacionar(signed char passos);
-void RotacaoZero(void);
-void TrataInterrupcoes(void) __interrupt (0);
+void Ola(void);
+bool Inicializar(void);
+bool Finalizar(void);
+void Executar(void (*Comando)(signed char arg));
+
+void Atraso_10ms(unsigned char fator);
 void IniciaBaseTempo(unsigned int ms);
+
+void AcionarMpr(void);
 void PulsarBotoeira(void);
-void Recolher(void);
-void Elevar(signed char passos);
+
+bool Rotacionar(signed char passos);
+bool RotacaoZero(void);
+bool Recolher(void);
+bool Elevar(signed char passos);
+
+void putchar (unsigned char c);
+void putstring (unsigned char *s);
+unsigned char getchar();
+
+void TrataInterrupcoes(void) __interrupt (0);
+
 
 // Variáveis Globais
 
@@ -168,6 +191,7 @@ static unsigned char passoAtual = 0;
 static unsigned char Sobe = true;
 static volatile unsigned char EstouroTempo = false;
 static volatile unsigned char ContIntTmr1 = viContIntTmr1;
+static volatile unsigned char Abortar = false;
 
 typedef union {
 	struct {
@@ -179,32 +203,15 @@ typedef union {
 
 static volatile __UintHL_t Vi_Tmr1;
 
-//static volatile unsigned int __sfr __at(TMR1L_ADDR) TMR1;
-
-/*
- * typedef union {
-  struct {
-    unsigned char CCP1M0:1;
-    unsigned char CCP1M1:1;
-    unsigned char CCP1M2:1;
-    unsigned char CCP1M3:1;
-    unsigned char CCP1Y:1;
-    unsigned char CCP1X:1;
-    unsigned char :1;
-    unsigned char :1;
-  };
-} __CCP1CON_bits_t;
-extern volatile __CCP1CON_bits_t __at(CCP1CON_ADDR) CCP1CON_bits;
-*/
-
-
-
 
 /*******************************
  * INTERRUPÇÕES
  ******************************/
 
 void TrataInterrupcoes(void) __interrupt (0) {
+
+	static signed char com; // Comando.
+	static signed char arg; // Argumento.
 
 	/*
 	 * Após 125 estouros de TMR1, a variável 'EstouroTempo' será setada e
@@ -223,6 +230,55 @@ void TrataInterrupcoes(void) __interrupt (0) {
 			TMR1L = Vi_Tmr1.L;
 		}
 	}
+
+	/*
+	 * Verifica o código transmitido via RS232 e executa a requisição.
+	 */
+	if (RCIF) {
+
+		com = getchar();
+		arg = getchar();
+
+		switch (com) {
+			 case 'O':
+				 Ola();
+				 break;
+			 case 'I':
+				 Executar(&Inicializar());
+				 break;
+			 case 'Z':
+				 Executar(&RotacaoZero());
+				 break;
+			 case 'L':
+				 Executar(&Recolher());
+				 break;
+			 case 'R':
+				 Executar(&Rotacionar(arg));
+				 break;
+			 case 'E':
+				 Executar(&Elevar(arg));
+				 break;
+			 case 'F':
+				 Executar(&Fizalizar());
+				 break;
+			 case 'A':
+				 Entendido();
+				 Abortar = true;
+				 break;
+			default:
+				 ErroComando();
+		}
+
+	 }
+
+	/*
+	 * Aguarda o término da transmissão anterior.
+	 */
+	if (TXIF) {
+		while (!TRMT) ;
+		TXREG = 0;
+		TXEN = 0;
+	 }
 
 }
 
@@ -280,6 +336,60 @@ void IniciaBaseTempo(unsigned int ms) {
  */
 void AcionarMpr(void) {
 	_mpr = ((_mpr & 0x0F) | (passoMpr[passoAtual]));
+}
+
+/**
+ * Transmite um caracter via RS232.
+ */
+void putchar (unsigned char c) {
+
+	TXEN = 1;
+	TXREG = c;
+
+}
+
+/**
+ * Obtém um caracter via RS232.
+ */
+unsigned char getchar() {
+
+	static unsigned char leRCSTA;
+	static unsigned char leRCREG;
+	static unsigned char erro_rx;
+
+	leRCSTA = RCSTA;
+	erro_rx = leRCSTA | 0x06;
+	leRCREG = RCREG;
+	if (erro_rx)
+	{
+		CREN = 0;
+		CREN = 1;
+	}
+
+	return (leRCREG);
+
+}
+
+/**
+ * Transmite uma /string/ via RS232.
+ */
+void putstring (unsigned char *s) {
+
+	static unsigned char *l_s;
+
+	l_s = s;
+
+	while (*l_s) {
+		putchar(*l_s++);
+	}
+
+}
+
+/**
+ * Invoca o comando e envia as respostas "Entendido", "Feito" ou
+ * "Erro de execução" via RS232.
+ */
+void Executar(void (*Comando)(signed char arg)) {
 }
 
 /**
@@ -460,19 +570,42 @@ void main(void) {
 	static unsigned char j;
 	static signed char passos;
 
-	// Configurações de entrada e saída.
-	
+	// Configurações de entrada e saída.	
 	ADCON1 = 0x07;
 	TRISA = 0x03;
 	TRISB = 0x00;	
-	TRISC = 0x00;	
+	TRISC = 0x80;	
 	TRISD = 0x00;	
-	TRISE = 0x00;	
+	TRISE = 0x00;
 
+	// Configurações da comunicação serial RS232.
+	//		assíncrono, 9600 bps, 8 bits, sem paridade, com interrupção rx e tx.
+	SPBRG = 25;
+	BRGH = 1;
+	SYNC = 0;
+	SPEN = 1;
+	RCIE = 1;
+	TXIE = 1;
+	RX9 = 0;
+	TX9 = 0;
+	ADDEN = 0;
+	RX9D = 0;
+	TX9D = 0;
+	TXEN = 1;	
+	CREN = 1;
+	
 	// Configurações do TMR1.
 	T1CON = 0x30;
+	TMR1IE = 1;
 
 	// Inicializações.
+	
+	PORTA = 0x00;
+	PORTB = 0x00;
+	PORTC = 0x00;
+	PORTD = 0x00;
+	PORTE = 0x00;
+
 	_ab = 0;
 	_afcs = 1;
 	_afci = 1;
@@ -482,20 +615,24 @@ void main(void) {
 	_ampr4 = 1;
 
 	// Habilitação das interrupções.
-	TMR1IE = 1;
 	PEIE = 1;
 	GIE = 1;	
 
 	// Atraso de inicialização.
 	Atraso_10ms(100);
-	
-	// Posicionamento do mastro em suas referências.
-	Recolher();
-	RotacaoZero();
 
+#ifndef DEMO
+	// Aguarda comandos via RS232.
+	while (1) ;
+#endif // DEMO
+	
 	/* --- Código de demonstração. ------------------------ */
 
 #ifdef DEMO
+
+	// Posicionamento do mastro em suas referências.
+	Recolher();
+	RotacaoZero();
 
 	// Uma volta completa no sentido anti-horário.
 	for (i = 0; i < 8; i++) {
