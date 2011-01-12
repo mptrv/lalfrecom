@@ -178,6 +178,7 @@ bool Elevar(signed char passos);
 
 void Ola(void);
 void Entendido(void);
+void Ocupado(void);
 void Feito(void);
 void ErroComando(void);
 void ErroExecucao(void);
@@ -198,6 +199,7 @@ static unsigned char Sobe = true;
 static volatile unsigned char EstouroTempo = false;
 static volatile unsigned char ContIntTmr1 = viContIntTmr1;
 static volatile unsigned char Abortar = false;
+static volatile unsigned char Executando = false;
 
 typedef union {
 	struct {
@@ -242,8 +244,6 @@ void TrataInterrupcoes(void) __interrupt (0) {
 	 */
 	if (RCIF) {
 
-		Abortar = false;
-
 		com = getchar();
 		arg = getchar();
 
@@ -252,6 +252,7 @@ void TrataInterrupcoes(void) __interrupt (0) {
 				 Ola();
 				 break;
 			 case 'I':
+				 Abortar = false;
 				 Executar((char *) &Inicializar, arg);
 				 break;
 			 case 'Z':
@@ -278,17 +279,6 @@ void TrataInterrupcoes(void) __interrupt (0) {
 		}
 
 	 }
-
-	/*
-	 * Aguarda o término da transmissão anterior.
-	 */
-/*
-	if (TXIF) {
-		while (!TRMT) ;
-		TXREG = 0;
-		TXEN = 0;
-	 }
-*/
 
 }
 
@@ -368,18 +358,26 @@ unsigned char getchar() {
 	static unsigned char leRCREG;
 	static unsigned char erro_rx;
 
-	//Verif. nec. desta linha:
-	while (!RCIF) ; // Espera...
+	// Espera a recepção de um próximo dado, caso este ainda não esteja
+	// disponível.
+	while (!RCIF) ;
 
+	// Obtém informações da situação do receptor.
 	leRCSTA = RCSTA;
 	erro_rx = leRCSTA | 0x06;
+
+	// Lê o dado, limpando RCIF.
 	leRCREG = RCREG;
+
+	// Em caso de erro (/overrun/ ou de /frame/, serão simplesmente limpados
+	// os bits de sinalização, ao pulsar CREN.
 	if (erro_rx)
 	{
 		CREN = 0;
 		CREN = 1;
 	}
 
+	// Retorna o dado lido.
 	return (leRCREG);
 
 }
@@ -404,9 +402,39 @@ void putstring (unsigned char *s) {
  * "Erro de execução" via RS232.
  */
 void Executar(void *Comando, signed char arg) {
-	void (*l_Comando)(signed char);
+
+	bool (*l_Comando)(signed char);
+
 	l_Comando = Comando;
-	l_Comando(arg);
+
+	Entendido();
+
+	if (Abortar) {
+		Abortado();
+		return;
+	}
+	
+	if (!Executando) {
+
+		Executando = true;
+
+		if (l_Comando(arg)) {
+			Feito();
+			Executando = false;
+		} else {
+			ErroExecucao();
+		}
+
+		if (Abortar) Abortado();
+			
+		Executando = false;
+
+	} else {
+
+		Ocupado();
+
+	}
+
 }
 
 /**
@@ -421,14 +449,14 @@ bool Rotacionar(signed char passos) {
 	sinal = passos > 0 ? 1 : -1;
 	l_passos = passos;
 
-	while (l_passos) {
+	while (l_passos & !Abortar) {
 		passoAtual = (passoAtual + sinal) & 0x03;
 		l_passos -= sinal;
 		AtrasoRotacao();
 		AcionarMpr();
 	}
 
-	return true;
+	return (!Abortar);
 
 }
 
@@ -438,9 +466,7 @@ bool Rotacionar(signed char passos) {
  */
 bool Inicializar(signed char sem_uso) {
 	sem_uso = 0;
-	RotacaoZero(0);
-	Recolher(0);
-	return true;
+	return (RotacaoZero(0) && Recolher(0));
 }
 
 /**
@@ -449,10 +475,7 @@ bool Inicializar(signed char sem_uso) {
  */
 bool Finalizar(signed char sem_uso) {
 	sem_uso = 0;
-	Recolher(0);
-	RotacaoZero(0);
-	Rotacionar(20);
-	return true;
+	return (Recolher(0) && RotacaoZero(0) && Rotacionar(20));
 }
 
 /**
@@ -462,10 +485,10 @@ bool Finalizar(signed char sem_uso) {
  */
 bool RotacaoZero(signed char sem_uso) {
 	sem_uso = 0;
-	while (_Sza) {
+	while (_Sza && !Abortar) {
 		Rotacionar(1);
 	}
-	return true;
+	return (!Abortar);
 }
 
 /**
@@ -496,18 +519,18 @@ bool Recolher(signed char sem_uso) {
 	for (i = 0; i < 4; i++ ) {
 		PulsarBotoeira();
 		IniciaBaseTempo(2000);
-		while (_Sgme && (!EstouroTempo)) ;
-		while ((!_Sgme) && (!EstouroTempo)) ;
-		if (!EstouroTempo) break;
+		while (_Sgme && (!EstouroTempo) && (!Abortar)) ;
+		while ((!_Sgme) && (!EstouroTempo) && (!Abortar)) ;
+		if (!EstouroTempo || Abortar) break;
 	}
 
 	// Espera o mastro parar de se movimentar para baixo -- isto é,
 	// supõe-se que ele atingiu o 'fci'.
 	do {
 		IniciaBaseTempo(2000);
-		while (_Sgme && (!EstouroTempo)) ;
-		while ((!_Sgme) && (!EstouroTempo)) ;
-	} while (!EstouroTempo);
+		while (_Sgme && (!EstouroTempo) && (!Abortar)) ;
+		while ((!_Sgme) && (!EstouroTempo) && (!Abortar)) ;
+	} while ((!EstouroTempo) && (!Abortar));
 
 	// Desativa atuador de emulação de fim-de-curso superior.
 	_afcs = 0;
@@ -516,9 +539,9 @@ bool Recolher(signed char sem_uso) {
 	for (i = 0; i < 4; i++ ) {
 		PulsarBotoeira();
 		IniciaBaseTempo(2000);
-		while (_Sgme && (!EstouroTempo)) ;
-		while ((!_Sgme) && (!EstouroTempo)) ;
-		if (!EstouroTempo) break;
+		while (_Sgme && (!EstouroTempo) && (!Abortar)) ;
+		while ((!_Sgme) && (!EstouroTempo) && (!Abortar)) ;
+		if (!EstouroTempo || Abortar) break;
 	}
 
 	// Faz o mastro parar e mover-se para baixo.
@@ -530,9 +553,9 @@ bool Recolher(signed char sem_uso) {
 	// do 'me' encontra-se no estado S2.
 	do {
 		IniciaBaseTempo(2000);
-		while (_Sgme && (!EstouroTempo)) ;
-		while ((!_Sgme) && (!EstouroTempo)) ;
-	} while (!EstouroTempo);
+		while (_Sgme && (!EstouroTempo) && (!Abortar)) ;
+		while ((!_Sgme) && (!EstouroTempo) && (!Abortar)) ;
+	} while ((!EstouroTempo) && (!Abortar));
 
 	// Pára a base de tempo.
 	ParaBaseTempo();
@@ -545,9 +568,9 @@ bool Recolher(signed char sem_uso) {
 	PulsarBotoeira();
 
 	// Indica que o mastro desceu e está pronto para subir.
-	Sobe = true;
+	Sobe = !Abortar;
 
-	return true;
+	return (!Abortar);
 
 }
 
@@ -587,10 +610,10 @@ bool Elevar(signed char passos) {
 	// Espera a elevação ou abaixamento do mastro pela quantidade de pulsos
 	// especificada.
 	EstouroTempo = false;
-	while ((l_passos-=sinal) && !EstouroTempo) {
+	while ((l_passos-=sinal) && (!EstouroTempo) && (!Abortar)) {
 		IniciaBaseTempo(2000);
-		while (_Sgme && !EstouroTempo) ;
-		while (!_Sgme && !EstouroTempo) ;
+		while (_Sgme && (!EstouroTempo) && (!Abortar)) ;
+		while (!_Sgme && (!EstouroTempo) && (!Abortar)) ;
 	}
 
 	// Pára a base de tempo.
@@ -605,49 +628,39 @@ bool Elevar(signed char passos) {
 	PulsarBotoeira();
 	PulsarBotoeira();
 
-	return true;
+	return (!Abortar);
 
 }
 
 /**
- * Resposta "Ola".
+ * Respostas enviadas pelo microcontrolador.
  */
+
 void Ola(void) {
 	putstring("Ola\n\r");
 }
 
-/**
- * Resposta "Entendido".
- */
 void Entendido(void) {
 	putstring("Entendido\n\r");
 }
 
-/**
- * Resposta "Feito".
- */
+void Ocupado(void) {
+	putstring("Ocupado\n\r");
+}
+
 void Feito(void) {
 	putstring("Feito\n\r");
 }
 
-/**
- * Resposta "Erro: comando".
- */
 void ErroComando(void) {
 	putstring("Erro: comando\n\r");
 }
 
-/**
- * Resposta "Erro: execucao".
- */
 void ErroExecucao(void) {
 	putstring("Erro: execucao\n\r");
 }
 
-/**
- * Resposta "Abortado".
- */
-void Arbortado(void) {
+void Abortado(void) {
 	putstring("Abortado\n\r");
 }
 
