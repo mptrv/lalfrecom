@@ -1,4 +1,4 @@
 load s controle-pic.cod
 frequency 4e6
 load c controle-pic.stc
-break _Ola
+break e _Executar
