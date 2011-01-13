@@ -65,7 +65,7 @@
 /**
  * Observações:
  *
- * Uso do ICD2:
+ *	Uso do ICD2:
  *
  *		O usuário deve ter direito de escrita nos dispositivos USB. Para isto,
  *		pode-se acrescentar o usuário ao grupo 'usb', definir '/dev/bus/usb' e
@@ -73,6 +73,11 @@
  *		modo '775' a eles. Depois, fazer 'logout' e 'login', para entrar em vigor
  *		as alterações de grupo do usuário.
  *
+ *	Falhas Encontradas no SDCC:
+ *
+ *		Ao se usar variáveis tipo ponteiro para função, o SDCC não prevê que
+ *		esta função poderá conter argumentos. Solução adotada: passa-se manualmente
+ *		o parâmetro para STK00. Ver o código da rotina 'Executar()'.
  */
 
 /**
@@ -169,12 +174,12 @@ void IniciaBaseTempo(unsigned int ms);
 void AcionarMpr(void);
 void PulsarBotoeira(void);
 
-bool Inicializar(signed char sem_uso);
-bool Finalizar(signed char sem_uso);
-bool Rotacionar(signed char passos);
-bool RotacaoZero(signed char sem_uso);
-bool Recolher(signed char sem_uso);
-bool Elevar(signed char passos);
+bool Inicializar(void);
+bool Finalizar(void);
+bool Rotacionar(signed char sem_uso, signed char passos);
+bool RotacaoZero(void);
+bool Recolher(void);
+bool Elevar(signed char sem_uso, signed char passos);
 
 void Ola(void);
 void Entendido(void);
@@ -219,7 +224,7 @@ static volatile __UintHL_t Vi_Tmr1;
 void TrataInterrupcoes(void) __interrupt (0) {
 
 	static signed char com; // Comando.
-	static signed char arg; // Argumento.
+	static signed char l_arg; // Argumento.
 
 	/*
 	 * Após 125 estouros de TMR1, a variável 'EstouroTempo' será setada e
@@ -245,7 +250,7 @@ void TrataInterrupcoes(void) __interrupt (0) {
 	if (RCIF) {
 
 		com = getchar();
-		arg = getchar();
+		l_arg = getchar();
 
 		switch (com) {
 			 case 'O':
@@ -253,22 +258,22 @@ void TrataInterrupcoes(void) __interrupt (0) {
 				 break;
 			 case 'I':
 				 Abortar = false;
-				 Executar((char *) &Inicializar, arg);
+				 Executar((char *) &Inicializar, l_arg);
 				 break;
 			 case 'Z':
-				 Executar((char *) &RotacaoZero, arg);
+				 Executar((char *) &RotacaoZero, l_arg);
 				 break;
 			 case 'L':
-				 Executar((char *) &Recolher, arg);
+				 Executar((char *) &Recolher, l_arg);
 				 break;
 			 case 'R':
-				 Executar((char *) &Rotacionar, arg);
+				 Executar((char *) &Rotacionar, l_arg);
 				 break;
 			 case 'E':
-				 Executar((char *) &Elevar, arg);
+				 Executar((char *) &Elevar, l_arg);
 				 break;
 			 case 'F':
-				 Executar((char *) &Finalizar, arg);
+				 Executar((char *) &Finalizar, l_arg);
 				 break;
 			 case 'A':
 				 Entendido();
@@ -335,7 +340,7 @@ void IniciaBaseTempo(unsigned int ms) {
  * Atualiza as saídas ligadas ao Mpr.
  */
 void AcionarMpr(void) {
-	_mpr = ((_mpr & 0x0F) | (passoMpr[passoAtual]));
+	//_mpr = ((_mpr & 0x0F) | (passoMpr[passoAtual]));
 }
 
 /**
@@ -398,12 +403,22 @@ void putstring (unsigned char *s) {
 }
 
 /**
+ * Executa um pulso na botoeira.
+ */
+void PulsarBotoeira(void) {
+	_ab = 1;
+	Atraso_10ms(50);
+	_ab = 0;
+	Atraso_10ms(50);
+}
+
+/**
  * Invoca o comando e envia as respostas "Entendido", "Feito" ou
  * "Erro de execução" via RS232.
  */
 void Executar(void *Comando, signed char arg) {
 
-	bool (*l_Comando)(signed char);
+	bool (*l_Comando)(signed char sem_uso, signed char l_arg);
 
 	l_Comando = Comando;
 
@@ -418,7 +433,17 @@ void Executar(void *Comando, signed char arg) {
 
 		Executando = true;
 
-		if (l_Comando(arg)) {
+		// Para teste:
+		putchar(arg);
+		PORTD = arg;
+		RA5 = 1;
+		Atraso_10ms(100);
+		RA5 = 0;
+
+		_asm movf r0x1024, W _endasm;
+		_asm movwf STK00 _endasm;
+
+		if (l_Comando(0, arg)) {
 			Feito();
 			Executando = false;
 		} else {
@@ -441,15 +466,20 @@ void Executar(void *Comando, signed char arg) {
  * Rotaciona o mastro a quantidade de passos especificada. Se for um
  * valor positivo, rotaciona no sentido anti-horário.
  */
-bool Rotacionar(signed char passos) {
+bool Rotacionar(signed char sem_uso, signed char passos) {
 	
 	static signed char sinal;
 	static signed char l_passos;
 
+	sem_uso = 0;
+
 	sinal = passos > 0 ? 1 : -1;
 	l_passos = passos;
 
-	while (l_passos & !Abortar) {
+	// Para testes.
+	PORTD = passos;
+
+	while (l_passos && !Abortar) {
 		passoAtual = (passoAtual + sinal) & 0x03;
 		l_passos -= sinal;
 		AtrasoRotacao();
@@ -464,18 +494,16 @@ bool Rotacionar(signed char passos) {
  * Inicialização padrão do sistema: posicionamento da parte mecânica nas
  * referências.
  */
-bool Inicializar(signed char sem_uso) {
-	sem_uso = 0;
-	return (RotacaoZero(0) && Recolher(0));
+bool Inicializar(void) {
+	return (RotacaoZero() && Recolher());
 }
 
 /**
  * Finalização padrão do sistem: posicionamento da parte mecânica de
  * forma a não fatigar sensores mecânicos.
  */
-bool Finalizar(signed char sem_uso) {
-	sem_uso = 0;
-	return (Recolher(0) && RotacaoZero(0) && Rotacionar(20));
+bool Finalizar(void) {
+	return (Recolher() && RotacaoZero() && Rotacionar(0, 20));
 }
 
 /**
@@ -483,34 +511,21 @@ bool Finalizar(signed char sem_uso) {
  * Nota: atualmente, considera-se que o sensor esteja funcionando
  * adequadamente.
  */
-bool RotacaoZero(signed char sem_uso) {
-	sem_uso = 0;
+bool RotacaoZero(void) {
 	while (_Sza && !Abortar) {
-		Rotacionar(1);
+		Rotacionar(0, 1);
 	}
 	return (!Abortar);
-}
-
-/**
- * Executa um pulso na botoeira.
- */
-void PulsarBotoeira(void) {
-	_ab = 1;
-	Atraso_10ms(50);
-	_ab = 0;
-	Atraso_10ms(50);
 }
 
 /**
  * Recolhe o mastro, isto é, fá-lo descer até o 'fci'. Ao término,
  * o estado de comando do 'me' será S3 (descida parada).
  */
-bool Recolher(signed char sem_uso) {
+bool Recolher(void) {
 
 	static unsigned char i;
 	
-	sem_uso = 0;
-		
 	// Somente aceita a condição de descida.
 	_afcs = 1;
 	_afci = 0;
@@ -581,11 +596,13 @@ bool Recolher(signed char sem_uso) {
  * será um dos dois estados de parada e tal que, com mais um pulso na botoeira,
  * ele se movimentaria no mesmo sentido.
  */
-bool Elevar(signed char passos) {
+bool Elevar(signed char sem_uso, signed char passos) {
 	
 	static signed char l_passos;
 	static signed char sinal;
 	static unsigned char i;
+
+	sem_uso = 0;
 
 	// Verifica se irá subir ou descer e ajusta a quantidade de passos.
 	sinal = passos > -1 ? 1 : -1;
@@ -728,8 +745,16 @@ void main(void) {
 
 #ifndef DEMO
 
+	// Envia mensagem de ativação.
 	Ola();
-	//Executar((char *) &Inicializar, 0);
+
+	// Para testes.
+	RB7 = 1;
+	PORTD = 0x8F;
+
+	Executar((char *) &Rotacionar, 5);
+
+
 	// Aguarda comandos via RS232.
 	while (1) ;
 
