@@ -121,8 +121,8 @@
 
 // Diretivas de compilação.
 
-#define DEMO
-#undef DEMO
+//#define DEMO
+//#undef DEMO
 
 // Tipos definidos pelo usuário.
 
@@ -208,7 +208,7 @@ static unsigned char passoAtual = 0;
 static volatile unsigned char ContIntTmr1 = viContIntTmr1;
 static bool Sobe = true;
 static volatile bool EstouroTempo = false;
-static volatile bool Abortar = true;
+static volatile bool Abortar = false;
 static volatile bool Executando = false;
 static volatile signed char g_com = 0;
 static volatile signed char g_arg = 0;
@@ -763,6 +763,8 @@ void main(void) {
 
 #ifndef DEMO
 
+	Abortar = true;
+
 	// Envia mensagem de ativação.
 	Ola();
 
@@ -777,36 +779,38 @@ void main(void) {
 
 #ifdef DEMO
 
+#warning " A gerar versão de demonstração... ---------------"
+
 	// Posicionamento do mastro em suas referências.
-	Recolher(0);
-	RotacaoZero(0);
+	Recolher();
+	RotacaoZero();
 
 	// Uma volta completa no sentido anti-horário.
 	for (i = 0; i < 8; i++) {
 		Atraso_10ms(100);
-		Rotacionar(125);
+		Rotacionar(0, 125);
 	}
 
 	// Uma volta completa no sentido horário.
 	for (i = 0; i < 8; i++) {
 		Atraso_10ms(100);
-		Rotacionar(-125);
+		Rotacionar(0, -125);
 	}
 
 	// Sobe até o 'fcs'.
 	Atraso_10ms(100);
-	Elevar(21);
+	Elevar(0, 21);
 		
 	// Desce até o 'fci'.
 	Atraso_10ms(100);
-	Elevar(-21);
+	Elevar(0, -21);
 
 	// Sobe até a metade da excursão.
 	Atraso_10ms(100);
-	Elevar(10);
+	Elevar(0, 10);
 
 	// Rotaciona um pouco no sentido horário.
-	Rotacionar(-100);
+	Rotacionar(0, -100);
 
 	// Sobe pulso-a-pulso até os 'fcs'.
 	//		Este código em execução com a planta apresenta perda de pulsos,
@@ -826,17 +830,17 @@ void main(void) {
 
 		Atraso_10ms(100);
 
-		Recolher(0);
-		RotacaoZero(0);
+		Recolher();
+		RotacaoZero();
 
 		Atraso_10ms(100);
-		Rotacionar(7*14);
+		Rotacionar(0, 7*14);
 
 		for (j = 3; j--; ) {
-			Elevar(5);
+			Elevar(0, 5);
 			for (i = 14; i--; ) {
 				Atraso_10ms(100);
-				Rotacionar(passos);
+				Rotacionar(0, passos);
 			}
 			passos = -passos;
 		}
