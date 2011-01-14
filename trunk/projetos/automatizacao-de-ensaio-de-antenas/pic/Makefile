@@ -16,3 +16,6 @@ $(EXEC): $(SRC)
 	@$(CC) $(CFLAGS) -I $(includedir) -L $(libdir) $< \
 		&& echo -e "\nSUCESSO: compilação concluída!\n" \
 		|| echo -e "\n* ERRO: Compilação não concluída! *\n"
+
+demo: all
+# Acrescentar para a regra 'demo' a chave '-DDEMO' em 'CFLAGS'.
