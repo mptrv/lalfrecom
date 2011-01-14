@@ -253,29 +253,29 @@ void TrataInterrupcoes(void) __interrupt (0) {
 		l_arg = getchar();
 
 		switch (com) {
-			 case 'O':
+			 case 'o':
 				 Ola();
 				 break;
-			 case 'I':
+			 case 'i':
 				 Abortar = false;
 				 Executar((char *) &Inicializar, l_arg);
 				 break;
-			 case 'Z':
+			 case 'z':
 				 Executar((char *) &RotacaoZero, l_arg);
 				 break;
-			 case 'L':
+			 case 'l':
 				 Executar((char *) &Recolher, l_arg);
 				 break;
-			 case 'R':
+			 case 'r':
 				 Executar((char *) &Rotacionar, l_arg);
 				 break;
-			 case 'E':
+			 case 'e':
 				 Executar((char *) &Elevar, l_arg);
 				 break;
-			 case 'F':
+			 case 'f':
 				 Executar((char *) &Finalizar, l_arg);
 				 break;
-			 case 'A':
+			 case 'a':
 				 Entendido();
 				 Abortar = true;
 				 break;
@@ -340,7 +340,7 @@ void IniciaBaseTempo(unsigned int ms) {
  * Atualiza as saídas ligadas ao Mpr.
  */
 void AcionarMpr(void) {
-	//_mpr = ((_mpr & 0x0F) | (passoMpr[passoAtual]));
+	_mpr = ((_mpr & 0x0F) | (passoMpr[passoAtual]));
 }
 
 /**
@@ -418,32 +418,37 @@ void PulsarBotoeira(void) {
  */
 void Executar(void *Comando, signed char arg) {
 
-	bool (*l_Comando)(signed char sem_uso, signed char l_arg);
+	static bool (*l_Comando)(signed char sem_uso, signed char arg_stk00);
+	static signed char l_arg;
 
+	// Leitura do endereço do comando e do argumento.
 	l_Comando = Comando;
+	l_arg = arg; // Linha necessária para o compilador manter o argumento na pilha.
 
+	// Reconhecimento do comando (deve já ser realizado antes da chamada de
+	// 'Executar()').
 	Entendido();
 
+	// Se foi abortado e ainda não reinicializado, não executa o comando.
 	if (Abortar) {
 		Abortado();
 		return;
 	}
+
+	// Execução do comando apenas se outro não estiver em andamento.
 	
 	if (!Executando) {
 
 		Executando = true;
 
-		// Para teste:
-		putchar(arg);
-		PORTD = arg;
-		RA5 = 1;
-		Atraso_10ms(100);
-		RA5 = 0;
+		// Como o SDCC não passa automaticamento o argumento para a pilha,
+		// faz-se isto manualmente.
+		_asm 
+			movf	STK02, W
+			movwf	STK00
+		_endasm;
 
-		_asm movf r0x1024, W _endasm;
-		_asm movwf STK00 _endasm;
-
-		if (l_Comando(0, arg)) {
+		if (l_Comando(0, 0)) {
 			Feito();
 			Executando = false;
 		} else {
@@ -475,9 +480,6 @@ bool Rotacionar(signed char sem_uso, signed char passos) {
 
 	sinal = passos > 0 ? 1 : -1;
 	l_passos = passos;
-
-	// Para testes.
-	PORTD = passos;
 
 	while (l_passos && !Abortar) {
 		passoAtual = (passoAtual + sinal) & 0x03;
@@ -747,13 +749,6 @@ void main(void) {
 
 	// Envia mensagem de ativação.
 	Ola();
-
-	// Para testes.
-	RB7 = 1;
-	PORTD = 0x8F;
-
-	Executar((char *) &Rotacionar, 5);
-
 
 	// Aguarda comandos via RS232.
 	while (1) ;
