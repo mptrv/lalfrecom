@@ -159,6 +159,10 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 #define false	0
 #define true	!false
 
+// Ponteiro nulo.
+
+#define NULL	0x0000
+
 // Constantes
 
 #define viContIntTmr1	125
@@ -166,7 +170,7 @@ unsigned int __at 0x2007  __CONFIG = CONFIG;
 
 // Protótipos
 
-void Executar(void *Comando, signed char arg);
+void Executar(void);
 
 void Atraso_10ms(unsigned char fator);
 void IniciaBaseTempo(unsigned int ms);
@@ -187,6 +191,7 @@ void Ocupado(void);
 void Feito(void);
 void ErroComando(void);
 void ErroExecucao(void);
+void Abortando(void);
 void Abortado(void);
 
 void putchar (unsigned char c);
@@ -200,11 +205,13 @@ void TrataInterrupcoes(void) __interrupt (0);
 
 static unsigned char passoMpr[4] = {0x70, 0xB0, 0xD0, 0xE0};
 static unsigned char passoAtual = 0;
-static unsigned char Sobe = true;
-static volatile unsigned char EstouroTempo = false;
 static volatile unsigned char ContIntTmr1 = viContIntTmr1;
-static volatile unsigned char Abortar = false;
-static volatile unsigned char Executando = false;
+static bool Sobe = true;
+static volatile bool EstouroTempo = false;
+static volatile bool Abortar = true;
+static volatile bool Executando = false;
+static volatile signed char g_com = 0;
+static volatile signed char g_arg = 0;
 
 typedef union {
 	struct {
@@ -223,7 +230,7 @@ static volatile __UintHL_t Vi_Tmr1;
 
 void TrataInterrupcoes(void) __interrupt (0) {
 
-	static signed char com; // Comando.
+	static signed char l_com; // Comando.
 	static signed char l_arg; // Argumento.
 
 	/*
@@ -245,45 +252,33 @@ void TrataInterrupcoes(void) __interrupt (0) {
 	}
 
 	/*
-	 * Verifica o código transmitido via RS232 e executa a requisição.
+	 * Verifica o código transmitido via RS232 e indica a requisição.
 	 */
 	if (RCIF) {
 
-		com = getchar();
+		l_com = getchar();
 		l_arg = getchar();
 
-		switch (com) {
+		switch (l_com) {
 			 case 'o':
 				 Ola();
 				 break;
-			 case 'i':
-				 Abortar = false;
-				 Executar((char *) &Inicializar, l_arg);
-				 break;
-			 case 'z':
-				 Executar((char *) &RotacaoZero, l_arg);
-				 break;
-			 case 'l':
-				 Executar((char *) &Recolher, l_arg);
-				 break;
-			 case 'r':
-				 Executar((char *) &Rotacionar, l_arg);
-				 break;
-			 case 'e':
-				 Executar((char *) &Elevar, l_arg);
-				 break;
-			 case 'f':
-				 Executar((char *) &Finalizar, l_arg);
-				 break;
 			 case 'a':
-				 Entendido();
-				 Abortar = true;
+				 if (Executando) {
+					 Abortando();
+					 Abortar = true;
+				 }
 				 break;
 			default:
-				 ErroComando();
+				 if (Executando) {
+					 Ocupado();
+				 } else {
+					 g_com = l_com;
+					 g_arg = l_arg;
+				 }
 		}
-
-	 }
+		
+	}
 
 }
 
@@ -413,61 +408,6 @@ void PulsarBotoeira(void) {
 }
 
 /**
- * Invoca o comando e envia as respostas "Entendido", "Feito" ou
- * "Erro de execução" via RS232.
- */
-void Executar(void *Comando, signed char arg) {
-
-	static bool (*l_Comando)(signed char sem_uso, signed char arg_stk00);
-	static signed char l_arg;
-
-	// Leitura do endereço do comando e do argumento.
-	l_Comando = Comando;
-	l_arg = arg; // Linha necessária para o compilador manter o argumento na pilha.
-
-	// Reconhecimento do comando (deve já ser realizado antes da chamada de
-	// 'Executar()').
-	Entendido();
-
-	// Se foi abortado e ainda não reinicializado, não executa o comando.
-	if (Abortar) {
-		Abortado();
-		return;
-	}
-
-	// Execução do comando apenas se outro não estiver em andamento.
-	
-	if (!Executando) {
-
-		Executando = true;
-
-		// Como o SDCC não passa automaticamento o argumento para a pilha,
-		// faz-se isto manualmente.
-		_asm 
-			movf	STK02, W
-			movwf	STK00
-		_endasm;
-
-		if (l_Comando(0, 0)) {
-			Feito();
-			Executando = false;
-		} else {
-			ErroExecucao();
-		}
-
-		if (Abortar) Abortado();
-			
-		Executando = false;
-
-	} else {
-
-		Ocupado();
-
-	}
-
-}
-
-/**
  * Rotaciona o mastro a quantidade de passos especificada. Se for um
  * valor positivo, rotaciona no sentido anti-horário.
  */
@@ -497,7 +437,7 @@ bool Rotacionar(signed char sem_uso, signed char passos) {
  * referências.
  */
 bool Inicializar(void) {
-	return (RotacaoZero() && Recolher());
+	return (Recolher() && RotacaoZero());
 }
 
 /**
@@ -505,7 +445,7 @@ bool Inicializar(void) {
  * forma a não fatigar sensores mecânicos.
  */
 bool Finalizar(void) {
-	return (Recolher() && RotacaoZero() && Rotacionar(0, 20));
+	return (Recolher() && RotacaoZero() && Rotacionar(0, -20));
 }
 
 /**
@@ -679,8 +619,84 @@ void ErroExecucao(void) {
 	putstring("Erro: execucao\n\r");
 }
 
+void Abortando(void) {
+	putstring("Abortando...\n\r");
+}
+
 void Abortado(void) {
 	putstring("Abortado\n\r");
+}
+
+/**
+ * Invoca o comando e envia as respostas "Entendido", "Feito" ou
+ * "Erro de execução" via RS232.
+ */
+void Executar(void) {
+
+	static bool (*Comando)(signed char sem_uso, signed char arg_stk00);
+
+	switch (g_com) {
+		case 0:
+			return;
+		case 'i':
+			Abortar = false;
+			Comando = (void *) &Inicializar;
+			break;
+		 case 'z':
+			Comando = (void *) &RotacaoZero;
+			break;
+		 case 'l':
+			Comando = (void *) &Recolher;
+			break;
+		 case 'r':
+			Comando = (void *) &Rotacionar;
+			break;
+		 case 'e':
+			Comando = (void *) &Elevar;
+			break;
+		 case 'f':
+			Comando = (void *) &Finalizar;
+			break;
+		default:
+			ErroComando();
+			g_com = 0;
+			return;
+		}
+
+	g_com = 0;
+
+	// Reconhecimento do comando (deve já ser realizado antes da chamada de
+	// 'Executar()').
+	Entendido();
+
+	// Se foi abortado e ainda não reinicializado, não executa o comando.
+	if (Abortar) {
+		Abortado();
+		return;
+	}
+
+	Executando = true;
+
+	// Como o SDCC não passa automaticamento o argumento para a pilha,
+	// faz-se isto manualmente.	
+	_asm 
+		movf	_g_arg, W
+		movwf	STK00
+	_endasm;
+
+	if (Comando(0, 0)) {
+		Feito();
+	} else {
+		ErroExecucao();
+	}
+
+	if (Abortar) Abortado();
+		
+	Executando = false;
+
+	// Se houve algum comando enviado equanto ocupado, descarta-o.
+	g_com = 0;
+
 }
 
 
@@ -751,7 +767,9 @@ void main(void) {
 	Ola();
 
 	// Aguarda comandos via RS232.
-	while (1) ;
+	while (1) {
+		Executar();
+	}
 
 #endif // DEMO
 	
