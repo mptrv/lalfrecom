@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -78,7 +78,7 @@ status open
 
 \size footnotesize
 v.
- 0.0.0
+ 0.0.1
 \end_layout
 
 \begin_layout Author
@@ -531,6 +531,21 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
+Apresentação
+\end_layout
+
+\begin_layout Standard
+Formulário de Eletromagnetismo I com notações conforme 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "wentworth2007ele"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Eletrostática
 \end_layout
 
@@ -551,6 +566,10 @@ Lei de Coulomb
 Campo Elétrico
 \end_layout
 
+\begin_layout Itemize
+Caso geral:
+\end_layout
+
 \begin_layout Standard
 \begin_inset Formula \begin{align}
 \vec{E}_{1} & =\frac{\vec{F}_{12}}{Q_{2}}\\
@@ -562,7 +581,7 @@ Campo Elétrico
 \end_layout
 
 \begin_layout Itemize
-De distribuição contínua de cargas:
+de distribuição contínua de cargas:
 \end_layout
 
 \begin_layout Standard
@@ -575,7 +594,7 @@ De distribuição contínua de cargas:
 \end_layout
 
 \begin_layout Itemize
-De uma carga pontual na origem:
+de uma carga pontual na origem:
 \end_layout
 
 \begin_layout Standard
@@ -588,7 +607,7 @@ De uma carga pontual na origem:
 \end_layout
 
 \begin_layout Itemize
-De uma linha infinita em 
+de uma linha infinita em 
 \begin_inset Formula $z$
 \end_inset
 
@@ -609,7 +628,7 @@ De uma linha infinita em
 \end_layout
 
 \begin_layout Itemize
-De uma lâmina infinita carregada com 
+de uma lâmina infinita carregada com 
 \begin_inset Formula $\rho_{S}$
 \end_inset
 
@@ -656,7 +675,7 @@ Que atravessa uma superfície:
 \end_layout
 
 \begin_layout Itemize
-Que atravessa uma superfície fechada:
+que atravessa uma superfície fechada:
 \end_layout
 
 \begin_layout Standard
@@ -683,6 +702,13 @@ Teorema da Divergência
 
 \begin_layout Subsection
 Lei de Gauss
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lei-de-Gauss"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -700,7 +726,7 @@ Forma integral:
 \end_layout
 
 \begin_layout Itemize
-Forma diferencial:
+forma diferencial:
 \end_layout
 
 \begin_layout Standard
@@ -717,7 +743,7 @@ Pontencial Elétrico
 \end_layout
 
 \begin_layout Itemize
-Diferença de pontencial elétrico:
+Diferença de potencial elétrico:
 \end_layout
 
 \begin_layout Standard
@@ -730,7 +756,7 @@ V_{ba}=-\int_{a}^{b}\pe{\vt E}{\dL}=V_{b}-V_{a}\end{equation}
 \end_layout
 
 \begin_layout Itemize
-Pontencial com referência no infinito:
+potencial com referência no infinito:
 \end_layout
 
 \begin_layout Standard
@@ -743,7 +769,7 @@ V=\int\frac{\dQ}{4\pi\epsilon r}\end{equation}
 \end_layout
 
 \begin_layout Itemize
-Campo elétrico a partir de função potencial:
+campo elétrico a partir de função potencial:
 \end_layout
 
 \begin_layout Standard
@@ -826,7 +852,7 @@ Entre par de dielétricos:
 \end_layout
 
 \begin_layout Itemize
-Entre par de dielétricos, se 
+entre par de dielétricos, se 
 \begin_inset Formula $\rhs=0$
 \end_inset
 
@@ -844,7 +870,7 @@ Entre par de dielétricos, se
 \end_layout
 
 \begin_layout Itemize
-Entre condutor e dielétrico:
+entre condutor e dielétrico:
 \end_layout
 
 \begin_layout Standard
@@ -901,7 +927,7 @@ C=\frac{\dQ}{\dV}\end{equation}
 \end_layout
 
 \begin_layout Itemize
-Para capacitor de placas paralelas, desprezando-se efeitos de borda:
+para capacitor de placas paralelas, desprezando-se efeitos de borda:
 \end_layout
 
 \begin_layout Standard
@@ -1303,7 +1329,7 @@ Em termos de elementos diferenciais:
 \end_layout
 
 \begin_layout Itemize
-Em termos de densidades de corrente superficial:
+em termos de densidade de corrente superficial:
 \end_layout
 
 \begin_layout Standard
@@ -1316,7 +1342,7 @@ Em termos de densidades de corrente superficial:
 \end_layout
 
 \begin_layout Itemize
-Em termos de densidades de corrente volumétrica:
+em termos de densidade de corrente volumétrica:
 \end_layout
 
 \begin_layout Standard
@@ -1329,7 +1355,7 @@ Em termos de densidades de corrente volumétrica:
 \end_layout
 
 \begin_layout Itemize
-Devido a linha infinita de corrente:
+devido a linha infinita de corrente:
 \end_layout
 
 \begin_layout Standard
@@ -1342,7 +1368,7 @@ Devido a linha infinita de corrente:
 \end_layout
 
 \begin_layout Itemize
-Devido a um solenóide:
+devido a um solenóide:
 \end_layout
 
 \begin_layout Standard
@@ -1355,7 +1381,7 @@ Devido a um solenóide:
 \end_layout
 
 \begin_layout Itemize
-Devido a uma lâmina infinita de corrente:
+devido a uma lâmina infinita de corrente:
 \end_layout
 
 \begin_layout Standard
@@ -1369,6 +1395,13 @@ Devido a uma lâmina infinita de corrente:
 
 \begin_layout Subsection
 Lei Circuital de Ampère
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lei-Circuital-de-Amp"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1385,7 +1418,7 @@ Forma integral:
 \end_layout
 
 \begin_layout Itemize
-Forma diferencial:
+forma diferencial:
 \end_layout
 
 \begin_layout Standard
@@ -1441,16 +1474,38 @@ Que atravessa uma superfície:
 \end_layout
 
 \begin_layout Itemize
-Que atravessa uma superfície fechada:
+que atravessa uma superfície fechada:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\oint\pe{\vt B}{\dS}=0\end{equation}
+\oint\pe{\vt B}{\dS}=0\label{eq:gauss-mag}\end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Lei de Gauss para Campos Magnéticos
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lei-de-Gauss-Mag"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vide 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:gauss-mag"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1475,7 +1530,7 @@ Forma integral:
 \end_layout
 
 \begin_layout Itemize
-Forma diferencial:
+forma diferencial:
 \end_layout
 
 \begin_layout Standard
@@ -1508,7 +1563,7 @@ Força de Lorentz:
 \end_layout
 
 \begin_layout Itemize
-Força de Campo Magnético sobre Linha de Corrente:
+força de campo magnético sobre linha de corrente:
 \end_layout
 
 \begin_layout Standard
@@ -1521,7 +1576,7 @@ Força de Campo Magnético sobre Linha de Corrente:
 \end_layout
 
 \begin_layout Subsection
-Momento de Dipólo
+Momento de Dipolo
 \end_layout
 
 \begin_layout Standard
@@ -1585,7 +1640,7 @@ L=\frac{\lambda}{I}=N\frac{\Phi_{tot}}{I}\end{equation}
 \end_layout
 
 \begin_layout Itemize
-Para uma bobina com núcleo:
+para uma bobina com núcleo:
 \end_layout
 
 \begin_layout Standard
@@ -1598,7 +1653,7 @@ L=\frac{\mu N^{2}\pi a^{2}}{h}\end{equation}
 \end_layout
 
 \begin_layout Itemize
-Para um cabo coaxial:
+para um cabo coaxial:
 \end_layout
 
 \begin_layout Standard
@@ -2082,6 +2137,13 @@ Tempo de Relaxação
 
 \begin_layout Subsection
 Lei de Faraday
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lei-de-Faraday"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -2098,7 +2160,7 @@ Forma geral:
 \end_layout
 
 \begin_layout Itemize
-Para circuito de uma única espira:
+para circuito de uma única espira:
 \end_layout
 
 \begin_layout Standard
@@ -2111,7 +2173,7 @@ Para circuito de uma única espira:
 \end_layout
 
 \begin_layout Itemize
-Forma diferencial:
+forma diferencial:
 \end_layout
 
 \begin_layout Standard
@@ -2124,7 +2186,7 @@ Forma diferencial:
 \end_layout
 
 \begin_layout Itemize
-Para circuito com movimento e campo magnético constante:
+para circuito com movimento e campo magnético constante:
 \end_layout
 
 \begin_layout Standard
@@ -2150,7 +2212,7 @@ Densidade de Corrente de Dispersão (Deslocamento)
 \end_layout
 
 \begin_layout Subsection
-Equações de Maxwell Gerais
+Equações de Maxwell (gerais)
 \end_layout
 
 \begin_layout Itemize
@@ -2170,7 +2232,7 @@ Forma integral:
 \end_layout
 
 \begin_layout Itemize
-Forma diferencial:
+forma diferencial:
 \end_layout
 
 \begin_layout Standard
@@ -2204,7 +2266,7 @@ No domínio do tempo:
 \end_layout
 
 \begin_layout Itemize
-No domínio da freqüência:
+no domínio da freqüência:
 \end_layout
 
 \begin_layout Standard
@@ -2218,7 +2280,7 @@ No domínio da freqüência:
 \end_layout
 
 \begin_layout Itemize
-Conversão do domínio da freqüência para o domínio do tempo:
+conversão do domínio da freqüência para o domínio do tempo:
 \end_layout
 
 \begin_layout Standard
@@ -2232,7 +2294,7 @@ Conversão do domínio da freqüência para o domínio do tempo:
 \end_layout
 
 \begin_layout Subsection
-Equações de Maxwell na Forma Fasorial Diferencial
+Equações de Maxwell na Forma Fasorial (diferencial)
 \end_layout
 
 \begin_layout Standard
@@ -2276,19 +2338,47 @@ Equações de Maxwell
 
 \begin_deeper
 \begin_layout Itemize
-Lei de Gauss
+Lei de Gauss (
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "sub:Lei-de-Gauss"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-Lei de Gauss para Campos Magnéticos
+Lei de Gauss para Campos Magnéticos (
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "sub:Lei-de-Gauss-Mag"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-Lei de Faraday
+Lei de Faraday (
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "sub:Lei-de-Faraday"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-Lei Circuital de Ampère
+Lei Circuital de Ampère (
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "sub:Lei-Circuital-de-Amp"
+
+\end_inset
+
+)
 \end_layout
 
 \end_deeper
@@ -2327,7 +2417,7 @@ No domínio do tempo:
 \end_layout
 
 \begin_layout Itemize
-No domínio da freqüência (campos harmônicos):
+no domínio da freqüência (campos harmônicos):
 \end_layout
 
 \begin_layout Standard
@@ -2341,7 +2431,7 @@ No domínio da freqüência (campos harmônicos):
 \end_layout
 
 \begin_layout Itemize
-Solução das equações de onda de Helmholtz, para caso geral:
+solução das equações de onda de Helmholtz, para caso geral:
 \end_layout
 
 \begin_layout Standard
@@ -2357,7 +2447,7 @@ Solução das equações de onda de Helmholtz, para caso geral:
 \end_layout
 
 \begin_layout Subsection
-Relação entre Ondas Propagantes, em Fasores
+Relação entre Ondas Propagantes (em fasores)
 \end_layout
 
 \begin_layout Standard
@@ -2392,7 +2482,7 @@ Constante de propagação:
 \end_layout
 
 \begin_layout Itemize
-Constante de atenuação:
+constante de atenuação:
 \end_layout
 
 \begin_layout Standard
@@ -2405,7 +2495,7 @@ Constante de atenuação:
 \end_layout
 
 \begin_layout Itemize
-Constante de fase:
+constante de fase:
 \end_layout
 
 \begin_layout Standard
@@ -2418,7 +2508,7 @@ Constante de fase:
 \end_layout
 
 \begin_layout Itemize
-Impedância intrínseca:
+impedância intrínseca:
 \end_layout
 
 \begin_layout Standard
@@ -2557,12 +2647,25 @@ Nota: não confundir o símbolo
 \begin_inset Formula $\delta$
 \end_inset
 
- da tangente de perdas com o da profundidade pelicular, pois referem-se
- a grandezas distintas.
+ da tangente de perdas com o da profundidade pelicular na subseção 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "sub:Efeito-Pelicular"
+
+\end_inset
+
+, pois referem-se a grandezas distintas.
 \end_layout
 
 \begin_layout Subsection
 Efeito Pelicular (em bons condutores)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Efeito-Pelicular"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -2579,7 +2682,7 @@ Profundidade pelicular:
 \end_layout
 
 \begin_layout Itemize
-Resistência pelicular:
+resistência pelicular:
 \end_layout
 
 \begin_layout Standard
@@ -2635,7 +2738,7 @@ Potência média temporal:
 \end_layout
 
 \begin_layout Itemize
-Quantidade de potência que atravessa uma superfície:
+quantidade de potência que atravessa uma superfície:
 \end_layout
 
 \begin_layout Address
@@ -2669,7 +2772,7 @@ Coeficiente de reflexão:
 \end_layout
 
 \begin_layout Itemize
-Coeficiente de transmissão:
+coeficiente de transmissão:
 \end_layout
 
 \begin_layout Standard
@@ -2682,7 +2785,7 @@ Coeficiente de transmissão:
 \end_layout
 
 \begin_layout Itemize
-Relação entre os coeficientes de reflexão e transmissão:
+relação entre os coeficientes de reflexão e transmissão:
 \end_layout
 
 \begin_layout Standard
@@ -2695,7 +2798,7 @@ Relação entre os coeficientes de reflexão e transmissão:
 \end_layout
 
 \begin_layout Itemize
-Taxa de onda estacionária (ROE, COE, TOE, VSWR):
+taxa de onda estacionária (ROE, COE, TOE, VSWR):
 \end_layout
 
 \begin_layout Standard
@@ -2734,7 +2837,7 @@ Coeficiente de reflexão:
 \end_layout
 
 \begin_layout Itemize
-Coefiente de transmissão:
+coefiente de transmissão:
 \end_layout
 
 \begin_layout Standard
@@ -2770,7 +2873,7 @@ Leis de Snell da reflexão e da refração:
 \end_layout
 
 \begin_layout Itemize
-Ângulo de Brewster para polarização TM:
+ângulo de Brewster para polarização TM:
 \end_layout
 
 \begin_layout Standard
@@ -2807,7 +2910,7 @@ C' & = & \frac{2\pi\epsilon}{\ln(b/a)}\end{eqnarray}
 \end_layout
 
 \begin_layout Itemize
-Para cabos de condutores gêmeos:
+para cabos de condutores gêmeos:
 \end_layout
 
 \begin_layout Standard
@@ -2823,7 +2926,7 @@ C' & = & \frac{\pi\epsilon}{\cosh^{-1}(d/2a)}\end{eqnarray}
 \end_layout
 
 \begin_layout Subsection
-Equações Gerais de Linha de Transmissão (Equações Telegráficas)
+Equações Gerais de Linha de Transmissão
 \end_layout
 
 \begin_layout Itemize
@@ -2841,7 +2944,7 @@ No domínio do tempo:
 \end_layout
 
 \begin_layout Itemize
-No domínio da freqüência (para ondas harmônicas):
+no domínio da freqüência (para ondas harmônicas):
 \end_layout
 
 \begin_layout Standard
@@ -2873,7 +2976,7 @@ i(z,t) & = & I_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+I_{0}^{-}e^{+\alpha z}
 \end_layout
 
 \begin_layout Itemize
-No domínio da freqüência:
+no domínio da freqüência:
 \end_layout
 
 \begin_layout Standard
@@ -2953,7 +3056,7 @@ P_{ave}^{+}(z)=\frac{(V_{0}^{+})^{2}}{2Z_{0}}\end{equation}
 \end_layout
 
 \begin_layout Itemize
-Ganho de potência:
+ganho de potência:
 \end_layout
 
 \begin_layout Standard
@@ -2966,7 +3069,7 @@ G_{(\deci\bel)}=10\log\left(\frac{P_{out}}{P_{in}}\right)\end{equation}
 \end_layout
 
 \begin_layout Itemize
-Relação entre decibéis e neper:
+relação entre decibéis e neper:
 \end_layout
 
 \begin_layout Standard
@@ -2996,7 +3099,7 @@ Na carga:
 \end_layout
 
 \begin_layout Itemize
-Em qualquer ponto:
+em qualquer ponto:
 \end_layout
 
 \begin_layout Standard
@@ -3009,7 +3112,7 @@ Em qualquer ponto:
 \end_layout
 
 \begin_layout Itemize
-Exemplo 
+exemplo 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -3064,7 +3167,7 @@ Z_{in}=Z_{0}\frac{Z_{L}+Z_{0}\tanh(\gamma\ell)}{Z_{0}+Z_{L}\tanh(\gamma\ell)}\en
 \end_layout
 
 \begin_layout Itemize
-Para linha sem perdas:
+para linha sem perdas:
 \end_layout
 
 \begin_layout Standard
@@ -3097,7 +3200,7 @@ Vetores em coordenadas cartesianas, cilíndricas e esféricas:
 \end_layout
 
 \begin_layout Itemize
-Produto Escalar (em coordenadas cartesianas):
+produto Escalar (em coordenadas cartesianas):
 \end_layout
 
 \begin_layout Standard
@@ -3110,7 +3213,7 @@ Produto Escalar (em coordenadas cartesianas):
 \end_layout
 
 \begin_layout Itemize
-Operador Nabla:
+operador Nabla:
 \end_layout
 
 \begin_layout Standard
@@ -3123,12 +3226,12 @@ Operador Nabla:
 \end_layout
 
 \begin_layout Itemize
-Divergência:
+divergência:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Coordenadas Cartesianas
+coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
@@ -3141,7 +3244,7 @@ Coordenadas Cartesianas
 \end_layout
 
 \begin_layout Itemize
-Coordenadas Cilíndricas
+coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
@@ -3154,7 +3257,7 @@ Coordenadas Cilíndricas
 \end_layout
 
 \begin_layout Itemize
-Coordenadas Esféricas
+coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
@@ -3168,12 +3271,12 @@ Coordenadas Esféricas
 
 \end_deeper
 \begin_layout Itemize
-Gradiente:
+gradiente:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Coordenadas Cartesianas
+coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
@@ -3186,7 +3289,7 @@ Coordenadas Cartesianas
 \end_layout
 
 \begin_layout Itemize
-Coordenadas Cilíndricas
+coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
@@ -3199,7 +3302,7 @@ Coordenadas Cilíndricas
 \end_layout
 
 \begin_layout Itemize
-Coordenadas Esféricas
+coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
@@ -3213,12 +3316,12 @@ Coordenadas Esféricas
 
 \end_deeper
 \begin_layout Itemize
-Rotacional:
+rotacional:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Coordenadas Cartesianas
+coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
@@ -3235,7 +3338,7 @@ A_{x} & A_{y} & A_{z}\end{array}\right|=\nonumber \\
 \end_layout
 
 \begin_layout Itemize
-Coordenadas Cilíndricas
+coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
@@ -3249,7 +3352,7 @@ Coordenadas Cilíndricas
 \end_layout
 
 \begin_layout Itemize
-Coordenadas Esféricas
+coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
@@ -3266,12 +3369,12 @@ Coordenadas Esféricas
 
 \end_deeper
 \begin_layout Itemize
-Laplaciano:
+laplaciano:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Coordenadas Cartesianas
+coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
@@ -3284,7 +3387,7 @@ Coordenadas Cartesianas
 \end_layout
 
 \begin_layout Itemize
-Coordenadas Cilíndricas
+coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
@@ -3297,7 +3400,7 @@ Coordenadas Cilíndricas
 \end_layout
 
 \begin_layout Itemize
-Coordenadas Esféricas
+coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
@@ -3316,14 +3419,14 @@ Constantes
 \end_layout
 
 \begin_layout Standard
-Na 
+A 
 \begin_inset CommandInset ref
 LatexCommand prettyref
 reference "tab:Constantes-fisicas"
 
 \end_inset
 
- as constantes físicas de interesse em eletromagnetismo.
+ contém constantes físicas de interesse em Eletromagnetismo.
 \end_layout
 
 \begin_layout Standard
@@ -3800,8 +3903,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Condutividade aproximada de alguns materiais.
- Note-se que esta condutividade depende de impurezas, umidade e temperatura.
+Condutividade aproximada de alguns materiais (note-se que esta condutividade
+ depende de impurezas, umidade e temperatura).
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Condutividade"
@@ -4192,12 +4295,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Propriedades para alguns dielétricos.
- Note-se que para condutores, normalmente, 
+Propriedades para alguns dielétricos (note-se que para condutores, normalmente,
+ 
 \begin_inset Formula $\epsilon_{r}=1$
 \end_inset
 
-.
+).
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Dieletricos"
@@ -4822,13 +4925,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Permeabilidade relativa para alguns materiais ferromagnéticos.
- Note-se que a permeabilidade dependerá fortemente da pureza dos materiais.
- Ainda, lembra-se que a curva 
+Permeabilidade relativa para alguns materiais ferromagnéticos (note-se que
+ a permeabilidade dependerá fortemente da pureza dos materiais; ainda, lembra-se
+ que a curva 
 \begin_inset Formula $B\times H$
 \end_inset
 
- não é linear, na grande maioria dos materiais ferromagnéticos.
+ não é linear na grande maioria dos materiais ferromagnéticos).
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Permeabilidade"
@@ -5301,11 +5404,11 @@ key "wentworth2007ele"
 \end_layout
 
 \begin_layout Section
-Licensa
+Licença
 \end_layout
 
 \begin_layout Standard
-Este documento é disponibilizado sob a licensa abaixo descrita.
+Este documento é disponibilizado sob a licença abaixo descrita.
 \end_layout
 
 \begin_layout Subsection*
@@ -5318,7 +5421,7 @@ Unported
 \end_layout
 
 \begin_layout Standard
-Esta licensa é aceita para trabalhos culturais livres.
+Esta licença é aceita para trabalhos culturais livres.
  Com ela, pode-se:
 \end_layout
 
@@ -5358,11 +5461,11 @@ Licença: se alterar, transformar, ou contruir um novo trabalho a partir
 \end_layout
 
 \begin_layout Subsection*
-Mais Informações sobre a Licensa
+Mais Informações sobre a Licença
 \end_layout
 
 \begin_layout Standard
-O resumo da licensa pode ser obtido em:
+O resumo da licença pode ser obtido em:
 \end_layout
 
 \begin_layout Description
@@ -5388,7 +5491,7 @@ target "http://creativecommons.org/licenses/by-sa/3.0/"
 \end_layout
 
 \begin_layout Standard
-A licensa completa pode ser obtida em:
+A licença completa pode ser obtida em:
 \end_layout
 
 \begin_layout Description
@@ -5435,8 +5538,8 @@ noindent
 
 \begin_inset CommandInset href
 LatexCommand href
-name "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.0.0.pdf"
-target "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.0.0.pdf"
+name "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.0.1.pdf"
+target "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.0.1.pdf"
 
 \end_inset
 
