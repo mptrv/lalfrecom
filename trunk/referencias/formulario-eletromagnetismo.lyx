@@ -1,11 +1,12 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
 \usepackage{misc}
-\usepackage{unidades}
+%\usepackage{unidades}
+\usepackage[load-configurations=version-1]{siunitx}
 \end_preamble
 \options titlepage
 \use_default_options false
@@ -182,6 +183,26 @@ ensuremath{
 mathrm{tgh
 \backslash
 ,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+sisetup{per=slash}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newunit{
+\backslash
+ampereesp}{
+\backslash
+ampere{}
+\backslash
+mathrm{esp}}
 \end_layout
 
 \end_inset
@@ -1031,7 +1052,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt E(\volt\per\metre)$
+\begin_inset Formula $\vt E\si{\ (\volt\per\metre)}$
 \end_inset
 
 
@@ -1043,33 +1064,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt H(\ampere\per\metre)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\vt D(\coulomb\per\squaremetre)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\vt B(\weber\per\squaremetre)$
+\begin_inset Formula $\vt H\si\{\ (\ampere\per\metre)\}$
 \end_inset
 
 
@@ -1083,7 +1078,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Psi(\coulomb)$
+\begin_inset Formula $\vt D\si\{\ (\coulomb\per\squaremetre)\}$
 \end_inset
 
 
@@ -1095,10 +1090,10 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Phi(\weber)$
+\begin_inset Formula $\vt B\si\{\ (\weber\per\squaremetre)$
 \end_inset
 
-
+}
 \end_layout
 
 \end_inset
@@ -1109,7 +1104,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\epsilon(\farad\per\metre)$
+\begin_inset Formula $\Psi\si\{\ (\coulomb)\}$
 \end_inset
 
 
@@ -1121,10 +1116,36 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mu(\henry\per\metre)$
+\begin_inset Formula $\Phi\si\{\ (\weber)$
+\end_inset
+
+}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\epsilon\si\{\ (\farad\per\metre)\}$
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu\si\{\ (\henry\per\metre)$
+\end_inset
+
+}
 \end_layout
 
 \end_inset
@@ -1239,7 +1260,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt F=Q\vt E(\newton)$
+\begin_inset Formula $\vt F=Q\vt E\si\{\ (\newton)\}$
 \end_inset
 
 
@@ -1251,7 +1272,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt F=Q\pv{\vt u}{\vt B}(\newton)$
+\begin_inset Formula $\vt F=Q\pv{\vt u}{\vt B}\si\{\ (\newton)\}$
 \end_inset
 
 
@@ -1265,10 +1286,10 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $W_{E}=\frac{1}{2}\int\pe{\vt D}{\vt E}\dv(\joule)$
+\begin_inset Formula $W_{E}=\frac{1}{2}\int\pe{\vt D}{\vt E}\dv\si\{\ (\joule)$
 \end_inset
 
-
+}
 \end_layout
 
 \end_inset
@@ -1277,10 +1298,10 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $W_{M}=\frac{1}{2}\int\pe{\vt B}{\vt H}\dv(\joule)$
+\begin_inset Formula $W_{M}=\frac{1}{2}\int\pe{\vt B}{\vt H}\dv\si\{\ (\joule)$
 \end_inset
 
-
+}
 \end_layout
 
 \end_inset
@@ -1829,7 +1850,7 @@ Força eletromotriz (
 
 \size small
 Força magnetomotriz (
-\begin_inset Formula $\ampereesp$
+\begin_inset Formula $\si{\ampereesp}$
 \end_inset
 
 )
@@ -1949,7 +1970,7 @@ Resistência (
 
 \size small
 Relutância (
-\begin_inset Formula $\ampereesp\per\weber$
+\begin_inset Formula $\si{\ampereesp\per\weber}$
 \end_inset
 
 )
