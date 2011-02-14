@@ -82,12 +82,8 @@ v.
  0.0.1
 \end_layout
 
-\begin_layout Author
-ETE 212
-\end_layout
-
 \begin_layout Date
-2010
+fevereiro de 2011
 \end_layout
 
 \begin_layout Standard
@@ -500,7 +496,55 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
+\newcommand{\du}{du}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dx}{dx}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dy}{dy}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dz}{dz}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
 \newcommand{\dQ}{dQ}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\drh}{d\rho}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dph}{d\phi}
 \end_inset
 
 
@@ -5390,19 +5434,143 @@ Vidro
 \end_layout
 
 \begin_layout Section
+Elementos Diferenciais
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Nota 1: deve-se tomar muito cuidado e cautela ao se usar as relações seguintes;
+ um esboço do elemento diferencial conforme os eixos adotados para o problema
+ é altamente recomendado.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Nota 2: aqui não foram consideradas todas as possibilidades.
+\end_layout
+
+\begin_layout Itemize
+Linha
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+coordenadas cartesianas
+\end_layout
+
+\begin_layout Itemize
+coordenadas cilíndricas
+\end_layout
+
+\begin_layout Itemize
+coordenadas esféricas
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+área
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+coordenadas cartesianas
+\end_layout
+
+\begin_layout Itemize
+coordenadas cilíndricas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\dS=\rho\,\drh\,\dph\,\az\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+coordenadas esféricas
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+volume
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+coordenadas cartesianas
+\end_layout
+
+\begin_layout Itemize
+coordenadas cilíndricas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\dv=\rho\,\drh\,\dph\,\dz\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+coordenadas esféricas
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Integrais Indefinidas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{align*}
+ & \int u\dv=uv-\int v\du\\
+ & \int\frac{\dx}{x}=\ln x\\
+ & \int e^{x}\dx=e^{x}\\
+ & \int\sin ax\,\dx=-\frac{1}{a}\cos ax\\
+ & \int\cos ax\, dx=\frac{1}{a}\sin ax\\
+ & \int\frac{\dx}{\sqrt{x\text{²}+a\text{²}}}=\ln\left(x+\sqrt{x^{2}+a^{2}}\right)\\
+ & \int\frac{\dx}{\left(x^{2}+a^{2}\right)^{3/2}}=\frac{x}{a^{2}\sqrt{x^{2}+a^{2}}}\\
+ & \int\frac{\dx}{x^{2}+a^{2}}=\frac{1}{a}\tan^{-1}\frac{x}{a}\\
+ & \int e^{ax}\cos bx\,\dx=\frac{e^{ax}}{a^{2}+b^{2}}\left(a\,\cos bx+b\,\sin bx\right)\\
+ & \int e^{ax}\cos(c+bx)\dx=\frac{e^{ax}}{a^{2}+b^{2}}\left[a\,\sin(c+bx)-b\,\cos(c+bx)\right]\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Derivadas Mais Comuns
+\end_layout
+
+\begin_layout Section
+Regras de Integração e Derivação
+\end_layout
+
+\begin_layout Section
 Produção
 \end_layout
 
 \begin_layout Description
-Autor: Marcelo Porto Trevizan
+Autor: Prof\SpecialChar \@.
+ Marcelo Porto Trevizan
 \end_layout
 
 \begin_layout Description
-Editor: Marcelo Porto Trevizan
+Editor: Prof\SpecialChar \@.
+ Marcelo Porto Trevizan
 \end_layout
 
 \begin_layout Description
-Revisores: Marcelo Porto Trevizan, Arnaldo Megrich
+Revisores: Prof\SpecialChar \@.
+ Arnaldo Megrich, Prof\SpecialChar \@.
+ Marcelo Porto Trevizan
 \end_layout
 
 \begin_layout Description
