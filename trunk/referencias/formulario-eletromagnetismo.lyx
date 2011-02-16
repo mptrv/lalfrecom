@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -79,7 +79,7 @@ status open
 
 \size footnotesize
 v.
- 0.0.1
+ 0.1.0
 \end_layout
 
 \begin_layout Date
@@ -172,11 +172,101 @@ mathrm{tg
 \backslash
 renewcommand{
 \backslash
+csc}{
+\backslash
+ensuremath{
+\backslash
+mathrm{cossec
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
 tanh}{
 \backslash
 ensuremath{
 \backslash
 mathrm{tgh
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+arcsin}{
+\backslash
+ensuremath{
+\backslash
+mathrm{arcsen
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+arctan}{
+\backslash
+ensuremath{
+\backslash
+mathrm{arctg
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+arcsec}{
+\backslash
+ensuremath{
+\backslash
+mathrm{arcsec
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+arccot}{
+\backslash
+ensuremath{
+\backslash
+mathrm{arccotg
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+arccsc}{
+\backslash
+ensuremath{
+\backslash
+mathrm{arccossec
 \backslash
 ,}}}
 \end_layout
@@ -5658,6 +5748,14 @@ Derivadas Mais Comuns
 
 \begin_layout Standard
 \begin_inset FormulaMacro
+\newcommand{\cm}{\mathrm{m}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
 \newcommand{\cn}{\mathrm{\mathrm{n}}}
 \end_inset
 
@@ -5689,6 +5787,10 @@ Dadas as funções
 \begin_inset Formula $\mathrm{c}$
 \end_inset
 
+, 
+\begin_inset Formula $\cm$
+\end_inset
+
  e 
 \begin_inset Formula $\mathrm{n}$
 \end_inset
@@ -5709,6 +5811,12 @@ reference "tab:Tabela-de-derivadas"
 \end_inset
 
 .
+ Na ...
+ têm-se as derivadas quando 
+\begin_inset Formula $y$
+\end_inset
+
+ for uma função hiperbólica.
 \end_layout
 
 \begin_layout Standard
@@ -5719,16 +5827,52 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="34" columns="2">
+<lyxtabular version="3" rows="27" columns="3">
 <features>
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
 <row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Função
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Derivada
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y$
+
+\emph on
+Condição
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=\cc$
 \end_inset
 
 
@@ -5736,11 +5880,32 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'$
+\begin_inset Formula $y'=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula $\cc\in\mathbb{R}$
 \end_inset
 
 
@@ -5750,11 +5915,11 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\cc$
+\begin_inset Formula $y=x$
 \end_inset
 
 
@@ -5762,76 +5927,13 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0$
+\begin_inset Formula $y'=1$
 \end_inset
 
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $x$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\cc u$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\cc u'$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -5848,10 +5950,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=u\pm v$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=u'\pm v'$
+\end_inset
+
 
 \end_layout
 
@@ -5868,30 +5985,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=uv$
+\end_inset
+
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
+\begin_inset Formula $y'=u'v+uv'$
 \end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -5912,6 +6024,59 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\cc u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\cc u'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cc\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=\frac{u}{v}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\frac{u'v-uv'}{v\text{²}}$
+\end_inset
+
 
 \end_layout
 
@@ -5932,6 +6097,211 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\frac{\cc}{v}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=-\frac{\cc v'}{v\text{²}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cc\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=u^{v}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=v\cdot u^{v-1}\cdot u'+u^{v}\cdot\ln u\cdot v'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $u>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=u^{\cm}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\cm\cdot u^{\cm-1}\cdot u'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cm\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=\sqrt[\cn]{u}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\frac{u'}{\cn\sqrt[\cn]{u^{\cn-1}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cn\in\mathbb{N}^{*}-\left\{ 1\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=\ca^{u}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\ca^{u}\cdot u'\cdot\ln\ca$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ca\in\mathbb{R},\ 0<\ca\neq1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=e^{u}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=u'\cdot e^{u}$
+\end_inset
+
 
 \end_layout
 
@@ -5948,10 +6318,63 @@ status open
 </cell>
 </row>
 <row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=\log_{\ca}u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\frac{u'}{u\cdot\ln\ca}=\frac{u'}{u}\log_{\ca}e$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\ca\in\mathbb{R},\ 0<\ca\neq1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y=\ln u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\frac{u'}{u}$
+\end_inset
+
 
 \end_layout
 
@@ -5968,10 +6391,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\sin u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=u'\cdot\cos u$
+\end_inset
+
 
 \end_layout
 
@@ -5988,10 +6426,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\cos u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=-u'\cdot\sin u$
+\end_inset
+
 
 \end_layout
 
@@ -6008,10 +6461,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\tan u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=u'\cdot\sec\text{²}u$
+\end_inset
+
 
 \end_layout
 
@@ -6028,10 +6496,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\cot u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=-u'\cdot\csc\text{²}u$
+\end_inset
+
 
 \end_layout
 
@@ -6048,10 +6531,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\sec u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=u'\cdot\sec u\cdot\tan u$
+\end_inset
+
 
 \end_layout
 
@@ -6068,10 +6566,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\csc u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=-u'\cdot\csc u\cdot\cot u$
+\end_inset
+
 
 \end_layout
 
@@ -6088,10 +6601,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\arcsin u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\frac{u'}{\sqrt{1-u\text{²}}}$
+\end_inset
+
 
 \end_layout
 
@@ -6108,10 +6636,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\arccos u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=-\frac{u'}{\sqrt{1-u\text{²}}}$
+\end_inset
+
 
 \end_layout
 
@@ -6128,10 +6671,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\arctan u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\frac{u'}{1+u\text{²}}$
+\end_inset
+
 
 \end_layout
 
@@ -6148,10 +6706,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\arccot u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=-\frac{u'}{1+u\text{²}}$
+\end_inset
+
 
 \end_layout
 
@@ -6168,10 +6741,25 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\arcsec u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=\frac{u'}{u\cdot\sqrt{u\text{²}-1}}$
+\end_inset
+
 
 \end_layout
 
@@ -6188,236 +6776,31 @@ status open
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $y=\arccsc u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'=-\frac{u'}{u\cdot\sqrt{u\text{²}-1}}$
+\end_inset
+
 
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6450,10 +6833,6 @@ name "tab:Tabela-de-derivadas"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
