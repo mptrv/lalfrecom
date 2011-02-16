@@ -1,4 +1,4 @@
-#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -464,7 +464,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dL}{d\vt{\mathrm{L}}}
+\newcommand{\dL}{\d\vt{\mathrm{L}}}
 \end_inset
 
 
@@ -472,7 +472,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dS}{d\vt{\mathrm{S}}}
+\newcommand{\dS}{\d\vt{\mathrm{S}}}
 \end_inset
 
 
@@ -480,7 +480,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dSe}{dS}
+\newcommand{\dSe}{\d S}
 \end_inset
 
 
@@ -488,7 +488,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dv}{dv}
+\newcommand{\dv}{\d v}
 \end_inset
 
 
@@ -496,7 +496,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\du}{du}
+\newcommand{\du}{\d u}
 \end_inset
 
 
@@ -504,7 +504,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dx}{dx}
+\newcommand{\dx}{\d x}
 \end_inset
 
 
@@ -512,7 +512,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dy}{dy}
+\newcommand{\dy}{\d y}
 \end_inset
 
 
@@ -520,7 +520,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dz}{dz}
+\newcommand{\dz}{\d z}
 \end_inset
 
 
@@ -528,7 +528,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dQ}{dQ}
+\newcommand{\dr}{\d r}
 \end_inset
 
 
@@ -536,7 +536,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\drh}{d\rho}
+\newcommand{\drh}{\d\rho}
 \end_inset
 
 
@@ -544,7 +544,7 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dph}{d\phi}
+\newcommand{\dth}{\d\theta}
 \end_inset
 
 
@@ -552,7 +552,23 @@ mathrm{esp}}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\dV}{dV}
+\newcommand{\dph}{\d\phi}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dQ}{\d Q}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dV}{\d V}
 \end_inset
 
 
@@ -5460,12 +5476,54 @@ Linha
 coordenadas cartesianas
 \end_layout
 
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\dL_{1} & = & \dx\,\ax\\
+\dL_{2} & = & \dy\,\ay\\
+\dL_{3} & = & \dz\,\az\\
+\dL_{4} & = & -\dL_{1}=-\dx\,\ax\\
+\dL_{5} & = & -\dL_{2}=-\dy\,\ay\\
+\dL_{6} & = & -\dL_{3}=-\dz\,\az\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 coordenadas cilíndricas
 \end_layout
 
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\dL_{1} & = & \drh\,\arh\\
+\dL_{2} & = & \rho\,\dph\,\aph\\
+\dL_{3} & = & \dz\,\az\\
+\dL_{4} & = & -\dL_{1}=-\drh\,\arh\\
+\dL_{5} & = & -\dL_{2}=-\rho\,\dph\,\aph\\
+\dL_{6} & = & -\dL_{3}=-\dz\,\az\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 coordenadas esféricas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\dL_{1} & = & \dr\,\ar\\
+\dL_{2} & = & r\,\dth\,\ath\\
+\dL_{3} & = & r\,\sin\theta\,\dph\,\aph\\
+\dL_{4} & = & -\dL_{1}=-\dr\,\ar\\
+\dL_{5} & = & -\dL_{2}=-r\,\dth\,\ath\\
+\dL_{6} & = & -\dL_{3}=-r\,\sin\theta\,\dph\,\aph\end{eqnarray*}
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -5478,13 +5536,32 @@ coordenadas esféricas
 coordenadas cartesianas
 \end_layout
 
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\dS_{1} & = & \dy\,\dz\,\ax\\
+\dS_{2} & = & \dx\,\dz\,\ay\\
+\dS_{3} & = & \dx\,\dy\,\az\\
+\dS_{4} & = & -\dS_{1}=-\dy\,\dz\,\ax\\
+\dS_{5} & = & -\dS_{2}=-\dx\,\dz\,\ay\\
+\dS_{6} & = & -\dS_{3}=-\dx\,\dy\,\az\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\dS=\rho\,\drh\,\dph\,\az\end{equation}
+\begin_inset Formula \begin{eqnarray*}
+\dS_{1} & = & \rho\,\dph\,\dz\,\arh\\
+\dS_{2} & = & \drh\,\dz\,\aph\\
+\dS_{3} & = & \rho\,\drh\,\dph\,\az\\
+\dS_{4} & = & -\dS_{1}=-\rho\,\dph\dz\,\arh\\
+\dS_{5} & = & -\dS_{2}=-\drh\,\dz\,\aph\\
+\dS_{6} & = & -\dS_{3}=-\rho\,\drh\,\dph\,\az\end{eqnarray*}
 
 \end_inset
 
@@ -5495,6 +5572,20 @@ coordenadas cilíndricas
 coordenadas esféricas
 \end_layout
 
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\dS_{1} & = & r^{2}\,\sin\theta\,\dph\,\dth\,\ar\\
+\dS_{2} & = & r\,\sin\theta\,\dr\,\dph\,\ath\\
+\dS_{3} & = & r\,\dr\,\dph\,\aph\\
+\dS_{4} & = & -\dS_{1}=-r^{2}\,\sin\theta\,\dph\,\dth\,\ar\\
+\dS_{5} & = & -\dS_{2}=-r\,\sin\theta\,\dr\,\dph\,\ath\\
+\dS_{6} & = & -\dS_{3}=-r\,\dr\,\dph\,\aph\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 volume
@@ -5503,6 +5594,15 @@ volume
 \begin_deeper
 \begin_layout Itemize
 coordenadas cartesianas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\dv=\dx\,\dy\,\dz\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -5522,7 +5622,846 @@ coordenadas cilíndricas
 coordenadas esféricas
 \end_layout
 
+\begin_layout Standard
+\begin_inset Formula \[
+\dv=r^{2}\sin\theta\,\dr\,\dth\,\dph\]
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
+\begin_layout Section
+Transformação entre Sistemas de Coordenadas
+\end_layout
+
+\begin_layout Section
+Derivadas Mais Comuns
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ca}{\mathrm{\mathrm{a}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cc}{\mathrm{\mathrm{c}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cn}{\mathrm{\mathrm{n}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dadas as funções 
+\begin_inset Formula $y$
+\end_inset
+
+, 
+\begin_inset Formula $u$
+\end_inset
+
+ e 
+\begin_inset Formula $v$
+\end_inset
+
+, que são funções de 
+\begin_inset Formula $x$
+\end_inset
+
+, e as constantes 
+\begin_inset Formula $\mathrm{a}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathrm{c}$
+\end_inset
+
+ e 
+\begin_inset Formula $\mathrm{n}$
+\end_inset
+
+, a derivada de 
+\begin_inset Formula $y$
+\end_inset
+
+, 
+\begin_inset Formula $y'$
+\end_inset
+
+, é apresentada na 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "tab:Tabela-de-derivadas"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="34" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cc$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cc u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cc u'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tabela de derivadas.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabela-de-derivadas"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Integrais Indefinidas
 \end_layout
@@ -5546,11 +6485,7 @@ Integrais Indefinidas
 \end_layout
 
 \begin_layout Section
-Derivadas Mais Comuns
-\end_layout
-
-\begin_layout Section
-Regras de Integração e Derivação
+Regras de Derivação e Integração
 \end_layout
 
 \begin_layout Section
