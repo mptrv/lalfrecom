@@ -35,7 +35,7 @@ theorems-ams
 \pdf_breaklinks true
 \pdf_pdfborder true
 \pdf_colorlinks true
-\pdf_backref false
+\pdf_backref page
 \pdf_pdfusetitle true
 \papersize a5paper
 \use_geometry false
@@ -79,7 +79,7 @@ status open
 
 \size footnotesize
 v.
- 0.1.0
+ 0.1.0-beta
 \end_layout
 
 \begin_layout Date
@@ -275,7 +275,52 @@ mathrm{arccossec
 
 
 \backslash
-sisetup{per=slash}
+newcommand{
+\backslash
+sech}{
+\backslash
+ensuremath{
+\backslash
+mathrm{sech
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+csch}{
+\backslash
+ensuremath{
+\backslash
+mathrm{cossech
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+cotanh}{
+\backslash
+ensuremath{
+\backslash
+mathrm{cotg
+\backslash
+,}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+sisetup{per=slash,unitsep=tightcdot}
 \end_layout
 
 \begin_layout Plain Layout
@@ -689,6 +734,54 @@ mathrm{esp}}
 \end_layout
 
 \begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ca}{\mathrm{\mathrm{a}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cb}{\mathrm{\mathrm{b}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cc}{\mathrm{\mathrm{c}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cC}{\mathrm{C}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cm}{\mathrm{m}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cn}{\mathrm{\mathrm{n}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -714,6 +807,30 @@ key "wentworth2007ele"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Se encontrar algum erro ou tiver alguma sugestão, acesse:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+name "http://code.google.com/p/lalfrecom/issues/list"
+target "http://code.google.com/p/lalfrecom/issues/list"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+e clique em 
+\emph on
+New issue
+\emph default
+ (é necessário ter conta no Google).
 \end_layout
 
 \begin_layout Section
@@ -1168,6 +1285,7 @@ name "tab:Analogia-campo-eletrico-magnetico-estatica"
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
 <features>
@@ -1202,7 +1320,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt E\si{\ (\volt\per\metre)}$
+\begin_inset Formula $\vt E\ (\si{\volt\per\metre})$
 \end_inset
 
 
@@ -1214,7 +1332,33 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt H\si\{\ (\ampere\per\metre)\}$
+\begin_inset Formula $\vt H\ (\si{\ampere\per\metre})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vt D\ (\si{\coulomb\per\squaremetre})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vt B\ (\si{\weber\per\squaremetre})$
 \end_inset
 
 
@@ -1228,7 +1372,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt D\si\{\ (\coulomb\per\squaremetre)\}$
+\begin_inset Formula $\Psi\ (\coulomb)$
 \end_inset
 
 
@@ -1240,36 +1384,10 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt B\si\{\ (\weber\per\squaremetre)$
-\end_inset
-
-}
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\Psi\si\{\ (\coulomb)\}$
+\begin_inset Formula $\Phi\ (\weber)$
 \end_inset
 
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\Phi\si\{\ (\weber)$
-\end_inset
-
-}
 \end_layout
 
 \end_inset
@@ -1280,7 +1398,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\epsilon\si\{\ (\farad\per\metre)\}$
+\begin_inset Formula $\epsilon\ (\si{\farad\per\metre})$
 \end_inset
 
 
@@ -1292,10 +1410,10 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mu\si\{\ (\henry\per\metre)$
+\begin_inset Formula $\mu\ (\si{\henry\per\metre})$
 \end_inset
 
-}
+
 \end_layout
 
 \end_inset
@@ -1410,7 +1528,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt F=Q\vt E\si\{\ (\newton)\}$
+\begin_inset Formula $\vt F=Q\vt E\ (\newton)$
 \end_inset
 
 
@@ -1422,7 +1540,7 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\vt F=Q\pv{\vt u}{\vt B}\si\{\ (\newton)\}$
+\begin_inset Formula $\vt F=Q\pv{\vt u}{\vt B}\ (\newton)$
 \end_inset
 
 
@@ -1436,10 +1554,10 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $W_{E}=\frac{1}{2}\int\pe{\vt D}{\vt E}\dv\si\{\ (\joule)$
+\begin_inset Formula $W_{E}=\frac{1}{2}\int\pe{\vt D}{\vt E}\dv\ (\joule)$
 \end_inset
 
-}
+
 \end_layout
 
 \end_inset
@@ -1448,10 +1566,10 @@ Campos magnéticos
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $W_{M}=\frac{1}{2}\int\pe{\vt B}{\vt H}\dv\si\{\ (\joule)$
+\begin_inset Formula $W_{M}=\frac{1}{2}\int\pe{\vt B}{\vt H}\dv\ (\joule)$
 \end_inset
 
-}
+
 \end_layout
 
 \end_inset
@@ -2137,7 +2255,7 @@ Relutância (
 
 \size small
 Condutividade (
-\begin_inset Formula $\siemens\per\metre$
+\begin_inset Formula $\si{\siemens\per\metre}$
 \end_inset
 
 )
@@ -3138,7 +3256,7 @@ No domínio do tempo:
 
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
-v(z,t) & = & V_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+V_{0}^{-}e^{+\alpha z}\cos(\omega t+\beta z)\\
+v(z,t) & = & V_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+V_{0}^{-}e^{+\alpha z}\cos(\omega t+\beta z)\qquad\\
 i(z,t) & = & I_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+I_{0}^{-}e^{+\alpha z}\cos(\omega t+\beta z)\end{eqnarray}
 
 \end_inset
@@ -3692,7 +3810,7 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\farad\per\metre$
+\begin_inset Formula $\si{\farad\per\metre}$
 \end_inset
 
 
@@ -3730,7 +3848,7 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\henry\per\metre$
+\begin_inset Formula $\si{\henry\per\metre}$
 \end_inset
 
 
@@ -3844,7 +3962,7 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\metre\per\second$
+\begin_inset Formula $\si{\metre\per\second}$
 \end_inset
 
 
@@ -3882,7 +4000,7 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\metre\per\second^{2}$
+\begin_inset Formula $\si{\metre\per\second\squared}$
 \end_inset
 
 
@@ -3920,7 +4038,7 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\joule\second$
+\begin_inset Formula $\si{\joule\second}$
 \end_inset
 
 
@@ -3958,7 +4076,7 @@ Unidade
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\joule\per\kelvin$
+\begin_inset Formula $\si{\joule\per\kelvin}$
 \end_inset
 
 
@@ -4020,7 +4138,7 @@ Conversões
 
 \begin_layout Standard
 \begin_inset Formula \[
-1\neper=8,686\deci\bel\]
+1\ \neper=8.686\si\ {\deci\bel}\]
 
 \end_inset
 
@@ -5518,7 +5636,7 @@ Vidro
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0,010$
+\begin_inset Formula $\num{0,010}$
 \end_inset
 
 
@@ -5720,40 +5838,101 @@ coordenadas esféricas
 Transformação entre Sistemas de Coordenadas
 \end_layout
 
+\begin_layout Itemize
+Cartesianas para cilíndricas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+P(x,y,z)\ \rightarrow\ P(\rho,\phi,z)\]
+
+\end_inset
+
+
+\begin_inset Formula \begin{eqnarray*}
+\rho & = & \sqrt{x\text{²}+y\text{²}}\\
+\phi & = & \arctan\left(\frac{y}{x}\right)\\
+z & = & z\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+cilíndricas para cartesianas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+P(\rho,\phi,z)\ \Rightarrow\ P(x,y,z)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+x & = & \rho\,\cos\phi\\
+y & = & \rho\,\sin\phi\\
+z & = & z\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+cartesianas para esféricas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+P(x,y,z)\ \rightarrow\ P(r,\theta,\phi)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+r & = & \sqrt{x\text{²}+y\text{²}+z\text{²}}\\
+\theta & = & \arccos\left(\frac{z}{r}\right)\\
+\phi & = & \arctan\left(\frac{y}{x}\right)\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+esféricas para cartesianas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+P(r,\theta,\phi)\ \rightarrow\ P(x,y,z)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+x & = & r\,\sin\theta\,\cos\phi\\
+y & = & r\,\sin\theta\,\sin\phi\\
+z & = & r\,\cos\theta\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Derivadas Mais Comuns
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\ca}{\mathrm{\mathrm{a}}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\cc}{\mathrm{\mathrm{c}}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\cm}{\mathrm{m}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\cn}{\mathrm{\mathrm{n}}}
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5814,7 +5993,7 @@ reference "tab:Tabela-de-derivadas-hiperbolicas"
 \begin_layout Standard
 
 \emph on
-Nota: para obter as derivadas das funções elmentares, basta fazer 
+Nota: para obter as derivadas das funções elementares, basta fazer 
 \begin_inset Formula $u=x$
 \end_inset
 
@@ -5834,6 +6013,7 @@ y=\sqrt[\cn]{u}\ \Rightarrow\ y=\sqrt{x}\ \Rightarrow\ y'=\frac{1}{2\sqrt{x}}\]
 
 \begin_layout Standard
 \begin_inset Float table
+placement ph
 wide false
 sideways false
 status open
@@ -6856,11 +7036,13 @@ name "tab:Tabela-de-derivadas"
 
 \begin_layout Standard
 \begin_inset Float table
+placement ph
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
 <features>
@@ -7047,7 +7229,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y=\cossech u$
+\begin_inset Formula $y=\csch u$
 \end_inset
 
 
@@ -7059,7 +7241,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'=-u'\cdot\cossech$
+\begin_inset Formula $y'=-u'\cdot\csch u\cdot\cotanh u$
 \end_inset
 
 
@@ -7094,7 +7276,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'=$
+\begin_inset Formula $y'=-u'\cdot\csch^{2}u$
 \end_inset
 
 
@@ -7129,7 +7311,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'=$
+\begin_inset Formula $y'=\frac{u'}{\sqrt{1+u\text{²}}}$
 \end_inset
 
 
@@ -7164,7 +7346,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'=$
+\begin_inset Formula $y'=\frac{u'}{\sqrt{u\text{²}-1}}$
 \end_inset
 
 
@@ -7176,6 +7358,9 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $u>1$
+\end_inset
+
 
 \end_layout
 
@@ -7199,7 +7384,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'=$
+\begin_inset Formula $y'=\frac{u'}{1-u\text{²}}$
 \end_inset
 
 
@@ -7211,6 +7396,9 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\left|u\right|<1$
+\end_inset
+
 
 \end_layout
 
@@ -7234,7 +7422,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'=$
+\begin_inset Formula $y'=-\frac{u'}{u\sqrt{1-u\text{²}}}$
 \end_inset
 
 
@@ -7246,6 +7434,9 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $0<v<1$
+\end_inset
+
 
 \end_layout
 
@@ -7257,7 +7448,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y=\arg\cossech u$
+\begin_inset Formula $y=\arg\csch u$
 \end_inset
 
 
@@ -7269,7 +7460,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'=$
+\begin_inset Formula $y'=-\frac{u'}{\left|u\right|\sqrt{1+u\text{²}}}$
 \end_inset
 
 
@@ -7281,6 +7472,9 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $v\neq0$
+\end_inset
+
 
 \end_layout
 
@@ -7304,7 +7498,7 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y'=$
+\begin_inset Formula $y'=\frac{u'}{1-u\text{²}}$
 \end_inset
 
 
@@ -7316,6 +7510,9 @@ Condição
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\left|u\right|>1$
+\end_inset
+
 
 \end_layout
 
@@ -7354,21 +7551,162 @@ name "tab:Tabela-de-derivadas-hiperbolicas"
 \end_layout
 
 \begin_layout Section
-Integrais Indefinidas
+Integrais Indefinidas Mais Comuns
 \end_layout
 
 \begin_layout Standard
+Dadas as funções 
+\begin_inset Formula $u=f(x)$
+\end_inset
+
+ e 
+\begin_inset Formula $v=g(x)$
+\end_inset
+
+, as constantes 
+\begin_inset Formula $\mathrm{a}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathrm{c}$
+\end_inset
+
+, 
+\begin_inset Formula $\cm$
+\end_inset
+
+, 
+\begin_inset Formula $\mathrm{n}$
+\end_inset
+
+ e a constante de integração 
+\begin_inset Formula $\cC$
+\end_inset
+
+, apresentam-se as integrais de diversas funções na 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "tab:Tabela-de-integrais"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Nota: para obter as integrais das funções elementares, basta fazer 
+\begin_inset Formula $u=x$
+\end_inset
+
+ e 
+\begin_inset Formula $\du=\dx$
+\end_inset
+
+, como, por exemplo:
+\begin_inset Formula \[
+\int\frac{\du}{u}\ \Rightarrow\ \int\frac{\dx}{x}=\ln\left|x\right|+\cC\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\emph on
+ou, então, definir 
+\begin_inset Formula $u$
+\end_inset
+
+ e encontrar 
+\begin_inset Formula $\du$
+\end_inset
+
+, fazendo os devidos ajustes para não alterar a expressão original, como
+ no exemplo:
+\begin_inset Formula \begin{eqnarray*}
+\int\sin(2x)\,\dx\\
+ &  & u=2x\\
+ &  & \frac{\du}{\dx}=2\ \Rightarrow\ \du=2\cdot\dx\\
+\therefore\int\sin u\,\du & = & \int2\,\sin(2x)\,\dx\\
+\therefore\int\sin(2x)\,\dx & = & \frac{1}{2}\int\sin u\,\du=-\frac{1}{2}\,\cos(u)=-\frac{1}{2}\,\cos(2x)\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement ph
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula \begin{align*}
  & \int u\dv=uv-\int v\du\\
- & \int\frac{\dx}{x}=\ln x\\
- & \int e^{x}\dx=e^{x}\\
- & \int\sin ax\,\dx=-\frac{1}{a}\cos ax\\
- & \int\cos ax\, dx=\frac{1}{a}\sin ax\\
- & \int\frac{\dx}{\sqrt{x\text{²}+a\text{²}}}=\ln\left(x+\sqrt{x^{2}+a^{2}}\right)\\
- & \int\frac{\dx}{\left(x^{2}+a^{2}\right)^{3/2}}=\frac{x}{a^{2}\sqrt{x^{2}+a^{2}}}\\
- & \int\frac{\dx}{x^{2}+a^{2}}=\frac{1}{a}\tan^{-1}\frac{x}{a}\\
- & \int e^{ax}\cos bx\,\dx=\frac{e^{ax}}{a^{2}+b^{2}}\left(a\,\cos bx+b\,\sin bx\right)\\
- & \int e^{ax}\cos(c+bx)\dx=\frac{e^{ax}}{a^{2}+b^{2}}\left[a\,\sin(c+bx)-b\,\cos(c+bx)\right]\end{align*}
+ & \int u^{\cn}\du=\frac{1}{n+1}\, u^{n+1}+\cC\\
+ & \int\frac{\du}{u}=\ln\left|u\right|+\cC\\
+ & \int e^{u}\du=e^{u}+\cC\\
+ & \int\ca^{u}\du=\frac{1}{\ln\ca}\,\ca^{u}+\cC\\
+ & \int\sin u\,\du=-\cos u+\cC\\
+ & \int\cos u\,\du=\sin u+\cC\\
+ & \int\frac{\du}{\sqrt{u\text{²}+\ca\text{²}}}=\ln\left(u+\sqrt{u^{2}+\ca^{2}}\right)+\cC\\
+ & \int\frac{\du}{\left(u^{2}+\ca^{2}\right)^{3/2}}=\frac{u}{\ca^{2}\sqrt{u^{2}+\ca^{2}}}+\cC\\
+ & \int\frac{\du}{u^{2}+\ca^{2}}=\frac{1}{\ca}\arctan\frac{u}{\ca}+\cC\\
+ & \int e^{\ca x}\cos\cb x\,\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left(\ca\,\cos\cb x+\cb\,\sin\cb x\right)+\cC\\
+ & \int e^{\ca x}\cos(\cc+\cb x)\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left[\ca\,\sin(\cc+\cb x)-\cb\,\cos(\cc+\cb x)\right]+\cC\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+Tabela de integrais indefinidas.
+\end_layout
+
+\end_inset
+
+Tabela de integrais indefinidas (notar que as duas últimas equações não
+ foram generalizadas, para simplificar).
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabela-de-integrais"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
 
 \end_inset
 
