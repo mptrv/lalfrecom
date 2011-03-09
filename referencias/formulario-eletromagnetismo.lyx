@@ -4,6 +4,7 @@
 \begin_header
 \textclass article
 \begin_preamble
+%\usepackage{indentfirst}
 \usepackage{misc}
 %\usepackage{unidades}
 \usepackage[load-configurations=version-1]{siunitx}
@@ -79,11 +80,11 @@ status open
 
 \size footnotesize
 v.
- 0.1.0-beta
+ 0.1.0
 \end_layout
 
 \begin_layout Date
-fevereiro de 2011
+março de 2011
 \end_layout
 
 \begin_layout Standard
@@ -94,25 +95,13 @@ status open
 
 
 \backslash
-pagestyle{myheadings}
+thispagestyle{empty}
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagenumbering{arabic}
-\end_layout
-
+\begin_inset Newpage cleardoublepage
 \end_inset
 
 
@@ -782,23 +771,111 @@ mathrm{esp}}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{myheadings}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{myheadings}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\noindent
 Apresentação
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing double
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Apresentação}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing double
+\noindent
 Formulário de Eletromagnetismo I com notações conforme 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -807,13 +884,21 @@ key "wentworth2007ele"
 \end_inset
 
 .
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing double
+\noindent
 Se encontrar algum erro ou tiver alguma sugestão, acesse:
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing double
+\noindent
 \begin_inset CommandInset href
 LatexCommand href
 name "http://code.google.com/p/lalfrecom/issues/list"
@@ -825,12 +910,20 @@ target "http://code.google.com/p/lalfrecom/issues/list"
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing double
 \noindent
 e clique em 
 \emph on
 New issue
 \emph default
  (é necessário ter conta no Google).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1996,6 +2089,7 @@ reference "tab:Analogia-entre-circuitos-eletricos-magneticos"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float table
 placement bh
 wide false
@@ -3468,6 +3562,13 @@ Z_{in}=Z_{0}\frac{Z_{L}+jZ_{0}\tan(\beta\ell)}{Z_{0}+jZ_{L}\tan(\beta\ell)}\end{
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 \start_of_appendix
 Definições Gerais
@@ -3478,10 +3579,10 @@ Vetores em coordenadas cartesianas, cilíndricas e esféricas:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula \begin{eqnarray*}
 \vec{A}_{cart} & = & A_{x}\ax+A_{y}\ay+A_{z}\az\\
 \vec{A}_{cil} & = & A_{\rho}\arh+A_{\theta}\ath+A_{z}\az\\
-\vec{A}_{esf} & = & A_{r}\ar+A_{\theta}\ath+A_{\phi}\aph\end{eqnarray}
+\vec{A}_{esf} & = & A_{r}\ar+A_{\theta}\ath+A_{\phi}\aph\end{eqnarray*}
 
 \end_inset
 
@@ -3493,8 +3594,8 @@ produto Escalar (em coordenadas cartesianas):
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt A\centerdot\vt B=\left|\vt A\right|\left|\vt B\right|\cos\theta_{AB}=A_{x}B_{x}+A_{y}B_{y}+A_{z}B_{z}\end{equation}
+\begin_inset Formula \[
+\vt A\centerdot\vt B=\left|\vt A\right|\left|\vt B\right|\cos\theta_{AB}=A_{x}B_{x}+A_{y}B_{y}+A_{z}B_{z}\]
 
 \end_inset
 
@@ -3506,8 +3607,8 @@ operador Nabla:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\nabla=\frac{\partial}{\delx}\ax+\frac{\partial}{\dely}\ay+\frac{\partial}{\delz}\az\end{equation}
+\begin_inset Formula \[
+\nabla=\frac{\partial}{\delx}\ax+\frac{\partial}{\dely}\ay+\frac{\partial}{\delz}\az\]
 
 \end_inset
 
@@ -3524,8 +3625,8 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\dvg{\vt A}=\frac{\partial A_{x}}{\delx}+\frac{\partial A_{y}}{\dely}+\frac{\partial A_{z}}{\delz}\end{equation}
+\begin_inset Formula \[
+\dvg{\vt A}=\frac{\partial A_{x}}{\delx}+\frac{\partial A_{y}}{\dely}+\frac{\partial A_{z}}{\delz}\]
 
 \end_inset
 
@@ -3537,9 +3638,13 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\dvg{\vt A}=\frac{1}{\rho}\frac{\partial}{\partial\rho}(\rho A_{\rho})+\frac{1}{\rho}\frac{\partial A_{\phi}}{\partial\phi}+\frac{\partial A_{z}}{\delz}\end{equation}
+\begin_inset Formula \[
+\dvg{\vt A}=\frac{1}{\rho}\frac{\partial}{\partial\rho}(\rho A_{\rho})+\frac{1}{\rho}\frac{\partial A_{\phi}}{\partial\phi}+\frac{\partial A_{z}}{\delz}\]
 
+\end_inset
+
+
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -3550,8 +3655,8 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\dvg{\vt A}=\frac{1}{r^{2}}\frac{\partial}{\partial r}(r^{2}A_{r})+\frac{1}{r\sin\theta}\frac{\partial}{\partial\theta}(A_{\theta}\sin\theta)+\frac{1}{r\sin\theta}\frac{\partial A_{\phi}}{\partial_{\phi}}\end{equation}
+\begin_inset Formula \[
+\dvg{\vt A}=\frac{1}{r^{2}}\frac{\partial}{\partial r}(r^{2}A_{r})+\frac{1}{r\sin\theta}\frac{\partial}{\partial\theta}(A_{\theta}\sin\theta)+\frac{1}{r\sin\theta}\frac{\partial A_{\phi}}{\partial_{\phi}}\]
 
 \end_inset
 
@@ -3569,8 +3674,8 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\nabla V=\frac{\partial V}{\delx}\ax+\frac{\partial V}{\dely}\ay+\frac{\partial V}{\delz}\az\end{equation}
+\begin_inset Formula \[
+\nabla V=\frac{\partial V}{\delx}\ax+\frac{\partial V}{\dely}\ay+\frac{\partial V}{\delz}\az\]
 
 \end_inset
 
@@ -3582,8 +3687,8 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\nabla V=\frac{\partial V}{\partial\rho}\arh+\frac{1}{\rho}\frac{\partial V}{\partial\phi}\aph+\frac{\partial V}{\delz}\az\end{equation}
+\begin_inset Formula \[
+\nabla V=\frac{\partial V}{\partial\rho}\arh+\frac{1}{\rho}\frac{\partial V}{\partial\phi}\aph+\frac{\partial V}{\delz}\az\]
 
 \end_inset
 
@@ -3595,8 +3700,8 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\nabla V=\frac{\partial V}{\partial r}\ar+\frac{1}{r}\frac{\partial V}{\partial\theta}\ath+\frac{1}{r\sin\theta}\frac{\partial V}{\partial\phi}\aph\end{equation}
+\begin_inset Formula \[
+\nabla V=\frac{\partial V}{\partial r}\ar+\frac{1}{r}\frac{\partial V}{\partial\theta}\ath+\frac{1}{r\sin\theta}\frac{\partial V}{\partial\phi}\aph\]
 
 \end_inset
 
@@ -3614,12 +3719,12 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula \begin{flalign*}
 \rot{\vt A} & =\left|\begin{array}{ccc}
 \ax & \ay & \az\\
 \frac{\partial}{\delx} & \frac{\partial}{\dely} & \frac{\partial}{\delz}\\
-A_{x} & A_{y} & A_{z}\end{array}\right|=\nonumber \\
- & \left(\frac{\partial A_{z}}{\dely}-\frac{\partial A_{y}}{\delz}\right)\ax+\left(\frac{\partial A_{x}}{\delz}-\frac{\partial A_{z}}{\delx}\right)\ay+\left(\frac{\partial A_{y}}{\delx}-\frac{\partial A_{x}}{\dely}\right)\az\end{flalign}
+A_{x} & A_{y} & A_{z}\end{array}\right|=\\
+ & \left(\frac{\partial A_{z}}{\dely}-\frac{\partial A_{y}}{\delz}\right)\ax+\left(\frac{\partial A_{x}}{\delz}-\frac{\partial A_{z}}{\delx}\right)\ay+\left(\frac{\partial A_{y}}{\delx}-\frac{\partial A_{x}}{\dely}\right)\az\end{flalign*}
 
 \end_inset
 
@@ -3631,9 +3736,9 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{alignat}{1}
- & \rot{\vt A}=\nonumber \\
- & \left[\frac{1}{\rho}\frac{\partial A_{z}}{\partial\phi}-\frac{\partial A_{\phi}}{\delz}\right]\arh+\left[\frac{\partial\rho}{\delz}-\frac{\partial A_{z}}{\partial\rho}\right]\aph+\frac{1}{\rho}\left[\frac{\partial(\rho A_{\phi})}{\partial\rho}-\frac{\partial A_{\rho}}{\partial\phi}\right]\az\end{alignat}
+\begin_inset Formula \begin{alignat*}{1}
+ & \rot{\vt A}=\\
+ & \left[\frac{1}{\rho}\frac{\partial A_{z}}{\partial\phi}-\frac{\partial A_{\phi}}{\delz}\right]\arh+\left[\frac{\partial\rho}{\delz}-\frac{\partial A_{z}}{\partial\rho}\right]\aph+\frac{1}{\rho}\left[\frac{\partial(\rho A_{\phi})}{\partial\rho}-\frac{\partial A_{\rho}}{\partial\phi}\right]\az\end{alignat*}
 
 \end_inset
 
@@ -3645,11 +3750,11 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{alignat}{1}
-\rot{\vt A} & =\nonumber \\
- & \frac{1}{r\sin\theta}\left[\frac{\partial(\sin\theta A_{\phi})}{\partial\theta}-\frac{\partial A_{\theta}}{\partial\phi}\right]\ar+\nonumber \\
- & \frac{1}{r}\left[\frac{1}{\sin\theta}\frac{\partial A_{r}}{\partial\phi}-\frac{\partial(rA_{\phi})}{\partial r}\right]\ath+\nonumber \\
- & \frac{1}{r}\left[\frac{\partial(rA_{\theta})}{\partial r}-\frac{\partial(A_{r})}{\partial\theta}\right]\aph\end{alignat}
+\begin_inset Formula \begin{alignat*}{1}
+\rot{\vt A} & =\\
+ & \frac{1}{r\sin\theta}\left[\frac{\partial(\sin\theta A_{\phi})}{\partial\theta}-\frac{\partial A_{\theta}}{\partial\phi}\right]\ar+\\
+ & \frac{1}{r}\left[\frac{1}{\sin\theta}\frac{\partial A_{r}}{\partial\phi}-\frac{\partial(rA_{\phi})}{\partial r}\right]\ath+\\
+ & \frac{1}{r}\left[\frac{\partial(rA_{\theta})}{\partial r}-\frac{\partial(A_{r})}{\partial\theta}\right]\aph\end{alignat*}
 
 \end_inset
 
@@ -3667,8 +3772,8 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\lpl V=\frac{\partial^{2}V}{\delx^{2}}+\frac{\partial^{2}V}{\dely^{2}}+\frac{\partial^{2}V}{\delz^{2}}\end{equation}
+\begin_inset Formula \[
+\lpl V=\frac{\partial^{2}V}{\delx^{2}}+\frac{\partial^{2}V}{\dely^{2}}+\frac{\partial^{2}V}{\delz^{2}}\]
 
 \end_inset
 
@@ -3680,8 +3785,8 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\lpl V=\frac{1}{\rho}\frac{\partial}{\partial\rho}\left(\rho\frac{\partial V}{\delrh}\right)+\frac{1}{\rho^{2}}\frac{\partial^{2}V}{\delph^{2}}+\frac{\partial^{2}V}{\delz^{2}}\end{equation}
+\begin_inset Formula \[
+\lpl V=\frac{1}{\rho}\frac{\partial}{\partial\rho}\left(\rho\frac{\partial V}{\delrh}\right)+\frac{1}{\rho^{2}}\frac{\partial^{2}V}{\delph^{2}}+\frac{\partial^{2}V}{\delz^{2}}\]
 
 \end_inset
 
@@ -3693,9 +3798,9 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{alignat}{1}
- & \lpl V=\nonumber \\
- & \frac{1}{r^{2}}\frac{\partial}{\delr}\left(r^{2}\frac{\partial V}{\delr}\right)+\frac{1}{r^{2}\sin\theta}\frac{\partial}{\delth}\left(\sin\theta\frac{\partial V}{\delth}\right)+\frac{1}{r^{2}\sin^{2}\theta}\frac{\partial^{2}V}{\delph^{2}}\end{alignat}
+\begin_inset Formula \begin{alignat*}{1}
+ & \lpl V=\\
+ & \frac{1}{r^{2}}\frac{\partial}{\delr}\left(r^{2}\frac{\partial V}{\delr}\right)+\frac{1}{r^{2}\sin\theta}\frac{\partial}{\delth}\left(\sin\theta\frac{\partial V}{\delth}\right)+\frac{1}{r^{2}\sin^{2}\theta}\frac{\partial^{2}V}{\delph^{2}}\end{alignat*}
 
 \end_inset
 
@@ -5665,7 +5770,7 @@ Elementos Diferenciais
 
 \emph on
 Nota: deve-se tomar muito cuidado e cautela ao se usar as relações seguintes;
- um esboço do elemento diferencial conforme os eixos adotados para o problema
+ um esboço do elemento diferencial, conforme os eixos adotados para o problema,
  é altamente recomendado.
 \end_layout
 
@@ -5687,6 +5792,10 @@ coordenadas cartesianas
 \dL_{5} & = & -\dL_{2}=-\dy\,\ay\\
 \dL_{6} & = & -\dL_{3}=-\dz\,\az\end{eqnarray*}
 
+\end_inset
+
+
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -5723,6 +5832,10 @@ coordenadas esféricas
 \dL_{5} & = & -\dL_{2}=-r\,\dth\,\ath\\
 \dL_{6} & = & -\dL_{3}=-r\,\sin\theta\,\dph\,\aph\end{eqnarray*}
 
+\end_inset
+
+
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -5765,6 +5878,10 @@ coordenadas cilíndricas
 \dS_{5} & = & -\dS_{2}=-\drh\,\dz\,\aph\\
 \dS_{6} & = & -\dS_{3}=-\rho\,\drh\,\dph\,\az\end{eqnarray*}
 
+\end_inset
+
+
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -5812,8 +5929,8 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\dv=\rho\,\drh\,\dph\,\dz\end{equation}
+\begin_inset Formula \[
+\dv=\rho\,\drh\,\dph\,\dz\]
 
 \end_inset
 
@@ -5828,6 +5945,10 @@ coordenadas esféricas
 \begin_inset Formula \[
 \dv=r^{2}\sin\theta\,\dr\,\dth\,\dph\]
 
+\end_inset
+
+
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -6019,6 +6140,26 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tabela de derivadas de funções comuns.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabela-de-derivadas"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="27" columns="3">
 <features>
@@ -7010,25 +7151,6 @@ Condição
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Tabela de derivadas de funções comuns.
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Tabela-de-derivadas"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
@@ -7040,6 +7162,25 @@ placement ph
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Tabela de derivadas de funções hiperbólicas.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabela-de-derivadas-hiperbolicas"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -7526,25 +7667,10 @@ Condição
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Tabela de derivadas de funções hiperbólicas.
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Tabela-de-derivadas-hiperbolicas"
-
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -7647,26 +7773,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula \begin{align*}
- & \int u\dv=uv-\int v\du\\
- & \int u^{\cn}\du=\frac{1}{n+1}\, u^{n+1}+\cC\\
- & \int\frac{\du}{u}=\ln\left|u\right|+\cC\\
- & \int e^{u}\du=e^{u}+\cC\\
- & \int\ca^{u}\du=\frac{1}{\ln\ca}\,\ca^{u}+\cC\\
- & \int\sin u\,\du=-\cos u+\cC\\
- & \int\cos u\,\du=\sin u+\cC\\
- & \int\frac{\du}{\sqrt{u\text{²}+\ca\text{²}}}=\ln\left(u+\sqrt{u^{2}+\ca^{2}}\right)+\cC\\
- & \int\frac{\du}{\left(u^{2}+\ca^{2}\right)^{3/2}}=\frac{u}{\ca^{2}\sqrt{u^{2}+\ca^{2}}}+\cC\\
- & \int\frac{\du}{u^{2}+\ca^{2}}=\frac{1}{\ca}\arctan\frac{u}{\ca}+\cC\\
- & \int e^{\ca x}\cos\cb x\,\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left(\ca\,\cos\cb x+\cb\,\sin\cb x\right)+\cC\\
- & \int e^{\ca x}\cos(\cc+\cb x)\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left[\ca\,\sin(\cc+\cb x)-\cb\,\cos(\cc+\cb x)\right]+\cC\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -7689,6 +7795,26 @@ name "tab:Tabela-de-integrais"
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula \begin{align*}
+ & \int u\dv=uv-\int v\du\\
+ & \int u^{\cn}\du=\frac{1}{n+1}\, u^{n+1}+\cC\\
+ & \int\frac{\du}{u}=\ln\left|u\right|+\cC\\
+ & \int e^{u}\du=e^{u}+\cC\\
+ & \int\ca^{u}\du=\frac{1}{\ln\ca}\,\ca^{u}+\cC\\
+ & \int\sin u\,\du=-\cos u+\cC\\
+ & \int\cos u\,\du=\sin u+\cC\\
+ & \int\frac{\du}{\sqrt{u\text{²}+\ca\text{²}}}=\ln\left(u+\sqrt{u^{2}+\ca^{2}}\right)+\cC\\
+ & \int\frac{\du}{\left(u^{2}+\ca^{2}\right)^{3/2}}=\frac{u}{\ca^{2}\sqrt{u^{2}+\ca^{2}}}+\cC\\
+ & \int\frac{\du}{u^{2}+\ca^{2}}=\frac{1}{\ca}\arctan\frac{u}{\ca}+\cC\\
+ & \int e^{\ca x}\cos\cb x\,\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left(\ca\,\cos\cb x+\cb\,\sin\cb x\right)+\cC\\
+ & \int e^{\ca x}\cos(\cc+\cb x)\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left[\ca\,\sin(\cc+\cb x)-\cb\,\cos(\cc+\cb x)\right]+\cC\end{align*}
 
 \end_inset
 
@@ -7720,6 +7846,16 @@ Produção
 \begin_layout Description
 Autor: Prof\SpecialChar \@.
  Marcelo Porto Trevizan
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Professor da Escola de Engenharia Mauá.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -7729,7 +7865,17 @@ Editor: Prof\SpecialChar \@.
 
 \begin_layout Description
 Revisores: Prof\SpecialChar \@.
- Arnaldo Megrich, Prof\SpecialChar \@.
+ Arnaldo Megrich
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Professor da Escola de Engenharia Mauá e da Universidade São Judas Tadeu.
+\end_layout
+
+\end_inset
+
+, Prof\SpecialChar \@.
  Marcelo Porto Trevizan
 \end_layout
 
@@ -7780,6 +7926,10 @@ Compartilhar: copiar, distribuir, exibir e executar a obra
 
 \begin_layout Description
 Reeditar: criar obras derivadas
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7887,8 +8037,8 @@ noindent
 
 \begin_inset CommandInset href
 LatexCommand href
-name "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.0.1.pdf"
-target "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.0.1.pdf"
+name "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.1.0.pdf"
+target "http://lalfrecom.googlecode.com/files/formulario-eletromagnetismo-0.1.0.pdf"
 
 \end_inset
 
@@ -7962,11 +8112,7 @@ target "http://www.lyx.org/Download"
 \begin_inset Newline newline
 \end_inset
 
-os estilos LaTeX 
-\emph on
-unidades.sty 
-\emph default
-e 
+o estilo LaTeX 
 \emph on
 misc.sty
 \emph default
@@ -8005,10 +8151,6 @@ target "http://mirror.ctan.org/macros/latex/contrib/siunitx.zip"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "/home/mpt/Trabalhos/Projetos/lalfrecom/bibliografias/lalfrecom"
