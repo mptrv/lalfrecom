@@ -1,31 +1,81 @@
-#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
 %\usepackage{indentfirst}
-\usepackage{misc}
+
+% Ajuste do espaçamento entre linhas.
+\usepackage{setspace}
+
+% Formatação especial para referências.
+\usepackage{prettyref}
+
+% Espaços especiais para macros.
+\usepackage{xspace}
+
+% ------------------------------------------------------------------------------
+% "Apelidos" para alguns comandos.
+\newcommand{\pr}[1]{\prettyref{#1}}
+
+% ------------------------------------------------------------------------------
+% Formatações disponibilizadas.
+
+% Formatação para colocação de aspas.
+\newcommand{\aspas}[1]{``#1''}
+
+% Formatação para destaque (enfatização) de texto.
+\newcommand{\dest}[1]{\emph{#1}}
+
+% Legenda (capitulação) e referência.
+\newcommand{\legendaref}[2]{\caption{#1\label{#2}}}
+
+% Formatações das referências.
+\newrefformat{cha}{Capítulo~\ref{#1}}
+\newrefformat{fig}{Figura~\ref{#1}}
+\newrefformat{sec}{seção~\ref{#1}}
+\newrefformat{equ}{(\ref{#1})}
+\newrefformat{tab}{Tabela~\ref{#1}}
+\newrefformat{lst}{Listagem~\ref{#1}}
+\newrefformat{alg}{Algoritmo~\ref{#1}}
+\newrefformat{enu}{\ref{#1}}
+
+% Alteração da contagem da enumeração para outros formatos.
+\newcommand{\alfaenum}{\renewcommand{\theenumi}{\alph{enumi}}}
+\newcommand{\Romanenum}{\renewcommand{\theenumi}{\Roman{enumi}}}
+
 %\usepackage{unidades}
 \usepackage[load-configurations=version-1]{siunitx}
+
+% Unidades personalizadas.
+\DeclareSIUnit[number-unit-product = {}]\ampereesp{\ampere\,esp}
 \end_preamble
 \options titlepage
 \use_default_options false
 \begin_modules
 theorems-ams
 \end_modules
+\maintain_unincluded_children false
 \language brazilian
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 10
 \spacing single
 \use_hyperref true
@@ -40,23 +90,42 @@ theorems-ams
 \pdf_pdfusetitle true
 \papersize a5paper
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -310,19 +379,6 @@ mathrm{cotg
 
 \backslash
 sisetup{per=slash,unitsep=tightcdot}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-newunit{
-\backslash
-ampereesp}{
-\backslash
-ampere{}
-\backslash
-mathrm{esp}}
 \end_layout
 
 \end_inset
@@ -935,8 +991,10 @@ Lei de Coulomb
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vec{F}_{12}=\frac{Q_{1}Q_{2}}{4\pi\epsilon R_{12}^{2}}\aud\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vec{F}_{12}=\frac{Q_{1}Q_{2}}{4\pi\epsilon R_{12}^{2}}\aud
+\end{equation}
 
 \end_inset
 
@@ -952,9 +1010,11 @@ Caso geral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{align}
+\begin_inset Formula 
+\begin{align}
 \vec{E}_{1} & =\frac{\vec{F}_{12}}{Q_{2}}\\
-\vec{E} & =\frac{Q}{4\pi\epsilon R^{2}}\aR\end{align}
+\vec{E} & =\frac{Q}{4\pi\epsilon R^{2}}\aR
+\end{align}
 
 \end_inset
 
@@ -966,8 +1026,10 @@ de distribuição contínua de cargas:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt E=\int\frac{dQ}{4\pi\epsilon R^{2}}\aR\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt E=\int\frac{dQ}{4\pi\epsilon R^{2}}\aR
+\end{equation}
 
 \end_inset
 
@@ -979,8 +1041,10 @@ de uma carga pontual na origem:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt E=\frac{Q}{4\pi\epsilon r^{2}}\ar\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt E=\frac{Q}{4\pi\epsilon r^{2}}\ar
+\end{equation}
 
 \end_inset
 
@@ -1000,8 +1064,10 @@ de uma linha infinita em
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt E=\frac{\rho_{L}}{2\pi\epsilon\rho}\arh\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt E=\frac{\rho_{L}}{2\pi\epsilon\rho}\arh
+\end{equation}
 
 \end_inset
 
@@ -1017,8 +1083,10 @@ de uma lâmina infinita carregada com
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt E=\frac{\rho_{S}}{2\epsilon}\aN\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt E=\frac{\rho_{S}}{2\epsilon}\aN
+\end{equation}
 
 \end_inset
 
@@ -1030,8 +1098,10 @@ Densidade de Fluxo Elétrico
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt D=\epsilon\vt E\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt D=\epsilon\vt E
+\end{equation}
 
 \end_inset
 
@@ -1047,8 +1117,10 @@ Que atravessa uma superfície:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Psi=\int\pe{\vt D}{\dS}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Psi=\int\pe{\vt D}{\dS}
+\end{equation}
 
 \end_inset
 
@@ -1060,8 +1132,10 @@ que atravessa uma superfície fechada:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Psi=\oint\pe{\vt D}{\dS}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Psi=\oint\pe{\vt D}{\dS}
+\end{equation}
 
 \end_inset
 
@@ -1073,8 +1147,10 @@ Teorema da Divergência
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\oint\pe{\vt D}{\dS}=\int\pe{\nabla}{\vt D\dv}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\oint\pe{\vt D}{\dS}=\int\pe{\nabla}{\vt D\dv}
+\end{equation}
 
 \end_inset
 
@@ -1097,9 +1173,11 @@ Forma integral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \oint\pe{\vt D}{\dS} & = & Q_{env}=\Psi_{resultante}\\
-\oint\pe{\vt D}{\dS} & = & \int\rhv\dv\end{eqnarray}
+\oint\pe{\vt D}{\dS} & = & \int\rhv\dv
+\end{eqnarray}
 
 \end_inset
 
@@ -1111,8 +1189,10 @@ forma diferencial:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\pe{\nabla}{\vt D}=\rhv\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\pe{\nabla}{\vt D}=\rhv
+\end{equation}
 
 \end_inset
 
@@ -1128,8 +1208,10 @@ Diferença de potencial elétrico:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-V_{ba}=-\int_{a}^{b}\pe{\vt E}{\dL}=V_{b}-V_{a}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+V_{ba}=-\int_{a}^{b}\pe{\vt E}{\dL}=V_{b}-V_{a}
+\end{equation}
 
 \end_inset
 
@@ -1141,8 +1223,10 @@ potencial com referência no infinito:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-V=\int\frac{\dQ}{4\pi\epsilon r}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+V=\int\frac{\dQ}{4\pi\epsilon r}
+\end{equation}
 
 \end_inset
 
@@ -1154,8 +1238,10 @@ campo elétrico a partir de função potencial:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt E=-\nabla V\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt E=-\nabla V
+\end{equation}
 
 \end_inset
 
@@ -1167,8 +1253,10 @@ Densidade de Corrente
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt J=\sigma\vt E\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt J=\sigma\vt E
+\end{equation}
 
 \end_inset
 
@@ -1180,8 +1268,10 @@ Corrente
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-I=\int\pe{\vt J}{\dS}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+I=\int\pe{\vt J}{\dS}
+\end{equation}
 
 \end_inset
 
@@ -1193,8 +1283,10 @@ Resistência
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-R=\frac{-\int\pe{\vt E}{\dL}}{\int\sigma\pe{\vt E}{\dS}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+R=\frac{-\int\pe{\vt E}{\dL}}{\int\sigma\pe{\vt E}{\dS}}
+\end{equation}
 
 \end_inset
 
@@ -1206,8 +1298,10 @@ Lei de Joule
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-P=\int\pe{\vt E}{\vt J}\dv\end{equation}
+\begin_inset Formula 
+\begin{equation}
+P=\int\pe{\vt E}{\vt J}\dv
+\end{equation}
 
 \end_inset
 
@@ -1223,9 +1317,11 @@ Entre par de dielétricos:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vti[T1]E & = & \vti[T2]E\\
-\pe{\aind{21}}{(\vti[1]D-\vti[2]D)} & = & \rhs\end{eqnarray}
+\pe{\aind{21}}{(\vti[1]D-\vti[2]D)} & = & \rhs
+\end{eqnarray}
 
 \end_inset
 
@@ -1241,9 +1337,11 @@ entre par de dielétricos, se
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vti[T1]E & = & \vti[T2]E\\
-\vti[N1]D & = & \vti[N2]D\end{eqnarray}
+\vti[N1]D & = & \vti[N2]D
+\end{eqnarray}
 
 \end_inset
 
@@ -1255,9 +1353,11 @@ entre condutor e dielétrico:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vti[T]E & = & 0\\
-\vti[N]D & = & \rhs\end{eqnarray}
+\vti[N]D & = & \rhs
+\end{eqnarray}
 
 \end_inset
 
@@ -1269,8 +1369,10 @@ Equação de Poisson
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\nabla^{2}V=-\frac{\rhv}{\epsilon}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\nabla^{2}V=-\frac{\rhv}{\epsilon}
+\end{equation}
 
 \end_inset
 
@@ -1282,8 +1384,10 @@ Equação de Laplace
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\nabla^{2}V=0\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\nabla^{2}V=0
+\end{equation}
 
 \end_inset
 
@@ -1299,8 +1403,10 @@ Definição geral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-C=\frac{\dQ}{\dV}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+C=\frac{\dQ}{\dV}
+\end{equation}
 
 \end_inset
 
@@ -1312,8 +1418,10 @@ para capacitor de placas paralelas, desprezando-se efeitos de borda:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-C=\frac{\epsilon S}{d}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+C=\frac{\epsilon S}{d}
+\end{equation}
 
 \end_inset
 
@@ -1325,8 +1433,10 @@ Energia Potencial Eletrostática
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-W_{E}=\frac{1}{2}\int\pe{\vt D}{\vt E}\dv=\frac{1}{2}\int\epsilon E^{2}\dv=\frac{1}{2}CV^{2}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+W_{E}=\frac{1}{2}\int\pe{\vt D}{\vt E}\dv=\frac{1}{2}\int\epsilon E^{2}\dv=\frac{1}{2}CV^{2}
+\end{equation}
 
 \end_inset
 
@@ -1344,7 +1454,7 @@ Analogia entre campo eletrostático e magnetostático
 \begin_layout Standard
 Vide 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "tab:Analogia-campo-eletrico-magnetico-estatica"
 
 \end_inset
@@ -1359,7 +1469,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Analogia entre campo eletrostático e magnetostático.
@@ -1381,9 +1491,9 @@ name "tab:Analogia-campo-eletrico-magnetico-estatica"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -1685,8 +1795,10 @@ Lei de Biot-Savart
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-d\vti[2]H=\frac{\pv{I\dL_{1}}{\aud}}{4\pi R_{12}^{2}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+d\vti[2]H=\frac{\pv{I\dL_{1}}{\aud}}{4\pi R_{12}^{2}}
+\end{equation}
 
 \end_inset
 
@@ -1702,8 +1814,10 @@ Em termos de elementos diferenciais:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt H=\int\frac{\pv{I\dL}{\aR}}{4\pi R^{2}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt H=\int\frac{\pv{I\dL}{\aR}}{4\pi R^{2}}
+\end{equation}
 
 \end_inset
 
@@ -1715,8 +1829,10 @@ em termos de densidade de corrente superficial:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt H=\int\frac{\pv{\vt K\dSe}{\aR}}{4\pi R^{2}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt H=\int\frac{\pv{\vt K\dSe}{\aR}}{4\pi R^{2}}
+\end{equation}
 
 \end_inset
 
@@ -1728,8 +1844,10 @@ em termos de densidade de corrente volumétrica:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt H=\int\frac{\pv{\vt J\dv}{\aR}}{4\pi R^{2}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt H=\int\frac{\pv{\vt J\dv}{\aR}}{4\pi R^{2}}
+\end{equation}
 
 \end_inset
 
@@ -1741,8 +1859,10 @@ devido a linha infinita de corrente:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt H=\frac{I\aph}{2\pi\rho}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt H=\frac{I\aph}{2\pi\rho}
+\end{equation}
 
 \end_inset
 
@@ -1754,8 +1874,10 @@ devido a um solenóide:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt H=\frac{NI}{h}\az\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt H=\frac{NI}{h}\az
+\end{equation}
 
 \end_inset
 
@@ -1767,8 +1889,10 @@ devido a uma lâmina infinita de corrente:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt H=\frac{1}{2}\pv{\vt K}{\aN}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt H=\frac{1}{2}\pv{\vt K}{\aN}
+\end{equation}
 
 \end_inset
 
@@ -1791,8 +1915,10 @@ Forma integral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\oint\pe{\vt H}{\dL}=I_{env}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\oint\pe{\vt H}{\dL}=I_{env}
+\end{equation}
 
 \end_inset
 
@@ -1804,8 +1930,10 @@ forma diferencial:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\rot{\vt H}=\vt J\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\rot{\vt H}=\vt J
+\end{equation}
 
 \end_inset
 
@@ -1817,8 +1945,10 @@ Teorema de Stokes
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\oint\pe{\vt H}{\dL}=\int\pe{(\rot{\vt H})}{\dS}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\oint\pe{\vt H}{\dL}=\int\pe{(\rot{\vt H})}{\dS}
+\end{equation}
 
 \end_inset
 
@@ -1830,8 +1960,10 @@ Densidade de Fluxo Magnético
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt B=\mu\vt H\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt B=\mu\vt H
+\end{equation}
 
 \end_inset
 
@@ -1847,8 +1979,10 @@ Que atravessa uma superfície:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Phi=\int\pe{\vt B}{\dS}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Phi=\int\pe{\vt B}{\dS}
+\end{equation}
 
 \end_inset
 
@@ -1860,8 +1994,10 @@ que atravessa uma superfície fechada:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\oint\pe{\vt B}{\dS}=0\label{eq:gauss-mag}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\oint\pe{\vt B}{\dS}=0\label{eq:gauss-mag}
+\end{equation}
 
 \end_inset
 
@@ -1900,11 +2036,13 @@ Forma integral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \oint\pe{\vt D}{\dS} & = & Q_{env}\\
 \oint\pe{\vt B}{\dS} & = & 0\\
 \oint\pe{\vt E}{\dL} & = & 0\\
-\oint\pe{\vt H}{\dL} & = & I_{env}\end{eqnarray*}
+\oint\pe{\vt H}{\dL} & = & I_{env}
+\end{eqnarray*}
 
 \end_inset
 
@@ -1916,11 +2054,13 @@ forma diferencial:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \dvg{\vt D} & = & \rhv\\
 \dvg{\vt B} & = & 0\\
 \rot{\vt E} & = & 0\\
-\rot{\vt H} & = & \vt J\end{eqnarray*}
+\rot{\vt H} & = & \vt J
+\end{eqnarray*}
 
 \end_inset
 
@@ -1936,8 +2076,10 @@ Força de Lorentz:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt F=q(\vt E+\pvv uB)\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt F=q(\vt E+\pvv uB)
+\end{equation}
 
 \end_inset
 
@@ -1949,8 +2091,10 @@ força de campo magnético sobre linha de corrente:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vti[12]F=\int\pv{I_{2}\dL_{2}}{\vti[1]B}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vti[12]F=\int\pv{I_{2}\dL_{2}}{\vti[1]B}
+\end{equation}
 
 \end_inset
 
@@ -1962,8 +2106,10 @@ Momento de Dipolo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt m=NIS\aN\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt m=NIS\aN
+\end{equation}
 
 \end_inset
 
@@ -1975,8 +2121,10 @@ Torque
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt{\tau}=\pvv mB\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt{\tau}=\pvv mB
+\end{equation}
 
 \end_inset
 
@@ -1988,9 +2136,11 @@ Condições de Fronteira
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vti[N_{1}]B & = & \vti[N_{2}]B\\
-\pv{\aind{21}}{(\vti[1]H-\vti[2]H)} & = & \vt K\end{eqnarray}
+\pv{\aind{21}}{(\vti[1]H-\vti[2]H)} & = & \vt K
+\end{eqnarray}
 
 \end_inset
 
@@ -2013,8 +2163,10 @@ Definição geral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-L=\frac{\lambda}{I}=N\frac{\Phi_{tot}}{I}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+L=\frac{\lambda}{I}=N\frac{\Phi_{tot}}{I}
+\end{equation}
 
 \end_inset
 
@@ -2026,8 +2178,10 @@ para uma bobina com núcleo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-L=\frac{\mu N^{2}\pi a^{2}}{h}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+L=\frac{\mu N^{2}\pi a^{2}}{h}
+\end{equation}
 
 \end_inset
 
@@ -2039,8 +2193,10 @@ para um cabo coaxial:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\frac{L}{h}=\frac{\mu}{2\pi}\ln\frac{b}{a}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\frac{L}{h}=\frac{\mu}{2\pi}\ln\frac{b}{a}
+\end{equation}
 
 \end_inset
 
@@ -2052,8 +2208,10 @@ Indutância Mútua
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-M_{12}=\frac{\lambda_{12}}{I_{1}}=\frac{N_{2}}{I_{1}}\int\pe{\vti[1]B}{\dS_{2}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+M_{12}=\frac{\lambda_{12}}{I_{1}}=\frac{N_{2}}{I_{1}}\int\pe{\vti[1]B}{\dS_{2}}
+\end{equation}
 
 \end_inset
 
@@ -2065,8 +2223,10 @@ Energia Magnetostática
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-W_{M}=\frac{1}{2}\int\pev BH\dv=\frac{1}{2}LI^{2}\]
+\begin_inset Formula 
+\[
+W_{M}=\frac{1}{2}\int\pev BH\dv=\frac{1}{2}LI^{2}
+\]
 
 \end_inset
 
@@ -2080,7 +2240,7 @@ Circuitos Magnéticos
 \begin_layout Itemize
 Analogia entre circuitos elétricos e magnéticos: vide 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "tab:Analogia-entre-circuitos-eletricos-magneticos"
 
 \end_inset
@@ -2097,7 +2257,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Analogia entre circuitos elétricos e magnéticos.
@@ -2118,11 +2278,11 @@ name "tab:Analogia-entre-circuitos-eletricos-magneticos"
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="4">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell multicolumn="1" alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -2475,8 +2635,10 @@ Equação da Continuidade da Corrente
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\dvg J=-\frac{\partial\rhv}{\partial t}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\dvg J=-\frac{\partial\rhv}{\partial t}
+\end{equation}
 
 \end_inset
 
@@ -2488,8 +2650,10 @@ Variação da Densidade de Carga com o Tempo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
-\rhv & = & \rho_{0}e^{-t/\tau}\end{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
+\rhv & = & \rho_{0}e^{-t/\tau}
+\end{eqnarray}
 
 \end_inset
 
@@ -2510,8 +2674,10 @@ Tempo de Relaxação
 \bar no
 \noun off
 \color none
-\begin_inset Formula \begin{equation}
-\tau=\frac{\epsilon}{\sigma}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\tau=\frac{\epsilon}{\sigma}
+\end{equation}
 
 \end_inset
 
@@ -2534,8 +2700,10 @@ Forma geral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Vfem=-\frac{\partial\lambda}{\partial t}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Vfem=-\frac{\partial\lambda}{\partial t}
+\end{equation}
 
 \end_inset
 
@@ -2547,8 +2715,10 @@ para circuito de uma única espira:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Vfem=\oint\pe{\vt E}{\dL}=-\frac{\partial\Phi}{\partial t}=-\frac{\partial}{\partial t}\int\pe{\vt B}{\dS}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Vfem=\oint\pe{\vt E}{\dL}=-\frac{\partial\Phi}{\partial t}=-\frac{\partial}{\partial t}\int\pe{\vt B}{\dS}
+\end{equation}
 
 \end_inset
 
@@ -2560,8 +2730,10 @@ forma diferencial:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\rot{\vt E}=-\frac{\partial\vt B}{\partial t}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\rot{\vt E}=-\frac{\partial\vt B}{\partial t}
+\end{equation}
 
 \end_inset
 
@@ -2573,8 +2745,10 @@ para circuito com movimento e campo magnético constante:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Vfem=\oint\pe{(\pvv uB)}{\dL}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Vfem=\oint\pe{(\pvv uB)}{\dL}
+\end{equation}
 
 \end_inset
 
@@ -2586,8 +2760,10 @@ Densidade de Corrente de Dispersão (Deslocamento)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vti[d]J=\frac{\partial\vt D}{\partial t}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vti[d]J=\frac{\partial\vt D}{\partial t}
+\end{equation}
 
 \end_inset
 
@@ -2603,11 +2779,13 @@ Forma integral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \oint\pe{\vt D}{\dS} & = & Q_{env}\\
 \oint\pe{\vt B}{\dS} & = & 0\\
 \oint\pe{\vt E}{\dL} & = & -\frac{\partial}{\partial t}\int\pe{\vt B}{\dS}\\
-\oint\pe{\vt H}{\dL} & = & \int\pe{\vt J}{\dS}+\frac{\partial}{\partial t}\int\pe{\vt D}{\dS}\end{eqnarray}
+\oint\pe{\vt H}{\dL} & = & \int\pe{\vt J}{\dS}+\frac{\partial}{\partial t}\int\pe{\vt D}{\dS}
+\end{eqnarray}
 
 \end_inset
 
@@ -2619,11 +2797,13 @@ forma diferencial:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \dvg{\vt D} & = & \rhv\\
 \dvg{\vt B} & = & 0\\
 \rot{\vt E} & = & -\frac{\partial\vt B}{\partial t}\\
-\rot{\vt H} & = & \vti[\mathrm{c}]J+\frac{\partial\vt D}{\partial t}\end{eqnarray}
+\rot{\vt H} & = & \vti[\mathrm{c}]J+\frac{\partial\vt D}{\partial t}
+\end{eqnarray}
 
 \end_inset
 
@@ -2639,9 +2819,11 @@ No domínio do tempo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vt E(x,y,z,t) & = & \vt E(x,y,z)\cos(\omega t+\phi)\\
-\vt H(x,y,z,t) & = & \vt H(x,y,z)\cos(\omega t+\phi)\end{eqnarray}
+\vt H(x,y,z,t) & = & \vt H(x,y,z)\cos(\omega t+\phi)
+\end{eqnarray}
 
 \end_inset
 
@@ -2653,9 +2835,11 @@ no domínio da freqüência:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vti[s]E & = & \vt E(x,y,z)e^{j\phi}\\
-\vti[s]H & = & \vt H(x,y,z)e^{j\phi}\end{eqnarray}
+\vti[s]H & = & \vt H(x,y,z)e^{j\phi}
+\end{eqnarray}
 
 \end_inset
 
@@ -2667,9 +2851,11 @@ conversão do domínio da freqüência para o domínio do tempo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vt E(x,y,z,t) & = & \re{\vti[s]Ee^{j\omega t}}\\
-\vt H(x,y,z,t) & = & \re{\vti[s]He^{j\omega t}}\end{eqnarray}
+\vt H(x,y,z,t) & = & \re{\vti[s]He^{j\omega t}}
+\end{eqnarray}
 
 \end_inset
 
@@ -2681,11 +2867,13 @@ Equações de Maxwell na Forma Fasorial (diferencial)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \dvg{\vti[s]D} & = & \rho_{vs}\\
 \dvg{\vti[s]B} & = & 0\\
 \rot{\vti[s]E} & = & -j\omega\vti[s]B\\
-\rot{\vti[s]H} & = & \vti[s]J+j\omega\vti[s]D\end{eqnarray}
+\rot{\vti[s]H} & = & \vti[s]J+j\omega\vti[s]D
+\end{eqnarray}
 
 \end_inset
 
@@ -2697,10 +2885,12 @@ Relações Constitutivas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \vt D & = & \epsilon\vt E\\
 \vt B & = & \mu\vt H\\
-\vt J & = & \sigma\vt E\end{eqnarray*}
+\vt J & = & \sigma\vt E
+\end{eqnarray*}
 
 \end_inset
 
@@ -2790,9 +2980,11 @@ No domínio do tempo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \nabla^{2}\vt E & = & \mu\sigma\frac{\partial\vt E}{\partial t}+\mu\epsilon\frac{\partial^{2}\vt E}{\partial t^{2}}\\
-\nabla^{2}\vt H & = & \mu\sigma\frac{\partial\vt H}{\partial t}+\mu\epsilon\frac{\partial^{2}\vt H}{\partial t^{2}}\end{eqnarray}
+\nabla^{2}\vt H & = & \mu\sigma\frac{\partial\vt H}{\partial t}+\mu\epsilon\frac{\partial^{2}\vt H}{\partial t^{2}}
+\end{eqnarray}
 
 \end_inset
 
@@ -2804,9 +2996,11 @@ no domínio da freqüência (campos harmônicos):
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \nabla^{2}\vti[s]E-\gamma^{2}\vti[s]E & = & 0\\
-\nabla^{2}\vti[s]H-\gamma^{2}\vti[s]H & = & 0\end{eqnarray}
+\nabla^{2}\vti[s]H-\gamma^{2}\vti[s]H & = & 0
+\end{eqnarray}
 
 \end_inset
 
@@ -2818,11 +3012,13 @@ solução das equações de onda de Helmholtz, para caso geral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vt E(z,t) & = & E_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)\ax\\
  &  & +E_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ax\\
 \vt H(z,t) & = & H_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)\ay\\
- &  & +H_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ay\end{eqnarray}
+ &  & +H_{0}^{-}e^{\alpha z}\cos(\omega t+\beta z)\ay
+\end{eqnarray}
 
 \end_inset
 
@@ -2834,9 +3030,11 @@ Relação entre Ondas Propagantes (em fasores)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \vti[s]H & = & \pv{\frac{1}{\eta}\arh}{\vti[s]E}\\
-\vti[s]E & = & \pv{-\eta\arh}{\vti[s]H}\end{eqnarray}
+\vti[s]E & = & \pv{-\eta\arh}{\vti[s]H}
+\end{eqnarray}
 
 \end_inset
 
@@ -2856,8 +3054,10 @@ Constante de propagação:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\gamma=\sqrt{j\omega\mu(\sigma+j\omega\epsilon)}=\alpha+j\beta\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\gamma=\sqrt{j\omega\mu(\sigma+j\omega\epsilon)}=\alpha+j\beta
+\end{equation}
 
 \end_inset
 
@@ -2869,8 +3069,10 @@ constante de atenuação:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\alpha=\omega\sqrt{\frac{\mu\epsilon}{2}\left(\sqrt{1+\left(\frac{\sigma}{\omega\epsilon}\right){}^{2}}-1\right)}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\alpha=\omega\sqrt{\frac{\mu\epsilon}{2}\left(\sqrt{1+\left(\frac{\sigma}{\omega\epsilon}\right){}^{2}}-1\right)}
+\end{equation}
 
 \end_inset
 
@@ -2882,8 +3084,10 @@ constante de fase:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\beta=\omega\sqrt{\frac{\mu\epsilon}{2}\left(\sqrt{1+\left(\frac{\sigma}{\omega\epsilon}\right)^{2}}+1\right)}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\beta=\omega\sqrt{\frac{\mu\epsilon}{2}\left(\sqrt{1+\left(\frac{\sigma}{\omega\epsilon}\right)^{2}}+1\right)}
+\end{equation}
 
 \end_inset
 
@@ -2895,8 +3099,10 @@ impedância intrínseca:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\eta=\sqrt{\frac{j\omega\mu}{\sigma+j\omega\epsilon}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\eta=\sqrt{\frac{j\omega\mu}{\sigma+j\omega\epsilon}}
+\end{equation}
 
 \end_inset
 
@@ -2912,10 +3118,12 @@ Dielétricos com baixas perdas (
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \alpha & \approx & \frac{\sigma}{2}\sqrt{\frac{\mu}{\epsilon}}\\
 \beta & \approx & \omega\sqrt{\mu\epsilon}\\
-\eta & \approx & \sqrt{\frac{\mu}{\epsilon}}\end{eqnarray}
+\eta & \approx & \sqrt{\frac{\mu}{\epsilon}}
+\end{eqnarray}
 
 \end_inset
 
@@ -2931,10 +3139,12 @@ Bons condutores (
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \alpha & \approx & \sqrt{\pi f\mu\sigma}\\
 \beta & \approx & \sqrt{\pi f\mu\sigma}\\
-\eta & \approx & \sqrt{\frac{\omega\mu}{\sigma}}e^{j45\degree}\approx\sqrt{2}\frac{\alpha}{\sigma}e^{j45\degree}\end{eqnarray}
+\eta & \approx & \sqrt{\frac{\omega\mu}{\sigma}}e^{j45\degree}\approx\sqrt{2}\frac{\alpha}{\sigma}e^{j45\degree}
+\end{eqnarray}
 
 \end_inset
 
@@ -2946,8 +3156,10 @@ Velocidade de Propagação
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-u_{p}=\frac{\omega}{\beta}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+u_{p}=\frac{\omega}{\beta}
+\end{equation}
 
 \end_inset
 
@@ -2959,8 +3171,10 @@ Comprimento de Onda
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\lambda=\frac{u_{p}}{f}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\lambda=\frac{u_{p}}{f}
+\end{equation}
 
 \end_inset
 
@@ -2976,7 +3190,7 @@ Nota: não confundir o símbolo
 
  do comprimento de onda com o do fluxo concatenado na subseção 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "sub:Indutancia"
 
 \end_inset
@@ -2989,8 +3203,10 @@ Permissividade Complexa
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\epsilon_{c}=\epsilon'-j\epsilon''\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\epsilon_{c}=\epsilon'-j\epsilon''
+\end{equation}
 
 \end_inset
 
@@ -3002,8 +3218,10 @@ Condutividade Efetiva
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\sigma_{ef}=\sigma+\omega\epsilon''\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\sigma_{ef}=\sigma+\omega\epsilon''
+\end{equation}
 
 \end_inset
 
@@ -3015,8 +3233,10 @@ Tangente de Perdas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\tan\delta=\frac{\sigma+\omega\epsilon''}{\omega\epsilon'}=\frac{\sigma_{ef}}{\omega\epsilon'}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\tan\delta=\frac{\sigma+\omega\epsilon''}{\omega\epsilon'}=\frac{\sigma_{ef}}{\omega\epsilon'}
+\end{equation}
 
 \end_inset
 
@@ -3032,7 +3252,7 @@ Nota: não confundir o símbolo
 
  da tangente de perdas com o da profundidade pelicular na subseção 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "sub:Efeito-Pelicular"
 
 \end_inset
@@ -3056,8 +3276,10 @@ Profundidade pelicular:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\delta=\frac{1}{\alpha}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\delta=\frac{1}{\alpha}
+\end{equation}
 
 \end_inset
 
@@ -3069,8 +3291,10 @@ resistência pelicular:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-R_{pelicular}=\frac{1}{\sigma\delta\left(1-e^{-t/\delta}\right)}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+R_{pelicular}=\frac{1}{\sigma\delta\left(1-e^{-t/\delta}\right)}
+\end{equation}
 
 \end_inset
 
@@ -3082,8 +3306,10 @@ Teorema de Poynting
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\oint\pe{\pvv EH}{\dS}=-\int\pev JE\dv-\frac{\partial}{\partial t}\int\frac{1}{2}\epsilon E^{2}\dv-\frac{\partial}{\partial t}\int\frac{1}{2}\mu H^{2}\dv\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\oint\pe{\pvv EH}{\dS}=-\int\pev JE\dv-\frac{\partial}{\partial t}\int\frac{1}{2}\epsilon E^{2}\dv-\frac{\partial}{\partial t}\int\frac{1}{2}\mu H^{2}\dv
+\end{equation}
 
 \end_inset
 
@@ -3095,8 +3321,10 @@ Vetor de Poynting
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vt P=\pvv EH\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vt P=\pvv EH
+\end{equation}
 
 \end_inset
 
@@ -3112,8 +3340,10 @@ Potência média temporal:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vti[ave]P=\frac{1}{2}\re{\pvv{E_{s}}{H_{s}}^{*}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vti[ave]P=\frac{1}{2}\re{\pvv{E_{s}}{H_{s}}^{*}}
+\end{equation}
 
 \end_inset
 
@@ -3125,8 +3355,10 @@ quantidade de potência que atravessa uma superfície:
 \end_layout
 
 \begin_layout Address
-\begin_inset Formula \begin{equation}
-P=\int\pe{\vti[ave]P}{\dS}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+P=\int\pe{\vti[ave]P}{\dS}
+\end{equation}
 
 \end_inset
 
@@ -3146,8 +3378,10 @@ Coeficiente de reflexão:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Gamma=\frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}-\eta_{1}}{\eta_{2}+\eta_{1}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Gamma=\frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}-\eta_{1}}{\eta_{2}+\eta_{1}}
+\end{equation}
 
 \end_inset
 
@@ -3159,8 +3393,10 @@ coeficiente de transmissão:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\tau=\frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}}{\eta_{2}+\eta_{1}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\tau=\frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}}{\eta_{2}+\eta_{1}}
+\end{equation}
 
 \end_inset
 
@@ -3172,8 +3408,10 @@ relação entre os coeficientes de reflexão e transmissão:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\tau=1+\Gamma\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\tau=1+\Gamma
+\end{equation}
 
 \end_inset
 
@@ -3185,8 +3423,10 @@ taxa de onda estacionária (ROE, COE, TOE, VSWR):
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-ROE=\frac{E_{max}}{E_{min}}=\frac{V_{max}}{V_{min}}=\frac{1+\left|\Gamma\right|}{1-\left|\Gamma\right|}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+ROE=\frac{E_{max}}{E_{min}}=\frac{V_{max}}{V_{min}}=\frac{1+\left|\Gamma\right|}{1-\left|\Gamma\right|}
+\end{equation}
 
 \end_inset
 
@@ -3202,8 +3442,10 @@ Coeficiente de reflexão:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
-\Gamma_{TE} & = & \frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}\cos\theta_{i}-\eta_{1}\cos\theta_{t}}{\eta_{2}\cos\theta_{i}+\eta_{1}\cos\theta_{t}}\end{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
+\Gamma_{TE} & = & \frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}\cos\theta_{i}-\eta_{1}\cos\theta_{t}}{\eta_{2}\cos\theta_{i}+\eta_{1}\cos\theta_{t}}
+\end{eqnarray}
 
 \end_inset
 
@@ -3211,8 +3453,10 @@ Coeficiente de reflexão:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Gamma_{TM}=\frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}\cos\theta_{t}-\eta_{1}\cos\theta_{i}}{\eta_{2}\cos\theta_{t}+\eta_{1}\cos\theta_{i}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Gamma_{TM}=\frac{E_{0}^{r}}{E_{0}^{i}}=\frac{\eta_{2}\cos\theta_{t}-\eta_{1}\cos\theta_{i}}{\eta_{2}\cos\theta_{t}+\eta_{1}\cos\theta_{i}}
+\end{equation}
 
 \end_inset
 
@@ -3224,8 +3468,10 @@ coefiente de transmissão:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
-\tau_{TE} & = & \frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{i}}{\eta_{2}\cos\theta_{i}+\eta_{1}\cos\theta_{t}}\end{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
+\tau_{TE} & = & \frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{i}}{\eta_{2}\cos\theta_{i}+\eta_{1}\cos\theta_{t}}
+\end{eqnarray}
 
 \end_inset
 
@@ -3233,8 +3479,10 @@ coefiente de transmissão:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\tau_{TM}=\frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{t}}{\eta_{2}\cos\theta_{t}+\eta_{1}\cos\theta_{i}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\tau_{TM}=\frac{E_{0}^{t}}{E_{0}^{i}}=\frac{2\eta_{2}\cos\theta_{t}}{\eta_{2}\cos\theta_{t}+\eta_{1}\cos\theta_{i}}
+\end{equation}
 
 \end_inset
 
@@ -3246,9 +3494,11 @@ Leis de Snell da reflexão e da refração:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \theta_{i} & = & \theta_{r}\\
-\frac{\beta_{1}}{\beta_{2}} & = & \frac{\sin\theta_{t}}{\sin\theta_{i}}\end{eqnarray}
+\frac{\beta_{1}}{\beta_{2}} & = & \frac{\sin\theta_{t}}{\sin\theta_{i}}
+\end{eqnarray}
 
 \end_inset
 
@@ -3260,8 +3510,10 @@ Leis de Snell da reflexão e da refração:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\sin\theta_{BA}=\sqrt{\frac{\beta_{2}^{2}(\eta_{2}^{2}-\eta_{1}^{2})}{\eta_{2}^{2}\beta_{1}^{2}-\eta_{1}^{2}\beta_{2}^{2}}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\sin\theta_{BA}=\sqrt{\frac{\beta_{2}^{2}(\eta_{2}^{2}-\eta_{1}^{2})}{\eta_{2}^{2}\beta_{1}^{2}-\eta_{1}^{2}\beta_{2}^{2}}}
+\end{equation}
 
 \end_inset
 
@@ -3281,11 +3533,13 @@ Para cabos coaxiais:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 R' & = & \frac{1}{2\pi}\left(\frac{1}{a}+\frac{1}{b}\right)\sqrt{\frac{\pi f\mu}{\sigma_{c}}}\\
 L' & = & \frac{\mu}{2\pi}\ln\left(\frac{b}{a}\right)\\
 G' & = & \frac{2\pi\sigma_{d}}{\ln(b/a)}\\
-C' & = & \frac{2\pi\epsilon}{\ln(b/a)}\end{eqnarray}
+C' & = & \frac{2\pi\epsilon}{\ln(b/a)}
+\end{eqnarray}
 
 \end_inset
 
@@ -3297,11 +3551,13 @@ para cabos de condutores gêmeos:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 R' & = & \frac{1}{a}\sqrt{\frac{f\mu}{\sigma_{c}}}\\
 L' & = & \frac{\mu}{\pi}\cosh^{-1}\left(\frac{d}{2a}\right)\\
 G' & = & \frac{\pi\sigma_{d}}{\cosh^{-1}(d/2a)}\\
-C' & = & \frac{\pi\epsilon}{\cosh^{-1}(d/2a)}\end{eqnarray}
+C' & = & \frac{\pi\epsilon}{\cosh^{-1}(d/2a)}
+\end{eqnarray}
 
 \end_inset
 
@@ -3317,9 +3573,11 @@ No domínio do tempo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 -\frac{\partial v(z,t)}{\partial z} & = & i(z,t)R'+L'\frac{\partial i(z,t)}{\delt}\\
--\frac{\partial i(z,t)}{\delz} & = & v(z,t)G'+C'\frac{\partial v(z,t)}{\delt}\end{eqnarray}
+-\frac{\partial i(z,t)}{\delz} & = & v(z,t)G'+C'\frac{\partial v(z,t)}{\delt}
+\end{eqnarray}
 
 \end_inset
 
@@ -3331,9 +3589,11 @@ no domínio da freqüência (para ondas harmônicas):
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \frac{\d V_{s}(z)}{\d z} & = & -(R'+j\omega L')I_{s}(z)\\
-\frac{\d I_{s}(z)}{\d z} & = & -(G'+j\omega C')V_{s}(z)\end{eqnarray}
+\frac{\d I_{s}(z)}{\d z} & = & -(G'+j\omega C')V_{s}(z)
+\end{eqnarray}
 
 \end_inset
 
@@ -3349,9 +3609,11 @@ No domínio do tempo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 v(z,t) & = & V_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+V_{0}^{-}e^{+\alpha z}\cos(\omega t+\beta z)\qquad\\
-i(z,t) & = & I_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+I_{0}^{-}e^{+\alpha z}\cos(\omega t+\beta z)\end{eqnarray}
+i(z,t) & = & I_{0}^{+}e^{-\alpha z}\cos(\omega t-\beta z)+I_{0}^{-}e^{+\alpha z}\cos(\omega t+\beta z)
+\end{eqnarray}
 
 \end_inset
 
@@ -3363,9 +3625,11 @@ no domínio da freqüência:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 V_{s}(z) & = & V_{0}^{+}e^{-\gamma z}+V_{0}^{-}e^{+\gamma z}\\
-I_{s}(z) & = & I_{0}^{+}e^{-\gamma z}+I_{0}^{-}e^{+\gamma z}\end{eqnarray}
+I_{s}(z) & = & I_{0}^{+}e^{-\gamma z}+I_{0}^{-}e^{+\gamma z}
+\end{eqnarray}
 
 \end_inset
 
@@ -3386,9 +3650,11 @@ ou
 \bar no
 \noun off
 \color none
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 V_{s}(z) & = & V_{0}^{+}e^{-\alpha z}e^{-j\beta z}+V_{0}^{-}e^{+\alpha z}e^{+j\beta z}\\
-I_{s}(z) & = & I_{0}^{+}e^{-\alpha z}e^{-j\beta z}+I_{0}^{-}e^{+\alpha z}e^{+j\beta z}\end{eqnarray}
+I_{s}(z) & = & I_{0}^{+}e^{-\alpha z}e^{-j\beta z}+I_{0}^{-}e^{+\alpha z}e^{+j\beta z}
+\end{eqnarray}
 
 \end_inset
 
@@ -3400,8 +3666,10 @@ Constantes de Propagação, Atenuação e de Fase
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\gamma=\sqrt{(R'+j\omega L')(G'+j\omega C')}=\alpha+j\beta\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\gamma=\sqrt{(R'+j\omega L')(G'+j\omega C')}=\alpha+j\beta
+\end{equation}
 
 \end_inset
 
@@ -3413,8 +3681,10 @@ Impedância Característica
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-Z_{0}=\frac{V_{0}^{+}}{I_{0}^{+}}=-\frac{V_{0}^{-}}{I_{0}^{-}}=\sqrt{\frac{R'+j\omega L'}{G'+j\omega C'}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+Z_{0}=\frac{V_{0}^{+}}{I_{0}^{+}}=-\frac{V_{0}^{-}}{I_{0}^{-}}=\sqrt{\frac{R'+j\omega L'}{G'+j\omega C'}}
+\end{equation}
 
 \end_inset
 
@@ -3430,8 +3700,10 @@ Potência média em linha sem perdas:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-P_{ave}^{+}(z)=\frac{(V_{0}^{+})^{2}}{2Z_{0}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+P_{ave}^{+}(z)=\frac{(V_{0}^{+})^{2}}{2Z_{0}}
+\end{equation}
 
 \end_inset
 
@@ -3443,8 +3715,10 @@ ganho de potência:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-G_{(\deci\bel)}=10\log\left(\frac{P_{out}}{P_{in}}\right)\end{equation}
+\begin_inset Formula 
+\begin{equation}
+G_{(\deci\bel)}=10\log\left(\frac{P_{out}}{P_{in}}\right)
+\end{equation}
 
 \end_inset
 
@@ -3456,8 +3730,10 @@ relação entre decibéis e neper:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-1\neper=8,686\deci\bel\end{equation}
+\begin_inset Formula 
+\begin{equation}
+1\neper=8,686\deci\bel
+\end{equation}
 
 \end_inset
 
@@ -3473,8 +3749,10 @@ Na carga:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Gamma_{L}=\frac{V_{0}^{-}}{V_{0}^{+}}=\frac{Z_{L}-Z_{0}}{Z_{L}+Z_{0}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Gamma_{L}=\frac{V_{0}^{-}}{V_{0}^{+}}=\frac{Z_{L}-Z_{0}}{Z_{L}+Z_{0}}
+\end{equation}
 
 \end_inset
 
@@ -3486,8 +3764,10 @@ em qualquer ponto:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Gamma=\frac{V_{0}^{-}e^{+\gamma z}}{V_{0}^{+}e^{-\gamma z}}=\Gamma_{L}e^{+2\gamma z}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Gamma=\frac{V_{0}^{-}e^{+\gamma z}}{V_{0}^{+}e^{-\gamma z}}=\Gamma_{L}e^{+2\gamma z}
+\end{equation}
 
 \end_inset
 
@@ -3511,8 +3791,10 @@ exemplo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\Gamma=\Gamma_{L}e^{-2\gamma\ell}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Gamma=\Gamma_{L}e^{-2\gamma\ell}
+\end{equation}
 
 \end_inset
 
@@ -3524,8 +3806,10 @@ Taxa de Onda Estacionária de Tensão
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-ROTE=\frac{1+\left|\Gamma_{L}\right|}{1-\left|\Gamma_{L}\right|}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+ROTE=\frac{1+\left|\Gamma_{L}\right|}{1-\left|\Gamma_{L}\right|}
+\end{equation}
 
 \end_inset
 
@@ -3541,8 +3825,10 @@ Para o caso geral:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-Z_{in}=Z_{0}\frac{Z_{L}+Z_{0}\tanh(\gamma\ell)}{Z_{0}+Z_{L}\tanh(\gamma\ell)}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+Z_{in}=Z_{0}\frac{Z_{L}+Z_{0}\tanh(\gamma\ell)}{Z_{0}+Z_{L}\tanh(\gamma\ell)}
+\end{equation}
 
 \end_inset
 
@@ -3554,8 +3840,10 @@ para linha sem perdas:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-Z_{in}=Z_{0}\frac{Z_{L}+jZ_{0}\tan(\beta\ell)}{Z_{0}+jZ_{L}\tan(\beta\ell)}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+Z_{in}=Z_{0}\frac{Z_{L}+jZ_{0}\tan(\beta\ell)}{Z_{0}+jZ_{L}\tan(\beta\ell)}
+\end{equation}
 
 \end_inset
 
@@ -3579,10 +3867,12 @@ Vetores em coordenadas cartesianas, cilíndricas e esféricas:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \vec{A}_{cart} & = & A_{x}\ax+A_{y}\ay+A_{z}\az\\
 \vec{A}_{cil} & = & A_{\rho}\arh+A_{\theta}\ath+A_{z}\az\\
-\vec{A}_{esf} & = & A_{r}\ar+A_{\theta}\ath+A_{\phi}\aph\end{eqnarray*}
+\vec{A}_{esf} & = & A_{r}\ar+A_{\theta}\ath+A_{\phi}\aph
+\end{eqnarray*}
 
 \end_inset
 
@@ -3594,8 +3884,10 @@ produto Escalar (em coordenadas cartesianas):
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\vt A\centerdot\vt B=\left|\vt A\right|\left|\vt B\right|\cos\theta_{AB}=A_{x}B_{x}+A_{y}B_{y}+A_{z}B_{z}\]
+\begin_inset Formula 
+\[
+\vt A\centerdot\vt B=\left|\vt A\right|\left|\vt B\right|\cos\theta_{AB}=A_{x}B_{x}+A_{y}B_{y}+A_{z}B_{z}
+\]
 
 \end_inset
 
@@ -3607,8 +3899,10 @@ operador Nabla:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\nabla=\frac{\partial}{\delx}\ax+\frac{\partial}{\dely}\ay+\frac{\partial}{\delz}\az\]
+\begin_inset Formula 
+\[
+\nabla=\frac{\partial}{\delx}\ax+\frac{\partial}{\dely}\ay+\frac{\partial}{\delz}\az
+\]
 
 \end_inset
 
@@ -3625,8 +3919,10 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\dvg{\vt A}=\frac{\partial A_{x}}{\delx}+\frac{\partial A_{y}}{\dely}+\frac{\partial A_{z}}{\delz}\]
+\begin_inset Formula 
+\[
+\dvg{\vt A}=\frac{\partial A_{x}}{\delx}+\frac{\partial A_{y}}{\dely}+\frac{\partial A_{z}}{\delz}
+\]
 
 \end_inset
 
@@ -3638,8 +3934,10 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\dvg{\vt A}=\frac{1}{\rho}\frac{\partial}{\partial\rho}(\rho A_{\rho})+\frac{1}{\rho}\frac{\partial A_{\phi}}{\partial\phi}+\frac{\partial A_{z}}{\delz}\]
+\begin_inset Formula 
+\[
+\dvg{\vt A}=\frac{1}{\rho}\frac{\partial}{\partial\rho}(\rho A_{\rho})+\frac{1}{\rho}\frac{\partial A_{\phi}}{\partial\phi}+\frac{\partial A_{z}}{\delz}
+\]
 
 \end_inset
 
@@ -3655,8 +3953,10 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\dvg{\vt A}=\frac{1}{r^{2}}\frac{\partial}{\partial r}(r^{2}A_{r})+\frac{1}{r\sin\theta}\frac{\partial}{\partial\theta}(A_{\theta}\sin\theta)+\frac{1}{r\sin\theta}\frac{\partial A_{\phi}}{\partial_{\phi}}\]
+\begin_inset Formula 
+\[
+\dvg{\vt A}=\frac{1}{r^{2}}\frac{\partial}{\partial r}(r^{2}A_{r})+\frac{1}{r\sin\theta}\frac{\partial}{\partial\theta}(A_{\theta}\sin\theta)+\frac{1}{r\sin\theta}\frac{\partial A_{\phi}}{\partial_{\phi}}
+\]
 
 \end_inset
 
@@ -3674,8 +3974,10 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\nabla V=\frac{\partial V}{\delx}\ax+\frac{\partial V}{\dely}\ay+\frac{\partial V}{\delz}\az\]
+\begin_inset Formula 
+\[
+\nabla V=\frac{\partial V}{\delx}\ax+\frac{\partial V}{\dely}\ay+\frac{\partial V}{\delz}\az
+\]
 
 \end_inset
 
@@ -3687,8 +3989,10 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\nabla V=\frac{\partial V}{\partial\rho}\arh+\frac{1}{\rho}\frac{\partial V}{\partial\phi}\aph+\frac{\partial V}{\delz}\az\]
+\begin_inset Formula 
+\[
+\nabla V=\frac{\partial V}{\partial\rho}\arh+\frac{1}{\rho}\frac{\partial V}{\partial\phi}\aph+\frac{\partial V}{\delz}\az
+\]
 
 \end_inset
 
@@ -3700,8 +4004,10 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\nabla V=\frac{\partial V}{\partial r}\ar+\frac{1}{r}\frac{\partial V}{\partial\theta}\ath+\frac{1}{r\sin\theta}\frac{\partial V}{\partial\phi}\aph\]
+\begin_inset Formula 
+\[
+\nabla V=\frac{\partial V}{\partial r}\ar+\frac{1}{r}\frac{\partial V}{\partial\theta}\ath+\frac{1}{r\sin\theta}\frac{\partial V}{\partial\phi}\aph
+\]
 
 \end_inset
 
@@ -3719,12 +4025,15 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{flalign*}
+\begin_inset Formula 
+\begin{flalign*}
 \rot{\vt A} & =\left|\begin{array}{ccc}
 \ax & \ay & \az\\
 \frac{\partial}{\delx} & \frac{\partial}{\dely} & \frac{\partial}{\delz}\\
-A_{x} & A_{y} & A_{z}\end{array}\right|=\\
- & \left(\frac{\partial A_{z}}{\dely}-\frac{\partial A_{y}}{\delz}\right)\ax+\left(\frac{\partial A_{x}}{\delz}-\frac{\partial A_{z}}{\delx}\right)\ay+\left(\frac{\partial A_{y}}{\delx}-\frac{\partial A_{x}}{\dely}\right)\az\end{flalign*}
+A_{x} & A_{y} & A_{z}
+\end{array}\right|=\\
+ & \left(\frac{\partial A_{z}}{\dely}-\frac{\partial A_{y}}{\delz}\right)\ax+\left(\frac{\partial A_{x}}{\delz}-\frac{\partial A_{z}}{\delx}\right)\ay+\left(\frac{\partial A_{y}}{\delx}-\frac{\partial A_{x}}{\dely}\right)\az
+\end{flalign*}
 
 \end_inset
 
@@ -3736,9 +4045,11 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{alignat*}{1}
+\begin_inset Formula 
+\begin{alignat*}{1}
  & \rot{\vt A}=\\
- & \left[\frac{1}{\rho}\frac{\partial A_{z}}{\partial\phi}-\frac{\partial A_{\phi}}{\delz}\right]\arh+\left[\frac{\partial\rho}{\delz}-\frac{\partial A_{z}}{\partial\rho}\right]\aph+\frac{1}{\rho}\left[\frac{\partial(\rho A_{\phi})}{\partial\rho}-\frac{\partial A_{\rho}}{\partial\phi}\right]\az\end{alignat*}
+ & \left[\frac{1}{\rho}\frac{\partial A_{z}}{\partial\phi}-\frac{\partial A_{\phi}}{\delz}\right]\arh+\left[\frac{\partial\rho}{\delz}-\frac{\partial A_{z}}{\partial\rho}\right]\aph+\frac{1}{\rho}\left[\frac{\partial(\rho A_{\phi})}{\partial\rho}-\frac{\partial A_{\rho}}{\partial\phi}\right]\az
+\end{alignat*}
 
 \end_inset
 
@@ -3750,11 +4061,13 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{alignat*}{1}
+\begin_inset Formula 
+\begin{alignat*}{1}
 \rot{\vt A} & =\\
  & \frac{1}{r\sin\theta}\left[\frac{\partial(\sin\theta A_{\phi})}{\partial\theta}-\frac{\partial A_{\theta}}{\partial\phi}\right]\ar+\\
  & \frac{1}{r}\left[\frac{1}{\sin\theta}\frac{\partial A_{r}}{\partial\phi}-\frac{\partial(rA_{\phi})}{\partial r}\right]\ath+\\
- & \frac{1}{r}\left[\frac{\partial(rA_{\theta})}{\partial r}-\frac{\partial(A_{r})}{\partial\theta}\right]\aph\end{alignat*}
+ & \frac{1}{r}\left[\frac{\partial(rA_{\theta})}{\partial r}-\frac{\partial(A_{r})}{\partial\theta}\right]\aph
+\end{alignat*}
 
 \end_inset
 
@@ -3772,8 +4085,10 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\lpl V=\frac{\partial^{2}V}{\delx^{2}}+\frac{\partial^{2}V}{\dely^{2}}+\frac{\partial^{2}V}{\delz^{2}}\]
+\begin_inset Formula 
+\[
+\lpl V=\frac{\partial^{2}V}{\delx^{2}}+\frac{\partial^{2}V}{\dely^{2}}+\frac{\partial^{2}V}{\delz^{2}}
+\]
 
 \end_inset
 
@@ -3785,8 +4100,10 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\lpl V=\frac{1}{\rho}\frac{\partial}{\partial\rho}\left(\rho\frac{\partial V}{\delrh}\right)+\frac{1}{\rho^{2}}\frac{\partial^{2}V}{\delph^{2}}+\frac{\partial^{2}V}{\delz^{2}}\]
+\begin_inset Formula 
+\[
+\lpl V=\frac{1}{\rho}\frac{\partial}{\partial\rho}\left(\rho\frac{\partial V}{\delrh}\right)+\frac{1}{\rho^{2}}\frac{\partial^{2}V}{\delph^{2}}+\frac{\partial^{2}V}{\delz^{2}}
+\]
 
 \end_inset
 
@@ -3798,9 +4115,11 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{alignat*}{1}
+\begin_inset Formula 
+\begin{alignat*}{1}
  & \lpl V=\\
- & \frac{1}{r^{2}}\frac{\partial}{\delr}\left(r^{2}\frac{\partial V}{\delr}\right)+\frac{1}{r^{2}\sin\theta}\frac{\partial}{\delth}\left(\sin\theta\frac{\partial V}{\delth}\right)+\frac{1}{r^{2}\sin^{2}\theta}\frac{\partial^{2}V}{\delph^{2}}\end{alignat*}
+ & \frac{1}{r^{2}}\frac{\partial}{\delr}\left(r^{2}\frac{\partial V}{\delr}\right)+\frac{1}{r^{2}\sin\theta}\frac{\partial}{\delth}\left(\sin\theta\frac{\partial V}{\delth}\right)+\frac{1}{r^{2}\sin^{2}\theta}\frac{\partial^{2}V}{\delph^{2}}
+\end{alignat*}
 
 \end_inset
 
@@ -3815,7 +4134,7 @@ Constantes
 \begin_layout Standard
 A 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "tab:Constantes-fisicas"
 
 \end_inset
@@ -3831,7 +4150,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Constantes físicas.
@@ -3853,10 +4172,10 @@ name "tab:Constantes-fisicas"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="3">
-<features>
-<column alignment="center" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -4242,8 +4561,10 @@ Conversões
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-1\ \neper=8.686\si\ {\deci\bel}\]
+\begin_inset Formula 
+\[
+1\ \neper=8.686\si\ {\deci\bel}
+\]
 
 \end_inset
 
@@ -4294,7 +4615,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Condutividade aproximada de alguns materiais (note-se que esta condutividade
@@ -4317,9 +4638,9 @@ name "tab:Condutividade"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="15" columns="2">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="right" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="right" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -4686,7 +5007,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Propriedades para alguns dielétricos (note-se que para condutores, normalmente,
@@ -4713,12 +5034,12 @@ name "tab:Dieletricos"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="5">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="right" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -5316,7 +5637,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Permeabilidade relativa para alguns materiais ferromagnéticos (note-se que
@@ -5344,9 +5665,9 @@ name "tab:Permeabilidade"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -5535,7 +5856,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Condutividade e permissividade complexa de alguns materiais.
@@ -5557,11 +5878,11 @@ name "tab:permissividade-complexa-condutividade"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="right" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -5784,13 +6105,15 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \dL_{1} & = & \dx\,\ax\\
 \dL_{2} & = & \dy\,\ay\\
 \dL_{3} & = & \dz\,\az\\
 \dL_{4} & = & -\dL_{1}=-\dx\,\ax\\
 \dL_{5} & = & -\dL_{2}=-\dy\,\ay\\
-\dL_{6} & = & -\dL_{3}=-\dz\,\az\end{eqnarray*}
+\dL_{6} & = & -\dL_{3}=-\dz\,\az
+\end{eqnarray*}
 
 \end_inset
 
@@ -5806,13 +6129,15 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \dL_{1} & = & \drh\,\arh\\
 \dL_{2} & = & \rho\,\dph\,\aph\\
 \dL_{3} & = & \dz\,\az\\
 \dL_{4} & = & -\dL_{1}=-\drh\,\arh\\
 \dL_{5} & = & -\dL_{2}=-\rho\,\dph\,\aph\\
-\dL_{6} & = & -\dL_{3}=-\dz\,\az\end{eqnarray*}
+\dL_{6} & = & -\dL_{3}=-\dz\,\az
+\end{eqnarray*}
 
 \end_inset
 
@@ -5824,13 +6149,15 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \dL_{1} & = & \dr\,\ar\\
 \dL_{2} & = & r\,\dth\,\ath\\
 \dL_{3} & = & r\,\sin\theta\,\dph\,\aph\\
 \dL_{4} & = & -\dL_{1}=-\dr\,\ar\\
 \dL_{5} & = & -\dL_{2}=-r\,\dth\,\ath\\
-\dL_{6} & = & -\dL_{3}=-r\,\sin\theta\,\dph\,\aph\end{eqnarray*}
+\dL_{6} & = & -\dL_{3}=-r\,\sin\theta\,\dph\,\aph
+\end{eqnarray*}
 
 \end_inset
 
@@ -5852,13 +6179,15 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \dS_{1} & = & \dy\,\dz\,\ax\\
 \dS_{2} & = & \dx\,\dz\,\ay\\
 \dS_{3} & = & \dx\,\dy\,\az\\
 \dS_{4} & = & -\dS_{1}=-\dy\,\dz\,\ax\\
 \dS_{5} & = & -\dS_{2}=-\dx\,\dz\,\ay\\
-\dS_{6} & = & -\dS_{3}=-\dx\,\dy\,\az\end{eqnarray*}
+\dS_{6} & = & -\dS_{3}=-\dx\,\dy\,\az
+\end{eqnarray*}
 
 \end_inset
 
@@ -5870,13 +6199,15 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \dS_{1} & = & \rho\,\dph\,\dz\,\arh\\
 \dS_{2} & = & \drh\,\dz\,\aph\\
 \dS_{3} & = & \rho\,\drh\,\dph\,\az\\
 \dS_{4} & = & -\dS_{1}=-\rho\,\dph\dz\,\arh\\
 \dS_{5} & = & -\dS_{2}=-\drh\,\dz\,\aph\\
-\dS_{6} & = & -\dS_{3}=-\rho\,\drh\,\dph\,\az\end{eqnarray*}
+\dS_{6} & = & -\dS_{3}=-\rho\,\drh\,\dph\,\az
+\end{eqnarray*}
 
 \end_inset
 
@@ -5892,13 +6223,15 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \dS_{1} & = & r^{2}\,\sin\theta\,\dph\,\dth\,\ar\\
 \dS_{2} & = & r\,\sin\theta\,\dr\,\dph\,\ath\\
 \dS_{3} & = & r\,\dr\,\dph\,\aph\\
 \dS_{4} & = & -\dS_{1}=-r^{2}\,\sin\theta\,\dph\,\dth\,\ar\\
 \dS_{5} & = & -\dS_{2}=-r\,\sin\theta\,\dr\,\dph\,\ath\\
-\dS_{6} & = & -\dS_{3}=-r\,\dr\,\dph\,\aph\end{eqnarray*}
+\dS_{6} & = & -\dS_{3}=-r\,\dr\,\dph\,\aph
+\end{eqnarray*}
 
 \end_inset
 
@@ -5916,8 +6249,10 @@ coordenadas cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\dv=\dx\,\dy\,\dz\]
+\begin_inset Formula 
+\[
+\dv=\dx\,\dy\,\dz
+\]
 
 \end_inset
 
@@ -5929,8 +6264,10 @@ coordenadas cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\dv=\rho\,\drh\,\dph\,\dz\]
+\begin_inset Formula 
+\[
+\dv=\rho\,\drh\,\dph\,\dz
+\]
 
 \end_inset
 
@@ -5942,8 +6279,10 @@ coordenadas esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\dv=r^{2}\sin\theta\,\dr\,\dth\,\dph\]
+\begin_inset Formula 
+\[
+\dv=r^{2}\sin\theta\,\dr\,\dth\,\dph
+\]
 
 \end_inset
 
@@ -5964,16 +6303,20 @@ Cartesianas para cilíndricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-P(x,y,z)\ \rightarrow\ P(\rho,\phi,z)\]
+\begin_inset Formula 
+\[
+P(x,y,z)\ \rightarrow\ P(\rho,\phi,z)
+\]
 
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \rho & = & \sqrt{x\text{²}+y\text{²}}\\
 \phi & = & \arctan\left(\frac{y}{x}\right)\\
-z & = & z\end{eqnarray*}
+z & = & z
+\end{eqnarray*}
 
 \end_inset
 
@@ -5985,8 +6328,10 @@ cilíndricas para cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-P(\rho,\phi,z)\ \Rightarrow\ P(x,y,z)\]
+\begin_inset Formula 
+\[
+P(\rho,\phi,z)\ \Rightarrow\ P(x,y,z)
+\]
 
 \end_inset
 
@@ -5994,10 +6339,12 @@ P(\rho,\phi,z)\ \Rightarrow\ P(x,y,z)\]
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & \rho\,\cos\phi\\
 y & = & \rho\,\sin\phi\\
-z & = & z\end{eqnarray*}
+z & = & z
+\end{eqnarray*}
 
 \end_inset
 
@@ -6009,8 +6356,10 @@ cartesianas para esféricas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-P(x,y,z)\ \rightarrow\ P(r,\theta,\phi)\]
+\begin_inset Formula 
+\[
+P(x,y,z)\ \rightarrow\ P(r,\theta,\phi)
+\]
 
 \end_inset
 
@@ -6018,10 +6367,12 @@ P(x,y,z)\ \rightarrow\ P(r,\theta,\phi)\]
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 r & = & \sqrt{x\text{²}+y\text{²}+z\text{²}}\\
 \theta & = & \arccos\left(\frac{z}{r}\right)\\
-\phi & = & \arctan\left(\frac{y}{x}\right)\end{eqnarray*}
+\phi & = & \arctan\left(\frac{y}{x}\right)
+\end{eqnarray*}
 
 \end_inset
 
@@ -6033,8 +6384,10 @@ esféricas para cartesianas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-P(r,\theta,\phi)\ \rightarrow\ P(x,y,z)\]
+\begin_inset Formula 
+\[
+P(r,\theta,\phi)\ \rightarrow\ P(x,y,z)
+\]
 
 \end_inset
 
@@ -6042,10 +6395,12 @@ P(r,\theta,\phi)\ \rightarrow\ P(x,y,z)\]
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & r\,\sin\theta\,\cos\phi\\
 y & = & r\,\sin\theta\,\sin\phi\\
-z & = & r\,\cos\theta\end{eqnarray*}
+z & = & r\,\cos\theta
+\end{eqnarray*}
 
 \end_inset
 
@@ -6091,7 +6446,7 @@ Dadas as funções
 
 , é apresentada na 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "tab:Tabela-de-derivadas"
 
 \end_inset
@@ -6099,7 +6454,7 @@ reference "tab:Tabela-de-derivadas"
 .
  Na 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "tab:Tabela-de-derivadas-hiperbolicas"
 
 \end_inset
@@ -6124,8 +6479,10 @@ Nota: para obter as derivadas das funções elementares, basta fazer
 
 .
  Por exemplo:
-\begin_inset Formula \[
-y=\sqrt[\cn]{u}\ \Rightarrow\ y=\sqrt{x}\ \Rightarrow\ y'=\frac{1}{2\sqrt{x}}\]
+\begin_inset Formula 
+\[
+y=\sqrt[\cn]{u}\ \Rightarrow\ y=\sqrt{x}\ \Rightarrow\ y'=\frac{1}{2\sqrt{x}}
+\]
 
 \end_inset
 
@@ -6140,7 +6497,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Tabela de derivadas de funções comuns.
@@ -6162,10 +6519,10 @@ name "tab:Tabela-de-derivadas"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="27" columns="3">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -7164,7 +7521,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Tabela de derivadas de funções hiperbólicas.
@@ -7186,10 +7543,10 @@ name "tab:Tabela-de-derivadas-hiperbolicas"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
@@ -7711,7 +8068,7 @@ Dadas as funções
 
 , apresentam-se as integrais de diversas funções na 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "tab:Tabela-de-integrais"
 
 \end_inset
@@ -7731,8 +8088,10 @@ Nota: para obter as integrais das funções elementares, basta fazer
 \end_inset
 
 , como, por exemplo:
-\begin_inset Formula \[
-\int\frac{\du}{u}\ \Rightarrow\ \int\frac{\dx}{x}=\ln\left|x\right|+\cC\]
+\begin_inset Formula 
+\[
+\int\frac{\du}{u}\ \Rightarrow\ \int\frac{\dx}{x}=\ln\left|x\right|+\cC
+\]
 
 \end_inset
 
@@ -7753,12 +8112,14 @@ ou, então, definir
 
 , fazendo os devidos ajustes para não alterar a expressão original, como
  no exemplo:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \int\sin(2x)\,\dx\\
  &  & u=2x\\
  &  & \frac{\du}{\dx}=2\ \Rightarrow\ \du=2\cdot\dx\\
 \therefore\int\sin u\,\du & = & \int2\,\sin(2x)\,\dx\\
-\therefore\int\sin(2x)\,\dx & = & \frac{1}{2}\int\sin u\,\du=-\frac{1}{2}\,\cos(u)=-\frac{1}{2}\,\cos(2x)\end{eqnarray*}
+\therefore\int\sin(2x)\,\dx & = & \frac{1}{2}\int\sin u\,\du=-\frac{1}{2}\,\cos(u)=-\frac{1}{2}\,\cos(2x)
+\end{eqnarray*}
 
 \end_inset
 
@@ -7773,10 +8134,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset OptArg
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -7802,9 +8163,10 @@ name "tab:Tabela-de-integrais"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
  & \int u\dv=uv-\int v\du\\
- & \int u^{\cn}\du=\frac{1}{n+1}\, u^{n+1}+\cC\\
+ & \int u^{\cn}\du=\frac{1}{n+1}\,u^{n+1}+\cC\\
  & \int\frac{\du}{u}=\ln\left|u\right|+\cC\\
  & \int e^{u}\du=e^{u}+\cC\\
  & \int\ca^{u}\du=\frac{1}{\ln\ca}\,\ca^{u}+\cC\\
@@ -7814,7 +8176,8 @@ name "tab:Tabela-de-integrais"
  & \int\frac{\du}{\left(u^{2}+\ca^{2}\right)^{3/2}}=\frac{u}{\ca^{2}\sqrt{u^{2}+\ca^{2}}}+\cC\\
  & \int\frac{\du}{u^{2}+\ca^{2}}=\frac{1}{\ca}\arctan\frac{u}{\ca}+\cC\\
  & \int e^{\ca x}\cos\cb x\,\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left(\ca\,\cos\cb x+\cb\,\sin\cb x\right)+\cC\\
- & \int e^{\ca x}\cos(\cc+\cb x)\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left[\ca\,\sin(\cc+\cb x)-\cb\,\cos(\cc+\cb x)\right]+\cC\end{align*}
+ & \int e^{\ca x}\cos(\cc+\cb x)\dx=\frac{e^{\ca x}}{\ca^{2}+\cb^{2}}\left[\ca\,\sin(\cc+\cb x)-\cb\,\cos(\cc+\cb x)\right]+\cC
+\end{align*}
 
 \end_inset
 
